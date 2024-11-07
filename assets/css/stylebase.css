@@ -1,0 +1,46 @@
+body{
+    margin: 0;
+}
+
+#menutop{
+    padding: 1rem;
+    background-color: #fd9c25;
+    display: flex;
+    align-content: center;
+}
+
+.bmenutop{
+    flex: 1;
+    color: rgb(250, 236, 236);
+    text-align: center;
+    font-weight: bold;
+    font-family: sans-serif;
+    border-right: 1px solid;
+    border-left: 1px solid;
+}
+
+#pagebottom{
+    color: rgb(53, 21, 21);
+    font-family: sans-serif;
+    padding: 1% 0% 1% 5%;
+    background-color: rgba(255, 255, 255, 1);
+    align-content: center;
+}
+
+.presentation{
+    background-image: url("../img/back.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    padding: 3%;
+}
+
+.testarticle{
+    flex: 1;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.920);
+}
+
+h1{
+    padding: 1%;
+}
