@@ -1,46 +1,73 @@
 body{
     margin: 0;
+    font-family: Arial, sans-serif;
 }
-
-#menutop{
-    padding: 1rem;
-    background-color: #fd9c25;
+/* BANNIERE */
+.sitetop{
     display: flex;
-    align-content: center;
+    justify-content: space-between;
+    width: 100vw;
 }
 
-.bmenutop{
-    flex: 1;
-    color: rgb(250, 236, 236);
+#logo{
+    padding: 1%;
+}
+
+.boutonstop{
+    display: flex;
+    justify-content: space-around;
+    width: 50vw;
+}
+
+#boutonlost{
+    background-color: #dc3545;
+    color: white;
     text-align: center;
+    text-transform: uppercase;
     font-weight: bold;
-    font-family: sans-serif;
-    border-right: 1px solid;
-    border-left: 1px solid;
+    width: 80%;
+    margin: auto 10% auto auto;
+    padding: 2%;
+    border-radius: 7px;
+    border: none;
 }
 
-#pagebottom{
-    color: rgb(53, 21, 21);
-    font-family: sans-serif;
-    padding: 1% 0% 1% 5%;
-    background-color: rgba(255, 255, 255, 1);
-    align-content: center;
+#boutonfound{
+    background-color: #198754;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 80%;
+    margin: auto 25% auto auto;
+    padding: 2%;
+    border-radius: 7px;
+    border: none;
 }
-
-.presentation{
+/* MENU DU HAUT */
+#menutop{
+    background-color: #ff8c00;
+}
+/* ARTICLES */
+.articleback{
     background-image: url("../img/back.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
-    padding: 3%;
+    padding: 2%;
 }
 
-.testarticle{
+.presentation{
+    background-color: rgba(255, 255, 255, 0.920);
+    display: flex;
+}
+
+.article{
+    flex: 2;
+    padding: 1%;
+}
+
+.gridcard{
     flex: 1;
     padding: 1%;
-    background-color: rgba(255, 255, 255, 0.920);
 }
-
-h1{
-    padding: 1%;
-}
+/* FOOTER */
