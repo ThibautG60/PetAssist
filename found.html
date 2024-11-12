@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/stylebase.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <title>Pet Assist' - Mon compte</title>
+    <title>Pet Assist' - J'ai trouvé un animal</title>
 </head>
 
 <body>
@@ -15,7 +15,6 @@
             <h1 id="logo"><a href="index.html">LOGO DU SITE</a></h1>
             <div class="boutonstop">
                 <a href="lost.html" id="boutonlost">J'ai perdu mon animal</a>
-                <a href="found.html" id="boutonfound">J'ai trouvé un animal</a>
             </div>
         </div>
     </header>
@@ -42,35 +41,50 @@
     <section>
         <div class="articleback">
             <form class="bodyaccount">
-                <h2>Créez votre compte:</h2>
-                <div class="row">
+                <h2>Remplissez les informations concernant l'animal que vous avez vu:</h2>
+                <div class="row mt-2">
                     <div class="form-group col-6">
-                        <label for="name">Nom:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Nom de famille">
+                        <label for="species">Espèce:</label>
+                        <input type="text" class="form-control" id="species"
+                            placeholder="Espèce de l'animal (Ex: Chien)">
                     </div>
                     <div class="form-group col-6">
-                        <label for="lastname">Prénom:</label>
-                        <input type="text" class="form-control" id="lastname" placeholder="Prénom">
+                        <label for="race">Race:</label>
+                        <input type="text" class="form-control" id="race"
+                            placeholder="Race de l'animal (Ex: Labrador)">
                     </div>
-                    <div class="form-group col-12">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" placeholder="adresse@mail.com">
+                    <legend class="col-form-label">Sexe:</legend>
+                    <div class="form-check col-2">
+                        <input class="form-check-input  ms-0" type="radio" name="sexe" id="sexe1" value="m" checked>
+                        <label class="form-check-label  ms-1" for="sexe1">
+                            Mâle
+                        </label>
                     </div>
-                    <div class="form-group col-12">
-                        <label for="password">Mot de passe:</label>
-                        <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+                    <div class="form-check col-4">
+                        <input class="form-check-input ms-0" type="radio" name="sexe" id="sexe2" value="f">
+                        <label class="form-check-label ms-1" for="sexe2">
+                            Femelle
+                        </label>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="petpic">Importez une photo de l'animal:</label>
+                        <input type="file" class="form-control-file" id="petpic">
                     </div>
                 </div>
                 <div class="row mt-5">
-                    <div class="form-group col-12">
-                        <label for="adress">Adresse:</label>
-                        <input type="text" class="form-control" id="adress" placeholder="Numéro, nom de rue ...">
+                    <div class="form-group col-6">
+                        <label for="date">Date:</label>
+                        <input type="text" class="form-control" id="date" placeholder="Date où vous l'avez vu:">
                     </div>
                     <div class="form-group col-12">
-                        <label for="adress2">Ville</label>
-                        <input type="text" class="form-control" id="adress2" placeholder="Code postal et ville">
+                        <label for="padress">Dernière adresse où vous avez vu l'animal:</label>
+                        <input type="text" class="form-control" id="padress" placeholder="Numéro, nom de rue ...">
                     </div>
-                    <div class="form-group col-12">
+                    <div class="form-group col-6">
+                        <label for="padress2">Dernière ville où vous avez vu l'animal:</label>
+                        <input type="text" class="form-control" id="padress2" placeholder="Code postal et ville">
+                    </div>
+                    <div class="form-group col-3">
                         <label for="state">Pays:</label>
                         <select id="state" class="form-control">
                             <option selected>Choisir</option>
@@ -80,7 +94,7 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-5">Créer mon compte</button>
+                <button type="submit" class="btn btn-primary mt-5">Valider</button>
             </form>
         </div>
     </section>

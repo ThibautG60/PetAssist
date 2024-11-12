@@ -24,12 +24,12 @@ body{
     color: white;
     text-align: center;
     text-transform: uppercase;
+    text-decoration: none;
     font-weight: bold;
     width: 80%;
-    margin: auto 10% auto auto;
+    margin: auto 15% auto auto;
     padding: 2%;
     border-radius: 7px;
-    border: none;
 }
 
 #boutonfound{
@@ -37,18 +37,24 @@ body{
     color: white;
     text-align: center;
     text-transform: uppercase;
+    text-decoration: none;
     font-weight: bold;
     width: 80%;
-    margin: auto 25% auto auto;
+    margin: auto 15% auto auto;
     padding: 2%;
     border-radius: 7px;
-    border: none;
 }
 /* MENU DU HAUT */
 #menutop{
     background-color: #ff8c00;
 }
 /* ARTICLES */
+.bodyaccount{
+    background-color: rgba(255, 255, 255, 0.920);
+    width: 80vw;
+    margin: 2% auto 2% auto;
+    padding: 5%;
+}
 .articleback{
     background-image: url("../img/back.jpg");
     background-repeat: no-repeat;
