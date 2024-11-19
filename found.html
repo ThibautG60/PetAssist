@@ -6,23 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/stylebase.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="shortcut icon" href="assets/img/iconsite.png" />
     <title>Pet Assist' - J'ai trouvé un animal</title>
 </head>
 
 <body>
     <header>
         <div class="sitetop">
-            <h1 id="logo"><a href="index.html">LOGO DU SITE</a></h1>
+            <a href="index.html" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
             <div class="boutonstop">
                 <a href="lost.html" id="boutonlost">J'ai perdu mon animal</a>
+                <a href="found.html" id="boutonfound">J'ai trouvé un animal</a>
             </div>
         </div>
     </header>
     <nav>
-        <ul class="nav nav-underline nav-fill justify-content-center p-2" id="menutop">
+        <ul class="nav nav-underline nav-fill justify-content-center bg-dark p-2" id="menutop">
             <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="petlist.html">Voir la
-                    liste des animaux perdu</a>
+                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="petlist.html">
+                    Voir la liste des animaux perdu</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="petcard.html">Utiliser
@@ -30,18 +32,25 @@
                     interactive</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active text-light" style="font-weight: bold; Font-size: large;" aria-current="page"
-                    href="account.html">Mon compte</a>
+                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="account.html">Mon
+                    compte</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="help.html">Aide</a>
+                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="advice.html">Conseils</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="goldenbook.html">Temoignages / Histoires de retrouvailles</a>
+            </li>
+            <li class="nav-item">
+                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href="" alt="X"></a>
             </li>
         </ul>
     </nav>
     <section>
         <div class="articleback">
             <form class="bodyaccount">
-                <h2>Remplissez les informations concernant l'animal que vous avez vu:</h2>
+                <h1>Remplissez les informations concernant l'animal que vous avez vu:</h1>
                 <div class="row mt-2">
                     <div class="form-group col-6">
                         <label for="species">Espèce:</label>
@@ -99,21 +108,10 @@
         </div>
     </section>
     <footer>
-        <div class="container p-2">
-            <div class="row">
-                <div class="col-12">
-                    <h3>A propos</h3>
-                </div>
-                <div class="col-12">
-                    Nous contacter
-                </div>
-                <div class="col-12">
-                    Aide
-                </div>
-                <div class="col-12">
-                    FAQ
-                </div>
-            </div>
+        <div class="bannerfoot">
+            <h3>A propos</h3>
+            <a href="#" class="fitem">Nous contacter</a>
+            <a href="faq.html" class="fitem">FAQ</a>
         </div>
     </footer>
 </body>
