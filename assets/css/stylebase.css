@@ -9,7 +9,7 @@ body{
     background-size: cover;
     display: flex;
     justify-content: space-between;
-    width: 100vw;
+    width: 100%;
 }
 
 #logo{
@@ -58,7 +58,7 @@ body{
     background-color: rgba(255, 255, 255, 0.920);
     width: 80vw;
     margin: auto;
-    padding: 5%;
+    padding: 2% 3% 2% 3%;
 }
 
 .articleback{
@@ -88,7 +88,6 @@ body{
 }
 
 .articletitle{
-    font-weight: bold;
     text-align: center;
 }
 
@@ -102,11 +101,15 @@ body{
     margin: 1% 0% 1% 10%;
     display: flex;
     flex-wrap: wrap;
-    width: 20vw;
+    justify-content: space-around;
+}
+
+#foottitle{
+    flex-basis: 100%;
 }
 
 .fitem{
+    flex: 1;
     color: black;
     text-decoration: none;
-    flex-basis: 100%;
 }
