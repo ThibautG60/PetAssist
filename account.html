@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/stylebase.css">
+    <link rel="stylesheet" href="assets/css/accountstyle.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="shortcut icon" href="assets/img/iconsite.png" />
-    <title>Pet Assist' - Mon compte</title>
+    <title>Pet Assist' - Retrouvons vos animaux !</title>
 </head>
 
 <body>
@@ -36,62 +37,179 @@
                     compte</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="advice.html">Conseils</a>
+                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;"
+                    href="advice.html">Conseils</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="goldenbook.html">Temoignages / Histoires de retrouvailles</a>
+                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;"
+                    href="goldenbook.html">Temoignages / Histoires de retrouvailles</a>
             </li>
             <li class="nav-item">
-                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>
-                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href="" alt="X"></a>
+                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img
+                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href=""
+                        alt="X"></a>
             </li>
         </ul>
     </nav>
-    <section>
-        <div class="articleback">
-            <form class="bodyaccount">
-                <h1 class="articletitle">Créez votre compte Pet Assist':</h1>
-                <div id="line"></div>
-                <p>Créez votre compte pour accéder à toutes nos fonctionnalités et profiter de contenus personnalisés. Inscrivez-vous facilement en quelques étapes et commencez dès maintenant !</p>
-                <div class="row">
-                    <div class="form-group col-6">
-                        <label for="name">Nom:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Nom de famille">
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="lastname">Prénom:</label>
-                        <input type="text" class="form-control" id="lastname" placeholder="Prénom">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" placeholder="adresse@mail.com">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="password">Mot de passe:</label>
-                        <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+    <section class="articleback">
+        <div class="bodyaccount">
+            <h1 class="articletitle" id="accounttitle">Bienvenue dans votre espace personnel</h1>
+            <p>Sur la page de gestion de votre compte, vous pourrez facilement gérer vos informations et suivre l'évolution de vos annonces. Voici ce que vous pourrez faire :</p>
+            <ul>
+                <li><b>Modifier votre compte : </b> Mettez à jour vos informations personnelles, comme votre nom, adresse e-mail ou mot de passe.</li>
+                <li><b>Consulter vos notifications :</b> Vous trouverez ici toutes les alertes concernant vos annonces, telles que les nouvelles mises à jour ou les réponses d'autres utilisateurs.</li>
+                <li><b>Lire vos messages : </b>Accédez à un espace dédié pour échanger avec les autres membres du site, répondre à des questions ou discuter des animaux perdus ou retrouvés.</li>
+                <li><b>Gérer vos annonces :</b> Consultez, modifiez ou supprimez vos annonces concernant les animaux perdus ou retrouvés.</li>
+            </ul>
+           <p>Cette page vous offre un moyen simple et rapide de suivre toutes vos activités et de rester informé sur vos signalements.</p>
+            <div class="accountarea">
+                <div class="accountcat">
+                    <h2>Mes publications</h2>
+                    <div id="line"></div>
+                    <div class="accordion accordion-flush" id="accordionPublish">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed bg-danger text-light" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+                                    aria-controls="collapseOne">
+                                    Je cherche: Medor
+                                </button>
+                            </h3>
+                            <div id="collapseOne" class="accordion-collapse collapse"
+                                data-bs-parent="#accordion-flush">
+                                <div class="accordion-body">
+                                    <img src="https://picsum.photos/200/300?random=2" alt="image animal">
+                                    <p>Espèce: Chien <br>Race: Test <br>Lieu: 89 rue du test 60420 Toast
+                                        <br>Date: 01/01/2000
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed bg-success text-light" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    Je cherche: Kiwi [RETROUVE]
+                                </button>
+                            </h3>
+                            <div id="collapseTwo" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionPublish">
+                                <div class="accordion-body">
+                                    <img src="https://picsum.photos/200/300?random=2" alt="image animal">
+                                    <p>Espèce: Chien <br>Race: Test <br>Lieu: 89 rue du test 60420 Toast
+                                        <br>Date: 01/01/2000
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed bg-info text-light" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    J'ai vu: Un chat
+                                </button>
+                            </h3>
+                            <div id="collapseThree" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionPublish">
+                                <div class="accordion-body">
+                                    <img src="https://picsum.photos/200/300?random=2" alt="image animal">
+                                    <p>Espèce: Chien <br>Race: Test <br>Lieu: 89 rue du test 60420 Toast
+                                        <br>Date: 01/01/2000
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row mt-5">
-                    <div class="form-group col-12">
-                        <label for="adress">Adresse:</label>
-                        <input type="text" class="form-control" id="adress" placeholder="Numéro, nom de rue ...">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="adress2">Ville</label>
-                        <input type="text" class="form-control" id="adress2" placeholder="Code postal et ville">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="state">Pays:</label>
-                        <select id="state" class="form-control">
-                            <option selected>Choisir</option>
-                            <option>France</option>
-                            <option>Belgique</option>
-                            <option>Suisse</option>
-                        </select>
+                <div class="accountcat" id="bordercenter">
+                    <h2>Mes notifications</h2>
+                    <div id="line"></div>
+                    <div class="halert">
+                        <div class="alert alert-info" role="alert">
+                            Vous avez reçu un message !
+                        </div>
+                        <div class="alert alert-success" role="alert">
+                            L'avis de recherche de Kiwi est classé dans les " retrouvés "
+                        </div>
+                        <div class="alert alert-success" role="alert">
+                            L'avis de recherche de Medor a été publié sur le site
+                        </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success mt-5">Créer mon compte</button>
-            </form>
+                <div class="accountcat">
+                    <h2>Mes messages</h2>
+                    <div id="line"></div>
+                    <div class="accordion accordion-flush" id="accordionMsg">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed bg-secondary text-light" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseMsgOne" aria-expanded="false"
+                                    aria-controls="collapseMsgOne">
+                                    Edouard .G <span class="badge text-bg-success ms-2">Nouveau message</span>
+                                </button>
+                            </h3>
+                            <div id="collapseMsgOne" class="accordion-collapse collapse"
+                                data-bs-parent="#accordion-flush">
+                                <div class="accordion-body">
+                                    <p>Bonjour, j'ai des infos sur votre chien</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed bg-secondary text-light" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseMsgTwo" aria-expanded="false"
+                                    aria-controls="collapseMsgTwo">
+                                    Camille .B
+                                </button>
+                            </h3>
+                            <div id="collapseMsgTwo" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionMsg">
+                                <div class="accordion-body">
+                                    <p>Help me</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed bg-secondary text-light" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseMsgThree" aria-expanded="false"
+                                    aria-controls="collapseMsgThree">
+                                    Silvio .T
+                                </button>
+                            </h3>
+                            <div id="collapseMsgThree" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionMsg">
+                                <div class="accordion-body">
+                                    <p>Merci pour ton aide !</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed bg-secondary text-light" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseMsgFour" aria-expanded="false"
+                                    aria-controls="collapseMsgFour">
+                                    Adrian .Q
+                                </button>
+                            </h3>
+                            <div id="collapseMsgFour" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionMsg">
+                                <div class="accordion-body">
+                                    <p>Salut l'ami !</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="articletitle">
+                <p>Vous pouvez modifier votre compte à tout moment en cliquant sur le bouton ci-dessous:</p>
+                <a href="#" class="btn btn-primary ml-5" role="button">Modifier mon compte</a>
+            </div>
         </div>
     </section>
     <footer>
@@ -102,9 +220,14 @@
             <a href="rules.html" class="fitem">Règlement du site</a>
             <a href="#" class="fitem">Mentions légales</a>
             <div class="fitem">
-                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>
-                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href="" alt="X"></a>
+                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img
+                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href=""
+                        alt="X"></a>
             </div>
         </div>
     </footer>
+    <script src="assets/js/bootstrap.bundle.js"></script>
 </body>
+
+</html>

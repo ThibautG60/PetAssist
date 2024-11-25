@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/stylebase.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="shortcut icon" href="assets/img/iconsite.png" />
+    <title>Pet Assist' - Mon compte</title>
+</head>
+
+<body>
+    <header>
+        <div class="sitetop">
+            <a href="index.html" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
+            <div class="boutonstop">
+                <a href="lost.html" id="boutonlost">J'ai perdu mon animal</a>
+                <a href="found.html" id="boutonfound">J'ai trouvé un animal</a>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <ul class="nav nav-underline nav-fill justify-content-center bg-dark p-2" id="menutop">
+            <li class="nav-item">
+                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="petlist.html">
+                    Voir la liste des animaux perdu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="petcard.html">Utiliser
+                    la carte
+                    interactive</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="login.html">Mon
+                    compte</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="advice.html">Conseils</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="goldenbook.html">Temoignages / Histoires de retrouvailles</a>
+            </li>
+            <li class="nav-item">
+                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href="" alt="X"></a>
+            </li>
+        </ul>
+    </nav>
+    <section>
+        <div class="articleback">
+            <form class="bodyaccount">
+                <h1 class="articletitle">Créez votre compte Pet Assist':</h1>
+                <div id="line"></div>
+                <p>Créez votre compte pour accéder à toutes nos fonctionnalités et profiter de contenus personnalisés. Inscrivez-vous facilement en quelques étapes et commencez dès maintenant !</p>
+                <div class="row">
+                    <div class="form-group col-6">
+                        <label for="name">Nom:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Nom de famille">
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="lastname">Prénom:</label>
+                        <input type="text" class="form-control" id="lastname" placeholder="Prénom">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="adresse@mail.com">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="password">Mot de passe:</label>
+                        <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="form-group col-12">
+                        <label for="adress">Adresse:</label>
+                        <input type="text" class="form-control" id="adress" placeholder="Numéro, nom de rue ...">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="adress2">Ville</label>
+                        <input type="text" class="form-control" id="adress2" placeholder="Code postal et ville">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="state">Pays:</label>
+                        <select id="state" class="form-control">
+                            <option selected>Choisir</option>
+                            <option>France</option>
+                            <option>Belgique</option>
+                            <option>Suisse</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success mt-5">Créer mon compte</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="bannerfoot">
+            <h3 id="foottitle">A propos</h3>
+            <a href="#" class="fitem">Nous contacter</a>
+            <a href="faq.html" class="fitem">FAQ</a>
+            <a href="rules.html" class="fitem">Règlement du site</a>
+            <a href="#" class="fitem">Mentions légales</a>
+            <div class="fitem">
+                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href="" alt="X"></a>
+            </div>
+        </div>
+    </footer>
+</body>
