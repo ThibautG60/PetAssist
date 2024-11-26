@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/stylebase.css">
-    <link rel="stylesheet" href="assets/css/advicestyle.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="shortcut icon" href="assets/img/iconsite.png" />
-    <title>Pet Assist' - Aide</title>
+
+    <script src="assets/js/bootstrap.bundle.js"></script>
+
+    <title>Pet Assist' - Conseils</title>
 </head>
 
 <body>
@@ -16,35 +18,33 @@
         <div class="sitetop">
             <a href="index.html" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
             <div class="boutonstop">
-                <a href="lost.html" id="boutonlost">J'ai perdu mon animal</a>
-                <a href="found.html" id="boutonfound">J'ai trouvé un animal</a>
+                <a href="lost.html" id="boutonlost"><span class="mediacut">J'ai</span> perdu <span class="mediacut">mon animal</span></a>
+                <a href="found.html" id="boutonfound"><span class="mediacut">J'ai</span> trouvé <span class="mediacut">un animal</span></a>
             </div>
         </div>
     </header>
     <nav>
         <ul class="nav nav-underline nav-fill justify-content-center bg-dark p-2" id="menutop">
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="petlist.html">
+            <li class="nav-item col-sm-4 col-xl-3">
+                <a class="nav-link text-light" href="petlist.html">
                     Voir la liste des animaux perdu</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="petcard.html">Utiliser
+            <li class="nav-item col-sm-4 col-xl-2">
+                <a class="nav-link text-light" href="petcard.html">Utiliser
                     la carte
                     interactive</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="login.html">Mon
+            <li class="nav-item col-sm-4 col-xl-1">
+                <a class="nav-link text-light" href="login.html">Mon
                     compte</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;"
-                    href="advice.html">Conseils</a>
+            <li class="nav-item col-sm-4 col-xl-1">
+                <a class="nav-link text-light" href="advice.html">Conseils</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;"
-                    href="goldenbook.html">Temoignages / Histoires de retrouvailles</a>
+            <li class="nav-item col-sm-4 col-xl-3">
+                <a class="nav-link text-light" href="goldenbook.html">Temoignages / Histoires de retrouvailles</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item col-sm-4 col-xl-1">
                 <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img
                         src="assets/img/icons/fbi.png" alt="Facebook"></a>
                 <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href=""
@@ -52,20 +52,57 @@
             </li>
         </ul>
     </nav>
-
+    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="text-light">
+        <div class="bg-dark p-4">
+            <li class="nav-item">
+                <a class="nav-link text-light" href="petlist.html">
+                    Voir la liste des animaux perdu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="petcard.html">Utiliser
+                    la carte
+                    interactive</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="login.html">Mon
+                    compte</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="advice.html">Conseils</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="goldenbook.html">Temoignages / Histoires</a>
+            </li>
+            <li class="nav-item mt-5">
+                <a href="https://fr-fr.facebook.com/"><img
+                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://x.com/"><img src="assets/img/icons/xi.png" alt="X"></a>
+            </li>
+            </ul>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark p-2" id="bmenutop">
+        <div class="container-fluid justify-content-center">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
     <section class="articleback">
         <div class="presentation">
-            <article class="bodyaccount">
+            <article class="article">
                 <h1 class="articletitle">Nos conseils pour vous aider dans vos recherches</h1>
                 <div id="line"></div>
-                <p class="introtext">Retrouver un animal perdu peut être une expérience stressante, mais voici quelques conseils pratiques
+                <p class="description">Retrouver un animal perdu peut être une expérience stressante, mais voici quelques conseils pratiques
                     pour augmenter vos chances de le retrouver rapidement et en toute sécurité :</p>
                 <ol>
-                    <li class="advicetitle">Agir rapidement</li>
+                    <li class="listcat">Agir rapidement</li>
                         <p><b>Ne perdez pas de temps :</b> Plus vous commencez tôt, plus vous avez de chances de
                             retrouver votre animal. Dès que vous vous apercevez qu'il est perdu, commencez à le chercher
                             immédiatement.</p>
-                    <li class="advicetitle">Rechercher dans les environs</li>
+                    <li class="listcat">Rechercher dans les environs</li>
                     <ul>
                         <li><b>Vérifiez votre quartier :</b> Commencez par faire le tour de votre quartier, en appelant
                             son nom, en l’appelant d’une voix calme. Parfois, les animaux se cachent à proximité.</li>
@@ -76,7 +113,7 @@
                             animaux sont trouvés et gardés temporairement avant que les propriétaires ne soient
                             informés.</li>
                     </ul>
-                    <li class="advicetitle">Alertez les autorités et les associations</li>
+                    <li class="listcat">Alertez les autorités et les associations</li>
                     <ul>
                         <li><b>Contactez les refuges et les vétérinaires locaux :</b> Appelez les refuges, cliniques
                             vétérinaires et associations de protection des animaux pour signaler que votre animal est
@@ -89,7 +126,7 @@
                             spécialisés dans les animaux perdus (comme Pet Assist'), ou sur des groupes Facebook locaux
                             dédiés aux animaux disparus.</li>
                     </ul>
-                    <li class="advicetitle">Distribuer des affiches</li>
+                    <li class="listcat">Distribuer des affiches</li>
                     <ul>
                         <li><b>Créez des affiches claires et visibles :</b> Rédigez des affiches avec une photo récente
                             de votre animal, une description détaillée, votre numéro de téléphone et, si possible, une
@@ -99,7 +136,7 @@
                             les groupes locaux. Utilisez des plateformes comme Instagram, Facebook, et Twitter pour
                             alerter un plus grand nombre de personnes.</li>
                     </ul>
-                    <li class="advicetitle">Parler à la communauté</li>
+                    <li class="listcat">Parler à la communauté</li>
                     <ul>
                         <li><b>Demandez à la communauté locale :</b> Parlez à vos voisins, postez sur des groupes
                             communautaires (réseaux sociaux locaux, forums, etc.). Plus de gens seront à l’affût de
@@ -108,7 +145,7 @@
                             caméras de sécurité publiques ou privées, demandez si elles ont capturé des images de votre
                             animal.</li>
                     </ul>
-                    <li class="advicetitle">Utiliser des méthodes de recherche supplémentaires</li>
+                    <li class="listcat">Utiliser des méthodes de recherche supplémentaires</li>
                     <ul>
                         <li><b>Laisser des objets familiers à l'extérieur :</b> Laissez un de ses objets familiers
                             (comme son panier, une couverture ou un jouet) dehors. L’odeur peut attirer votre animal si
@@ -120,7 +157,7 @@
                             essayez de faire une recherche dans votre quartier à la tombée de la nuit ou à l’aube,
                             lorsque c'est plus calme.</li>
                     </ul>
-                    <li class="advicetitle">Utiliser la technologie pour vous aider</li>
+                    <li class="listcat">Utiliser la technologie pour vous aider</li>
                     <ul>
                         <li><b>Surveillez les alertes de microchip :</b> Si votre animal porte une puce électronique,
                             contactez l’organisation qui gère la base de données des puces pour signaler la perte.
@@ -131,7 +168,7 @@
                             en émettant des sons qu’il reconnaît (bruit de la porte d’entrée, son de ses croquettes,
                             etc.), et écoutez si vous entendez une réaction.</li>
                     </ul>
-                    <li class="advicetitle">Maintenir l'espoir et la patience</li>
+                    <li class="listcat">Maintenir l'espoir et la patience</li>
                     <ul>
                         <li><b>Soyez patient :</b>Ne perdez pas espoir, surtout si la recherche prend du temps. Parfois,
                             les animaux peuvent se cacher pendant plusieurs jours avant de revenir à un endroit
@@ -140,7 +177,7 @@
                             pistes et de contacter les refuges même si vous ne trouvez pas votre animal immédiatement.
                         </li>
                     </ul>
-                    <li class="advicetitle">Prévention à l'avenir</li>
+                    <li class="listcat">Prévention à l'avenir</li>
                     <ul>
                         <li><b>Assurez-vous que votre animal porte toujours une identification :</b> Un collier avec une
                             médaille et un microchip avec vos coordonnées sont des moyens efficaces de retrouver votre
@@ -149,12 +186,12 @@
                             GPS peut être un moyen de savoir où ils se trouvent en temps réel.</li>
                     </ul>
                 </ol>
-                <p class="introtext">Ces étapes combinées augmenteront vos chances de retrouver votre animal rapidement. Restez
+                <p class="description">Ces étapes combinées augmenteront vos chances de retrouver votre animal rapidement. Restez
                     persévérant et demandez l’aide de la communauté locale, car souvent, les voisins ou d'autres
                     personnes peuvent avoir vu votre compagnon et vous aider dans la recherche.
                 </p>
             </article>
-            <img id="aimgright" src="assets/img/right_advice.jpeg" alt="Image de droite">
+            <img class="tabmediacut" id="imgright" src="assets/img/right_advice.jpeg" alt="Image de droite">
         </div>
     </section>
 

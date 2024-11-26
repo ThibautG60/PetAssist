@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="assets/css/goldenstyle.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="shortcut icon" href="assets/img/iconsite.png" />
-    <title>Pet Assist' - Retrouvons vos animaux !</title>
+
+    <script src="assets/js/bootstrap.bundle.js"></script>
+
+    <title>Pet Assist' - Témoignages</title>
 </head>
 
 <body>
@@ -16,41 +19,77 @@
         <div class="sitetop">
             <a href="index.html" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
             <div class="boutonstop">
-                <a href="lost.html" id="boutonlost">J'ai perdu mon animal</a>
-                <a href="found.html" id="boutonfound">J'ai trouvé un animal</a>
+                <a href="lost.html" id="boutonlost"><span class="mediacut">J'ai</span> perdu <span class="mediacut">mon animal</span></a>
+                <a href="found.html" id="boutonfound"><span class="mediacut">J'ai</span> trouvé <span class="mediacut">un animal</span></a>
             </div>
         </div>
     </header>
     <nav>
         <ul class="nav nav-underline nav-fill justify-content-center bg-dark p-2" id="menutop">
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="petlist.html">
+            <li class="nav-item col-sm-4 col-xl-3">
+                <a class="nav-link text-light" href="petlist.html">
                     Voir la liste des animaux perdu</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="petcard.html">Utiliser
+            <li class="nav-item col-sm-4 col-xl-2">
+                <a class="nav-link text-light" href="petcard.html">Utiliser
                     la carte
                     interactive</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="login.html">Mon
+            <li class="nav-item col-sm-4 col-xl-1">
+                <a class="nav-link text-light" href="login.html">Mon
                     compte</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;"
-                    href="advice.html">Conseils</a>
+            <li class="nav-item col-sm-4 col-xl-1">
+                <a class="nav-link text-light" href="advice.html">Conseils</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;"
-                    href="goldenbook.html">Temoignages / Histoires de retrouvailles</a>
+            <li class="nav-item col-sm-4 col-xl-3">
+                <a class="nav-link text-light" href="goldenbook.html">Temoignages / Histoires de retrouvailles</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item col-sm-4 col-xl-1">
                 <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img
                         src="assets/img/icons/fbi.png" alt="Facebook"></a>
                 <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href=""
                         alt="X"></a>
             </li>
         </ul>
+    </nav>
+    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="text-light">
+        <div class="bg-dark p-4">
+            <li class="nav-item">
+                <a class="nav-link text-light" href="petlist.html">
+                    Voir la liste des animaux perdu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="petcard.html">Utiliser
+                    la carte
+                    interactive</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="login.html">Mon
+                    compte</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="advice.html">Conseils</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="goldenbook.html">Temoignages / Histoires</a>
+            </li>
+            <li class="nav-item mt-5">
+                <a href="https://fr-fr.facebook.com/"><img
+                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://x.com/"><img src="assets/img/icons/xi.png" alt="X"></a>
+            </li>
+            </ul>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark p-2" id="bmenutop">
+        <div class="container-fluid justify-content-center">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
     </nav>
     <section class="articleback">
         <div class="goldenbook">
@@ -107,7 +146,7 @@
                         </blockquote>
                     </div>
                 </div>
-                <img src="assets/img/right_book.jpeg" alt="Photo de chien" class="bookimg">
+                <img src="assets/img/right_book.jpeg" alt="Photo de chien" class="bookimg tabmediacut">
             </div>
             <div class="goldenitem1">
                 <h3>Isabelle et son chien Lucky</h3>
@@ -181,7 +220,6 @@
             </div>
         </div>
     </footer>
-    <script src="assets/js/bootstrap.bundle.js"></script>
 </body>
 
 </html>

@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/stylebase.css">
-    <link rel="stylesheet" href="assets/css/advicestyle.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="shortcut icon" href="assets/img/iconsite.png" />
-    <title>Pet Assist' - Aide</title>
+
+    <script src="assets/js/bootstrap.bundle.js"></script>
+    
+    <title>Pet Assist' - Règlement du site</title>
 </head>
 
 <body>
@@ -16,35 +18,33 @@
         <div class="sitetop">
             <a href="index.html" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
             <div class="boutonstop">
-                <a href="lost.html" id="boutonlost">J'ai perdu mon animal</a>
-                <a href="found.html" id="boutonfound">J'ai trouvé un animal</a>
+                <a href="lost.html" id="boutonlost"><span class="mediacut">J'ai</span> perdu <span class="mediacut">mon animal</span></a>
+                <a href="found.html" id="boutonfound"><span class="mediacut">J'ai</span> trouvé <span class="mediacut">un animal</span></a>
             </div>
         </div>
     </header>
     <nav>
         <ul class="nav nav-underline nav-fill justify-content-center bg-dark p-2" id="menutop">
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="petlist.html">
+            <li class="nav-item col-sm-4 col-xl-3">
+                <a class="nav-link text-light" href="petlist.html">
                     Voir la liste des animaux perdu</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="petcard.html">Utiliser
+            <li class="nav-item col-sm-4 col-xl-2">
+                <a class="nav-link text-light" href="petcard.html">Utiliser
                     la carte
                     interactive</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="login.html">Mon
+            <li class="nav-item col-sm-4 col-xl-1">
+                <a class="nav-link text-light" href="login.html">Mon
                     compte</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;"
-                    href="advice.html">Conseils</a>
+            <li class="nav-item col-sm-4 col-xl-1">
+                <a class="nav-link text-light" href="advice.html">Conseils</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;"
-                    href="goldenbook.html">Temoignages / Histoires de retrouvailles</a>
+            <li class="nav-item col-sm-4 col-xl-3">
+                <a class="nav-link text-light" href="goldenbook.html">Temoignages / Histoires de retrouvailles</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item col-sm-4 col-xl-1">
                 <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img
                         src="assets/img/icons/fbi.png" alt="Facebook"></a>
                 <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href=""
@@ -52,26 +52,63 @@
             </li>
         </ul>
     </nav>
-
+    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="text-light">
+        <div class="bg-dark p-4">
+            <li class="nav-item">
+                <a class="nav-link text-light" href="petlist.html">
+                    Voir la liste des animaux perdu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="petcard.html">Utiliser
+                    la carte
+                    interactive</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="login.html">Mon
+                    compte</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="advice.html">Conseils</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="goldenbook.html">Temoignages / Histoires</a>
+            </li>
+            <li class="nav-item mt-5">
+                <a href="https://fr-fr.facebook.com/"><img
+                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://x.com/"><img src="assets/img/icons/xi.png" alt="X"></a>
+            </li>
+            </ul>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark p-2" id="bmenutop">
+        <div class="container-fluid justify-content-center">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
     <section class="articleback">
         <div class="presentation">
-            <article class="bodyaccount">
+            <article class="article">
                 <h1 class="articletitle">Règlement de Pet Assist'</h1>
                 <div id="line"></div>
-                <p class="introtext">Le présent règlement a pour objectif de garantir le bon fonctionnement de Pet
+                <p class="description">Le présent règlement a pour objectif de garantir le bon fonctionnement de Pet
                     Assist', d’assurer la sécurité des utilisateurs et de protéger les animaux. En utilisant le site,
                     vous acceptez les conditions suivantes.</p>
                 <ol>
-                    <li class="advicetitle">Utilisation du Site</li>
+                    <li class="listcat">Utilisation du Site</li>
                     <p>Le site est mis à disposition pour faciliter le signalement d'animaux perdus ou retrouvés.
                             Il est destiné à toute personne souhaitant aider à retrouver un animal perdu ou à signaler
                             un animal retrouvé.</p>
-                    <li class="advicetitle">Création d'un Compte</li>
+                    <li class="listcat">Création d'un Compte</li>
                         <p>L'accès à certaines fonctionnalités du site, comme la publication de signalements, peut
                             nécessiter la création d'un compte utilisateur. Vous vous engagez à fournir des informations
                             exactes et à jour lors de la création de votre compte. Vous êtes responsable de la
                             confidentialité de vos identifiants et de toutes les activités effectuées sur votre compte.</p>
-                    <li class="advicetitle">Responsabilité des Annonces</li>
+                    <li class="listcat">Responsabilité des Annonces</li>
                     <ul>
                         <li>Vous vous engagez à signaler uniquement des animaux réellement perdus ou retrouvés.</li>
                         <li>Les informations fournies dans les annonces doivent être véridiques, complètes et non
@@ -83,7 +120,7 @@
                         <li>Les photos et descriptions doivent respecter la dignité des animaux. Toute image choquante
                             ou inappropriée sera retirée.</li>
                     </ul>
-                    <li class="advicetitle">Respect de la Vie Privée</li>
+                    <li class="listcat">Respect de la Vie Privée</li>
                     <ul>
                         <li>Vous vous engagez à ne pas collecter, utiliser, ou diffuser les informations personnelles
                             d'autres utilisateurs sans leur consentement.</li>
@@ -91,7 +128,7 @@
                             personnelles. Nous nous engageons à ne pas partager vos informations sans votre
                             consentement, sauf si la loi l'exige.</li>
                     </ul>
-                    <li class="advicetitle">Comportement des Utilisateurs</li>
+                    <li class="listcat">Comportement des Utilisateurs</li>
                     <ul>
                         <li>Vous devez faire preuve de respect et de courtoisie envers les autres utilisateurs du site.
                             Aucun comportement menaçant, diffamatoire ou discriminatoire ne sera toléré.</li>
@@ -100,32 +137,32 @@
                         <li>Les utilisateurs ne doivent pas publier des informations diffamatoires ou fausses à propos
                             d'autres utilisateurs ou de leurs animaux.</li>
                     </ul>
-                    <li class="advicetitle">Modération et Contrôle</li>
+                    <li class="listcat">Modération et Contrôle</li>
                         <p>Le site se réserve le droit de modérer ou de supprimer toute annonce qui ne respecte pas ce
                             règlement ou qui pourrait nuire à la sécurité, la confidentialité, ou la réputation de la
                             plateforme. En cas de violation grave, le compte de l’utilisateur peut être suspendu ou
                             supprimé.</p>
-                    <li class="advicetitle">Exonération de Responsabilité</li>
+                    <li class="listcat">Exonération de Responsabilité</li>
                         <p>Le site ne peut être tenu responsable des informations publiées par les utilisateurs, ni
                             de l’exactitude des annonces. Il est de la responsabilité de l'utilisateur de vérifier
                             les informations fournies avant de prendre des actions, telles que contacter les
                             propriétaires d'animaux ou répondre à des annonces.</p>
-                    <li class="advicetitle">Utilisation des Données</li>
+                    <li class="listcat">Utilisation des Données</li>
                         <p>Les utilisateurs acceptent que certaines données relatives à leur activité sur le site
                             (telles que la date et l'heure de publication des annonces) puissent être collectées et
                             utilisées à des fins de modération, statistiques, et amélioration des services.</p>
-                    <li class="advicetitle">Modifications du Règlement</li>
+                    <li class="listcat">Modifications du Règlement</li>
                         <p>Le site se réserve le droit de modifier ce règlement à tout moment. Les utilisateurs
                             seront informés des modifications via une notification sur la plateforme. En continuant
                             à utiliser le site après modification, vous acceptez le règlement mis à jour.</p>
-                    <li class="advicetitle">Droits de Propriété Intellectuelle</li>
+                    <li class="listcat">Droits de Propriété Intellectuelle</li>
                         <p>Les contenus du site (textes, logos, images, etc.) sont protégés par des droits de
                             propriété intellectuelle. Toute reproduction ou exploitation non autorisée de ces
                             éléments est interdite.</p>
                 </ol>
-                <p class="introtext">En utilisant ce site, vous acceptez de respecter ces termes.</p>
+                <p class="description">En utilisant ce site, vous acceptez de respecter ces termes.</p>
             </article>
-            <img id="aimgright" src="assets/img/right_rules.jpeg" alt="Image de droite">
+            <img class="tabmediacut" id="imgright" src="assets/img/right_rules.jpeg" alt="Image de droite">
         </div>
     </section>
 

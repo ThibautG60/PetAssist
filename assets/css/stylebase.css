@@ -21,7 +21,7 @@ body{
 .boutonstop{
     display: flex;
     justify-content: space-around;
-    width: 50vw;
+    width: 50%;
 }
 
 #boutonlost{
@@ -50,13 +50,13 @@ body{
     border-radius: 7px;
 }
 /* MENU DU HAUT */
-/*#menutop{
-
-}*/
+.nav-item{
+    font-weight: bold; 
+    Font-size: large;
+}
 /* ARTICLES */
 .bodyaccount{
     background-color: rgba(255, 255, 255, 0.920);
-    width: 80vw;
     margin: auto;
     padding: 2% 3% 2% 3%;
 }
@@ -76,29 +76,43 @@ body{
 .presentation{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: rgba(255, 255, 255, 0.970);
-    width: 80vw;
     margin: auto;
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
 }
 
 .article{
-    flex-basis: 70%;
     padding: 2%;
+    margin: auto;
 }
 
 .articletitle{
     text-align: center;
 }
 
+.description{
+    font-style: italic;
+    font-size: large;
+}
+
+.listcat{
+    font-weight: bold;
+    font-size: large;
+}
+
 .gridcard{
-    flex-basis: 30%;
     padding: 1%;
     height: auto;
+    margin: 0% auto 0% auto;
+}
+
+#imgright{
+    width: 22%;
+    margin: 2% 2% 2% 5%;
 }
 /* FOOTER */
 .bannerfoot{
-    margin: 1% 0% 1% 10%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -109,7 +123,62 @@ body{
 }
 
 .fitem{
-    flex: 1;
     color: black;
     text-decoration: none;
+}
+/* MEDIA QUERIES */  
+/* Téléphones */
+@media (max-width: 576px) {
+    #menutop{
+        display: none;
+    }
+    .mediacut{
+        display: none;
+    }
+    .tabmediacut{
+        display: none;
+    }
+    .bodyaccount{ width: 95vw; }
+    .presentation{ width: 95vw; }
+    .article{ flex-basis: 95%; }
+    .gridcard{ flex-basis: 95%; }
+    .bannerfoot{ margin: 1% 0% 1% 0%; }
+    #foottitle{ text-align: center;}
+    .fitem{
+            flex-basis: 100%; 
+            text-align: center;
+    }
+}
+/* Tablettes */
+@media (min-width: 577px) and (max-width: 1023px){
+    #bmenutop{
+        display: none;
+    }
+    .collapse{
+        display: none;
+    }
+    .tabmediacut{
+        display: none;
+    }
+    .bodyaccount{ width: 95vw; }
+    .presentation{ width: 95vw; }
+    .article{ flex-basis: 95%; }
+    .gridcard{ flex-basis: 95%; }
+    .bannerfoot{ margin: 1% 0% 1% 10%; }
+    .fitem{ flex: 1; }
+}
+/* Ordinateurs */
+@media (min-width: 1024px){
+    #bmenutop{
+        display: none;
+    }
+    .collapse{
+        display: none;
+    }
+    .bodyaccount{ width: 80vw; }
+    .presentation{ width: 80vw; }
+    .article{ flex-basis: 70%; }
+    .gridcard{ flex-basis: 30%; }
+    .bannerfoot{ margin: 1% 0% 1% 10%; }
+    .fitem{ flex: 1; }
 }

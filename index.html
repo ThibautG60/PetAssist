@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="assets/css/stylebase.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="shortcut icon" href="assets/img/iconsite.png" />
+
+    <script src="assets/js/bootstrap.bundle.js"></script>
+
     <title>Pet Assist' - Retrouvons vos animaux !</title>
 </head>
 
@@ -15,37 +18,77 @@
         <div class="sitetop">
             <a href="index.html" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
             <div class="boutonstop">
-                <a href="lost.html" id="boutonlost">J'ai perdu mon animal</a>
-                <a href="found.html" id="boutonfound">J'ai trouvé un animal</a>
+                <a href="lost.html" id="boutonlost"><span class="mediacut">J'ai</span> perdu <span class="mediacut">mon animal</span></a>
+                <a href="found.html" id="boutonfound"><span class="mediacut">J'ai</span> trouvé <span class="mediacut">un animal</span></a>
             </div>
         </div>
     </header>
     <nav>
         <ul class="nav nav-underline nav-fill justify-content-center bg-dark p-2" id="menutop">
+            <li class="nav-item col-sm-4 col-xl-3">
+                <a class="nav-link text-light" href="petlist.html">
+                    Voir la liste des animaux perdu</a>
+            </li>
+            <li class="nav-item col-sm-4 col-xl-2">
+                <a class="nav-link text-light" href="petcard.html">Utiliser
+                    la carte
+                    interactive</a>
+            </li>
+            <li class="nav-item col-sm-4 col-xl-1">
+                <a class="nav-link text-light" href="login.html">Mon
+                    compte</a>
+            </li>
+            <li class="nav-item col-sm-4 col-xl-1">
+                <a class="nav-link text-light" href="advice.html">Conseils</a>
+            </li>
+            <li class="nav-item col-sm-4 col-xl-3">
+                <a class="nav-link text-light" href="goldenbook.html">Temoignages / Histoires de retrouvailles</a>
+            </li>
+            <li class="nav-item col-sm-4 col-xl-1">
+                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img
+                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href=""
+                        alt="X"></a>
+            </li>
+        </ul>
+    </nav>
+    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="text-light">
+        <div class="bg-dark p-4">
             <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="petlist.html">
+                <a class="nav-link text-light" href="petlist.html">
                     Voir la liste des animaux perdu</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="petcard.html">Utiliser
+                <a class="nav-link text-light" href="petcard.html">Utiliser
                     la carte
                     interactive</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="login.html">Mon
+                <a class="nav-link text-light" href="login.html">Mon
                     compte</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="advice.html">Conseils</a>
+                <a class="nav-link text-light" href="advice.html">Conseils</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" style="font-weight: bold; Font-size: large;" href="goldenbook.html">Temoignages / Histoires de retrouvailles</a>
+                <a class="nav-link text-light" href="goldenbook.html">Temoignages / Histoires</a>
             </li>
-            <li class="nav-item">
-                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>
-                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href="" alt="X"></a>
+            <li class="nav-item mt-5">
+                <a href="https://fr-fr.facebook.com/"><img
+                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://x.com/"><img src="assets/img/icons/xi.png" alt="X"></a>
             </li>
-        </ul>
+            </ul>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark p-2" id="bmenutop">
+        <div class="container-fluid justify-content-center">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
     </nav>
     <section class="articleback">
         <div class="presentation">
@@ -53,7 +96,7 @@
                 <h1 class="articletitle">Bienvenue sur Pet Assist' </h1>
                 <h2 class="articletitle">Votre allié pour retrouver votre compagnon disparu !</h2>
                 <div id="line"></div>
-                <p>La disparition d'un animal de compagnie est une épreuve bouleversante. À travers Pet Assist', nous
+                <p class="description">La disparition d'un animal de compagnie est une épreuve bouleversante. À travers Pet Assist', nous
                     souhaitons vous apporter un soutien précieux dans ces moments difficiles. Notre plateforme de
                     signalement a été conçue pour faciliter la recherche et mettre en relation les propriétaires
                     d'animaux disparus avec les personnes susceptibles de les avoir aperçus.</p>
@@ -73,7 +116,7 @@
                 </ul>
                 <p>Les minutes comptent quand un animal disparaît. En rejoignant [Nom du site], vous donnez à votre compagnon la meilleure chance de retrouver son chemin à la maison.</p>
                 </article>
-            <div id="carouselExampleCaptions" class="carousel slide gridcard">
+            <div id="carouselIndex" class="carousel slide gridcard">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="https://lorempicture.point-sys.com/400/300/animal/" class="d-block w-100"
@@ -103,12 +146,12 @@
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndex"
                     data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselIndex"
                     data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
@@ -129,7 +172,6 @@
             </div>
         </div>
     </footer>
-    <script src="assets/js/bootstrap.bundle.js"></script>
 </body>
 
 </html>
