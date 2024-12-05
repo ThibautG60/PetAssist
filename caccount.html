@@ -18,8 +18,10 @@
         <div class="sitetop">
             <a href="index.html" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
             <div class="boutonstop">
-                <a href="lost.html" id="boutonlost"><span class="mediacut">J'ai</span> perdu <span class="mediacut">mon animal</span></a>
-                <a href="found.html" id="boutonfound"><span class="mediacut">J'ai</span> trouvé <span class="mediacut">un animal</span></a>
+                <a href="lost.html" id="boutonlost"><span class="mediacut">J'ai</span> perdu <span class="mediacut">mon
+                        animal</span></a>
+                <a href="found.html" id="boutonfound"><span class="mediacut">J'ai</span> trouvé <span
+                        class="mediacut">un animal</span></a>
             </div>
         </div>
     </header>
@@ -74,11 +76,9 @@
                 <a class="nav-link text-light" href="goldenbook.html">Temoignages / Histoires</a>
             </li>
             <li class="nav-item mt-5">
-                <a href="https://fr-fr.facebook.com/"><img
-                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://fr-fr.facebook.com/"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>
                 <a href="https://x.com/"><img src="assets/img/icons/xi.png" alt="X"></a>
             </li>
-            </ul>
         </div>
     </div>
     <nav class="navbar navbar-dark bg-dark p-2" id="bmenutop">
@@ -90,52 +90,51 @@
             </button>
         </div>
     </nav>
-    <section>
-        <div class="articleback">
-            <form class="bodyaccount">
-                <h1 class="articletitle">Créez votre compte Pet Assist':</h1>
-                <div id="line"></div>
-                <p class="description">Créez votre compte pour accéder à toutes nos fonctionnalités et profiter de contenus personnalisés. Inscrivez-vous facilement en quelques étapes et commencez dès maintenant !</p>
-                <div class="row">
-                    <div class="form-group col-6">
-                        <label for="name">Nom:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Nom de famille">
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="lastname">Prénom:</label>
-                        <input type="text" class="form-control" id="lastname" placeholder="Prénom">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" placeholder="adresse@mail.com">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="password">Mot de passe:</label>
-                        <input type="password" class="form-control" id="password" placeholder="Mot de passe">
-                    </div>
+    <section class="articleback">
+        <form class="articlefixe">
+            <h1 class="articletitle">Créez votre compte Pet Assist':</h1>
+            <div class="line"></div>
+            <p class="description">Créez votre compte pour accéder à toutes nos fonctionnalités et profiter de contenus
+                personnalisés. Inscrivez-vous facilement en quelques étapes et commencez dès maintenant !</p>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="name">Nom:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Nom de famille">
                 </div>
-                <div class="row mt-5">
-                    <div class="form-group col-12">
-                        <label for="adress">Adresse:</label>
-                        <input type="text" class="form-control" id="adress" placeholder="Numéro, nom de rue ...">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="adress2">Ville</label>
-                        <input type="text" class="form-control" id="adress2" placeholder="Code postal et ville">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="state">Pays:</label>
-                        <select id="state" class="form-control">
-                            <option selected>Choisir</option>
-                            <option>France</option>
-                            <option>Belgique</option>
-                            <option>Suisse</option>
-                        </select>
-                    </div>
+                <div class="form-group col-6">
+                    <label for="lastname">Prénom:</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Prénom">
                 </div>
-                <button type="submit" class="btn btn-success mt-5">Créer mon compte</button>
-            </form>
-        </div>
+                <div class="form-group col-12">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="adresse@mail.com">
+                </div>
+                <div class="form-group col-12">
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="form-group col-12">
+                    <label for="adress">Adresse:</label>
+                    <input type="text" class="form-control" id="adress" placeholder="Numéro, nom de rue ...">
+                </div>
+                <div class="form-group col-12">
+                    <label for="adress2">Ville</label>
+                    <input type="text" class="form-control" id="adress2" placeholder="Code postal et ville">
+                </div>
+                <div class="form-group col-12">
+                    <label for="state">Pays:</label>
+                    <select id="state" class="form-control">
+                        <option selected>Choisir</option>
+                        <option>France</option>
+                        <option>Belgique</option>
+                        <option>Suisse</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success mt-5">Créer mon compte</button>
+        </form>
     </section>
     <footer>
         <div class="bannerfoot">
@@ -145,8 +144,10 @@
             <a href="rules.html" class="fitem">Règlement du site</a>
             <a href="#" class="fitem">Mentions légales</a>
             <div class="fitem">
-                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>
-                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href="" alt="X"></a>
+                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img
+                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href=""
+                        alt="X"></a>
             </div>
         </div>
     </footer>

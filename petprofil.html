@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/stylebase.css">
+    <link rel="stylesheet" href="assets/css/petstyle.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="shortcut icon" href="assets/img/iconsite.png" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+        integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+        crossorigin="" />
 
     <script src="assets/js/bootstrap.bundle.js"></script>
 
-    <title>Pet Assist' - J'ai trouvé un animal</title>
+    <title>Pet Assist' - Profil de Kiwi</title>
 </head>
 
 <body>
@@ -18,7 +22,10 @@
         <div class="sitetop">
             <a href="index.html" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
             <div class="boutonstop">
-                <a href="lost.html" id="boutonlost"><span class="mediacut">J'ai</span> perdu <span class="mediacut">mon animal</span></a>
+                <a href="lost.html" id="boutonlost"><span class="mediacut">J'ai</span> perdu <span class="mediacut">mon
+                        animal</span></a>
+                <a href="found.html" id="boutonfound"><span class="mediacut">J'ai</span> trouvé <span
+                        class="mediacut">un animal</span></a>
             </div>
         </div>
     </header>
@@ -73,8 +80,7 @@
                 <a class="nav-link text-light" href="goldenbook.html">Temoignages / Histoires</a>
             </li>
             <li class="nav-item mt-5">
-                <a href="https://fr-fr.facebook.com/"><img
-                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://fr-fr.facebook.com/"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>
                 <a href="https://x.com/"><img src="assets/img/icons/xi.png" alt="X"></a>
             </li>
         </div>
@@ -88,68 +94,43 @@
             </button>
         </div>
     </nav>
-    <section>
-        <div class="articleback">
-            <form class="articlefixe">
-                <h1 class="articletitle">Remplissez les informations concernant l'animal que vous avez vu:</h1>
-                <div class="line"></div>
-                <p class="description">Vous avez aperçu un animal disparu ? Aidez-nous à le retrouver en remplissant ce formulaire. Partagez les détails de votre observation pour alerter la communauté.</p>
-                <div class="row mt-2">
-                    <div class="form-group col-6">
-                        <label for="species">Espèce:</label>
-                        <input type="text" class="form-control" id="species"
-                            placeholder="Espèce de l'animal (Ex: Chien)">
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="race">Race:</label>
-                        <input type="text" class="form-control" id="race"
-                            placeholder="Race de l'animal (Ex: Labrador)">
-                    </div>
-                    <legend class="col-form-label">Sexe:</legend>
-                    <div class="form-check col-2">
-                        <input class="form-check-input  ms-0" type="radio" name="sexe" id="sexe1" value="m" checked>
-                        <label class="form-check-label  ms-1" for="sexe1">
-                            Mâle
-                        </label>
-                    </div>
-                    <div class="form-check col-4">
-                        <input class="form-check-input ms-0" type="radio" name="sexe" id="sexe2" value="f">
-                        <label class="form-check-label ms-1" for="sexe2">
-                            Femelle
-                        </label>
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="petpic">Importez une photo de l'animal:</label>
-                        <input type="file" class="form-control-file" id="petpic">
-                    </div>
+    <section class="articleback">
+        <div class="presentation">
+            <div class="petarticle">
+                <h1 class="articletitle">Kiwi</h1>
+                <div class="lineb"></div>
+                <p class="description">Voici les informations détaillées à propos de Kiwi:
+                </p>
+                <h2>Informations sur l'animal:</h2>
+                <ul class="text-list">
+                    <li><b>Espèce:</b> Chat</li>
+                    <li><b>Race:</b> Sacré de birmanie</li>
+                    <li><b>Sexe:</b> Male</li>
+                    <li><b>Couleur(s):</b> /</li>
+                    <li><b>Taille:</b> Moyenne</li>
+                    <li><b>Particularités physiques:</b> /</li>
+                    <li><b>Comportement observé :</b> /</li>
+                    <li><b>Âge:</b> /</li>
+                </ul>
+                <h2>Informations sur le dernier signalement:</h2>
+                <ul class="text-list">
+                    <li><b>Adresse ou zone approximative:</b> Rodemack - Rue Bernard III de Bade</li>
+                    <li><b>Date de la disparition: </b> 25 Novembre 2024</li>
+                    <li><b>Heure de la disparition:</b> 15H12</li>
+                </ul>
+                <h2>Profil du propriétaire:</h2>
+                <div class="info-profil">
+                    <img src="assets/img/profil/profpic5.jfif" alt="Photo du profil" id="profil-pic">
+                    <a href="#" id="profil-link">Lucie</a>
                 </div>
-                <div class="row mt-5">
-                    <div class="form-group col-6">
-                        <label for="date">Date:</label>
-                        <input type="text" class="form-control" id="date" placeholder="Date où vous l'avez vu:">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="padress">Dernière adresse où vous avez vu l'animal:</label>
-                        <input type="text" class="form-control" id="padress" placeholder="Numéro, nom de rue ...">
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="padress2">Dernière ville où vous avez vu l'animal:</label>
-                        <input type="text" class="form-control" id="padress2" placeholder="Code postal et ville">
-                    </div>
-                    <div class="form-group col-3">
-                        <label for="state">Pays:</label>
-                        <select id="state" class="form-control">
-                            <option selected>Choisir</option>
-                            <option>France</option>
-                            <option>Belgique</option>
-                            <option>Suisse</option>
-                        </select>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary mt-5">Valider</button>
-            </form>
+            </div>
+            <div class="info-pet-img">
+                <img src="assets/img/pet/cat1.jpg" alt="Photo de l'animal" id="pet-pic">
+                <a href="#" class="btn btn-primary mb-2 me-xl-5 col-xs-6 col-xl-3" role="button" id="msg-button">J’ai des informations ! (Contacter le propriétaire)</a>
+            </div>
         </div>
     </section>
+
     <footer>
         <div class="bannerfoot">
             <h3 id="foottitle">A propos</h3>
@@ -158,8 +139,10 @@
             <a href="rules.html" class="fitem">Règlement du site</a>
             <a href="#" class="fitem">Mentions légales</a>
             <div class="fitem">
-                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>
-                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href="" alt="X"></a>
+                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img
+                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href=""
+                        alt="X"></a>
             </div>
         </div>
     </footer>

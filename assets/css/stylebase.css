@@ -25,57 +25,75 @@ body{
 }
 
 #boutonlost{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #dc3545;
     color: white;
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: lighter;
     width: 80%;
     margin: auto 15% auto auto;
     padding: 2%;
     border-radius: 7px;
 }
+#boutonlost:hover{
+    box-shadow: 2px 1px 5px black;
+}
 
 #boutonfound{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #198754;
     color: white;
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: lighter;
     width: 80%;
     margin: auto 15% auto auto;
     padding: 2%;
     border-radius: 7px;
 }
+#boutonfound:hover{
+    box-shadow: 2px 1px 5px black;
+}
 /* MENU DU HAUT */
 .nav-item{
-    font-weight: bold; 
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight:lighter; 
     Font-size: large;
+
 }
 /* ARTICLES */
-.bodyaccount{
-    background-color: rgba(255, 255, 255, 0.920);
+.articlefixe{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(49, 26, 26);
+    background-color: rgba(240, 240, 240, 0.92);
     margin: auto;
-    padding: 2% 3% 2% 3%;
-}
-
-.articleback{
-    background-color: rgb(250, 250, 250);
     padding: 2%;
 }
 
-#line{
+.articleback{
+    background-color: rgb(224, 224, 224);
+    padding: 2%;
+}
+
+.line{
     width: 40%;
     margin: auto;
     border: solid 1px rgb(253, 76, 76);
     margin-bottom: 3%;
+} 
+
+.lineb{
+    width: 10%;
+    margin: auto;
+    border: solid 1px #03039C;
+    margin-bottom: 3%;
 }
 
 .presentation{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: rgba(255, 255, 255, 0.970);
+    background-color: rgba(240, 240, 240, 0.92);
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -83,6 +101,8 @@ body{
 }
 
 .article{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(49, 26, 26);
     padding: 2%;
     margin: auto;
 }
@@ -107,6 +127,10 @@ body{
     margin: 0% auto 0% auto;
 }
 
+.text-list{
+    list-style-type: none;
+}
+
 #imgright{
     width: 22%;
     margin: 2% 2% 2% 5%;
@@ -116,14 +140,18 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    background-color: rgba(240, 240, 240, 0.92);
 }
 
 #foottitle{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(49, 26, 26);
     flex-basis: 100%;
 }
 
 .fitem{
-    color: black;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(49, 26, 26);
     text-decoration: none;
 }
 /* MEDIA QUERIES */  
@@ -138,11 +166,11 @@ body{
     .tabmediacut{
         display: none;
     }
-    .bodyaccount{ width: 95vw; }
+    .articlefixe{ width: 95vw; }
     .presentation{ width: 95vw; }
     .article{ flex-basis: 95%; }
     .gridcard{ flex-basis: 95%; }
-    .bannerfoot{ margin: 1% 0% 1% 0%; }
+    .bannerfoot{ padding: 1% 0% 1% 0%; }
     #foottitle{ text-align: center;}
     .fitem{
             flex-basis: 100%; 
@@ -160,11 +188,11 @@ body{
     .tabmediacut{
         display: none;
     }
-    .bodyaccount{ width: 95vw; }
+    .articlefixe{ width: 95vw; }
     .presentation{ width: 95vw; }
     .article{ flex-basis: 95%; }
     .gridcard{ flex-basis: 95%; }
-    .bannerfoot{ margin: 1% 0% 1% 10%; }
+    .bannerfoot{ padding: 1% 0% 1% 10%; }
     .fitem{ flex: 1; }
 }
 /* Ordinateurs */
@@ -175,10 +203,10 @@ body{
     .collapse{
         display: none;
     }
-    .bodyaccount{ width: 80vw; }
+    .articlefixe{ width: 80vw; }
     .presentation{ width: 80vw; }
     .article{ flex-basis: 70%; }
     .gridcard{ flex-basis: 30%; }
-    .bannerfoot{ margin: 1% 0% 1% 10%; }
+    .bannerfoot{ padding: 1% 0% 1% 10%; }
     .fitem{ flex: 1; }
 }
