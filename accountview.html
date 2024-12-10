@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/stylebase.css">
-    <link rel="stylesheet" href="assets/css/petstyle.css">
+    <link rel="stylesheet" href="assets/css/accountstyle.css">
+    <link rel="stylesheet" href="assets/css/list.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="shortcut icon" href="assets/img/iconsite.png" />
 
-    <title>Pet Assist' - Profil de Kiwi</title>
+    <script src="assets/js/bootstrap.bundle.js"></script>
+
+    <title>Pet Assist' - Conseils</title>
 </head>
 
 <body>
@@ -17,10 +20,8 @@
         <div class="sitetop">
             <a href="index.html" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
             <div class="boutonstop">
-                <a href="lost.html" id="boutonlost"><span class="mediacut">J'ai</span> perdu <span class="mediacut">mon
-                        animal</span></a>
-                <a href="found.html" id="boutonfound"><span class="mediacut">J'ai</span> trouvé <span
-                        class="mediacut">un animal</span></a>
+                <a href="lost.html" id="boutonlost"><span class="mediacut">J'ai</span> perdu <span class="mediacut">mon animal</span></a>
+                <a href="found.html" id="boutonfound"><span class="mediacut">J'ai</span> trouvé <span class="mediacut">un animal</span></a>
             </div>
         </div>
     </header>
@@ -75,7 +76,8 @@
                 <a class="nav-link text-light" href="goldenbook.html">Temoignages / Histoires</a>
             </li>
             <li class="nav-item mt-5">
-                <a href="https://fr-fr.facebook.com/"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://fr-fr.facebook.com/"><img
+                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
                 <a href="https://x.com/"><img src="assets/img/icons/xi.png" alt="X"></a>
             </li>
         </div>
@@ -90,38 +92,28 @@
         </div>
     </nav>
     <section class="articleback">
-        <div class="presentation">
-            <div class="petarticle">
-                <h1 class="articletitle">Kiwi</h1>
-                <div class="lineb"></div>
-                <p class="description">Cliquez sur le nom du profil du propriétaire pour accéder à son profil. 
-                    <br>Voici les informations détaillées à propos de Kiwi:</p>
-                <h2>Informations sur l'animal:</h2>
-                <ul class="text-list">
-                    <li><b>Espèce:</b> Chat</li>
-                    <li><b>Race:</b> Sacré de birmanie</li>
-                    <li><b>Sexe:</b> Male</li>
-                    <li><b>Couleur(s):</b> /</li>
-                    <li><b>Taille:</b> Moyenne</li>
-                    <li><b>Particularités physiques:</b> /</li>
-                    <li><b>Comportement observé :</b> /</li>
-                    <li><b>Âge:</b> /</li>
-                </ul>
-                <h2>Informations sur le dernier signalement:</h2>
-                <ul class="text-list">
-                    <li><b>Adresse ou zone approximative:</b> Rodemack - Rue Bernard III de Bade</li>
-                    <li><b>Date de la disparition: </b> 25 Novembre 2024</li>
-                    <li><b>Heure de la disparition:</b> 15H12</li>
-                </ul>
-                <h2>Profil du propriétaire:</h2>
-                <div class="info-profil">
-                    <img src="assets/img/profil/profpic5.jfif" alt="Photo du profil" id="profil-pic">
-                    <a href="accountview.html" id="profil-link">Lucie</a>
+        <div class="signal-box">
+            <article class="article-signal">
+                <h1 class="articletitle">Les signalements de Marie</h1>
+                <div class="linec"></div>
+                <div class="description">Voici tous les signalements de Marie. Vous pouvez retrouver tout ses avis de recherche, ses signalements et vous pouvez également la contacter.</div>
+                <div class="list">
+                    <div class="card-pet">
+                            <a href="petprofil.html" title="profil"><img src="assets/img/pet/cat1.jpg" class="img-pet" alt="image animal"></a>
+                            <div class="card-body">
+                                <p class="card-title">Kiwi</p>
+                                <div class="separateur"> </div>
+                                <p class="card-text">Espèce: Chat <br>Race: Test <br>Lieu: 89 rue du test 60420
+                                    Toast
+                                    <br>Date: 01/01/2000
+                                </p>
+                            </div>
+                    </div>
                 </div>
-            </div>
-            <div class="info-pet-img">
-                <img src="assets/img/pet/cat1.jpg" alt="Photo de l'animal" id="pet-pic">
-                <a href="#" class="btn btn-primary mb-2 me-xl-5 col-xs-6 col-xl-3" role="button" id="msg-button">J’ai des informations ! (Contacter le propriétaire)</a>
+            </article>
+            <div class="info-signal-box">
+                <img src="assets/img/profil/profpic2.jfif" alt="Photo de profil" id="profil-pic">
+                <a href="#" class="btn btn-primary mb-2 me-xl-5 col-xs-6 col-xl-3" role="button" id="msg-button">Envoyer un message</a>
             </div>
         </div>
     </section>
@@ -134,10 +126,8 @@
             <a href="rules.html" class="fitem">Règlement du site</a>
             <a href="mentions.html" class="fitem">Mentions légales</a>
             <div class="fitem">
-                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img
-                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
-                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href=""
-                        alt="X"></a>
+                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>
+                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href="" alt="X"></a>
             </div>
         </div>
     </footer>

@@ -91,6 +91,13 @@ body{
     margin-bottom: 3%;
 }
 
+.linec{
+    width: 40%;
+    margin: auto;
+    border: solid 1px #03039C;
+    margin-bottom: 3%;
+}
+
 .presentation{
     background-color: rgba(240, 240, 240, 0.92);
     margin: auto;
