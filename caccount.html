@@ -90,52 +90,69 @@
             </button>
         </div>
     </nav>
-    <section class="articleback">
-        <form class="articlefixe">
-            <h1 class="articletitle">Créez votre compte Pet Assist':</h1>
-            <div class="line"></div>
-            <p class="description">Créez votre compte pour accéder à toutes nos fonctionnalités et profiter de contenus
-                personnalisés. Inscrivez-vous facilement en quelques étapes et commencez dès maintenant !</p>
-            <div class="row">
-                <div class="form-group col-6">
-                    <label for="name">Nom:</label>
-                    <input type="text" class="form-control" id="name" placeholder="Nom de famille">
+    <main>
+        <section class="articleback">
+            <form class="articlefixe">
+                <h1 class="articletitle">Créez votre compte Pet Assist':</h1>
+                <div class="line"></div>
+                <p class="description">Créez votre compte pour accéder à toutes nos fonctionnalités et profiter de
+                    contenus
+                    personnalisés. Inscrivez-vous facilement en quelques étapes et commencez dès maintenant !</p>
+                <div class="row">
+                    <div class="form-group col-6 col-lg-4">
+                        <label for="name">Nom:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Saisissez votre nom de famille">
+                    </div>
+                    <div class="form-group col-6 col-lg-4">
+                        <label for="lastname">Prénom:</label>
+                        <input type="text" class="form-control" id="lastname" placeholder="Saisissez votre prénom">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="pseudo">Pseudonyme:</label>
+                        <input type="text" class="form-control" id="pseudo"
+                            placeholder="Saisissez un pseudonyme pour le site">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="exemple@exemple.com">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="password">Mot de passe:</label>
+                        <input type="password" class="form-control" id="password"
+                            placeholder="Saisissez votre mot de passe pour accéder à votre compte.">
+                    </div>
                 </div>
-                <div class="form-group col-6">
-                    <label for="lastname">Prénom:</label>
-                    <input type="text" class="form-control" id="lastname" placeholder="Prénom">
+                <div class="row mt-5 flex-row-reverse">
+                    <div class="form-group col-lg-6">
+                        <label for="profil-Pic" class="form-label">Importez votre photo de profil</label>
+                        <input class="form-control" type="file" id="profil-Pic">
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="adress">Adresse:</label>
+                        <input type="text" class="form-control" id="adress" placeholder="85 rue de l'exemple">
+                    </div>
                 </div>
-                <div class="form-group col-12">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" placeholder="adresse@mail.com">
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label for="adress2">Ville</label>
+                        <input type="text" class="form-control" id="adress2" placeholder="10000 EXEMPLE">
+                    </div>
                 </div>
-                <div class="form-group col-12">
-                    <label for="password">Mot de passe:</label>
-                    <input type="password" class="form-control" id="password" placeholder="Mot de passe">
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <label for="state">Pays:</label>
+                        <select id="state" class="form-control">
+                            <option selected>Choisir son pays</option>
+                            <option>France</option>
+                            <option>Belgique</option>
+                            <option>Suisse</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="row mt-5">
-                <div class="form-group col-12">
-                    <label for="adress">Adresse:</label>
-                    <input type="text" class="form-control" id="adress" placeholder="Numéro, nom de rue ...">
-                </div>
-                <div class="form-group col-12">
-                    <label for="adress2">Ville</label>
-                    <input type="text" class="form-control" id="adress2" placeholder="Code postal et ville">
-                </div>
-                <div class="form-group col-12">
-                    <label for="state">Pays:</label>
-                    <select id="state" class="form-control">
-                        <option selected>Choisir</option>
-                        <option>France</option>
-                        <option>Belgique</option>
-                        <option>Suisse</option>
-                    </select>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-success mt-5">Créer mon compte</button>
-        </form>
-    </section>
+                <button type="submit" class="btn btn-success mt-5">Créer mon compte</button>
+            </form>
+        </section>
+    </main>
     <footer>
         <div class="bannerfoot">
             <h3 id="foottitle">A propos</h3>
