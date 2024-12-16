@@ -93,72 +93,114 @@
             <form class="articlefixe">
                 <h1 class="articletitle">Remplissez les informations concernant votre animal:</h1>
                 <div class="line"></div>
-                <p class="description">Signalez la disparition de votre animal en quelques étapes et aidez-nous à le retrouver. Remplissez le formulaire pour partager les informations essentielles et alerter notre communauté.</p>
-                <div class="row mt-2">
-                    <div class="form-group col-6">
-                        <label for="species">Espèce:</label>
-                        <input type="text" class="form-control" id="species"
-                            placeholder="Espèce de votre animal (Ex: Chien)">
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="race">Race:</label>
-                        <input type="text" class="form-control" id="race"
-                            placeholder="Race de votre animal (Ex: Labrador)">
-                    </div>
-                    <div class="form-group col-4">
-                        <label for="name">Nom:</label>
-                        <input type="text" class="form-control" id="name"
-                            placeholder="Votre animal répond à ce nom (Ex: Snoopy)">
-                    </div>
-                    <legend class="col-form-label">Sexe:</legend>
-                    <div class="form-check col-2">
-                        <input class="form-check-input  ms-0" type="radio" name="sexe" id="sexe1" value="m" checked>
-                        <label class="form-check-label  ms-1" for="sexe1">
-                            Mâle
-                        </label>
-                    </div>
-                    <div class="form-check col-4">
-                        <input class="form-check-input ms-0" type="radio" name="sexe" id="sexe2" value="f">
-                        <label class="form-check-label ms-1" for="sexe2">
-                            Femelle
-                        </label>
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="petpic">Importez une photo de votre animal:</label>
-                        <input type="file" class="form-control-file" id="petpic">
-                    </div>
+                <p class="description">Vous avez perdu un animal ? Remplissez ce formulaire pour nous aider à le retrouver. Veuillez fournir les informations suivantes:</p>
+                <div class="row mt-4">
+                <h2>Informations sur l'animal:</h2>
                 </div>
-                <div class="row mt-5">
-                    <div class="form-group col-6">
-                        <label for="date">Date:</label>
-                        <input type="text" class="form-control" id="date" placeholder="Date de la disparition">
+                <div class="row mt-2">
+                    <div class="form-group col-lg-4">
+                        <label for="pet-name">Nom de l'animal:</label>
+                        <input type="text" class="form-control" id="pet-name"
+                            placeholder="Nom auquel l’animal répond">
                     </div>
-                    <div class="form-group col-12">
-                        <label for="padress">Dernière adresse où vous avez vu votre animal:</label>
-                        <input type="text" class="form-control" id="padress" placeholder="Numéro, nom de rue ...">
-                    </div>
-                    <div class="form-group col-6">
-                        <label for="padress2">Dernière ville où vous avez vu votre animal:</label>
-                        <input type="text" class="form-control" id="padress2" placeholder="Code postal et ville">
-                    </div>
-                    <div class="form-group col-3">
-                        <label for="state">Pays:</label>
+                    <div class="form-group col-lg-4">
+                        <label for="state">Choisir une espèce:</label>
                         <select id="state" class="form-control">
-                            <option selected>Choisir</option>
-                            <option>France</option>
-                            <option>Belgique</option>
-                            <option>Suisse</option>
+                            <option selected>Choisir dans la liste</option>
+                            <option>Chien</option>
+                            <option>Chat</option>
+                            <option>Oiseau</option>
+                            <option>Rongeur</option>
                         </select>
                     </div>
+                    <div class="form-group col-lg-4">
+                        <label for="pet-race">Race:</label>
+                        <input type="text" class="form-control" id="pet-race"
+                            placeholder="Ex: Labrador, teckel ...">
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-5">Valider</button>
+                <div class="row mt-2">
+                    <div class="form-group col-lg-4">
+                        <p>Sexe:</p>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="pet-sexM" value="M">
+                            <label class="form-check-label" for="pet-sexM">Mâle</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="pet-sexF" value="F">
+                            <label class="form-check-label" for="pet-sexF">Femelle</label>
+                          </div>
+                    </div>
+                    <div class="form-group col-6 col-lg-4">
+                        <label for="pet-color">Couleur(s):</label>
+                        <input type="text" class="form-control" id="pet-color"
+                            placeholder="Ex: Roux, noir">
+                    </div>
+                    <div class="form-group col-6 col-lg-4">
+                        <label for="pet-waist">Taille:</label>
+                        <input type="text" class="form-control" id="pet-waist"
+                            placeholder="Grand, moyen, petit ou en centimètres.">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="form-group col-6 col-lg-4">
+                        <label for="pet-weight">Poids:</label>
+                        <input type="number" class="form-control" id="pet-weight"
+                            placeholder="Poids en Kg">
+                    </div>
+                    <div class="form-group col-6 col-lg-4">
+                        <label for="pet-age">Age:</label>
+                        <input type="number" class="form-control" id="pet-age"
+                            placeholder="Age approximatif">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="pet-puce">Numéro de puce:</label>
+                        <input type="number" class="form-control" id="pet-puce"
+                            placeholder="Ex: 250 26 10 55101789">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="form-group col-lg-4">
+                        <label for="pet-physic">Particularités physique:</label>
+                        <input type="text" class="form-control" id="pet-physic"
+                            placeholder="Ex: Tache noir sur le dos">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="pet-comport">Comportement:</label>
+                        <input type="text" class="form-control" id="pet-comport"
+                            placeholder="Ex: Vif, peureux ...">
+                    </div>
+                    <div class="form-group col-lg-4">
+                        <label for="pet-pic" class="form-label">Importez une photo de l'animal</label>
+                        <input class="form-control" type="file" id="pet-pic">
+                    </div>
+                </div>
+                <div class="row mt-4">
+                <h2>Informations sur la disparition:</h2>
+                </div>
+                <div class="row mt-2">
+                    <div class="form-group col-lg-6">
+                        <label for="pet-adress">Lieu où l'animal a été vu pour la dernière fois:</label>
+                        <input type="text" class="form-control" id="pet-adress"
+                            placeholder="Ex: 18 rue de l’exemple 60000 EXEMPLE">
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <label for="pet-date">Date de la dispartion:</label>
+                        <input type="date" class="form-control" id="pet-date">
+                    </div>
+                    <div class="form-group col-lg-3">
+                        <label for="pet-time">Heure de la dispartion:</label>
+                        <input type="time" class="form-control" id="pet-time">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Valider les informations</button>
             </form>
         </div>
     </section>
     <footer>
         <div class="bannerfoot">
             <h3 id="foottitle">A propos</h3>
-            <a href="#" class="fitem">Nous contacter</a>
+            <a href="mailto:name@gmail.com" class="fitem">Nous contacter</a>
             <a href="faq.html" class="fitem">FAQ</a>
             <a href="rules.html" class="fitem">Règlement du site</a>
             <a href="mentions.html" class="fitem">Mentions légales</a>
