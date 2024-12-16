@@ -178,7 +178,7 @@ body{
 }
 /* Tablettes */
 @media (min-width: 577px) and (max-width: 1023px){
-    #bmenutop, .collapse, .tabmediacut{
+    #bmenutop, .tabmediacut{
         display: none;
     }
     .articlefixe, .presentation{ width: 95vw; }
@@ -188,7 +188,7 @@ body{
 }
 /* Ordinateurs */
 @media (min-width: 1024px){
-    #bmenutop, .collapse{
+    #bmenutop{
         display: none;
     }
     .articlefixe, .presentation{ width: 80vw; }

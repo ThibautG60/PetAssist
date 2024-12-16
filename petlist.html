@@ -103,42 +103,272 @@
                 </p>
                 <div class="petlist">
                     <fieldset class="filter">
-                        <legend>Filtres:</legend>
-                        <form>
-                            <p>Espèce:</p>
-                            <input type="radio" id="chat" name="espece" value="chat">
-                            <label for="chat">Chat</label><br>
-                            <input type="radio" id="chien" name="espece" value="chien">
-                            <label for="chien">Chien</label><br>
-                            <input type="radio" id="oiseau" name="espece" value="oiseau">
-                            <label for="oiseau">Oiseau</label><br><br>
-                            <p>Race:</p>
-                            <input type="radio" id="chat" name="espece" value="chat">
-                            <label for="chat">test</label><br>
-                            <input type="radio" id="chien" name="espece" value="chien">
-
-                            <label for="chien">test</label><br>
-                            <label for="adress">Entrez un lieu:</label><br>
-                            <input type="text" id="adress" name="adress"><br>
-
-                            <label for="date">Entrez une date:</label><br>
-                            <input type="text" id="date" name="date">
-                        </form>
+                        <h2>Filtres:</h2>
+                        <div class="accordion accordion-flush">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed filter-item" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapsePetType"
+                                        aria-expanded="false" aria-controls="collapsePetType">
+                                        Espèce
+                                    </button>
+                                </h3>
+                                <div id="collapsePetType" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordion-flush">
+                                    <div class="accordion-body">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <input class="form-check-input me-1" type="checkbox" value=""
+                                                    id="filter-dog">
+                                                <label class="form-check-label stretched-link"
+                                                    for="filter-dog">Chien</label>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <input class="form-check-input me-1" type="checkbox" value=""
+                                                    id="filter-cat">
+                                                <label class="form-check-label stretched-link"
+                                                    for="filter-cat">Chat</label>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <input class="form-check-input me-1" type="checkbox" value=""
+                                                    id="filter-bird">
+                                                <label class="form-check-label stretched-link"
+                                                    for="filter-bird">Oiseau</label>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <input class="form-check-input me-1" type="checkbox" value=""
+                                                    id="filter-rodent">
+                                                <label class="form-check-label stretched-link"
+                                                    for="filter-rodent">Rongeur</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed filter-item" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseMsgTwo" aria-expanded="false"
+                                        aria-controls="collapseMsgTwo">
+                                        Race
+                                    </button>
+                                </h3>
+                                <div id="collapseMsgTwo" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionMsg">
+                                    <div class="accordion-body">
+                                        <ul class="list-group">
+                                            <p>Selectionnez une espèce.</p>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed filter-item" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseMsgThree"
+                                        aria-expanded="false" aria-controls="collapseMsgThree">
+                                        Trier par emplacement
+                                    </button>
+                                </h3>
+                                <div id="collapseMsgThree" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionMsg">
+                                    <div class="accordion-body">
+                                        <form action="">
+                                            <div class="mb-3">
+                                                <label for="filter-adress" class="form-label">Adresse:</label>
+                                                <input type="text" class="form-control" id="filter-adress"
+                                                    aria-describedby="filter-adressH">
+                                                <div id="filter-adressH" class="form-text">Exemple: 8 rue de l'exemple
+                                                    60000 EXEMPLE</div>
+                                            </div>
+                                            <label for="filter-KM">Rayon autour de l'adresse:</label>
+                                            <input type="range" min="0" max="100"
+                                                oninput="this.nextElementSibling.value = this.value +'KM'">
+                                            <output>
+                                                <div class="form-text">Rayon de recherche en Kilomètres</div>
+                                            </output>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed filter-item" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseMsgFour"
+                                        aria-expanded="false" aria-controls="collapseMsgFour">
+                                        Trier par date
+                                    </button>
+                                </h3>
+                                <div id="collapseMsgFour" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionMsg">
+                                    <div class="accordion-body">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <input class="form-check-input me-1" type="radio" name="listGroupRadio"
+                                                    value="" id="filter-dateUp" checked>
+                                                <label class="form-check-label" for="filter-dateUp">Date
+                                                    croissante</label>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <input class="form-check-input me-1" type="radio" name="listGroupRadio"
+                                                    value="" id="filter-dateDown">
+                                                <label class="form-check-label" for="filter-dateDown">Date
+                                                    décroissante</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </fieldset>
+
+                    <button id="filterButton" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Trier à
+                        l'aide des filtres</button>
+
+                    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1"
+                        id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Affinez votre recherche:</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div class="accordion accordion-flush">
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed filter-item" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapsePetType"
+                                            aria-expanded="false" aria-controls="collapsePetType">
+                                            Espèce
+                                        </button>
+                                    </h3>
+                                    <div id="collapsePetType" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordion-flush">
+                                        <div class="accordion-body">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value=""
+                                                        id="filter-dog">
+                                                    <label class="form-check-label stretched-link"
+                                                        for="filter-dog">Chien</label>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value=""
+                                                        id="filter-cat">
+                                                    <label class="form-check-label stretched-link"
+                                                        for="filter-cat">Chat</label>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value=""
+                                                        id="filter-bird">
+                                                    <label class="form-check-label stretched-link"
+                                                        for="filter-bird">Oiseau</label>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <input class="form-check-input me-1" type="checkbox" value=""
+                                                        id="filter-rodent">
+                                                    <label class="form-check-label stretched-link"
+                                                        for="filter-rodent">Rongeur</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed filter-item" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseMsgTwo"
+                                            aria-expanded="false" aria-controls="collapseMsgTwo">
+                                            Race
+                                        </button>
+                                    </h3>
+                                    <div id="collapseMsgTwo" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionMsg">
+                                        <div class="accordion-body">
+                                            <ul class="list-group">
+                                                <p>Selectionnez une espèce.</p>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed filter-item" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseMsgThree"
+                                            aria-expanded="false" aria-controls="collapseMsgThree">
+                                            Trier par emplacement
+                                        </button>
+                                    </h3>
+                                    <div id="collapseMsgThree" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionMsg">
+                                        <div class="accordion-body">
+                                            <form action="">
+                                                <div class="mb-3">
+                                                    <label for="filter-adress" class="form-label">Adresse:</label>
+                                                    <input type="text" class="form-control" id="filter-adress"
+                                                        aria-describedby="filter-adressH">
+                                                    <div id="filter-adressH" class="form-text">Exemple: 8 rue de
+                                                        l'exemple 60000 EXEMPLE</div>
+                                                </div>
+                                                <label for="filter-KM">Rayon autour de l'adresse:</label>
+                                                <input type="range" min="0" max="100"
+                                                    oninput="this.nextElementSibling.value = this.value +'KM'">
+                                                <output>
+                                                    <div class="form-text">Rayon de recherche en Kilomètres</div>
+                                                </output>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed filter-item" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseMsgFour"
+                                            aria-expanded="false" aria-controls="collapseMsgFour">
+                                            Trier par date
+                                        </button>
+                                    </h3>
+                                    <div id="collapseMsgFour" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionMsg">
+                                        <div class="accordion-body">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <input class="form-check-input me-1" type="radio"
+                                                        name="listGroupRadio" value="" id="filter-dateUp" checked>
+                                                    <label class="form-check-label" for="filter-dateUp">Date
+                                                        croissante</label>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <input class="form-check-input me-1" type="radio"
+                                                        name="listGroupRadio" value="" id="filter-dateDown">
+                                                    <label class="form-check-label" for="filter-dateDown">Date
+                                                        décroissante</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="list">
                         <div class="card-pet">
-                                <a href="petprofil.html" title="profil"><img src="assets/img/pet/cat1.jpg" class="img-pet" alt="image animal"></a>
-                                <div class="card-body">
-                                    <p class="card-title">Kiwi</p>
-                                    <div class="separateur"> </div>
-                                    <p class="card-text">Espèce: Chat <br>Race: Test <br>Lieu: 89 rue du test 60420
-                                        Toast
-                                        <br>Date: 01/01/2000
-                                    </p>
-                                </div>
+                            <a href="petprofil.html" title="profil"><img src="assets/img/pet/cat1.jpg" class="img-pet"
+                                    alt="image animal"></a>
+                            <div class="card-body">
+                                <p class="card-title">Kiwi</p>
+                                <div class="separateur"> </div>
+                                <p class="card-text">Espèce: Chat <br>Race: Test <br>Lieu: 89 rue du test 60420
+                                    Toast
+                                    <br>Date: 01/01/2000
+                                </p>
+                            </div>
                         </div>
                         <div class="card-pet">
-                            <a href="petprofil.html" title="profil"><img src="assets/img/pet/dog1.jfif" class="img-pet" alt="image animal"></a>
+                            <a href="petprofil.html" title="profil"><img src="assets/img/pet/dog1.jfif" class="img-pet"
+                                    alt="image animal"></a>
                             <div class="card-body">
                                 <p class="card-title">Brutus</p>
                                 <div class="separateur"> </div>
@@ -149,7 +379,8 @@
                             </div>
                         </div>
                         <div class="card-pet">
-                            <a href="petprofil.html" title="profil"><img src="assets/img/pet/dog2.jfif" class="img-pet" alt="image animal"></a>
+                            <a href="petprofil.html" title="profil"><img src="assets/img/pet/dog2.jfif" class="img-pet"
+                                    alt="image animal"></a>
                             <div class="card-body">
                                 <p class="card-title">Golden
                                 </p>
@@ -161,7 +392,8 @@
                             </div>
                         </div>
                         <div class="card-pet">
-                            <a href="petprofil.html" title="profil"><img src="assets/img/pet/cat2.jfif" class="img-pet" alt="image animal"></a>
+                            <a href="petprofil.html" title="profil"><img src="assets/img/pet/cat2.jfif" class="img-pet"
+                                    alt="image animal"></a>
                             <div class="card-body">
                                 <p class="card-title">Miaou
                                 </p>
@@ -173,7 +405,8 @@
                             </div>
                         </div>
                         <div class="card-pet">
-                            <a href="petprofil.html" title="profil"><img src="assets/img/pet/dog3.jpg" class="img-pet" alt="image animal"></a>
+                            <a href="petprofil.html" title="profil"><img src="assets/img/pet/dog3.jpg" class="img-pet"
+                                    alt="image animal"></a>
                             <div class="card-body">
                                 <p class="card-title">Medor</p>
                                 <div class="separateur"> </div>
@@ -186,6 +419,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
     <footer>
         <div class="bannerfoot">
