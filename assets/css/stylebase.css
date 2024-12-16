@@ -66,6 +66,7 @@ body{
 }
 /* ARTICLES */
 .articlefixe{
+    background-color: rgba(240, 240, 240, 0.92);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(49, 26, 26);
     margin: auto;
@@ -163,19 +164,11 @@ body{
 /* MEDIA QUERIES */  
 /* Téléphones */
 @media (max-width: 576px) {
-    #menutop{
+    .mediacut, .tabmediacut, #menutop{
         display: none;
     }
-    .mediacut{
-        display: none;
-    }
-    .tabmediacut{
-        display: none;
-    }
-    .articlefixe{ width: 95vw; }
-    .presentation{ width: 95vw; }
-    .article{ flex-basis: 95%; }
-    .gridcard{ flex-basis: 95%; }
+    .articlefixe, .presentation{ width: 95vw; }
+    .article, .gridcard{ flex-basis: 95%; }
     .bannerfoot{ padding: 1% 0% 1% 0%; }
     #foottitle{ text-align: center;}
     .fitem{
@@ -185,32 +178,20 @@ body{
 }
 /* Tablettes */
 @media (min-width: 577px) and (max-width: 1023px){
-    #bmenutop{
+    #bmenutop, .collapse, .tabmediacut{
         display: none;
     }
-    .collapse{
-        display: none;
-    }
-    .tabmediacut{
-        display: none;
-    }
-    .articlefixe{ width: 95vw; }
-    .presentation{ width: 95vw; }
-    .article{ flex-basis: 95%; }
-    .gridcard{ flex-basis: 95%; }
+    .articlefixe, .presentation{ width: 95vw; }
+    .article, .gridcard{ flex-basis: 95%; }
     .bannerfoot{ padding: 1% 0% 1% 10%; }
     .fitem{ flex: 1; }
 }
 /* Ordinateurs */
 @media (min-width: 1024px){
-    #bmenutop{
+    #bmenutop, .collapse{
         display: none;
     }
-    .collapse{
-        display: none;
-    }
-    .articlefixe{ width: 80vw; }
-    .presentation{ width: 80vw; }
+    .articlefixe, .presentation{ width: 80vw; }
     .article{ flex-basis: 70%; }
     .gridcard{ flex-basis: 30%; }
     .bannerfoot{ padding: 1% 0% 1% 10%; }
