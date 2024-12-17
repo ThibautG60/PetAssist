@@ -208,12 +208,13 @@ main{
 /* MEDIA QUERIES */  
 /* Téléphones */
 @media (max-width: 576px) {
-    .mediacut, .tabmediacut, #menutop{
+    .mediacut, .tabmediacut{
         display: none;
     }
     .articlefixe, .presentation{ width: 95vw; }
     .article, .gridcard{ flex-basis: 95%; }
     .bannerfoot{ padding: 1% 0% 1% 0%; }
+    .nav-item{ padding-bottom: 1%; }
     #foottitle{ text-align: center;}
     .fitem{
             flex-basis: 100%; 
@@ -222,7 +223,7 @@ main{
 }
 /* Tablettes */
 @media (min-width: 577px) and (max-width: 1023px){
-    #bmenutop, .tabmediacut{
+    .tabmediacut, #bmenutop{
         display: none;
     }
     .articlefixe, .presentation{ width: 95vw; }
@@ -233,7 +234,7 @@ main{
 /* Ordinateurs */
 @media (min-width: 1024px){
     #bmenutop{
-        display: none;
+        display:none;
     }
     .articlefixe, .presentation{ width: 80vw; }
     .article{ flex-basis: 70%; }
