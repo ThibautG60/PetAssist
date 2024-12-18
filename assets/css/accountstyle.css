@@ -1,0 +1,89 @@
+.formlog{
+    margin: 5% 20% 3% 20%;
+}
+
+#accounttitle{
+    margin-bottom: 3%;
+}
+
+.accountarea{
+    margin: 4% auto 4% auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.accountcat{
+    text-align: center;
+}
+
+.accordion{
+    margin: 8% 3% 5% 3%;
+}
+
+.halert{
+    margin: 8% 3% 5% 3%;
+}
+
+.signal-box{
+    position: relative;
+    background-color: rgba(240, 240, 240, 0.92);
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2%;
+}
+
+.article-signal{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(49, 26, 26);
+}
+
+.info-signal-box-b, .info-signal-box-p{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#profil-pic{
+    width: 100%;
+}
+
+#msg-button{
+    margin-top: 2%;
+    width: 100%;
+}
+
+.only-phone{
+    text-align: center;
+}
+
+/* MEDIA QUERIES */  
+/* Téléphones */
+@media (max-width: 767px) {
+    .signal-box{width: 95vw;}
+    .info-signal-box-p{flex-basis: 100%;}
+    .article-signal{flex-basis: 100%;}
+    .info-signal-box-d{display: none;}
+    .accountcat{flex-basis: 100%;}
+}
+/* Tablettes */
+@media (min-width: 768px){
+    .signal-box{width: 80vw;}
+    .info-signal-box-d{flex-basis: 20%;}
+    .article-signal{flex-basis: 80%;}
+    .info-signal-box-p{display: none;}
+    .only-phone{display: none;}
+    .accountcat{flex: 1;}
+    .accountcat:nth-child(2){
+        border-left: solid 1px black;
+        border-right: solid 1px black;
+    } 
+}
+/* Ordinateurs */
+@media (min-width: 1024px){
+    .signal-box{width: 80vw;}
+    .info-signal-box-d{flex-basis: 20%;}
+    .article-signal{flex-basis: 80%;}
+    .info-signal-box-p{
+        display: none;
+    }
+}

@@ -1,0 +1,72 @@
+.petarticle{
+    margin: 3%;
+}
+
+.info-pet-img-t, .info-pet-img-d{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2%;
+}
+
+#pet-pic{
+    width: 100%;
+}
+
+#msg-button{
+    margin-top: 2%;
+    flex-basis: 100%;
+}
+
+.info-profil{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#profil-pic{
+    width: 10%;
+    margin: 2%;
+    border-radius: 100%;
+}
+
+#profil-link{
+    text-decoration: none;
+    font-weight:bold; 
+    Font-size: large;
+    color: #0D6EFD;
+    margin-left: 3%;
+}
+/* MEDIA QUERIES */  
+/* Téléphones */
+@media (max-width: 576px) {
+    .info-pet-img-d{
+        display: none;
+    }
+    .petarticle, .info-pet-img-t{
+        flex-basis: 100%;
+    }
+}
+/* Tablettes */
+@media (min-width: 577px) and (max-width: 1023px){
+    .info-pet-img-t{
+        display: none;
+    }
+    .info-pet-img-d{
+        flex-basis: 35%;
+    }
+    .petarticle{
+        flex-basis: 55%;
+    }
+}
+/* Ordinateurs */
+@media (min-width: 1024px){
+    .info-pet-img-t{
+        display: none;
+    }
+    .info-pet-img-d{
+        flex-basis: 35%;
+    }
+    .petarticle{
+        flex-basis: 55%;
+    }
+}
