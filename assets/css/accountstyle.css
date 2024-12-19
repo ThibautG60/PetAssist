@@ -16,11 +16,7 @@
     text-align: center;
 }
 
-.accordion{
-    margin: 8% 3% 5% 3%;
-}
-
-.halert{
+.halert, .msg-button-group, .accordion{
     margin: 8% 3% 5% 3%;
 }
 
@@ -45,16 +41,12 @@
 
 #profil-pic{
     width: 100%;
+    margin-bottom: 2%;
 }
 
 .info-profil-img{
     display: flex;
     flex-wrap: wrap;
-}
-
-#msg-button{
-    margin-top: 2%;
-    width: 100%;
 }
 
 #profil-link{

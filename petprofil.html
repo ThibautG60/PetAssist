@@ -81,7 +81,7 @@
             </div>
             <div class="info-profil-img">
                 <img src="assets/img/pet/cat1.jpg" alt="Photo de l'animal" id="profil-pic">
-                <button class="btn btn-primary mb-2 me-xl-5 col-xs-6 col-xl-3" id="msg-button">J’ai des informations !
+                <button class="btn btn-primary msg-button">J’ai des informations !
                     (Contacter le propriétaire)</button>
             </div>
             <div class="body-info-box">
@@ -108,9 +108,17 @@
                     <a href="accountview.html" id="profil-link">Lucie</a>
                 </div>
             </div>
-            <dialog id="msg-dial">
-                <p>Ceci est une boîte de dialogue modale.</p>
-                <button id="close-msg-button">Fermer</button>
+            <dialog class="msg-box" id="msg-dial">
+                <div class="msg-back">
+                    <div class="msg-text-2">Début de la conversation</div>
+                    <form id="formMsg" action="">
+                        <textarea id="msg-input" name="msg-input" rows="4"
+                            cols="50" placeholder="Ecrivez votre message"></textarea>
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="Envoyer le message">
+                    </form>
+                    <button class="btn btn-danger" id="close-msg-button">Fermer</button>
+                </div>
             </dialog>
         </section>
     </main>

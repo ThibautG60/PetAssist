@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/accountstyle.css">
     <link rel="stylesheet" href="assets/css/list.css">
+    <link rel="stylesheet" href="assets/css/msg.css">
     <link rel="stylesheet" href="assets/css/stylebase.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="shortcut icon" href="assets/img/iconsite.png" />
@@ -60,9 +61,8 @@
         </nav>
         <nav class="navbar navbar-dark bg-dark p-2" id="bmenutop">
             <div class="container-fluid justify-content-center">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#menutop" aria-controls="menutop"
-                    aria-expanded="false">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menutop"
+                    aria-controls="menutop" aria-expanded="false">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -84,7 +84,7 @@
             </div>
             <div class="info-profil-img">
                 <img src="assets/img/profil/profpic2.jfif" alt="Photo de profil" id="profil-pic">
-                <button class="btn btn-primary mb-2 me-xl-5 col-xs-6 col-xl-3" id="msg-button">Envoyer
+                <button class="btn btn-primary msg-button">Envoyer
                     un message</button>
             </div>
             <div class="body-info-box">
@@ -115,9 +115,17 @@
                     </div>
                 </div>
             </div>
-            <dialog id="msg-dial">
-                <p>Ceci est une boîte de dialogue modale.</p>
-                <button id="close-msg-button">Fermer</button>
+            <dialog class="msg-box" id="msg-dial">
+                <div class="msg-back">
+                    <div class="msg-text-2">Début de la conversation</div>
+                    <form id="formMsg" action="">
+                        <textarea id="msg-input" name="msg-input" rows="4"
+                            cols="50" placeholder="Ecrivez votre message"></textarea>
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="Envoyer le message">
+                    </form>
+                    <button class="btn btn-danger" id="close-msg-button">Fermer</button>
+                </div>
             </dialog>
         </section>
     </main>

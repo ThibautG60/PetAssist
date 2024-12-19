@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="assets/css/stylebase.css">
     <link rel="stylesheet" href="assets/css/accountstyle.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/msg.css">
     <link rel="shortcut icon" href="assets/img/iconsite.png" />
 
     <script src="assets/js/bootstrap.bundle.js"></script>
     <script async src="assets/js/animations.js"></script>
+    <script defer src="assets/js/msg.js"></script>
 
     <title>Pet Assist' - Mon compte</title>
 </head>
@@ -57,9 +59,8 @@
         </nav>
         <nav class="navbar navbar-dark bg-dark p-2" id="bmenutop">
             <div class="container-fluid justify-content-center">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#menutop" aria-controls="menutop"
-                    aria-expanded="false">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menutop"
+                    aria-controls="menutop" aria-expanded="false">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -164,73 +165,42 @@
                 <div class="accountcat">
                     <h2>Mes messages</h2>
                     <div class="line"></div>
-                    <div class="accordion accordion-flush" id="accordionMsg">
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed bg-secondary text-light" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseMsgOne" aria-expanded="false"
-                                    aria-controls="collapseMsgOne">
-                                    Edouard .G <span class="badge text-bg-success ms-2">Nouveau message</span>
-                                </button>
-                            </h3>
-                            <div id="collapseMsgOne" class="accordion-collapse collapse"
-                                data-bs-parent="#accordion-flush">
-                                <div class="accordion-body">
-                                    <p>Bonjour, j'ai des infos sur votre chien</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed bg-secondary text-light" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseMsgTwo" aria-expanded="false"
-                                    aria-controls="collapseMsgTwo">
-                                    Camille .B
-                                </button>
-                            </h3>
-                            <div id="collapseMsgTwo" class="accordion-collapse collapse" data-bs-parent="#accordionMsg">
-                                <div class="accordion-body">
-                                    <p>Help me</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed bg-secondary text-light" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseMsgThree" aria-expanded="false"
-                                    aria-controls="collapseMsgThree">
-                                    Silvio .T
-                                </button>
-                            </h3>
-                            <div id="collapseMsgThree" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionMsg">
-                                <div class="accordion-body">
-                                    <p>Merci pour ton aide !</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed bg-secondary text-light" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseMsgFour" aria-expanded="false"
-                                    aria-controls="collapseMsgFour">
-                                    Adrian .Q
-                                </button>
-                            </h3>
-                            <div id="collapseMsgFour" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionMsg">
-                                <div class="accordion-body">
-                                    <p>Salut l'ami !</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="msg-button-group">
+                        <button class="btn btn-secondary text-light msg-button" type="button">
+                            Edouard .G <span class="badge text-bg-success ms-2">Nouveau message</span>
+                        </button>
+                        <button class="btn btn-secondary text-light msg-button" 
+                            type="button">
+                            Camille .B
+                        </button>
+                        <button class="btn btn-secondary text-light msg-button"
+                            type="button">
+                            Silvio.T
+                        </button>
+                        <button class="btn btn-secondary text-light msg-button"
+                            type="button">
+                            Adrian .Q
+                        </button>
                     </div>
                 </div>
+            </div>
             </div>
             <div class="articletitle">
                 <p>Vous pouvez modifier votre compte à tout moment en cliquant sur le bouton ci-dessous:</p>
                 <a href="maccount.html" class="btn btn-primary ml-5" role="button">Modifier mon compte</a>
             </div>
+            <dialog class="msg-box" id="msg-dial">
+                <div class="msg-back">
+                    <div class="msg-text-2">Début de la conversation</div>
+                    <form id="formMsg" action="">
+                        <textarea id="msg-input" name="msg-input" rows="4" cols="50"
+                            placeholder="Ecrivez votre message"></textarea>
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="Envoyer le message">
+                    </form>
+                    <button class="btn btn-danger" id="close-msg-button">Fermer</button>
+                </div>
+            </dialog>
         </section>
     </main>
     <footer>
