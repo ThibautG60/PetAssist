@@ -3,6 +3,7 @@
 !assets/js/map.js
 !assets/js/petlist.js
 !assets/js/animations.js
+!assets/js/msg.js
 
 /assets/css/*
 !assets/css/accountstyle.css
@@ -13,6 +14,7 @@
 !assets/css/mentionsstyle.css
 !assets/css/petstyle.css
 !assets/css/stylebase.css
+!assets/css/msg.css
 
 /assets/img/*
 /assets/data/*
