@@ -4,6 +4,7 @@ form.addEventListener('submit', checkForm);
 function checkForm(e) {
     e.preventDefault();
     let valid = true;
+    let ariraDetails = document.getElementById('buttonSubmitForm').getAttribute('aria-details');
     form.querySelectorAll('.error-msg').forEach(function (span) {
         span.remove();
     });
@@ -27,8 +28,20 @@ function checkForm(e) {
             element.classList.add('form-success');
         }
     }
+    if (ariraDetails == 'passlost') {
+        let pass1 = form.querySelector('#password');
+        let pass2 = form.querySelector('#password2');
+        if (pass1.value != pass2.value) {
+            let span = document.createElement('span');
+            span.classList.add('error-msg');
+            pass2.classList.add('form-error');
+            span.textContent = "Les mots de passes ne correspondent pas";
+            pass2.insertAdjacentElement('afterend', span);
+            valid = false;
+        }
+    }
     if (valid == true) {
-        switch (document.getElementById('buttonSubmitForm').getAttribute('aria-details')) {
+        switch (ariraDetails) {
             case "create":
                 alert('create');
                 break;
@@ -40,6 +53,10 @@ function checkForm(e) {
                 break;
             case "found":
                 alert('found');
+                break;
+            case "passlost":
+                alert('Mot de passe modifié avec succès.');
+                location.href = "login.html";
                 break;
             case "login":
                 location.href = "account.html";

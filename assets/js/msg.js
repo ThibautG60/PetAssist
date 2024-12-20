@@ -12,6 +12,8 @@ closeMsgButton.addEventListener("click", function () {
 msgButton.forEach(button => {
     button.addEventListener('click', function () {
         msgDial.showModal();
+        let msgInput = document.getElementById("msg-input");
+        msgInput.focus();
     });
 });
 
@@ -31,7 +33,9 @@ function addMsg(event) {
         div.textContent = msgInput.value;
         formMsg.insertAdjacentElement('beforebegin', div);
         msgInput.value = "";
-        msgDial.scrollTop = msgDial.scrollHeight;
+        msgInput.placeholder = "Ecrivez votre message";
+        let msgBack = closeMsgButton.nextElementSibling;
+        msgBack.scrollTop = msgBack.scrollHeight;
     }
     msgInput.focus();
 }
