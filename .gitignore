@@ -4,9 +4,11 @@
 !assets/js/petlist.js
 !assets/js/animations.js
 !assets/js/msg.js
+!assets/js/admin.js
 
 /assets/css/*
 !assets/css/accountstyle.css
+!assets/css/adminstyle.css
 !assets/css/card.css
 !assets/css/goldenstyle.css
 !assets/css/list.css

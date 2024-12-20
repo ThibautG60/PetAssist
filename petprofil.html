@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/stylebase.css">
     <link rel="stylesheet" href="assets/css/accountstyle.css">
+    <link rel="stylesheet" href="assets/css/adminstyle.css">
     <link rel="stylesheet" href="assets/css/msg.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="shortcut icon" href="assets/img/iconsite.png" />
@@ -13,6 +14,7 @@
     <script src="assets/js/bootstrap.bundle.js"></script>
     <script async src="assets/js/animations.js"></script>
     <script defer src="assets/js/msg.js"></script>
+    <script defer src="assets/js/admin.js"></script>
 
     <title>Pet Assist' - Profil de Kiwi</title>
 </head>
@@ -73,7 +75,9 @@
         </svg>
         <section class="body-box">
             <div class="body-head-box">
-                <h1 class="articletitle f100">Kiwi</h1>
+                <div class="f100 icon-admin-box">
+                    <h1 class="articletitle">Kiwi</h1>
+                </div>
                 <div class="lineb"></div>
                 <p class="description f100">Cliquez sur le nom du profil du propriétaire pour accéder à son profil.
                     <br>Voici les informations détaillées à propos de Kiwi:
@@ -112,8 +116,8 @@
                 <div class="msg-back">
                     <div class="msg-text-2">Début de la conversation</div>
                     <form id="formMsg" action="">
-                        <textarea id="msg-input" name="msg-input" rows="4"
-                            cols="50" placeholder="Ecrivez votre message"></textarea>
+                        <textarea id="msg-input" name="msg-input" rows="4" cols="50"
+                            placeholder="Ecrivez votre message"></textarea>
                         <br>
                         <input class="btn btn-primary" type="submit" value="Envoyer le message">
                     </form>
