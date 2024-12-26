@@ -70,6 +70,12 @@
 @media (max-width: 767px) {
     .accountcat{flex-basis: 100%;}
     .body-box{ width: 95vw; }
+    .articletitle > p, .articletitle > a, .info-profil-img > button{
+        font-size: 0.9rem;
+    }
+    .accountcat > h2{
+        font-size: large;
+    }
 }
 /* Tablettes */
 @media (min-width: 768px){

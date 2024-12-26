@@ -79,6 +79,12 @@
     .list{
         flex-basis: 100%;
     }
+    .card-title{
+        font-size: large;
+    }
+    .card-text{
+        font-size: 0.8rem;
+    }
 }
 /* Tablettes */
 @media (min-width: 768px){

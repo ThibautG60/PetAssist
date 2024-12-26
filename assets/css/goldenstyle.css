@@ -73,6 +73,12 @@
     .item-text{
         flex-basis: 100%;
     }
+    .bookarticle, .profil-link{
+        font-size: 0.9rem;
+    }
+    .goldenitem1 > h3, .goldenitem2 > h3{
+        font-size: large;
+    }
 }
 /* Tablettes */
 @media (min-width: 577px) and (max-width: 1023px){

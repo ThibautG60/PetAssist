@@ -5,12 +5,15 @@
     justify-content: center;
 }
 
-.icon-admin-box img:nth-of-type(1){
-    margin-left: 2%;
+.icon-admin-box .btn-admin:nth-of-type(1){
+    margin-left: 1%;
 }
 
 .icon-admin{
-    margin-left: 1%;
     width: 1.5rem;
     object-fit: contain;
+}
+
+.btn-admin{
+    border: none;
 }

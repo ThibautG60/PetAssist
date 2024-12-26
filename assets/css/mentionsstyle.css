@@ -23,6 +23,10 @@
 /* Téléphones */
 @media (max-width: 576px) {
     .info-right-box, .info-left-box{ flex-basis: 100%;}
+    .article-mentions-box > ol{ padding-top: 5%;}
+    .infos-right, .infos-right > h2{
+        font-size: 0.9rem;
+    }
 }
 /* Tablettes */
 @media (min-width: 577px) and (max-width: 1023px){
