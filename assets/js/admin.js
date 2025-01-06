@@ -1,4 +1,4 @@
-window.onload = showAdminIcon;
+window.addEventListener('load', showAdminIcon);
 
 function showAdminIcon() {
     const iconAdminBox = document.querySelectorAll('.icon-admin-box');
