@@ -17,3 +17,8 @@
 .btn-admin{
     border: none;
 }
+
+.btn-admin:hover, .btn-admin:active{
+    background-color: rgba(71, 73, 206, 0.500);
+    border-radius: 5px;
+}

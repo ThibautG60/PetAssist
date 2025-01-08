@@ -1,11 +1,14 @@
 window.addEventListener('load', showAdminIcon);
+const iconAdminBox = document.querySelectorAll('.icon-admin-box');
 
 function showAdminIcon() {
-    const iconAdminBox = document.querySelectorAll('.icon-admin-box');
+    let id = 1;
 
     iconAdminBox.forEach(adminBox => {
         let btnM = document.createElement("button");
+        btnM.id = "modify" + id;
         let btnD = document.createElement("button");
+        btnD.id = "delete" + id;
         let imgModify = document.createElement("img");
         let imgDelete = document.createElement("img");
         imgModify.src = "assets/img/icons/modify.png";
@@ -20,5 +23,20 @@ function showAdminIcon() {
         adminBox.appendChild(btnD);
         btnM.appendChild(imgModify);
         btnD.appendChild(imgDelete);
+        id++;
     });
 }
+
+iconAdminBox.forEach(adminBox => {
+    adminBox.addEventListener('click', function (event) {
+        if (event.target.closest('.btn-admin')) {
+            const id = event.target.closest('.btn-admin').id;
+            if (id.startsWith('modify')) {
+                alert(`Element modifié: ${id}`);
+            }
+            else if (id.startsWith('delete')) {
+                alert(`Element supprimé: ${id}`);
+            }
+        }
+    });
+});

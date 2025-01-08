@@ -81,7 +81,7 @@ to {
 #menutop, #bmenutop{
     position: relative !important;
     box-shadow: 2px 1px 5px black !important;
-    z-index: auto !important;
+    z-index: 7 !important;
 }
 
 .nav-item{
@@ -216,6 +216,10 @@ main{
     color: rgb(49, 26, 26);
     text-decoration: none;
 }
+
+.carousel-caption{
+    padding: 0%!important;
+}
 /* MEDIA QUERIES */  
 /* Téléphones */
 @media (max-width: 576px) {
@@ -231,11 +235,11 @@ main{
             flex-basis: 100%; 
             text-align: center;
     }
-    .article, .articlefixe, .description, .bannerfoot > a{
-        font-size: 0.9rem;
+    .article, .articlefixe, .description, .bannerfoot > a, input, button, .carousel-caption > p{
+        font-size: 0.9rem !important;
     }
-    .articletitle, .article > h2, .article > h3, .bannerfoot > h3{
-        font-size: large;
+    .articletitle, .article > h2, .article > h3, .bannerfoot > h3, .carousel-caption > h5{
+        font-size: large! important;
     }
 }
 /* Tablettes */
@@ -247,8 +251,11 @@ main{
     .article, .gridcard{ flex-basis: 95%; }
     .bannerfoot{ padding: 1% 0% 1% 10%; }
     .fitem{ flex: 1; }
-    .description{
-        font-size: large;
+    .carousel-caption > p{
+        font-size: 0.9rem !important;
+    }
+    .description, .carousel-caption > h5{
+        font-size: large !important;
     }
 }
 /* Ordinateurs */
@@ -263,5 +270,8 @@ main{
     .fitem{ flex: 1; }
     .description{
         font-size: large;
+    }
+    .carousel-caption > p{
+        font-size: 0.8rem !important;
     }
 }
