@@ -1,10 +1,10 @@
-window.addEventListener('load', showAdminIcon);
 const iconAdminBox = document.querySelectorAll('.icon-admin-box');
+showAdminIcon();
 
 function showAdminIcon() {
     let id = 1;
 
-    iconAdminBox.forEach(adminBox => {
+    iconAdminBox.forEach(eAdminBox => {
         let btnM = document.createElement("button");
         btnM.id = "modify" + id;
         let btnD = document.createElement("button");
@@ -19,16 +19,16 @@ function showAdminIcon() {
         btnD.classList.add('btn-admin');
         imgModify.setAttribute("alt", "Icone administrateur");
         imgDelete.setAttribute("alt", "Icone administrateur");
-        adminBox.appendChild(btnM);
-        adminBox.appendChild(btnD);
+        eAdminBox.appendChild(btnM);
+        eAdminBox.appendChild(btnD);
         btnM.appendChild(imgModify);
         btnD.appendChild(imgDelete);
         id++;
     });
 }
 
-iconAdminBox.forEach(adminBox => {
-    adminBox.addEventListener('click', function (event) {
+iconAdminBox.forEach(eAdminBox => {
+    eAdminBox.addEventListener('click', function (event) {
         if (event.target.closest('.btn-admin')) {
             const id = event.target.closest('.btn-admin').id;
             if (id.startsWith('modify')) {

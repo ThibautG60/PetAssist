@@ -1,8 +1,8 @@
-.booktop{
+#booktop{
     display: flex;
 }
 
-.bookarticle{
+.bookflex{
     flex: 2;
 }
 
