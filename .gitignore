@@ -6,6 +6,7 @@
 !assets/js/msg.js
 !assets/js/admin.js
 !assets/js/goldenbook.js
+!assets/js/filter.js
 
 /assets/css/*
 !assets/css/accountstyle.css

@@ -20,6 +20,7 @@
     flex-wrap: wrap;
     margin: 2% auto 2% auto;
     justify-content: center;
+    align-content: first baseline;
 }
 
 .card-pet{
@@ -57,8 +58,8 @@
 }
 
 /* MEDIA QUERIES */  
-/* Téléphones */
-@media (max-width: 767px) {
+/* Mobile & Tablettes */
+@media (max-width: 1023px){
     .card-pet{
         margin-top: 3%;
         flex-basis: 45%;
@@ -84,18 +85,6 @@
     }
     .card-text{
         font-size: 0.8rem;
-    }
-}
-/* Tablettes */
-@media (min-width: 768px){
-    .card-pet{
-        flex-basis: 20%;
-    }
-    #filterButton{
-        display: none;
-    }
-    .list{
-        flex-basis: 78%;
     }
 }
 /* Ordinateurs */

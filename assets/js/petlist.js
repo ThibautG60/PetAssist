@@ -44,7 +44,6 @@ async function drawList() {
         divCardBody.appendChild(pCardInfo);
     }
     lineType();
-    console.log(list);
 }
 
 function lineType() {
