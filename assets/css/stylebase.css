@@ -182,11 +182,6 @@ main{
     margin: 2% 2% 2% 5%;
 }
 
-.form-success{
-    border: solid 1px green !important;
-    box-shadow: 2px 1px 5px green;
-}
-
 .form-error{
     border: solid 1px red !important;
     box-shadow: 2px 1px 5px red;

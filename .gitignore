@@ -7,6 +7,7 @@
 !assets/js/admin.js
 !assets/js/goldenbook.js
 !assets/js/filter.js
+!assets/js/account.js
 
 /assets/css/*
 !assets/css/accountstyle.css

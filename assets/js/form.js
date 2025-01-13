@@ -13,9 +13,6 @@ function checkForm(e) {
         if (element.classList.contains('form-error')) {
             element.classList.remove('form-error');
         }
-        else if (element.classList.contains('form-success')) {
-            element.classList.remove('form-success');
-        }
         if (!element.validity.valid) {
             element.classList.add('form-error');
             let span = document.createElement('span');
@@ -23,9 +20,6 @@ function checkForm(e) {
             span.textContent = element.validationMessage;
             element.insertAdjacentElement('afterend', span);
             valid = false;
-        }
-        else {
-            element.classList.add('form-success');
         }
     }
     if (ariraDetails == 'passlost') {
