@@ -1,25 +1,25 @@
-/assets/js/*
-!assets/js/form.js
-!assets/js/map.js
-!assets/js/petlist.js
-!assets/js/animations.js
-!assets/js/msg.js
-!assets/js/admin.js
-!assets/js/goldenbook.js
-!assets/js/filter.js
-!assets/js/account.js
+## /assets/js/*
+## !assets/js/form.js
+## !assets/js/map.js
+# !assets/js/petlist.js
+# !assets/js/animations.js
+# !assets/js/msg.js
+# !assets/js/admin.js
+# !assets/js/goldenbook.js
+# !assets/js/filter.js
+# !assets/js/account.js
 
-/assets/css/*
-!assets/css/accountstyle.css
-!assets/css/adminstyle.css
-!assets/css/card.css
-!assets/css/goldenstyle.css
-!assets/css/list.css
-!assets/css/map.css
-!assets/css/mentionsstyle.css
-!assets/css/petstyle.css
-!assets/css/stylebase.css
-!assets/css/msg.css
+# /assets/css/*
+# !assets/css/accountstyle.css
+# !assets/css/adminstyle.css
+# !assets/css/card.css
+# !assets/css/goldenstyle.css
+# !assets/css/list.css
+# !assets/css/map.css
+# !assets/css/mentionsstyle.css
+# !assets/css/petstyle.css
+# !assets/css/stylebase.css
+# !assets/css/msg.css
 
-/assets/img/*
-/assets/data/*
+# /assets/img/*
+# /assets/data/* */
