@@ -12,59 +12,15 @@
     <script defer src="assets/js/animations.js"></script>
     <script defer src="assets/js/form.js"></script>
 
-    <title>Pet Assist' - Je créé mon compte</title>
+    <title>Pet Assist' - Modifier mon compte</title>
 </head>
 
 <body>
-    <header>
-        <div class="sitetop">
-            <a href="index.html" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
-            <div class="boutonstop">
-                <a href="lost.html" id="boutonlost"><span class="mediacut">J'ai</span> perdu <span class="mediacut">mon
-                        animal</span></a>
-                <a href="found.html" id="boutonfound"><span class="mediacut">J'ai</span> trouvé <span
-                        class="mediacut">un animal</span></a>
-            </div>
-        </div>
-        <nav>
-            <div class="nav nav-underline nav-fill justify-content-center bg-dark p-2" id="menutop">
-                <div class="nav-item col-12 col-sm-4 col-xl-3">
-                    <a class="nav-link text-light" href="petlist.html">
-                        Voir la liste des animaux perdu</a>
-                </div>
-                <div class="nav-item col-12 col-sm-4 col-xl-2">
-                    <a class="nav-link text-light" href="petcard.html">Utiliser
-                        la carte
-                        interactive</a>
-                </div>
-                <div class="nav-item col-12 col-sm-4 col-xl-1">
-                    <a class="nav-link text-light" href="login.html">Mon
-                        compte</a>
-                </div>
-                <div class="nav-item col-12 col-sm-4 col-xl-1">
-                    <a class="nav-link text-light" href="advice.html">Conseils</a>
-                </div>
-                <div class="nav-item col-12 col-sm-4 col-xl-3">
-                    <a class="nav-link text-light" href="goldenbook.html">Temoignages / Histoires de retrouvailles</a>
-                </div>
-                <div class="nav-item col-12 col-sm-4 col-xl-1">
-                    <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img
-                            src="assets/img/icons/fbi.png" alt="Facebook"></a>
-                    <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href=""
-                            alt="X"></a>
-                </div>
-            </div>
-        </nav>
-        <nav class="navbar navbar-dark bg-dark p-2" id="bmenutop">
-            <div class="container-fluid justify-content-center">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#menutop" aria-controls="menutop"
-                    aria-expanded="false">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
-    </header>
+    <?php
+        //- Appel du fichier php: Header
+        include_once 'static/header.php';
+    ?>
+
     <main>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" id="paw">
             <path
@@ -80,24 +36,25 @@
                 <div class="row">
                     <div class="form-group col-6 col-lg-4">
                         <label for="lastname">Nom:</label>
-                        <input type="text" class="form-control" id="lastname" placeholder="Saisissez votre nom de famille" required
-                        pattern="^[A-Za-z]{2,}$" minlength="2" title="Le nom de famille ne peut contenir que des lettres">
+                        <input type="text" class="form-control" id="lastname"
+                            placeholder="Saisissez votre nom de famille" required pattern="^[A-Za-z]{2,}$" minlength="2"
+                            title="Le nom de famille ne peut contenir que des lettres">
                     </div>
                     <div class="form-group col-6 col-lg-4">
                         <label for="name">Prénom:</label>
                         <input type="text" class="form-control" id="name" placeholder="Saisissez votre prénom" required
-                        pattern="^[A-Za-z]{2,}$" minlength="2" title="Le prénom ne peut contenir que des lettres">
+                            pattern="^[A-Za-z]{2,}$" minlength="2" title="Le prénom ne peut contenir que des lettres">
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="pseudo">Pseudonyme:</label>
                         <input type="text" class="form-control" id="pseudo"
-                            placeholder="Saisissez un pseudonyme pour le site" required
-                            pattern="^[A-Za-z0-9]{2,}$" minlength="2" title="Le pseudonyme ne peut contenir que des lettres et des chiffres">
+                            placeholder="Saisissez un pseudonyme pour le site" required pattern="^[A-Za-z0-9]{2,}$"
+                            minlength="2" title="Le pseudonyme ne peut contenir que des lettres et des chiffres">
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="email">Email:</label>
                         <input type="email" class="form-control" id="email" placeholder="exemple@exemple.com" required
-                        pattern="^[a-z0-9\._\%\+\-]+@[a-z0-9\.\-]+\.[a-z]{2,}$">
+                            pattern="^[a-z0-9\._\%\+\-]+@[a-z0-9\.\-]+\.[a-z]{2,}$">
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="password">Mot de passe:</label>
@@ -105,7 +62,7 @@
                             placeholder="Saisissez votre mot de passe pour accéder à votre compte." required
                             pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
                             title="Le mot de passe doit contenir au moins un nombre, une lettre majuscule et minuscule et comporter au moins 8 caractères">
-                            <div class="form-text">Ne donnez jamais votre mot de passe à qui que ce soit.</div>
+                        <div class="form-text">Ne donnez jamais votre mot de passe à qui que ce soit.</div>
                     </div>
                 </div>
                 <div class="row mt-5 flex-row-reverse">
@@ -116,14 +73,15 @@
                     <div class="form-group col-lg-6">
                         <label for="adress">Adresse:</label>
                         <input type="text" class="form-control" id="adress" placeholder="85 rue de l'exemple" required
-                        pattern="^\d+[A-Za-zÀ-ÿ0-9\s'\-\.]+$" minlength="2" title="Vous devez saisir le numéro de la maison (chiffres) suivi du nom de la rue.">
+                            pattern="^\d+[A-Za-zÀ-ÿ0-9\s'\-\.]+$" minlength="2"
+                            title="Vous devez saisir le numéro de la maison (chiffres) suivi du nom de la rue.">
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <label for="adress2">Ville</label>
                         <input type="text" class="form-control" id="adress2" placeholder="10000 EXEMPLE" required
-                        pattern="^\d{5} [A-Za-zÀ-ÿ\-]+$" minlength="2" title="Respectez le format.">
+                            pattern="^\d{5} [A-Za-zÀ-ÿ\-]+$" minlength="2" title="Respectez le format.">
                         <div class="form-text">Format exact: 10000 EXEMPLE</div>
                     </div>
                 </div>
@@ -138,23 +96,13 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-success mt-5" id="buttonSubmitForm" aria-details="create">Créer mon compte</button>
+                <button type="submit" class="btn btn-primary text-light mt-5" id="buttonSubmitForm" aria-details="modify">Modifier mon compte</button>
             </form>
         </section>
     </main>
-    <footer>
-        <div class="bannerfoot">
-            <h3 id="foottitle">A propos</h3>
-            <a href="mailto:name@gmail.com" class="fitem">Nous contacter</a>
-            <a href="faq.html" class="fitem">FAQ</a>
-            <a href="rules.html" class="fitem">Règlement du site</a>
-            <a href="mentions.html" class="fitem">Mentions légales</a>
-            <div class="fitem">
-                <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img
-                        src="assets/img/icons/fbi.png" alt="Facebook"></a>
-                <a href="https://x.com/" title="Lien vers la page X"><img src="assets/img/icons/xi.png" href=""
-                        alt="X"></a>
-            </div>
-        </div>
-    </footer>
+    
+    <?php
+        //- Appel du fichier php: Footer
+        include_once 'static/footer.php';
+    ?>
 </body>
