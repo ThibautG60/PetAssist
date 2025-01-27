@@ -9,15 +9,13 @@
     <meta name="author" content="Thibaut GERARD">
 
     <link rel="stylesheet" href="assets/css/stylebase.css">
-    <link rel="stylesheet" href="assets/css/list.css">
+    <link rel="stylesheet" href="assets/css/list.css?v=1.0">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="shortcut icon" href="assets/img/iconsite.png" />
 
     <script src="assets/js/bootstrap.bundle.js"></script>
     <script defer src="assets/js/animations.js"></script>
     <script defer src="assets/js/filter.js"></script>
-    <script defer src="assets/js/petlist.js"></script>
-
 
     <title>Pet Assist' - Liste des signalements</title>
 </head>
@@ -58,7 +56,38 @@
                     </div>
                     <div class="offcanvas-body"></div>
                 </div>
-                <div class="list"></div>
+                <div class="list">
+                    <?php
+                    //- Génération de la liste
+                    $file = 'assets/data/data.json';
+                    
+                    if (file_exists($file)) {
+                        $jsonData = json_decode(file_get_contents($file), true);
+            
+                        foreach($jsonData['petlist'] as $data){
+                            if($data['signalType'] == 'found'){
+                                echo '<div class="card-pet box-found">';
+                            } else {
+                                echo '<div class="card-pet box-lost">';
+                            }
+                                echo '<a href="petprofil.php" title="Voir le signalement en détail"><img src="assets/img/pet/' . $data['petImg'] . '" alt="Photo de l\'animal" class="img-pet"></a>';
+                                echo '<div class="card-body">';
+                                    echo '<p class="card-title">' . $data['petName'] . '</p>';
+                                    if($data['signalType'] == 'found'){
+                                        echo '<div class="line-found"></div>';
+                                    } else {
+                                        echo '<div class="line-lost"></div>';
+                                    }
+                                    echo '<p class="card-text">Espèce: ' . $data['petSpicies'] . '<br>Race: ' . $data['petRace'] . '<br>Lieu: ' . $data['petAdress'] . '<br>Date: ' . $data['petDate'] . '</p>';
+                                echo '</div>';
+                            echo '</div>';
+                        }
+                    }
+                    else {
+                        echo '<p class="description">Aucun résultat trouvé</p>';
+                    }
+                    ?>
+                </div>
             </div>
         </section>
     </main>

@@ -1,5 +1,5 @@
 /* LISTE DES ANIMAUX DISPARUS */
-.petlist{
+.petlist {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(49, 26, 26);
     margin: auto;
@@ -8,14 +8,14 @@
     flex-wrap: wrap;
 }
 
-.filter{
+.filter {
     flex-basis: 20%;
     margin: 2% 0% 2% 2%;
     padding-right: 2%;
     border-right: solid 1px black;
 }
 
-.list{
+.list {
     display: flex;
     flex-wrap: wrap;
     margin: 2% auto 2% auto;
@@ -23,79 +23,96 @@
     align-content: first baseline;
 }
 
-.card-pet{
+.card-pet {
     margin: 1%;
     border: solid 1px rgba(0, 0, 0, 0.100);
     background-color: white;
 }
 
-.card-title{
+.card-title {
     font-size: x-large;
     font-weight: bold;
 }
 
-.card-body{
+.card-body {
     margin: 5%;
 }
 
-.img-pet{
+.img-pet {
     width: 100%;
     height: auto;
 }
 
-.line-lost{
+.line-lost {
     width: 75%;
     border: solid 1px #dc3545;
 }
 
-.line-found{
+.line-found {
     width: 75%;
     border: solid 1px #198754;
 }
 
-.filter-item{
+.box-lost {
+    box-shadow: 2px 1px 7px #198754;
+}
+
+.box-found {
+    box-shadow: 2px 1px 7px #dc3545;
+}
+
+.filter-item {
     background-color: #CCEBF1 !important;
 }
 
-/* MEDIA QUERIES */  
+/* MEDIA QUERIES */
 /* Mobile & Tablettes */
-@media (max-width: 1023px){
-    .card-pet{
+@media (max-width: 1023px) {
+    .card-pet {
         margin-top: 3%;
         flex-basis: 45%;
     }
-    #filterButton{
+
+    #filterButton {
         background-color: #CCEBF1;
         flex-basis: 100%;
         margin: 2% 0% 2% 0%;
         padding: 3% 4% 3% 4%;
         border: none;
     }
-    #filterButton:hover{
+
+    #filterButton:hover {
         box-shadow: 2px 1px 5px black;
     }
-    .filter{
+
+    .filter {
         display: none;
     }
-    .list{
+
+    .list {
         flex-basis: 100%;
     }
-    .card-title{
+
+    .card-title {
         font-size: large;
     }
-    .card-text{
+
+    .card-text {
         font-size: 0.8rem;
     }
 }
+
 /* Ordinateurs */
-@media (min-width: 1024px){
-    .card-pet{
+@media (min-width: 1024px) {
+    .card-pet {
         flex-basis: 20%;
     }
-    #filterButton{
+
+    #filterButton {
         display: none;
     }
-    .list{
+
+    .list {
         flex-basis: 78%;
     }
 }

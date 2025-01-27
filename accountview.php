@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/accountstyle.css">
     <link rel="stylesheet" href="assets/css/adminstyle.css">
-    <link rel="stylesheet" href="assets/css/list.css">
+    <link rel="stylesheet" href="assets/css/list.css?v=1.0">
     <link rel="stylesheet" href="assets/css/msg.css">
     <link rel="stylesheet" href="assets/css/stylebase.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -16,7 +16,6 @@
     <script defer src="assets/js/animations.js"></script>
     <script defer src="assets/js/msg.js"></script>
     <script defer src="assets/js/admin.js"></script>
-    <script defer src="assets/js/petlist.js"></script>
 
     <title>Pet Assist' - Compte de Marie</title>
 </head>
@@ -53,28 +52,44 @@
                 <h2 class="articletitle only-tabphone f100">Les signalements de Marie</h2>
                 <div class="linec only-tabphone"></div>
                 <div class="list">
-                    <div class="card-pet" data-type="found">
-                        <a href="petprofil.php" title="profil"><img src="assets/img/pet/cat1.jpg" class="img-pet"
-                                alt="image animal"></a>
-                        <div class="card-body">
-                            <p class="card-title">Kiwi</p>
-                            <p class="card-text">Espèce: Chat <br>Race: Test <br>Lieu: 89 rue du test 60420
-                                Toast
-                                <br>Date: 01/01/2000
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card-pet" data-type="lost">
-                        <a href="petprofil.php" title="profil"><img src="assets/img/pet/cat2.jfif" class="img-pet"
-                                alt="image animal"></a>
-                        <div class="card-body">
-                            <p class="card-title">Kiwi</p>
-                            <p class="card-text">Espèce: Chat <br>Race: Test <br>Lieu: 89 rue du test 60420
-                                Toast
-                                <br>Date: 01/01/2000
-                            </p>
-                        </div>
-                    </div>
+                <?php
+                    //- Génération de la liste
+                    $file = 'assets/data/data.json';
+                    
+                    if (file_exists($file)) {
+                        $jsonData = json_decode(file_get_contents($file), true);
+                        
+                        $i = 0;//A enlever lors du passage en BDD
+
+                        foreach($jsonData['petlist'] as $data){
+                            if($i < 2){//A enlever lors du passage en BDD
+                                if($data['signalType'] == 'found'){
+                                    echo '<div class="card-pet box-found">';
+                                } else {
+                                    echo '<div class="card-pet box-lost">';
+                                }
+                                    echo '<a href="petprofil.php" title="Voir le signalement en détail"><img src="assets/img/pet/' . $data['petImg'] . '" alt="Photo de l\'animal" class="img-pet"></a>';
+                                    echo '<div class="card-body">';
+                                        echo '<p class="card-title">' . $data['petName'] . '</p>';
+                                        if($data['signalType'] == 'found'){
+                                            echo '<div class="line-found"></div>';
+                                        } else {
+                                            echo '<div class="line-lost"></div>';
+                                        }
+                                        echo '<p class="card-text">Espèce: ' . $data['petSpicies'] . '<br>Race: ' . $data['petRace'] . '<br>Lieu: ' . $data['petAdress'] . '<br>Date: ' . $data['petDate'] . '</p>';
+                                    echo '</div>';
+                                echo '</div>';
+                            }
+                            else {//A enlever lors du passage en BDD
+                                break;//A enlever lors du passage en BDD
+                            }
+                            $i++;//A enlever lors du passage en BDD
+                        }
+                    }
+                    else {
+                        echo '<p class="description">Aucun résultat trouvé</p>';
+                    }
+                    ?>
                 </div>
             </div>
             <dialog class="msg-box" id="msg-dial">
