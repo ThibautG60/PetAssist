@@ -50,10 +50,10 @@ function checkForm(e) {
                 break;
             case "passlost":
                 alert('Mot de passe modifié avec succès.');
-                location.href = "login.html";
+                location.href = "?page=login";
                 break;
             case "login":
-                location.href = "account.html";
+                location.href = "?page=user";
                 break;
         }
     }

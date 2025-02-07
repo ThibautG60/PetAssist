@@ -1,10 +1,10 @@
 /* BackGround */
-body{
+body {
     margin: 0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-#paw{
+#paw {
     position: absolute;
     width: 10%;
     animation-duration: 2500ms;
@@ -12,17 +12,20 @@ body{
     animation-iteration-count: infinite;
     animation-direction: alternate;
     z-index: auto;
-} 
+}
+
 @keyframes paw {
-from {
-    opacity: 0%;
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 100%;
+    }
 }
-to {
-    opacity: 100%;
-}
-}
+
 /* BANNIERE */
-.sitetop{
+.sitetop {
     background-image: url("../img/backtop.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -32,19 +35,19 @@ to {
     width: 100%;
 }
 
-#logo{
+#logo {
     position: relative;
     width: 12vw;
     margin: 1% 0% 1% 8%;
 }
 
-.boutonstop{
+.boutonstop {
     display: flex;
     justify-content: space-around;
     width: 50%;
 }
 
-#boutonlost{
+#boutonlost {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #A81017;
     color: whitesmoke;
@@ -57,11 +60,12 @@ to {
     padding: 2%;
     border-radius: 7px;
 }
-#boutonlost:hover{
+
+#boutonlost:hover {
     box-shadow: 2px 1px 5px black;
 }
 
-#boutonfound{
+#boutonfound {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #0D603A;
     color: #f5f5f5;
@@ -74,29 +78,33 @@ to {
     padding: 2%;
     border-radius: 7px;
 }
-#boutonfound:hover{
+
+#boutonfound:hover {
     box-shadow: 2px 1px 5px black;
 }
+
 /* MENU DU HAUT */
-#menutop, #bmenutop{
+#menutop,
+#bmenutop {
     position: relative !important;
     box-shadow: 2px 1px 5px black !important;
     z-index: 7 !important;
 }
 
-.nav-item{
+.nav-item {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight:lighter; 
+    font-weight: lighter;
     Font-size: large;
 
 }
+
 /* ARTICLES */
-main{
+main {
     background-color: rgb(224, 224, 224);
     padding: 2%;
 }
 
-.articlefixe{
+.articlefixe {
     background-color: rgba(240, 240, 240, 0.92);
     position: relative;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -105,7 +113,7 @@ main{
     padding: 2%;
 }
 
-.line{
+.line {
     width: 40%;
     margin: auto;
     border: solid 1px rgb(253, 76, 76);
@@ -114,32 +122,33 @@ main{
     animation-name: line;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-} 
+}
 
 @keyframes line {
     from {
         box-shadow: 0px 0px 0px rgb(253, 76, 76);
     }
+
     to {
         box-shadow: 5px 2px 7px rgb(253, 76, 76);
     }
 }
 
-.lineb{
+.lineb {
     width: 10%;
     margin: auto;
     border: solid 1px #03039C;
     margin-bottom: 3%;
 }
 
-.linec{
+.linec {
     width: 40%;
     margin: auto;
     border: solid 1px #03039C;
     margin-bottom: 3%;
 }
 
-.presentation{
+.presentation {
     background-color: rgba(240, 240, 240, 0.92);
     position: relative;
     margin: auto;
@@ -148,51 +157,52 @@ main{
     align-items: flex-start;
 }
 
-.article{
+.article {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(49, 26, 26);
     padding: 2%;
     margin: auto;
 }
 
-.articletitle{
+.articletitle {
     text-align: center;
 }
 
-.description{
+.description {
     font-style: italic;
 }
 
-.listcat{
+.listcat {
     font-weight: bold;
 }
 
-.gridcard{
+.gridcard {
     padding: 1%;
     height: auto;
     margin: 0% auto 0% auto;
 }
 
-.text-list{
+.text-list {
     list-style-type: none;
 }
 
-#imgright{
+#imgright {
     width: 22%;
     margin: 2% 2% 2% 5%;
 }
 
-.form-error{
+.form-error {
     border: solid 1px red !important;
     box-shadow: 2px 1px 5px red;
     background-color: #d8000b13 !important;
 }
 
-.error-msg{
+.error-msg {
     color: red;
 }
+
 /* FOOTER */
-.bannerfoot{
+.bannerfoot {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -200,73 +210,149 @@ main{
     position: relative;
 }
 
-#foottitle{
+#foottitle {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(49, 26, 26);
     flex-basis: 100%;
 }
 
-.fitem{
+.fitem {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(49, 26, 26);
     text-decoration: none;
 }
 
-.carousel-caption{
-    padding: 0%!important;
+.carousel-caption {
+    padding: 0% !important;
 }
-/* MEDIA QUERIES */  
+
+/* MEDIA QUERIES */
 /* Téléphones */
 @media (max-width: 576px) {
-    .mediacut, .tabmediacut{
+
+    .mediacut,
+    .tabmediacut {
         display: none;
     }
-    .articlefixe, .presentation{ width: 95vw; }
-    .article, .gridcard{ flex-basis: 95%; }
-    .bannerfoot{ padding: 1% 0% 1% 0%; }
-    .nav-item{ padding-bottom: 1%; }
-    #foottitle{ text-align: center;}
-    .fitem{
-            flex-basis: 100%; 
-            text-align: center;
+
+    .articlefixe,
+    .presentation {
+        width: 95vw;
     }
-    .article, .articlefixe, .description, .bannerfoot > a, input, button, .carousel-caption > p{
+
+    .article,
+    .gridcard {
+        flex-basis: 95%;
+    }
+
+    .bannerfoot {
+        padding: 1% 0% 1% 0%;
+    }
+
+    .nav-item {
+        padding-bottom: 1%;
+    }
+
+    #foottitle {
+        text-align: center;
+    }
+
+    .fitem {
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    .article,
+    .articlefixe,
+    .description,
+    .bannerfoot>a,
+    input,
+    button,
+    .carousel-caption>p {
         font-size: 0.9rem !important;
     }
-    .articletitle, .article > h2, .article > h3, .bannerfoot > h3, .carousel-caption > h5{
-        font-size: large! important;
+
+    .articletitle,
+    .article>h2,
+    .article>h3,
+    .bannerfoot>h3,
+    .carousel-caption>h5 {
+        font-size: large ! important;
     }
 }
+
 /* Tablettes */
-@media (min-width: 577px) and (max-width: 1023px){
-    .tabmediacut, #bmenutop, .only-phone{
+@media (min-width: 577px) and (max-width: 1023px) {
+
+    .tabmediacut,
+    #bmenutop,
+    .only-phone {
         display: none;
     }
-    .articlefixe, .presentation{ width: 95vw; }
-    .article, .gridcard{ flex-basis: 95%; }
-    .bannerfoot{ padding: 1% 0% 1% 10%; }
-    .fitem{ flex: 1; }
-    .carousel-caption > p{
+
+    .articlefixe,
+    .presentation {
+        width: 95vw;
+    }
+
+    .article,
+    .gridcard {
+        flex-basis: 95%;
+    }
+
+    .bannerfoot {
+        padding: 1% 0% 1% 10%;
+    }
+
+    .fitem {
+        flex: 1;
+    }
+
+    .carousel-caption>p {
         font-size: 0.9rem !important;
     }
-    .description, .carousel-caption > h5{
+
+    .description,
+    .carousel-caption>h5 {
         font-size: large !important;
     }
 }
+
 /* Ordinateurs */
-@media (min-width: 1024px){
-    #bmenutop, .only-tabphone, .only-phone{
-        display:none;
+@media (min-width: 1024px) {
+
+    #bmenutop,
+    .only-tabphone,
+    .only-phone {
+        display: none;
     }
-    .articlefixe, .presentation{ width: 80vw; }
-    .article{ flex-basis: 70%; }
-    .gridcard{ flex-basis: 30%; }
-    .bannerfoot{ padding: 1% 0% 1% 10%; }
-    .fitem{ flex: 1; }
-    .description{
+
+    .articlefixe,
+    .presentation {
+        width: 80vw;
+    }
+
+    .article {
+        flex-basis: 70%;
+    }
+
+    .gridcard {
+        flex-basis: 30%;
+    }
+
+    .bannerfoot {
+        padding: 1% 0% 1% 10%;
+    }
+
+    .fitem {
+        flex: 1;
+    }
+
+    .description {
         font-size: large;
     }
-    .carousel-caption > p{
+
+    .carousel-caption>p {
         font-size: 0.8rem !important;
     }
 }

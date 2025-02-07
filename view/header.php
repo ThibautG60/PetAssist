@@ -1,37 +1,40 @@
-<header>
+<?php
+// - Header
+    echo <<< 'HTML'
+    <header>
     <div class="sitetop">
-        <a href="index.php" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
+        <a href="?page=acceuil" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
         <div class="boutonstop">
-            <?php
-            if (str_contains($_SERVER['REQUEST_URI'], 'lost.php')) {
-                echo '<a href="found.php" id="boutonfound"><span class="mediacut">J\'ai</span> trouvé <span class="mediacut">un animal</span></a>';
+    HTML;
+            if ($currentPage == 'lost') {
+                echo '<a href="?page=found" id="boutonfound"><span class="mediacut">J\'ai</span> trouvé <span class="mediacut">un animal</span></a>';
             }
-            elseif (str_contains($_SERVER['REQUEST_URI'], 'found.php')) {
-                echo '<a href="lost.php" id="boutonlost"><span class="mediacut">J\'ai</span> perdu <span class="mediacut">mon animal</span></a>';
+            elseif ($currentPage == 'found') {
+                echo '<a href="?page=lost" id="boutonlost"><span class="mediacut">J\'ai</span> perdu <span class="mediacut">mon animal</span></a>';
             }
             else {
-                echo '<a href="lost.php" id="boutonlost"><span class="mediacut">J\'ai</span> perdu <span class="mediacut">mon animal</span></a>';
-                echo '<a href="found.php" id="boutonfound"><span class="mediacut">J\'ai</span> trouvé <span class="mediacut">un animal</span></a>';
+                echo '<a href="?page=lost" id="boutonlost"><span class="mediacut">J\'ai</span> perdu <span class="mediacut">mon animal</span></a>';
+                echo '<a href="?page=found" id="boutonfound"><span class="mediacut">J\'ai</span> trouvé <span class="mediacut">un animal</span></a>';
             }
-            ?>
+            echo <<< 'HTML'
         </div>
     </div>
     <nav>
         <div class="nav nav-underline nav-fill justify-content-center bg-dark p-2" id="menutop">
             <div class="nav-item col-12 col-sm-4 col-xl-3">
-                <a class="nav-link text-light" href="petlist.php">Voir la liste des animaux perdu</a>
+                <a class="nav-link text-light" href="?page=list">Voir la liste des animaux perdu</a>
             </div>
             <div class="nav-item col-12 col-sm-4 col-xl-2">
-                <a class="nav-link text-light" href="petcard.php">Utiliser la carte interactive</a>
+                <a class="nav-link text-light" href="?page=map">Utiliser la carte interactive</a>
             </div>
             <div class="nav-item col-12 col-sm-4 col-xl-1">
-                <a class="nav-link text-light" href="login.php">Mon compte</a>
+                <a class="nav-link text-light" href="?page=login">Mon compte</a>
             </div>
             <div class="nav-item col-12 col-sm-4 col-xl-1">
-                <a class="nav-link text-light" href="advice.php">Conseils</a>
+                <a class="nav-link text-light" href="?page=advice">Conseils</a>
             </div>
             <div class="nav-item col-12 col-sm-4 col-xl-3">
-                <a class="nav-link text-light" href="goldenbook.php">Temoignages / Histoires de retrouvailles</a>
+                <a class="nav-link text-light" href="?page=book">Temoignages / Histoires de retrouvailles</a>
             </div>
             <div class="nav-item col-12 col-sm-4 col-xl-1">
                 <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>
@@ -46,4 +49,6 @@
             </button>
         </div>
     </nav>
-</header>
+    </header>
+HTML;
+?>
