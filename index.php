@@ -45,7 +45,7 @@
             switch($currentPage){
                 /* Controller */
                 case 'acceuil';
-                    include_once 'view/acceuil.php';//- Importation du contenu de la page d'acceuil
+                    include_once 'controller/acceuil_controller.php';//- Importation du controller de la page d'acceuil
                     break;
                 case 'lost';
                     include_once 'controller/pet_form_controller.php';//- Importation du controller des formulaires pour les animaux

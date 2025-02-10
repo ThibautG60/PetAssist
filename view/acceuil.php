@@ -41,34 +41,29 @@
     </article>
     <div id="carouselIndex" class="carousel slide gridcard mb-2">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://lorempicture.point-sys.com/400/300/animal/" class="d-block w-100"
-                    alt="Image animal">
-                <div class="carousel-caption">
-                    <h5>Nom: Test</h5>
-                    <p>Espèce: dsfvlokin <br>Race: oiuhb <br>Sexe: Male<br>Date: 11/11/2024 <br>Lieu:
-                        Godenvillers</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://lorempicture.point-sys.com/400/300/animal/" class="d-block w-100"
-                    alt="Image animal">
-                <div class="carousel-caption">
-                    <h5>Nom: Test</h5>
-                    <p>Espèce: dsfvlokin <br>Race: oiuhb <br>Sexe: Male<br>Date: 11/11/2024 <br>Lieu:
-                        Godenvillers</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://lorempicture.point-sys.com/400/300/animal/" class="d-block w-100"
-                    alt="Image animal">
-                <div class="carousel-caption">
-                    <h5>Nom: Test</h5>
-                    <p>Espèce: dsfvlokin <br>Race: oiuhb <br>Sexe: Male<br>Date: 11/11/2024 <br>Lieu:
-                        Godenvillers</p>
-                </div>
-            </div>
-        </div>
+        <?php
+        //- Génération de la liste pour le carousselle
+        if (isset($jsonData)) {
+            global $jsonData; // Variable des données
+            $i = 0;
+
+            foreach($jsonData['petlist'] as $pet){
+                if($i == 0){
+                    echo '<div class="carousel-item active">';
+                }
+                else {
+                    echo '<div class="carousel-item">';
+                }
+                    echo '<img src="assets/img/pet/' . $pet['petImg']. '" class="d-block w-100" alt="Image animal">';
+                    echo '<div class="carousel-caption">';
+                    echo '<h5>Nom: ' .$pet['petName']. '</h5>';
+                    echo '<p>Espèce: ' .$pet['petSpicies']. '<br>Race: ' .$pet['petRace']. '<br>Sexe: ' .$pet['petSex']. '<br>Date: ' .$pet['petDate']. '<br>Lieu: ' .$pet['petAdress']. '</p>';
+                    echo '</div>';
+                    echo '</div>';
+                    $i++;
+            }     
+        }    
+        ?>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndex"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
