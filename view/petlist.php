@@ -32,10 +32,8 @@
         <div class="list">
             <?php
             //- Génération de la liste
-            $file = 'assets/data/data.json';
-            
-            if (file_exists($file)) {
-                $jsonData = json_decode(file_get_contents($file), true);
+            if (isset($jsonData)) {
+                global $jsonData; // Variable des données
     
                 foreach($jsonData['petlist'] as $data){
                     if($data['signalType'] == 'found'){
