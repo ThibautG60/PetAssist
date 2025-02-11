@@ -85,20 +85,20 @@
                     break;
                 /* View directement */
                 case 'advice':
-                    include_once 'view/advice.php';//- Importation du contenu conseils
+                    include_once 'view/static.php';//- Importation du contenu conseils
                     break;
                 case 'faq':
-                    include_once 'view/faq.php';//- Importation du contenu foire aux questions
+                    include_once 'view/static.php';//- Importation du contenu foire aux questions
                     break;
                 case 'rules':
-                    include_once 'view/rules.php';//- Importation du contenu règlement
+                    include_once 'view/static.php';//- Importation du contenu règlement
                     break;
                 case 'mentions':
-                    include_once 'view/mentions.php';//- Importation du contenu de la page des mentions légales
+                    include_once 'view/static.php';//- Importation du contenu de la page des mentions légales
                     break;
                 /* Error 404 */
                 default:
-                    header('Location: index.php');
+                    include_once 'view/static.php';//- Importation du contenu page 404
                     break;
             }
         ?>
