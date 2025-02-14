@@ -54,7 +54,7 @@
                 else {
                     echo '<div class="carousel-item">';
                 }
-                    echo '<img src="assets/img/pet/' . $pet['petImg']. '" class="d-block w-100" alt="Image animal">';
+                    echo '<img src="assets/img/pet/' . $pet['petImg']. '" class="d-block" alt="Image animal">';
                     echo '<div class="carousel-caption">';
                     echo '<h5>Nom: ' .$pet['petName']. '</h5>';
                     echo '<p>Espèce: ' .$pet['petSpicies']. '<br>Race: ' .$pet['petRace']. '<br>Sexe: ' .$pet['petSex']. '<br>Date: ' .$pet['petDate']. '<br>Lieu: ' .$pet['petAdress']. '</p>';

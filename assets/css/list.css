@@ -40,7 +40,8 @@
 
 .img-pet {
     width: 100%;
-    height: auto;
+    height: 25vh;
+    object-fit: cover;
 }
 
 .line-lost {
@@ -99,6 +100,10 @@
 
     .card-text {
         font-size: 0.8rem;
+    }
+
+    .img-pet {
+        height: 18vh;
     }
 }
 
