@@ -3,18 +3,19 @@
     echo <<< 'HTML'
     <header>
     <div class="sitetop">
-        <a href="?page=acceuil" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
+        <a href="?" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
         <div class="boutonstop">
     HTML;
-            if ($currentPage == 'lost') {
-                echo '<a href="?page=found" id="boutonfound"><span class="mediacut">J\'ai</span> trouvé <span class="mediacut">un animal</span></a>';
+            global $link;
+            if (isset($_GET['p']) && $_GET['p'] == 'perdu') {
+                echo '<a href="?p=trouve" id="boutonfound"><span class="mediacut">J\'ai</span> trouvé <span class="mediacut">un animal</span></a>';
             }
-            elseif ($currentPage == 'found') {
-                echo '<a href="?page=lost" id="boutonlost"><span class="mediacut">J\'ai</span> perdu <span class="mediacut">mon animal</span></a>';
+            elseif (isset($_GET['p']) && $_GET['p'] == 'trouve') {
+                echo '<a href="?p=perdu" id="boutonlost"><span class="mediacut">J\'ai</span> perdu <span class="mediacut">mon animal</span></a>';
             }
             else {
-                echo '<a href="?page=lost" id="boutonlost"><span class="mediacut">J\'ai</span> perdu <span class="mediacut">mon animal</span></a>';
-                echo '<a href="?page=found" id="boutonfound"><span class="mediacut">J\'ai</span> trouvé <span class="mediacut">un animal</span></a>';
+                echo '<a href="?p=perdu" id="boutonlost"><span class="mediacut">J\'ai</span> perdu <span class="mediacut">mon animal</span></a>';
+                echo '<a href="?p=trouve" id="boutonfound"><span class="mediacut">J\'ai</span> trouvé <span class="mediacut">un animal</span></a>';
             }
             echo <<< 'HTML'
         </div>
@@ -22,19 +23,19 @@
     <nav>
         <div class="nav nav-underline nav-fill justify-content-center bg-dark p-2" id="menutop">
             <div class="nav-item col-12 col-sm-4 col-xl-3">
-                <a class="nav-link text-light" href="?page=list">Voir la liste des animaux perdu</a>
+                <a class="nav-link text-light" href="?p=liste">Voir la liste des animaux perdu</a>
             </div>
             <div class="nav-item col-12 col-sm-4 col-xl-2">
-                <a class="nav-link text-light" href="?page=map">Utiliser la carte interactive</a>
+                <a class="nav-link text-light" href="?p=carte">Utiliser la carte interactive</a>
             </div>
             <div class="nav-item col-12 col-sm-4 col-xl-1">
-                <a class="nav-link text-light" href="?page=login">Mon compte</a>
+                <a class="nav-link text-light" href="?p=compte">Mon compte</a>
             </div>
             <div class="nav-item col-12 col-sm-4 col-xl-1">
-                <a class="nav-link text-light" href="?page=advice">Conseils</a>
+                <a class="nav-link text-light" href="?p=conseils">Conseils</a>
             </div>
             <div class="nav-item col-12 col-sm-4 col-xl-3">
-                <a class="nav-link text-light" href="?page=book">Temoignages / Histoires de retrouvailles</a>
+                <a class="nav-link text-light" href="?p=temoignage">Temoignages / Histoires de retrouvailles</a>
             </div>
             <div class="nav-item col-12 col-sm-4 col-xl-1">
                 <a href="https://fr-fr.facebook.com/" title="Lien vers la page Facebook"><img src="assets/img/icons/fbi.png" alt="Facebook"></a>

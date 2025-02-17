@@ -120,7 +120,7 @@
     <div class="articletitle">
         <p>Vous pouvez modifier votre compte ou vous déconnecter à tout moment en cliquant sur le bouton
             ci-dessous:</p>
-        <a href="?page=amodify" class="btn btn-primary ml-5 mb-2" role="button">Modifier mon compte</a>
+        <a href="?p=modifier_compte" class="btn btn-primary ml-5 mb-2" role="button">Modifier mon compte</a>
         <a class="btn ml-5 mb-2" id="deconnect" role="button">Se déconnecter</a>
     </div>
     <dialog class="msg-box" id="msg-dial">
