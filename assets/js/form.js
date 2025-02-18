@@ -2,7 +2,6 @@ const form = document.getElementById('formV');
 form.addEventListener('submit', checkForm);
 
 function checkForm(e) {
-    e.preventDefault();
     let valid = true;
     let ariraDetails = document.getElementById('buttonSubmitForm').getAttribute('aria-details');
     form.querySelectorAll('.error-msg').forEach(function (span) {
@@ -34,10 +33,12 @@ function checkForm(e) {
             valid = false;
         }
     }
-    if (valid == true) {
+    if (valid == false) {
+        e.preventDefault();
+    } else {
         switch (ariraDetails) {
             case "create":
-                alert('create');
+
                 break;
             case "modify":
                 alert('modify');
@@ -50,10 +51,10 @@ function checkForm(e) {
                 break;
             case "passlost":
                 alert('Mot de passe modifié avec succès.');
-                location.href = "?page=login";
+                location.href = "?p=compte";
                 break;
             case "login":
-                location.href = "?page=user";
+                location.href = "?p=compte";
                 break;
         }
     }
