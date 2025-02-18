@@ -41,7 +41,7 @@
         <section class="articlefixe">
             <h1 class="articletitle">Bienvenue sur notre carte interactive</h1>
             <div class="line"></div>
-            <p class="description">Vous pouvez voir les anonces proches de chez vous en temps réél grâce à cette carte.
+            <p class="description">Vous pouvez voir les annonces proches de chez vous et en temps réél grâce à cette carte.
             </p>
             <div id="map"></div>
         </section>
