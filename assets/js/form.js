@@ -38,7 +38,6 @@ function checkForm(e) {
     } else {
         switch (ariraDetails) {
             case "create":
-
                 break;
             case "modify":
                 alert('modify');
@@ -54,7 +53,6 @@ function checkForm(e) {
                 location.href = "?p=compte";
                 break;
             case "login":
-                location.href = "?p=compte";
                 break;
         }
     }

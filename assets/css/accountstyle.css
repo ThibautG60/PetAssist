@@ -1,100 +1,135 @@
-.formlog{
+.formlog {
     margin: 5% 20% 3% 20%;
 }
 
-#accounttitle{
+#accounttitle {
     margin-bottom: 3%;
 }
 
-.accountarea{
+.accountarea {
     margin: 4% auto 4% auto;
     display: flex;
     flex-wrap: wrap;
 }
 
-.accountcat{
+.accountcat {
     text-align: center;
 }
 
-.halert, .msg-button-group, .accordion{
+.halert,
+.msg-button-group,
+.accordion {
     margin: 8% 3% 5% 3%;
 }
 
-.body-box{
+.body-box {
     background-color: rgba(240, 240, 240, 0.92);
     position: relative;
     padding: 2%;
     margin: auto;
 }
 
-.body-head-box{
+.body-head-box {
     display: flex;
     flex-wrap: wrap;
 }
 
-.body-info-box{
+.body-info-box {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(49, 26, 26);
     display: flex;
     flex-wrap: wrap;
 }
 
-#profil-pic{
+#profil-pic {
     width: 100%;
     margin-bottom: 2%;
 }
 
-.info-profil-img{
+.info-profil-img {
     display: flex;
     flex-wrap: wrap;
 }
 
-#profil-link{
+#profil-link {
     text-decoration: none;
-    font-weight:bold; 
+    font-weight: bold;
     Font-size: large;
     color: #0D6EFD;
     margin-left: 3%;
 }
 
-#little-profil-pic{
+#little-profil-pic {
     width: 10%;
     margin: 2%;
     border-radius: 100%;
 }
 
-#deconnect{
+#box-button {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+#box-button>form {
+    margin: 1%;
+}
+
+#deconnect {
     color: whitesmoke;
     background-color: #A81017;
 }
-/* MEDIA QUERIES */  
-.f100{
+
+/* MEDIA QUERIES */
+.f100 {
     flex-basis: 100%;
 }
+
 /* Téléphones */
 @media (max-width: 767px) {
-    .accountcat{flex-basis: 100%;}
-    .body-box{ width: 95vw; }
-    .articletitle > p, .articletitle > a, .info-profil-img > button{
+    .accountcat {
+        flex-basis: 100%;
+    }
+
+    .body-box {
+        width: 95vw;
+    }
+
+    .articletitle>p,
+    .articletitle>#box-button,
+    .info-profil-img>button {
         font-size: 0.9rem;
     }
-    .accountcat > h2{
+
+    .accountcat>h2 {
         font-size: large;
     }
+
+    #box-button {
+        flex-wrap: wrap;
+    }
 }
+
 /* Tablettes */
-@media (min-width: 768px){
-    .accountcat{flex: 1;}
-    .accountcat:nth-child(2){
+@media (min-width: 768px) {
+    .accountcat {
+        flex: 1;
+    }
+
+    .accountcat:nth-child(2) {
         border-left: solid 1px black;
         border-right: solid 1px black;
-    } 
-    .body-box{ width: 95vw;}
+    }
+
+    .body-box {
+        width: 95vw;
+    }
 }
+
 /* Ordinateurs */
-@media (min-width: 1024px){
-    .body-box{ 
-        width: 80vw; 
+@media (min-width: 1024px) {
+    .body-box {
+        width: 80vw;
         min-height: 75vh;
         display: grid;
         row-gap: 2%;
@@ -102,15 +137,18 @@
         grid-template-rows: 25vh auto;
         align-items: start;
     }
-    .body-head-box{
+
+    .body-head-box {
         grid-column: 1 / 1;
         grid-row: 1 / 1;
     }
-    .body-info-box{
+
+    .body-info-box {
         grid-column: 1 / 1;
         grid-row: 2 / 2;
     }
-    .info-profil-img{
+
+    .info-profil-img {
         grid-column: 2 / 2;
         grid-row: 1 / 1;
     }

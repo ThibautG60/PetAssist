@@ -1,5 +1,6 @@
 <?php 
 require 'utils/php_errors.php'; // On charge le fihcier PHP pour afficher les erreurs PHP
+session_start(); // On démarre la session
 
 //-- On redirige vers le bon controller --
 if(!isset($_GET['p'])){ // Si il n'y a pas de catégories dans l'URL, on charge l'acceuil

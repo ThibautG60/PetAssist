@@ -21,7 +21,6 @@
     <script src="assets/js/bootstrap.bundle.js"></script>
     <script defer src="assets/js/animations.js"></script>
     <script defer src="assets/js/msg.js"></script>
-    <script defer src="assets/js/account.js"></script>
 </head>
 
 <body>
@@ -145,14 +144,20 @@
             <div class="articletitle">
                 <p>Vous pouvez modifier votre compte ou vous déconnecter à tout moment en cliquant sur le bouton
                     ci-dessous:</p>
-                <a href="?p=modifier_compte" class="btn btn-primary ml-5 mb-2" role="button">Modifier mon compte</a>
-                <a class="btn ml-5 mb-2" id="deconnect" role="button">Se déconnecter</a>
+                <div id="box-button">
+                    <form method="POST">
+                        <input type="submit" class="btn btn-primary ml-5 mb-2" id="modify" name="modify" value="Modifier mon compte" />
+                    </form>
+                    <form method="POST">
+                        <input type="submit" class="btn ml-5 mb-2" id="deconnect" name="deconnect" value="Se déconnecter" />
+                    </form>
+                </div>
             </div>
             <dialog class="msg-box" id="msg-dial">
                 <button type="button" class="btn-close" id="close-msg-button"></button>
                 <div class="msg-back">
                     <div class="msg-text-2">Début de la conversation</div>
-                    <form id="formMsg" action="">
+                    <form id="formMsg" action="POST">
                         <textarea id="msg-input" name="msg-input" rows="4" cols="50"
                             placeholder="Ecrivez votre message"></textarea>
                         <br>

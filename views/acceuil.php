@@ -64,6 +64,7 @@
                 <p>Les minutes comptent quand un animal disparaît. En rejoignant la communauté Pet Assist, vous donnez à votre
                     compagnon la meilleure chance de retrouver son chemin à la maison.</p>
             </article>
+
             <div id="carouselIndex" class="carousel slide gridcard mb-2">
                 <div class="carousel-inner">
                 <?php

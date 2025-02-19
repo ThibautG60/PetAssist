@@ -1,5 +1,43 @@
 <?php
+    require 'models/database.php'; // Importation des fonctions de communication avec la BDD
+    require 'models/database_users.php'; // Importation des fonctions pour manipuler la bdd users
+    require 'templates/notif.php'; // Importation de la fonction des notifications
+
+    if(isset($_POST["deconnect"]) && $_POST["deconnect"] == 'Se déconnecter'){
+        if(disconnectUser() == true)notifGenerator('info', 'A bientôt', 'Vous êtes déconnecté.');
+    }
     //-- On sélectionne le contenu à afficher en en fonction de si la personne est connecté ou non
-    require 'views/login.php';//- Affichage du formulaire de connexion
-    //require 'views/account.php';//- Affichage du compte personnel de l'utilisateur
+    if((isset($_SESSION["connected"]) && $_SESSION["connected"] == 'true') || (isset($_COOKIE["connected"]) && $_COOKIE["connected"] == 'true')){
+        require 'views/account.php';//- Affichage du compte personnel de l'utilisateur
+    }
+    else{
+        /* CONNEXION AU COMPTE */
+        // Si le formulaire a été transmit
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
+            // On vérifie qu'il soit conforme
+            if(passVerify($_POST['email'], hash_hmac('sha256', $_POST['password'], 'path')) == true){
+                if(loginUser($_POST['email']) == true){
+                    if(isset($_POST['steelconnect']) && $_POST['steelconnect'] == 'on'){
+                        setcookie("connected", 'true', time()+60*60*24*30); // On fait un cookie valable 1 mois
+                    }
+                    else {
+                        $_SESSION["connected"] = 'true';
+                    }
+                    require 'views/account.php';//- Affichage du compte personnel de l'utilisateur
+                    notifGenerator('success', 'Bienvenue', 'Vous êtes connecté.');
+                }
+                else{
+                    require 'views/login.php';//- Affichage du formulaire de connexion
+                    notifGenerator('error', 'ERREUR', 'Problème lors de la chargement de votre compte.');
+                }
+            }
+            else{
+                require 'views/login.php';//- Affichage du formulaire de connexion
+                notifGenerator('error', 'ERREUR', 'Adresse email ou mot de passe incorrect.');
+            }
+        }
+        else{
+            require 'views/login.php';//- Affichage du formulaire de connexion
+        }
+    }
 ?>

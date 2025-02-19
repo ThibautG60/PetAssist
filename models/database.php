@@ -1,6 +1,6 @@
 <?php
 /* Connexion à la base de données */
-function connectToDB($role = 'reader'){
+function connectToDB($role){
     try {
         $options = [PDO::ATTR_ERRMODE=> PDO::ERRMODE_EXCEPTION];
         $dsn = 'mysql:host=localhost; dbname=pet_assist; charset=utf8';

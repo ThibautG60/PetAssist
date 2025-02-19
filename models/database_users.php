@@ -8,7 +8,8 @@ function registerUser($firstname, $lastname, $pseudo, $email, $pass, $adress, $c
         $fileName = $pseudo .'.'. $img['extension'];
         move_uploaded_file($imgTmp, "assets/img/profil/" . $fileName);
 
-        $hash = password_hash($pass, PASSWORD_DEFAULT);
+        // Utilisation de Bind Param pour des questions de sécurité (Injections)
+        $hash = hash_hmac('sha256', $pass, 'path');
         $query = $db -> prepare($queryText);
         $query -> bindParam(':firstname', $firstname, PDO::PARAM_STR);
         $query -> bindParam(':lastname', $lastname, PDO::PARAM_STR);
@@ -23,6 +24,50 @@ function registerUser($firstname, $lastname, $pseudo, $email, $pass, $adress, $c
         return true;
     } catch(PDOException $e) {
         echo "Erreur lors de la création de l'utilisateur : " . $e->getMessage();
+        return false;
+    }
+}
+
+/* Fonction pour connecter un utilisateur */ 
+function loginUser($mail) {
+    $db = connectToDB("reader");
+    $queryText = "SELECT * FROM path_users WHERE `mail` = :mail";
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query->bindParam(':mail', $mail, PDO::PARAM_STR);
+        $query->execute();
+        $query -> fetch(PDO::FETCH_ASSOC);
+        return true;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération de l'utilisateur : " . $e->getMessage();
+        return false;
+    }
+}
+
+/* Fonction pour déconnecter un utilisateur */ 
+function disconnectUser() {
+    setcookie("connected", 'false', -1); // On créé un cookie avec un timer négatif pour supprimer le cookie
+    $_SESSION["connected"] = 'false'; // On passe la variable SESSION connected à false pour infiquer que l'user n'est plus connecté
+    return true;
+}
+
+/* Fonction pour vérifier le mot de passe d'un utilisateur */ 
+function passVerify($mail, $pass) {
+    $db = connectToDB("reader");
+    $queryText = "SELECT `password` FROM path_users WHERE `mail` = :mail";
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> bindParam(':mail', $mail, PDO::PARAM_STR);
+        $query -> execute();
+        $resultPass = $query -> fetch(PDO::FETCH_ASSOC);
+
+        //On vérifie que les mots de passes correspondent (Les deux sont hachés)
+        if($resultPass['password'] === $pass)return true;
+        else return false;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la vérification du mot de passe: " . $e->getMessage();
         return false;
     }
 }
