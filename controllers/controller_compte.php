@@ -1,8 +1,9 @@
 <?php
-    require 'models/database.php'; // Importation des fonctions de communication avec la BDD
-    require 'models/database_users.php'; // Importation des fonctions pour manipuler la bdd users
-    require 'templates/notif.php'; // Importation de la fonction des notifications
+    require_once 'models/database.php'; // Importation des fonctions de communication avec la BDD
+    require_once 'models/database_users.php'; // Importation des fonctions pour manipuler la bdd users
+    require_once 'templates/notif.php'; // Importation de la fonction des notifications
 
+    // Si la personne a cliqué sur "se déconnecter" 
     if(isset($_POST["deconnect"]) && $_POST["deconnect"] == 'Se déconnecter'){
         if(disconnectUser() == true)notifGenerator('info', 'A bientôt', 'Vous êtes déconnecté.');
     }
@@ -23,7 +24,15 @@
                     else {
                         $_SESSION["connected"] = 'true';
                     }
-                    require 'views/account.php';//- Affichage du compte personnel de l'utilisateur
+                    if($_GET['p'] == 'perdu'){ // Si l'utilisateur vient pour la page "perdu"
+                        require 'controllers/controller_perdu.php';
+                    }
+                    else if($_GET['p'] == 'trouve'){ // Si l'utilisateur vient pour la page "trouvé"
+                        require 'controllers/controller_trouve.php';
+                    }
+                    else{ // Si l'utilisateur vient pour son compte
+                        require 'views/account.php';//- Affichage du compte personnel de l'utilisateur
+                    }
                     notifGenerator('success', 'Bienvenue', 'Vous êtes connecté.');
                 }
                 else{

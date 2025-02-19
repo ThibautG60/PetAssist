@@ -1,7 +1,7 @@
 <?php
-    require 'models/database.php'; // Importation des fonctions de communication avec la BDD
-    require 'models/database_users.php'; // Importation des fonctions de communication avec la BDD des utilisateurs
-    require 'templates/notif.php'; // Importation de la fonction des notifications
+    require_once 'models/database.php'; // Importation des fonctions de communication avec la BDD
+    require_once 'models/database_users.php'; // Importation des fonctions de communication avec la BDD des utilisateurs
+    require_once 'templates/notif.php'; // Importation de la fonction des notifications
 
     /* ENREGISTREMENT DE COMPTE */
     // Si un fichier a été upload

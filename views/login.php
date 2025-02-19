@@ -44,7 +44,7 @@
                     pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
                     title="Le mot de passe doit contenir au moins un nombre, une lettre majuscule et minuscule et comporter au moins 8 caractères">
                     <div class="form-text">Ne donnez jamais votre mot de passe à qui que ce soit.</div>
-                    <a class="form-text" href="?p=pass_perdu">Mot de passe oublié</a>
+                    <!-- <a class="form-text" href="?p=pass_perdu">Mot de passe oublié</a> -->
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" name="steelconnect" id="steelconnect">
