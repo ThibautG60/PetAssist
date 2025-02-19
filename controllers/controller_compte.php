@@ -8,8 +8,14 @@
         if(disconnectUser() == true)notifGenerator('info', 'A bientôt', 'Vous êtes déconnecté.');
     }
     //-- On sélectionne le contenu à afficher en en fonction de si la personne est connecté ou non
-    if((isset($_SESSION["connected"]) && $_SESSION["connected"] == 'true') || (isset($_COOKIE["connected"]) && $_COOKIE["connected"] == 'true')){
-        require 'views/account.php';//- Affichage du compte personnel de l'utilisateur
+    if(userConnected() == true){
+        // Si la personne a cliqué sur "modifier son compte" 
+        if(isset($_POST["modify"]) && $_POST["modify"] == 'Modifier mon compte'){
+            require 'controllers/controller_modifier_compte.php';//- Appel du controller pour le formulaire de modification de compte
+        }
+        else{
+            require 'views/account.php';//- Affichage du compte personnel de l'utilisateur
+        }
     }
     else{
         /* CONNEXION AU COMPTE */

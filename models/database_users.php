@@ -71,4 +71,14 @@ function passVerify($mail, $pass) {
         return false;
     }
 }
+
+/* Fonction pour vérifier si l'utilisateur est connecté */ 
+function userConnected() {
+    if((isset($_SESSION["connected"]) && $_SESSION["connected"] == 'true') || (isset($_COOKIE["connected"]) && $_COOKIE["connected"] == 'true')){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 ?>
