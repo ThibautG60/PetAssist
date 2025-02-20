@@ -2,41 +2,55 @@ let lat = 49.505175;
 let lon = 2.77856;
 let petMap = null;
 
-const villes = {
-    "Paris": { "lat": 48.852969, "lon": 2.349903 },
-    "Brest": { "lat": 48.383, "lon": -4.500 },
-    "Quimper": { "lat": 48.000, "lon": -4.100 },
-    "Bayonne": { "lat": 43.500, "lon": -1.467 }
-};
-
 function initMap() {
+
     // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
     petMap = L.map('map').setView([lat, lon], 11);
-    // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
+    // On récupère la map sur le lien suivant:
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-        // Il est toujours bien de laisser le lien vers la source des données
+        // On cite les sources
         attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
         minZoom: 1,
         maxZoom: 20
     }).addTo(petMap);
 
-    for (ville in villes) {
-        // Nous définissons l'icône à utiliser pour le marqueur, sa taille affichée (iconSize), sa position (iconAnchor) et le décalage de son ancrage (popupAnchor)
-        let markerLost = L.icon({
-            iconUrl: "assets/img/icons/marker-lost.png",
-            iconSize: [50, 50],
-            iconAnchor: [25, 50],
-            popupAnchor: [-3, -76],
+    fetch('models/database_map.php')  // Requête vers le fichier PHP
+        .then(response => {
+            if (response.ok) {
+                return response.json();  // On convertit la réponse en JSON
+            }
+        })
+        .then(mapData => {
+            for (reporting in mapData) {
+                let markerLost = L.icon({ // Définition de l'icon " perdu " ainsi que ses dimmenssions
+                    iconUrl: "assets/img/icons/marker-lost.png",
+                    iconSize: [50, 50],
+                    iconAnchor: [25, 50],
+                    popupAnchor: [-3, -76],
+                });
+                let markerFound = L.icon({ // Définition de l'icon " trouvé " ainsi que ses dimmenssions
+                    iconUrl: "assets/img/icons/marker-found.png",
+                    iconSize: [50, 50],
+                    iconAnchor: [25, 50],
+                    popupAnchor: [-3, -76],
+                });
+
+
+                if (mapData[reporting].lost == 1) {// Si le signalement est une "perte" 
+                    let marker = L.marker([mapData[reporting].lat, mapData[reporting].lon], { icon: markerLost }).addTo(petMap);
+                    let popup = L.popup().setContent('<img src="assets/img/pet/' + mapData[reporting].img_pet + '" class="pop_up_img"> <hr> <a href="?p=pet_profil">Voir en détail</a>');
+                    marker.bindPopup(popup);
+                }
+                else { // Sinon c'est un type "trouvé"
+                    let marker = L.marker([mapData[reporting].lat, mapData[reporting].lon], { icon: markerFound }).addTo(petMap);
+                    let popup = L.popup().setContent('<img src="assets/img/pet/' + mapData[reporting].img_pet + '" class="pop_up_img"> <hr> <a href="?p=pet_profil">Voir en détail</a>');
+                    marker.bindPopup(popup);
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
         });
-        let markerFound = L.icon({
-            iconUrl: "assets/img/icons/marker-found.png",
-            iconSize: [50, 50],
-            iconAnchor: [25, 50],
-            popupAnchor: [-3, -76],
-        });
-        let marker = L.marker([villes[ville].lat, villes[ville].lon], { icon: markerLost }).addTo(petMap);
-        marker.bindPopup(ville);
-    }
 }
 
 window.onload = function () {
