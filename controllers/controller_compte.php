@@ -23,12 +23,15 @@
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
             // On vérifie qu'il soit conforme
             if(passVerify($_POST['email'], hash_hmac('sha256', $_POST['password'], 'path')) == true){
-                if(loginUser($_POST['email']) == true){
+                $uInfo = loginUser($_POST['email']);
+                if($uInfo != false){
                     if(isset($_POST['steelconnect']) && $_POST['steelconnect'] == 'on'){
                         setcookie("connected", 'true', time()+60*60*24*30); // On fait un cookie valable 1 mois
+                        setcookie("id_user", $uInfo["id_user"], time()+60*60*24*30); // On stock l'id de l'user pendant 1 mois
                     }
                     else {
                         $_SESSION["connected"] = 'true';
+                        setcookie("id_user", $uInfo["id_user"], time()+60*60*24*30); // On stock l'id de l'user pendant 1 mois
                     }
                     if($_GET['p'] == 'perdu'){ // Si l'utilisateur vient pour la page "perdu"
                         require 'controllers/controller_perdu.php';

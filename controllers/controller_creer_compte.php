@@ -9,8 +9,8 @@
     }
     else{
         /* ENREGISTREMENT DE COMPTE */
-        // Si un fichier a été upload
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Si un formulaire a été transmit
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['profil-Pic'])) {
             // On vérifie qu'il soit conforme
             if(imgSecure(pathinfo($_FILES['profil-Pic']['name']), $_FILES['profil-Pic']['size']) == true){
                 // On enregistre les variables dans la base de données
@@ -29,17 +29,6 @@
         }
         else{
             require 'views/caccount.php';// Affichage du formulaire de création de compte
-        }
-    }
-
-    /* Fonction pour vérifier l'extension du fichier transmis */
-    function imgSecure($img, $imgSize){
-        $extension = $img['extension'];
-        if(($extension == 'JPG' || $extension == 'JPEG' || $extension == 'PNG' || $extension == 'jpg' || $extension == 'jpeg' || $extension == 'png') && $imgSize <= 56000000){
-            return true;
-        }
-        else{
-            return false;
         }
     }
 ?>

@@ -1,6 +1,8 @@
 const form = document.getElementById('formV');
 form.addEventListener('submit', checkForm);
+let selectSpicies = document.getElementById('spicies');
 
+/* VERIFICATION DU FORMULAIRE */
 function checkForm(e) {
     let valid = true;
     let ariraDetails = document.getElementById('buttonSubmitForm').getAttribute('aria-details');
@@ -43,10 +45,9 @@ function checkForm(e) {
                 alert('modify');
                 break;
             case "lost":
-                alert('lost');
+                confirm('Vous êtes sûr de vos informations ?');
                 break;
             case "found":
-                alert('found');
                 break;
             case "passlost":
                 alert('Mot de passe modifié avec succès.');
@@ -56,4 +57,24 @@ function checkForm(e) {
                 break;
         }
     }
+}
+
+/* CHANGEMENT D'ESPECE DANS LE FORMULAIRE QUI CONCERNE LES ANIMAUX */
+/* Quand l'user clique sur une espèce */
+selectSpicies.addEventListener('change', (event) => {
+    refreshRaceListForm(selectSpicies.value);
+});
+
+/* Fonction qui met à jour la liste des races en fonction du boutton espèce selectionné */
+function refreshRaceListForm(id) {
+    const selectRace = document.getElementById('race');
+    for (let i = 0; i < selectRace.children.length; i++) {
+        selectRace.children[i].style.cssText = 'display: none !important';
+    }
+
+    let spiciesID = document.querySelectorAll('.st' + id);
+    spiciesID.forEach(spicies => {
+        spicies.style.cssText = 'display: block !important';
+    });
+    selectRace.value = "";
 }

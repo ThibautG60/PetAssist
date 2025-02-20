@@ -22,4 +22,14 @@ function connectToDB($role){
         die();
     }
 }
+/* Fonction pour vérifier l'extension du fichier transmis */
+function imgSecure($img, $imgSize){
+    $extension = $img['extension'];
+    if(($extension == 'JPG' || $extension == 'JPEG' || $extension == 'PNG' || $extension == 'jpg' || $extension == 'jpeg' || $extension == 'png') && $imgSize <= 56000000){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 ?>

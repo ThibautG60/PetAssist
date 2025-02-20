@@ -37,8 +37,8 @@ function loginUser($mail) {
         $query = $db -> prepare($queryText);
         $query->bindParam(':mail', $mail, PDO::PARAM_STR);
         $query->execute();
-        $query -> fetch(PDO::FETCH_ASSOC);
-        return true;
+        $infoAccount = $query -> fetch(PDO::FETCH_ASSOC);
+        return $infoAccount;
     } catch(PDOException $e) {
         echo "Erreur lors de la récupération de l'utilisateur : " . $e->getMessage();
         return false;
@@ -48,6 +48,7 @@ function loginUser($mail) {
 /* Fonction pour déconnecter un utilisateur */ 
 function disconnectUser() {
     setcookie("connected", 'false', -1); // On créé un cookie avec un timer négatif pour supprimer le cookie
+    setcookie("id_user", 'false', -1); // On créé un cookie avec un timer négatif pour supprimer le cookie
     $_SESSION["connected"] = 'false'; // On passe la variable SESSION connected à false pour infiquer que l'user n'est plus connecté
     return true;
 }
