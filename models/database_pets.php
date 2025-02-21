@@ -36,7 +36,7 @@ function registerPet($lost, $pet_name, $male, $color, $waist, $age, $puce, $phys
         return false;
     }
 }
-/* Récupération de toutes les infos sur un animal */
+/* Récupération de toutes les infos de la base path_pets */
 function getAllPetInfo(){
     $db = connectToDB("reader");
     $queryText = "SELECT * FROM path_pets";// On récupère toutes les informations

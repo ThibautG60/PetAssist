@@ -22,6 +22,23 @@ function connectToDB($role){
         die();
     }
 }
+
+/* Récupération de tous les témoignages */
+function getAllTestimony(){
+    $db = connectToDB("reader");
+    $queryText = "SELECT * FROM path_pets WHERE `testimony_text` IS NOT NULL";// On récupère tous les témoignages
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> execute();
+        $result = $query -> fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération des données des témoignages. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
 /* Fonction pour vérifier l'extension du fichier transmis */
 function imgSecure($img, $imgSize){
     $extension = $img['extension'];

@@ -69,24 +69,32 @@
                 <div class="carousel-inner">
                 <?php
                 //- Génération de la liste pour le carousselle
-                if (isset($jsonData)) {
-                    global $jsonData; // Variable des données
+                $pInfo = getAllPetInfo();
+                if ($pInfo != false) {
                     $i = 0;
 
-                    foreach($jsonData['petlist'] as $pet){
-                        if($i == 0){
-                            echo '<div class="carousel-item active">';
-                        }
-                        else {
-                            echo '<div class="carousel-item">';
-                        }
-                            echo '<img src="assets/img/pet/' . $pet['petImg']. '" class="d-block" alt="Image animal">';
+                    foreach($pInfo as $pet){
+                        if($pet['resolved'] == 0){
+                            if($i > 5)break;
+                            if($i == 0){
+                                echo '<div class="carousel-item active">';
+                            }
+                            else {
+                                echo '<div class="carousel-item">';
+                            }
+                            echo '<img src="assets/img/pet/' . $pet['img_pet']. '" class="d-block" alt="Image animal">';
                             echo '<div class="carousel-caption">';
-                            echo '<h5>Nom: ' .$pet['petName']. '</h5>';
-                            echo '<p>Espèce: ' .$pet['petSpicies']. '<br>Race: ' .$pet['petRace']. '<br>Sexe: ' .$pet['petSex']. '<br>Date: ' .$pet['petDate']. '<br>Lieu: ' .$pet['petAdress']. '</p>';
+                            if($pet['pet_name'] != "")echo '<h5>Nom: ' .$pet['pet_name']. '</h5>';
+                            else {
+                                if($pet['lost'] == 1)echo '<h5>Animal perdu</h5>';
+                                else echo '<h5>Animal trouvé</h5>';
+                            }
+                            if($pet['male'] == 1)echo '<p>Espèce: ' .getSpiciesName($pet['id_spicies'])['spicies']. '<br>Race: ' .getRaceName($pet['id_race'])['race']. '<br>Sexe: Mâle<br>Date: ' .$pet['_date']. '<br>Lieu: ' .$pet['adress']. '</p>';
+                            else echo '<p>Espèce: ' .getSpiciesName($pet['id_spicies'])['spicies']. '<br>Race: ' .getRaceName($pet['id_race'])['race']. '<br>Sexe: Femelle<br>Date: ' .$pet['_date']. '<br>Lieu: ' .$pet['adress']. '</p>';
                             echo '</div>';
                             echo '</div>';
                             $i++;
+                        }
                     }     
                 }    
                 ?>

@@ -36,6 +36,7 @@ spiciesID.forEach(spicies => {
         else {
             hideRace(spicies.id);
         }
+        refreshRaceList();
         spieciesChecked();
         refreshList("spicies");
     });

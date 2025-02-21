@@ -56,9 +56,9 @@
                                     <?php // Affichage de toutes les espèces à partir de la bdd
                                         foreach(getAllSpicies() as $data){
                                             echo '<li class="list-group-item">';
-                                                echo '<input class="form-check-input me-1 spicies" type="checkbox" value="'.$data['id_spicies'].'" id="'.$data['spicies'].'">';
+                                                echo '<input class="form-check-input me-1 spicies" type="checkbox" value="'.$data['id_spicies'].'" id="'.$data['id_spicies'].'">';
                                                 echo '<label class="form-check-label stretched-link"';
-                                                echo 'for="'.$data['spicies'].'">'.$data['spicies'].'</label>';
+                                                echo 'for="'.$data['id_spicies'].'">'.$data['spicies'].'</label>';
                                             echo '</li>';
                                         }
                                     ?>
