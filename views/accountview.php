@@ -36,61 +36,43 @@
         <section class="body-box">
             <div class="body-head-box">
                 <div class="f100 only-tabphone icon-admin-box">
-                    <h1 class="articletitle">Marie</h1>
-                </div>
-                <div class="f100 tabmediacut icon-admin-box">
-                    <h1 class="articletitle">Les signalements de Marie</h1>
+                    <?php echo '<h1 class="articletitle">'.$uInfo['pseudo'].'</h1>' ?>
                 </div>
                 <div class="linec"></div>
-                <div class="description f100">Voici tous les signalements de Marie. Vous pouvez retrouver tout ses avis
-                    de
-                    recherche, ses signalements et vous pouvez également la contacter.</div>
+                <?php echo '<div class="description f100">Voici tous les signalements de '.$uInfo['pseudo'].'. Vous pouvez retrouver tout ses avis de recherche, ses signalements et vous pouvez également la contacter.</div>' ?>
+
             </div>
             <div class="info-profil-img">
-                <img src="assets/img/profil/profpic2.jfif" alt="Photo de profil" id="profil-pic">
+                <?php echo '<img src="assets/img/profil/'.$uInfo['img_profil'].'" alt="Photo de profil" id="profil-pic">'; ?>
                 <button class="btn btn-primary msg-button">Envoyer
                     un message</button>
             </div>
             <div class="body-info-box">
-                <h2 class="articletitle only-tabphone f100">Les signalements de Marie</h2>
+                <?php echo '<h2 class="articletitle only-tabphone f100">Les signalements de '.$uInfo['pseudo'].'</h2>'; ?>
                 <div class="linec only-tabphone"></div>
                 <div class="list">
                 <?php
                     //- Génération de la liste
-                    $file = 'assets/data/data.json';
-                    
-                    if (file_exists($file)) {
-                        $jsonData = json_decode(file_get_contents($file), true);
-                        
-                        $i = 0;//A enlever lors du passage en BDD
+                    $petInfo = getUserPetInfo($uInfo['id_user']);
+                    if($petInfo != false){     
+                        foreach($petInfo as $pet){
+                            if($pet['lost'] != 1)echo '<div class="card-pet box-found">';
+                            else echo '<div class="card-pet box-lost">';
+                            echo '<a href="?p=pet_profil&id='.$pet['id_pet'].'" title="Voir le signalement en détail"><img src="assets/img/pet/' . $pet['img_pet'] . '" alt="Photo de l\'animal" class="img-pet"></a>';
+                            echo '<div class="card-body">';
+                                if($pet['pet_name'] != "")echo '<p class="card-title">' . $pet['pet_name'] . '</p>';
+                                else echo '<p class="card-title">' . getRaceName($pet['id_race'])['race'] . '</p>';
 
-                        foreach($jsonData['petlist'] as $data){
-                            if($i < 2){//A enlever lors du passage en BDD
-                                if($data['signalType'] == 'found'){
-                                    echo '<div class="card-pet box-found">';
-                                } else {
-                                    echo '<div class="card-pet box-lost">';
-                                }
-                                    echo '<a href="petprofil.php" title="Voir le signalement en détail"><img src="assets/img/pet/' . $data['petImg'] . '" alt="Photo de l\'animal" class="img-pet"></a>';
-                                    echo '<div class="card-body">';
-                                        echo '<p class="card-title">' . $data['petName'] . '</p>';
-                                        if($data['signalType'] == 'found'){
-                                            echo '<div class="line-found"></div>';
-                                        } else {
-                                            echo '<div class="line-lost"></div>';
-                                        }
-                                        echo '<p class="card-text">Espèce: ' . $data['petSpicies'] . '<br>Race: ' . $data['petRace'] . '<br>Lieu: ' . $data['petAdress'] . '<br>Date: ' . $data['petDate'] . '</p>';
-                                    echo '</div>';
-                                echo '</div>';
-                            }
-                            else {//A enlever lors du passage en BDD
-                                break;//A enlever lors du passage en BDD
-                            }
-                            $i++;//A enlever lors du passage en BDD
+                                if($pet['lost'] != 1)echo '<div class="line-found"></div>';
+                                else echo '<div class="line-lost"></div>';
+                                
+                                echo '<p class="card-text">Espèce: ' . getSpiciesName($pet['id_spicies'])['spicies'] . '<br>Race: ' .getRaceName($pet['id_race'])['race']. '<br>Lieu: ' .$pet['adress']. '<br>Date: ' .$pet['_date']. '</p>';
+                            echo '</div>';
+                            echo '</div>';
                         }
                     }
-                    else {
-                        echo '<p class="description">Aucun résultat trouvé</p>';
+                    else{
+                        echo '<p class="description">Aucun signalement trouvé</p>';
                     }
                     ?>
                 </div>

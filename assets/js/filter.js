@@ -1,11 +1,15 @@
 let mediaMT = window.matchMedia("(max-width: 1023px)");// Pour les dimmensions Mobile et Tablette
 let divAccordion = document.getElementById("accordionResp");// Filtres
 let spiciesID = document.querySelectorAll('.spicies');
+let cards = document.querySelectorAll('.card-pet');
+let raceID = document.querySelectorAll('.race');
+const pResultNoFound = document.getElementById('result_no_found');
 
 /* Quand la fenêtre a fini de se charger */
 window.addEventListener('load', function () {
     drawFilter();
     refreshRaceList();
+    pResultNoFound.style.display = "none";
 });
 
 /* Quand la fenêtre change de dimmension */
@@ -32,9 +36,54 @@ spiciesID.forEach(spicies => {
         else {
             hideRace(spicies.id);
         }
+        spieciesChecked();
+        refreshList("spicies");
     });
-    spieciesChecked();
 });
+
+/* Quand l'user clique sur une race */
+raceID.forEach(race => {
+    race.addEventListener('click', (event) => { // On cherche sur quel boutton il a cliqué
+        refreshList("race");
+    });
+});
+
+/* Fonction qui refresh la liste avec les bons filtres */
+function refreshList(filterType) {
+    pResultNoFound.style.display = "block";
+    let resultFound = false;
+    cards.forEach(card => {
+        if (filterType == "spicies") {
+            spiciesID.forEach(spicies => {
+                if (spicies.value == card.getAttribute("data-spicies")) {
+                    if (spicies.checked == true) {
+                        resultFound = true;
+                        card.style.cssText = 'display: block !important';
+                    }
+                    else {
+                        card.style.cssText = 'display: none !important';
+                    }
+                }
+            });
+        }
+        else if (filterType == "race") {
+            raceID.forEach(race => {
+                if (race.value == card.getAttribute("data-race")) {
+                    if (race.checked == true) {
+                        resultFound = true;
+                        card.style.cssText = 'display: block !important';
+                    }
+                    else {
+                        card.style.cssText = 'display: none !important';
+                    }
+                }
+            });
+        }
+    });
+    if (resultFound == true) {
+        pResultNoFound.style.display = "none";
+    }
+}
 
 /* Fonction qui met à jour la liste des races en fonction du boutton espèce checké (Appelé à la fin du chargement du script) */
 function refreshRaceList() {

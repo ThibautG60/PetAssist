@@ -36,20 +36,52 @@ function registerPet($lost, $pet_name, $male, $color, $waist, $age, $puce, $phys
         return false;
     }
 }
+/* Récupération de toutes les infos sur un animal */
+function getAllPetInfo(){
+    $db = connectToDB("reader");
+    $queryText = "SELECT * FROM path_pets";// On récupère toutes les informations
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> execute();
+        $result = $query -> fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération des données de la liste des animaux. CODE: " . $e->getMessage();
+        return false;
+    }
+}
 
 /* Récupération de toutes les infos sur un animal */
-function getPetInfo(){
+function getPetInfo($id){
     $db = connectToDB("reader");
     $queryText = "SELECT * FROM path_pets WHERE `id_pet` = :id_pet";// On récupère toutes les informations
 
     try {
         $query = $db -> prepare($queryText);
-        $query -> bindValue(':id_pet', $_GET['id']);
+        $query -> bindValue(':id_pet', $id);
         $query -> execute();
         $result = $query -> fetch(PDO::FETCH_ASSOC);
         return $result;
     } catch(PDOException $e) {
         echo "Erreur lors de la récupération des données d'un animal. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
+/* Récupération de toutes les infos sur les animaux d'un tilisateur */
+function getUserPetInfo($id_user){
+    $db = connectToDB("reader");
+    $queryText = "SELECT * FROM path_pets WHERE `id_user` = :id_user";// On récupère toutes les informations
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_user', $id_user);
+        $query -> execute();
+        $result = $query -> fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération des données des animaux d'un utilisateur. CODE: " . $e->getMessage();
         return false;
     }
 }

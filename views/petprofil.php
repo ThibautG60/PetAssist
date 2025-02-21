@@ -101,7 +101,7 @@
                     $uInfo = getUserImg($pInfo['id_user']);
                     if($uInfo != false){
                         echo '<img src="assets/img/profil/'.$uInfo['img_profil'].'" alt="Photo du profil" id="little-profil-pic">';
-                        echo '<a href="?p=vcompte" id="profil-link">'.$uInfo['pseudo'].'</a>';
+                        echo '<a href="?p=vcompte&id='.$pInfo['id_user'].'" id="profil-link">'.$uInfo['pseudo'].'</a>';
                     }
                     ?>
                 </div>

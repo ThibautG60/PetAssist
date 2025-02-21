@@ -56,9 +56,9 @@
                                     <?php // Affichage de toutes les espèces à partir de la bdd
                                         foreach(getAllSpicies() as $data){
                                             echo '<li class="list-group-item">';
-                                                echo '<input class="form-check-input me-1 spicies" type="checkbox" value="'.$data['spicies'].'" id="'.$data['id_spicies'].'">';
+                                                echo '<input class="form-check-input me-1 spicies" type="checkbox" value="'.$data['id_spicies'].'" id="'.$data['spicies'].'">';
                                                 echo '<label class="form-check-label stretched-link"';
-                                                echo 'for="'.$data['id_spicies'].'">'.$data['spicies'].'</label>';
+                                                echo 'for="'.$data['spicies'].'">'.$data['spicies'].'</label>';
                                             echo '</li>';
                                         }
                                     ?>
@@ -81,7 +81,7 @@
                                         <?php
                                         foreach(getAllRaces() as $data){
                                             echo '<li class="list-group-item st'.$data['id_spicies'].'">';
-                                                echo '<input class="form-check-input me-1" type="checkbox" value="'.$data['race'].'" id="'.$data['race'].'">';
+                                                echo '<input class="form-check-input me-1 race" type="checkbox" value="'.$data['id_race'].'" id="'.$data['race'].'">';
                                                 echo '<label class="form-check-label stretched-link"';
                                                 echo 'for="'.$data['race'].'">'.$data['race'].'</label>';
                                             echo '</li>';
@@ -169,30 +169,27 @@
                 <div class="list">
                     <?php
                     //- Génération de la liste
-                    if (isset($jsonData)) {
-                        global $jsonData; // Variable des données
-            
-                        foreach($jsonData['petlist'] as $data){
-                            if($data['signalType'] == 'found'){
-                                echo '<div class="card-pet box-found">';
-                            } else {
-                                echo '<div class="card-pet box-lost">';
-                            }
-                                echo '<a href="?p=pet_profil" title="Voir le signalement en détail"><img src="assets/img/pet/' . $data['petImg'] . '" alt="Photo de l\'animal" class="img-pet"></a>';
-                                echo '<div class="card-body">';
-                                    echo '<p class="card-title">' . $data['petName'] . '</p>';
-                                    if($data['signalType'] == 'found'){
-                                        echo '<div class="line-found"></div>';
-                                    } else {
-                                        echo '<div class="line-lost"></div>';
-                                    }
-                                    echo '<p class="card-text">Espèce: ' . $data['petSpicies'] . '<br>Race: ' . $data['petRace'] . '<br>Lieu: ' . $data['petAdress'] . '<br>Date: ' . $data['petDate'] . '</p>';
-                                echo '</div>';
+                    $petInfo = getAllPetInfo();
+                    if($petInfo != false){     
+                        foreach($petInfo as $pet){
+                            if($pet['lost'] != 1)echo '<div class="card-pet box-found" data-spicies="'.$pet['id_spicies'].'" data-race="'.$pet['id_race'].'" data-date="'.$pet['_date'].'">';
+                            else echo '<div class="card-pet box-lost" data-spicies="'.$pet['id_spicies'].'" data-race="'.$pet['id_race'].'" data-date="'.$pet['_date'].'>';
+                            echo '<a href="?p=pet_profil&id='.$pet['id_pet'].'" title="Voir le signalement en détail"><img src="assets/img/pet/' . $pet['img_pet'] . '" alt="Photo de l\'animal" class="img-pet"></a>';
+                            echo '<div class="card-body">';
+                                if($pet['pet_name'] != "")echo '<p class="card-title">' . $pet['pet_name'] . '</p>';
+                                else echo '<p class="card-title">' . getRaceName($pet['id_race'])['race'] . '</p>';
+
+                                if($pet['lost'] != 1)echo '<div class="line-found"></div>';
+                                else echo '<div class="line-lost"></div>';
+                                
+                                echo '<p class="card-text">Espèce: ' . getSpiciesName($pet['id_spicies'])['spicies'] . '<br>Race: ' .getRaceName($pet['id_race'])['race']. '<br>Lieu: ' .$pet['adress']. '<br>Date: ' .$pet['_date']. '</p>';
+                            echo '</div>';
                             echo '</div>';
                         }
+                        echo '<p class="description" id="result_no_found">Aucun signalement trouvé</p>';
                     }
-                    else {
-                        echo '<p class="description">Aucun résultat trouvé</p>';
+                    else{
+                        echo '<p class="description">Aucun signalement trouvé</p>';
                     }
                     ?>
                 </div>

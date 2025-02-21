@@ -45,6 +45,23 @@ function loginUser($mail) {
     }
 }
 
+/* Récupération de toutes les infos sur l'utilisateur */
+function getUserInfo($id){
+    $db = connectToDB("reader");
+    $queryText = "SELECT * FROM path_users WHERE `id_user` = :id_user";// On récupère toutes les informations
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_user', $id);
+        $query -> execute();
+        $result = $query -> fetch(PDO::FETCH_ASSOC);
+        return $result;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération des données d'un utilisateur. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
 /* Fonction pour déconnecter un utilisateur */ 
 function disconnectUser() {
     setcookie("connected", 'false', -1); // On créé un cookie avec un timer négatif pour supprimer le cookie
