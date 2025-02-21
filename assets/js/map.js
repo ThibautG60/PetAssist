@@ -38,12 +38,14 @@ function initMap() {
 
                 if (mapData[reporting].lost == 1) {// Si le signalement est une "perte" 
                     let marker = L.marker([mapData[reporting].lat, mapData[reporting].lon], { icon: markerLost }).addTo(petMap);
-                    let popup = L.popup().setContent('<img src="assets/img/pet/' + mapData[reporting].img_pet + '" class="pop_up_img"> <hr> <a href="?p=pet_profil">Voir en détail</a>');
+                    let contentPopup = '<img src="assets/img/pet/' + mapData[reporting].img_pet + '" class="pop_up_img"> <p class="lost_pop">Animal perdu à cet endroit</p> <hr> <p>Disparu le: ' + mapData[reporting]._date + ' à ' + mapData[reporting]._time + '</p> <a href="?p=pet_profil&id=' + mapData[reporting].id_pet + '">Voir en détail</a>';
+                    let popup = L.popup().setContent(contentPopup);
                     marker.bindPopup(popup);
                 }
                 else { // Sinon c'est un type "trouvé"
                     let marker = L.marker([mapData[reporting].lat, mapData[reporting].lon], { icon: markerFound }).addTo(petMap);
-                    let popup = L.popup().setContent('<img src="assets/img/pet/' + mapData[reporting].img_pet + '" class="pop_up_img"> <hr> <a href="?p=pet_profil">Voir en détail</a>');
+                    let contentPopup = '<img src="assets/img/pet/' + mapData[reporting].img_pet + '" class="pop_up_img"> <p class="found_pop" >Animal aperçu à cet endroit</p> <hr> <p>Repéré le: ' + mapData[reporting]._date + ' à ' + mapData[reporting]._time + '</p>  <a href="?p=pet_profil&id=' + mapData[reporting].id_pet + '">Voir en détail</a>';
+                    let popup = L.popup().setContent(contentPopup);
                     marker.bindPopup(popup);
                 }
             }

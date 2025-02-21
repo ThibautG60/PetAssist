@@ -1,9 +1,9 @@
 <?php
 /* Fonction pour créer un nouveau signalement */ 
-function registerPet($lost, $pet_name, $male, $color, $waist, $age, $puce, $physic, $behaviour, $img, $imgTmp, $adress, $coords, $date, $time, $id_race, $id_user) {
+function registerPet($lost, $pet_name, $male, $color, $waist, $age, $puce, $physic, $behaviour, $img, $imgTmp, $adress, $coords, $date, $time, $id_race, $id_spicies, $id_user) {
     $db = connectToDB("user");
-    $queryText = "INSERT INTO path_pets (`lost`, `pet_name`, `male`, `color`, `waist`, `age`, `puce`, `physic`, `behaviour`, `img_pet`, `adress`, `lat`, `lon`, `_date`, `_time`, `id_race`, `id_user`) 
-    VALUES (:lost, :pet_name, :male, :color, :waist, :age, :puce, :physic, :behaviour, :img_pet, :adress, :lat, :lon, :_date, :_time, :id_race, :id_user)";
+    $queryText = "INSERT INTO path_pets (`lost`, `pet_name`, `male`, `color`, `waist`, `age`, `puce`, `physic`, `behaviour`, `img_pet`, `adress`, `lat`, `lon`, `_date`, `_time`, `id_race`, `id_spicies`, `id_user`) 
+    VALUES (:lost, :pet_name, :male, :color, :waist, :age, :puce, :physic, :behaviour, :img_pet, :adress, :lat, :lon, :_date, :_time, :id_race, :id_spicies, :id_user)";
     try {
         $pet_id = rand(1, 10000000000);
         $fileName =  $pet_id .'.'. $img['extension'];
@@ -27,11 +27,29 @@ function registerPet($lost, $pet_name, $male, $color, $waist, $age, $puce, $phys
         $query -> bindParam(':_date', $date, PDO::PARAM_STR);
         $query -> bindParam(':_time', $time, PDO::PARAM_STR);
         $query -> bindParam(':id_race', $id_race, PDO::PARAM_INT);
+        $query -> bindParam(':id_spicies', $id_spicies, PDO::PARAM_INT);
         $query -> bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $query -> execute();
         return true;
     } catch(PDOException $e) {
         echo "Erreur lors de la création du signalement : " . $e->getMessage();
+        return false;
+    }
+}
+
+/* Récupération de toutes les infos sur un animal */
+function getPetInfo(){
+    $db = connectToDB("reader");
+    $queryText = "SELECT * FROM path_pets WHERE `id_pet` = :id_pet";// On récupère toutes les informations
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_pet', $_GET['id']);
+        $query -> execute();
+        $result = $query -> fetch(PDO::FETCH_ASSOC);
+        return $result;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération des données d'un animal. CODE: " . $e->getMessage();
         return false;
     }
 }
@@ -51,6 +69,23 @@ function getAllSpicies(){
     }
 }
 
+/* Récupère le nom d'une espèce */
+function getSpiciesName($id_spicies){
+    $db = connectToDB("reader");
+    $queryText = 'SELECT `spicies` FROM path_pet_spicies WHERE `id_spicies` = :id_spicies';
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_spicies', $id_spicies);
+        $query -> execute();
+        $result = $query -> fetch(PDO::FETCH_ASSOC);
+        return $result;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la génération du nom d'une espèce. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
 /* Récupération de toutes les races */
 function getAllRaces(){
     $db = connectToDB("reader");
@@ -65,6 +100,24 @@ function getAllRaces(){
         return false;
     }
 }
+
+/* Récupère le nom d'une race */
+function getRaceName($id_race){
+    $db = connectToDB("reader");
+    $queryText = 'SELECT `race` FROM path_pet_race WHERE `id_race` = :id_race';
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_race', $id_race);
+        $query -> execute();
+        $result = $query -> fetch(PDO::FETCH_ASSOC);
+        return $result;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la génération du nom d'une espèce. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
 
 /* Récupération des données GPS à partir d'une adresse */
 function getCoords($adress){

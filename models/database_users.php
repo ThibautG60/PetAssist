@@ -82,4 +82,21 @@ function userConnected() {
         return false;
     }
 }
+
+/* Fonction pour récupérer le pseudo et l'image de la personne */
+function getUserImg($id_user){
+    $db = connectToDB("reader");
+    $queryText = "SELECT `pseudo`, `img_profil` FROM path_users WHERE `id_user` = :id_user";
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $query->execute();
+        $infoAccount = $query -> fetch(PDO::FETCH_ASSOC);
+        return $infoAccount;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération de l'image de l'utilisateur : " . $e->getMessage();
+        return false;
+    }
+}
 ?>

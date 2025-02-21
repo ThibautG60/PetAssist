@@ -1,8 +1,29 @@
+/* Carte intéractive */
 #map {
     height: 70vh;
 }
 
+/* Image dans le pop-up */
 .pop_up_img {
-    width: 40vw;
+    width: 15rem;
+    margin: auto;
     object-fit: contain;
+}
+
+/* Texte dans les pop-up "perdu" */
+.lost_pop {
+    color: #A81017;
+    text-align: center;
+    font-size: medium;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Texte dans les pop-up "trouvé" */
+.found_pop {
+    color: #0D603A;
+    text-align: center;
+    font-size: medium;
+    text-transform: uppercase;
+    font-weight: bold;
 }

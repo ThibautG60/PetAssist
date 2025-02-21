@@ -6,6 +6,17 @@
     margin-bottom: 3%;
 }
 
+/* Message quand un signalement est résolu */
+#resolved {
+    margin: 5% auto auto auto;
+    position: absolute;
+    rotate: 45deg;
+    font-size: 5rem;
+    font-weight: bold;
+    color: green;
+    z-index: 1;
+}
+
 .accountarea {
     margin: 4% auto 4% auto;
     display: flex;

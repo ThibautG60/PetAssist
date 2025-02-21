@@ -8,7 +8,7 @@
     if(userConnected() == true){
         /* ENREGISTREMENT DE COMPTE */
         // Si un formulaire a été transmit
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pet-pic'])) {
             try {
                 if(imgSecure(pathinfo($_FILES['pet-pic']['name']), $_FILES['pet-pic']['size']) == true){
                     // On enregistre les variables dans la base de données
@@ -19,7 +19,7 @@
                     $_POST['pet-comport'], pathinfo($_FILES['pet-pic']['name']), 
                     $_FILES['pet-pic']['tmp_name'], $_POST['pet-adress'],
                     getCoords($_POST['pet-adress']), $_POST['pet-date'],
-                    $_POST['pet-time'], $_POST['race'], $_COOKIE["id_user"]) == true){
+                    $_POST['pet-time'], $_POST['race'], $_POST['spicies'], $_COOKIE["id_user"]) == true){
                         require 'controller_index.php';// Affichage de l'acceuil
                         notifGenerator('success', 'C\'EST NOTE !', 'Nous avons bien enregistré votre signalement.');
                     }

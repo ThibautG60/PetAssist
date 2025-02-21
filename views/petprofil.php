@@ -35,40 +35,75 @@
         <section class="body-box">
             <div class="body-head-box">
                 <div class="f100 icon-admin-box">
-                    <h1 class="articletitle">Kiwi</h1>
+                    <?php 
+                    if($pInfo['pet_name'] != ""){
+                        echo '<h1 class="articletitle">'.$pInfo['pet_name'].'</h1>';
+                    }
+                    else{
+                        $result = getRaceName($pInfo['id_race']);
+                        if($pInfo['lost'] == 1)echo '<h1 class="articletitle">'.$result['race'].' perdu</h1>';
+                        else echo '<h1 class="articletitle">'.$result['race'].' trouvé</h1>';
+                    }
+                    ?>        
                 </div>
                 <div class="lineb"></div>
-                <p class="description f100">Cliquez sur le nom du profil du propriétaire pour accéder à son profil.
-                    <br>Voici les informations détaillées à propos de Kiwi:
-                </p>
+                <?php 
+                if($pInfo['pet_name'] != ""){
+                    echo '<p class="description f100">Cliquez sur le nom du profil du propriétaire pour accéder à son profil.<br>Voici les informations détaillées à propos de '.$pInfo['pet_name'].':</p>';
+                }
+                else{
+                    echo '<p class="description f100">Cliquez sur le nom du profil du propriétaire pour accéder à son profil.<br>Voici les informations détaillées à propos de l\'animal:</p>';
+                }
+                ?>
             </div>
             <div class="info-profil-img">
-                <img src="assets/img/pet/cat1.jpg" alt="Photo de l'animal" id="profil-pic">
+                <?php 
+                echo '<img src="assets/img/pet/'.$pInfo['img_pet'].'" alt="Photo de l\'animal" id="profil-pic">';
+                if($pInfo['resolved'] == 1)echo '<div id="resolved">RESOLU !</div>';
+                ?>
                 <button class="btn btn-primary msg-button">J’ai des informations !
                     (Contacter le propriétaire)</button>
             </div>
             <div class="body-info-box">
                 <h2>Informations sur l'animal:</h2>
                 <ul class="text-list f100">
-                    <li><b>Espèce:</b> Chat</li>
-                    <li><b>Race:</b> Sacré de birmanie</li>
-                    <li><b>Sexe:</b> Male</li>
-                    <li><b>Couleur(s):</b> /</li>
-                    <li><b>Taille:</b> Moyenne</li>
-                    <li><b>Particularités physiques:</b> /</li>
-                    <li><b>Comportement observé :</b> /</li>
-                    <li><b>Âge:</b> /</li>
+                    <?php
+                    $result = getSpiciesName($pInfo['id_spicies']);
+                    if($result != false)echo '<li><b>Espèce:</b> ' .$result['spicies']. '</li>';
+                    else echo '<li><b>Espèce:</b> / </li>';
+                    $result = getRaceName($pInfo['id_race']);
+                    if($result != false)echo '<li><b>Race:</b> ' .$result['race']. '</li>';
+                    else echo '<li><b>Race:</b> / </li>';
+                    if($pInfo['male'] == 1)echo '<li><b>Sexe:</b> Mâle</li>';
+                    else echo '<li><b>Sexe:</b> Femelle</li>';
+                    echo '<li><b>Couleurs(s):</b> ' .$pInfo['color']. '</li>';
+                    if($pInfo['waist'] != "")echo '<li><b>Taille:</b> '.$pInfo['waist'].'</li>';
+                    else echo '<li><b>Taille:</b> /</li>';
+                    if($pInfo['physic'] != "")echo '<li><b>Particularités physiques:</b> '.$pInfo['physic'].'</li>';
+                    else echo '<li><b>Particularités physiques:</b> /</li>';
+                    if($pInfo['behaviour'] != "")echo '<li><b>Comportement observé:</b> '.$pInfo['behaviour'].'</li>';
+                    else echo '<li><b>Comportement observé:</b> /</li>';
+                    if($pInfo['age'] != 0)echo '<li><b>Âge approximatif:</b> '.$pInfo['age'].'</li>';
+                    else echo '<li><b>Âge approximatif:</b> /</li>';
+                    ?>
                 </ul>
                 <h2>Informations sur le dernier signalement:</h2>
                 <ul class="text-list f100">
-                    <li><b>Adresse ou zone approximative:</b> Rodemack - Rue Bernard III de Bade</li>
-                    <li><b>Date de la disparition: </b> 25 Novembre 2024</li>
-                    <li><b>Heure de la disparition:</b> 15H12</li>
+                    <?php
+                    echo '<li><b>Adresse ou zone approximative:</b> '. $pInfo['adress'] . '</li>';
+                    echo '<li><b>Date de la disparition: </b> '. $pInfo['_date'] . '</li>';
+                    echo '<li><b>Heure de la disparition:</b> '. $pInfo['_time'] . '</li>';
+                    ?>
                 </ul>
                 <h2>Profil du propriétaire:</h2>
                 <div class="info-profil f100">
-                    <img src="assets/img/profil/profpic5.jfif" alt="Photo du profil" id="little-profil-pic">
-                    <a href="?p=vcompte" id="profil-link">Lucie</a>
+                    <?php
+                    $uInfo = getUserImg($pInfo['id_user']);
+                    if($uInfo != false){
+                        echo '<img src="assets/img/profil/'.$uInfo['img_profil'].'" alt="Photo du profil" id="little-profil-pic">';
+                        echo '<a href="?p=vcompte" id="profil-link">'.$uInfo['pseudo'].'</a>';
+                    }
+                    ?>
                 </div>
             </div>
             <dialog class="msg-box" id="msg-dial">
