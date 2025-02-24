@@ -9,7 +9,8 @@
     <meta name="author" content="Thibaut GERARD">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/iconsite.png" />
-    <title>Pet Assist' - Compte de Marie</title>
+    <?php echo '<title>Pet Assist \' - Compte de '.$uInfo['pseudo'].'</title>'; ?> 
+    
 
     <!-- Importation des fichiers CSS -->
     <link rel="stylesheet" href="assets/css/stylebase.css">
@@ -43,9 +44,11 @@
 
             </div>
             <div class="info-profil-img">
-                <?php echo '<img src="assets/img/profil/'.$uInfo['img_profil'].'" alt="Photo de profil" id="profil-pic">'; ?>
-                <button class="btn btn-primary msg-button">Envoyer
-                    un message</button>
+                <?php echo '<img src="assets/img/profil/'.$uInfo['img_profil'].'" alt="Photo de profil" id="profil-pic">'; 
+                if(userConnected() == true){
+                    echo '<button class="btn btn-primary msg-button">Envoyer un message</button>';
+                }
+                ?>
             </div>
             <div class="body-info-box">
                 <?php echo '<h2 class="articletitle only-tabphone f100">Les signalements de '.$uInfo['pseudo'].'</h2>'; ?>
@@ -77,18 +80,13 @@
                     ?>
                 </div>
             </div>
-            <dialog class="msg-box" id="msg-dial">
-                <button type="button" class="btn-close" id="close-msg-button"></button>
-                <div class="msg-back">
-                    <div class="msg-text-2">Début de la conversation</div>
-                    <form id="formMsg" action="">
-                        <textarea id="msg-input" name="msg-input" rows="4" cols="50"
-                            placeholder="Ecrivez votre message"></textarea>
-                        <br>
-                        <input class="btn btn-primary" type="submit" value="Envoyer le message">
-                    </form>
-                </div>
-            </dialog>
+
+            <?php 
+            if(userConnected() == true){
+                require_once 'controllers/controller_msg.php'; // Appel du controller pour les messages
+            }
+            ?>
+
             <dialog class="fmodify-box" id="fmodify-dial">
                 <button type="button" class="btn-close" id="close-fmodify-button"></button>
                 <div class="fmodify-back">

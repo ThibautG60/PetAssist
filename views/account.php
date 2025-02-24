@@ -115,20 +115,9 @@
                 <div class="accountcat">
                     <h2>Mes messages</h2>
                     <div class="line"></div>
-                    <div class="msg-button-group">
-                        <button class="btn btn-secondary text-light msg-button" type="button">
-                            Edouard .G <span class="badge text-bg-success ms-2">Nouveau message</span>
-                        </button>
-                        <button class="btn btn-secondary text-light msg-button" type="button">
-                            Camille .B
-                        </button>
-                        <button class="btn btn-secondary text-light msg-button" type="button">
-                            Silvio.T
-                        </button>
-                        <button class="btn btn-secondary text-light msg-button" type="button">
-                            Adrian .Q
-                        </button>
-                    </div>
+
+                    <?php require_once 'controllers/controller_msg.php'; // Appel du controller pour les messages ?>
+                    
                 </div>
             </div>
             <div class="articletitle">
@@ -143,18 +132,6 @@
                     </form>
                 </div>
             </div>
-            <dialog class="msg-box" id="msg-dial">
-                <button type="button" class="btn-close" id="close-msg-button"></button>
-                <div class="msg-back">
-                    <div class="msg-text-2">Début de la conversation</div>
-                    <form id="formMsg" action="POST">
-                        <textarea id="msg-input" name="msg-input" rows="4" cols="50"
-                            placeholder="Ecrivez votre message"></textarea>
-                        <br>
-                        <input class="btn btn-primary" type="submit" value="Envoyer le message">
-                    </form>
-                </div>
-            </dialog>
         </section>
         </main>
     <?php require_once 'templates/footer.php'; // Affichage du footer  ?>

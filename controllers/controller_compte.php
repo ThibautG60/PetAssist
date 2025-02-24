@@ -8,7 +8,6 @@
     if(isset($_POST["deconnect"]) && $_POST["deconnect"] == 'Se déconnecter'){
         if(disconnectUser() == true){
             notifGenerator('info', 'A bientôt', 'Vous êtes déconnecté.');
-            require 'views/login.php';//- Affichage du formulaire de connexion
         }
     }
     //-- On sélectionne le contenu à afficher en en fonction de si la personne est connecté ou non

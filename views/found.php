@@ -102,12 +102,12 @@
                     <div class="form-group col-lg-4">
                         <label for="pet-physic">Particularités physique:</label>
                         <input type="text" class="form-control" name="pet-physic" id="pet-physic" placeholder="Ex: Tache noir sur le dos"
-                            pattern="^[A-Za-z]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">
+                            pattern="^[A-Za-z\s]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="pet-comport">Comportement:</label>
                         <input type="text" class="form-control" name="pet-comport" id="pet-comport" placeholder="Ex: Vif, peureux ..."
-                            pattern="^[A-Za-z]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">
+                            pattern="^[A-Za-z\s]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="pet-pic" class="form-label">Importez une photo de l'animal *:</label>

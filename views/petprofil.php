@@ -9,7 +9,14 @@
     <meta name="author" content="Thibaut GERARD">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/iconsite.png" />
-    <title>Pet Assist' - Profil de Kiwi</title>
+    <?php
+    if($pInfo['pet_name'] != ""){
+        echo '<title>Pet Assist\' - Profil de '.$pInfo['pet_name'].'</title>';
+    }
+    else{
+        echo '<title>Pet Assist\' - Profil de l\'animal</title>';
+    }
+    ?> 
 
     <!-- Importation des fichiers CSS -->
     <link rel="stylesheet" href="assets/css/stylebase.css">
@@ -59,10 +66,13 @@
             <div class="info-profil-img">
                 <?php 
                 echo '<img src="assets/img/pet/'.$pInfo['img_pet'].'" alt="Photo de l\'animal" id="profil-pic">';
-                if($pInfo['resolved'] == 1)echo '<div id="resolved">RESOLU !</div>';
+                if($pInfo['resolved'] == 1){
+                    echo '<div id="resolved">RESOLU !</div>';
+                }
+                if(userConnected() == true){ 
+                    echo '<button class="btn btn-primary msg-button">J’ai des informations ! (Contacter le propriétaire)</button>';
+                }
                 ?>
-                <button class="btn btn-primary msg-button">J’ai des informations !
-                    (Contacter le propriétaire)</button>
             </div>
             <div class="body-info-box">
                 <h2>Informations sur l'animal:</h2>
@@ -102,7 +112,6 @@
                 <h2>Profil du propriétaire:</h2>
                 <div class="info-profil f100">
                     <?php
-                    $uInfo = getUserImg($pInfo['id_user']);
                     if($uInfo != false){
                         echo '<img src="assets/img/profil/'.$uInfo['img_profil'].'" alt="Photo du profil" id="little-profil-pic">';
                         echo '<a href="?p=vcompte&id='.$pInfo['id_user'].'" id="profil-link">'.$uInfo['pseudo'].'</a>';
@@ -110,18 +119,13 @@
                     ?>
                 </div>
             </div>
-            <dialog class="msg-box" id="msg-dial">
-                <button type="button" class="btn-close" id="close-msg-button"></button>
-                <div class="msg-back">
-                    <div class="msg-text-2">Début de la conversation</div>
-                    <form id="formMsg" action="">
-                        <textarea id="msg-input" name="msg-input" rows="4" cols="50"
-                            placeholder="Ecrivez votre message"></textarea>
-                        <br>
-                        <input class="btn btn-primary" type="submit" value="Envoyer le message">
-                    </form>
-                </div>
-            </dialog>
+
+            <?php 
+            if(userConnected() == true){
+                require_once 'controllers/controller_msg.php'; // Appel du controller pour les messages
+            }
+            ?>
+
             <dialog class="fmodify-box" id="fmodify-dial">
                 <button type="button" class="btn-close" id="close-fmodify-button"></button>
                 <div class="fmodify-back">

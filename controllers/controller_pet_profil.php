@@ -4,6 +4,9 @@
     require_once 'models/database_pets.php'; // Fonctions qui permettent de manipuler la BDD qui concerne les animaux
     
     $pInfo = getPetInfo($_GET['id']);
+    $uInfo = getUserImg($pInfo['id_user']);
+    $_SESSION["id_r"] = $uInfo['id_user']; // Variable session pour le système de msg
+    
     if($pInfo != false){
         include 'views/petprofil.php';//- Affichage de la page profil de l'animal
     }

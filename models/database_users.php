@@ -124,7 +124,7 @@ function passVerify($mail, $pass) {
 /* Fonction pour récupérer le pseudo et l'image de la personne */
 function getUserImg($id_user){
     $db = connectToDB("reader");
-    $queryText = "SELECT `pseudo`, `img_profil` FROM path_users WHERE `id_user` = :id_user";
+    $queryText = "SELECT `id_user`, `pseudo`, `img_profil` FROM path_users WHERE `id_user` = :id_user";
 
     try {
         $query = $db -> prepare($queryText);
