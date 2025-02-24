@@ -79,6 +79,10 @@
                     echo '<li><b>Couleurs(s):</b> ' .$pInfo['color']. '</li>';
                     if($pInfo['waist'] != "")echo '<li><b>Taille:</b> '.$pInfo['waist'].'</li>';
                     else echo '<li><b>Taille:</b> /</li>';
+                    if($pInfo['age'] != 0)echo '<li><b>Age approximatif:</b> '.$pInfo['age'].'</li>';
+                    else echo '<li><b>Age approximatif:</b> /</li>';
+                    if($pInfo['puce'] != 0)echo '<li><b>Puce:</b> '.$pInfo['puce'].'</li>';
+                    else echo '<li><b>Puce:</b> /</li>';
                     if($pInfo['physic'] != "")echo '<li><b>Particularités physiques:</b> '.$pInfo['physic'].'</li>';
                     else echo '<li><b>Particularités physiques:</b> /</li>';
                     if($pInfo['behaviour'] != "")echo '<li><b>Comportement observé:</b> '.$pInfo['behaviour'].'</li>';

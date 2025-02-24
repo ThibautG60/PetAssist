@@ -19,8 +19,9 @@
                     $_POST['pet-comport'], pathinfo($_FILES['pet-pic']['name']), 
                     $_FILES['pet-pic']['tmp_name'], $_POST['pet-adress'],
                     getCoords($_POST['pet-adress']), $_POST['pet-date'],
-                    $_POST['pet-time'], $_POST['race'], $_POST['spicies'], $_COOKIE["id_user"]) == true){
+                    $_POST['pet-time'], $_POST['race'], $_POST['spicies'], $_SESSION["id_user"]) == true){
                         require 'controller_index.php';// Affichage de l'acceuil
+                        addNotif(0, "Votre signalement a été ajouté à la liste.", $_SESSION["id_user"]);
                         notifGenerator('success', 'C\'EST NOTE !', 'Nous avons bien enregistré votre signalement.');
                     }
                     else{

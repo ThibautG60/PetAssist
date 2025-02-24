@@ -51,74 +51,65 @@
                     <h2>Mes publications</h2>
                     <div class="line"></div>
                     <div class="accordion accordion-flush" id="accordionPublish">
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed bg-danger text-light" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
-                                    aria-controls="collapseOne">
-                                    Je cherche: Medor
-                                </button>
-                            </h3>
-                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordion-flush">
-                                <div class="accordion-body">
-                                    <img src="https://picsum.photos/200/300?random=2" alt="image animal">
-                                    <p>Espèce: Chien <br>Race: Test <br>Lieu: 89 rue du test 60420 Toast
-                                        <br>Date: 01/01/2000
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed bg-success text-light" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                                    aria-controls="collapseTwo">
-                                    Je cherche: Kiwi [RETROUVE]
-                                </button>
-                            </h3>
-                            <div id="collapseTwo" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionPublish">
-                                <div class="accordion-body">
-                                    <img src="https://picsum.photos/200/300?random=2" alt="image animal">
-                                    <p>Espèce: Chien <br>Race: Test <br>Lieu: 89 rue du test 60420 Toast
-                                        <br>Date: 01/01/2000
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h3 class="accordion-header">
-                                <button class="accordion-button collapsed bg-info text-light" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                                    aria-controls="collapseThree">
-                                    J'ai vu: Un chat
-                                </button>
-                            </h3>
-                            <div id="collapseThree" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionPublish">
-                                <div class="accordion-body">
-                                    <img src="https://picsum.photos/200/300?random=2" alt="image animal">
-                                    <p>Espèce: Chien <br>Race: Test <br>Lieu: 89 rue du test 60420 Toast
-                                        <br>Date: 01/01/2000
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                    <?php
+                        //- Génération de la liste
+                        $uInfo = getUserInfo($_SESSION['id_user']);
+                        $petInfo = getUserPetInfo($uInfo['id_user']);
+                        if($petInfo != false){  
+                            $i = 0;   
+                            foreach($petInfo as $pet){
+                                echo '<div class="accordion-item">';
+                                echo '<h3 class="accordion-header">';
+                                if($pet['resolved'] == 1){
+                                    if($pet['pet_name'] != "") echo '<button class="accordion-button collapsed bg-success text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'.$i.'" aria-expanded="false" aria-controls="collapse'.$i.'">Je cherche: '.$pet['pet_name'].' [RETROUVE]</button>';
+                                    else echo '<button class="accordion-button collapsed bg-success text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'.$i.'" aria-expanded="false" aria-controls="collapse'.$i.'">Je cherche: '.getRaceName($pet['id_race'])['race'].' [RETROUVE]</button>';
+                                }
+                                else if($pet['lost'] == 1){
+                                    if($pet['pet_name'] != "") echo '<button class="accordion-button collapsed bg-danger text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'.$i.'" aria-expanded="false" aria-controls="collapse'.$i.'">Je cherche: '.$pet['pet_name'].'</button>';
+                                    else echo '<button class="accordion-button collapsed bg-danger text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'.$i.'" aria-expanded="false" aria-controls="collapse'.$i.'">Je cherche: '.getRaceName($pet['id_race'])['race'].'</button>';
+                                }
+                                else{
+                                    echo '<button class="accordion-button collapsed bg-info text-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'.$i.'" aria-expanded="false" aria-controls="collapse'.$i.'">Je cherche: '.getRaceName($pet['id_race'])['race'].'</button>';
+                                }
+                                echo '</h3>';
+                                echo '<div id="collapse'.$i.'" class="accordion-collapse collapse" data-bs-parent="#accordion-flush">';
+                                    echo '<div class="accordion-body">';
+                                        echo '<img class="account_accordion_img" src="assets/img/pet/' . $pet['img_pet'] . '" alt="image de l\'animal">';
+                                        echo '<p>Espèce: ' . getSpiciesName($pet['id_spicies'])['spicies'] . '<br>Race: ' .getRaceName($pet['id_race'])['race']. '<br>Lieu: ' .$pet['adress']. '<br>Date: ' .$pet['_date']. '</p>';
+                                        echo '<a href="?p=pet_profil&id=' .$pet['id_pet']. '">Voir en détail</a>';
+                                    echo '</div>';
+                                echo '</div>';
+                                echo '</div>';
+                                $i++;
+                            }
+                        }
+                        else{
+                            echo '<p>Aucun résultat</p>';
+                        }
+                    ?>
                     </div>
                 </div>
                 <div class="accountcat" id="bordercenter">
                     <h2>Mes notifications</h2>
                     <div class="line"></div>
                     <div class="halert">
-                        <div class="alert alert-info" role="alert">
-                            Vous avez reçu un message !
-                        </div>
-                        <div class="alert alert-success" role="alert">
-                            L'avis de recherche de Kiwi est classé dans les " retrouvés "
-                        </div>
-                        <div class="alert alert-success" role="alert">
-                            L'avis de recherche de Medor a été publié sur le site
-                        </div>
+                        <?php
+                        //- Génération de la liste des notifications
+                        $userNotifs = getUserNotifs($_SESSION['id_user']);
+                        if($userNotifs != false){  
+                            foreach($userNotifs as $notif){
+                                if($notif['notif_type'] == 1){
+                                    echo '<div class="alert alert-info" role="alert">' .$notif['date_time'].': '.$notif['notif_text'].'</div>';
+                                }
+                                else{
+                                    echo '<div class="alert alert-success" role="alert">' .$notif['date_time'].': '.$notif['notif_text'].'</div>';
+                                }
+                            }
+                        }
+                        else{
+                            echo '<p>Aucun résultat</p>';
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="accountcat">
@@ -139,7 +130,6 @@
                         </button>
                     </div>
                 </div>
-            </div>
             </div>
             <div class="articletitle">
                 <p>Vous pouvez modifier votre compte ou vous déconnecter à tout moment en cliquant sur le bouton

@@ -45,6 +45,23 @@ function loginUser($mail) {
     }
 }
 
+/* Fonction pour récupérer l'id d'un utlisateur un utilisateur */ 
+function getUserId($mail) {
+    $db = connectToDB("reader");
+    $queryText = "SELECT `id_user` FROM path_users WHERE `mail` = :mail";
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query->bindParam(':mail', $mail, PDO::PARAM_STR);
+        $query->execute();
+        $infoAccount = $query -> fetch(PDO::FETCH_ASSOC);
+        return $infoAccount;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération de l'id de l'user : " . $e->getMessage();
+        return false;
+    }
+}
+
 /* Récupération de toutes les infos sur l'utilisateur */
 function getUserInfo($id){
     $db = connectToDB("reader");
@@ -62,11 +79,25 @@ function getUserInfo($id){
     }
 }
 
+/* Fonction pour vérifier si l'utilisateur est connecté */ 
+function userConnected() {
+    if((isset($_SESSION["connected"]) && $_SESSION["connected"] == 'true') || (isset($_COOKIE["connected"]) && $_COOKIE["connected"] == 'true')){
+        if(!isset($_SESSION["id_user"])){
+            $_SESSION["id_user"] = getUserId($_COOKIE["mail"])["id_user"];
+        }
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 /* Fonction pour déconnecter un utilisateur */ 
 function disconnectUser() {
     setcookie("connected", 'false', -1); // On créé un cookie avec un timer négatif pour supprimer le cookie
-    setcookie("id_user", 'false', -1); // On créé un cookie avec un timer négatif pour supprimer le cookie
+    setcookie("mail", 'false', -1); // On créé un cookie avec un timer négatif pour supprimer le cookie
     $_SESSION["connected"] = 'false'; // On passe la variable SESSION connected à false pour infiquer que l'user n'est plus connecté
+    $_SESSION["id_user"] = 'false'; // On passe la variable SESSION connected à false pour infiquer que l'user n'est plus connecté
     return true;
 }
 
@@ -86,16 +117,6 @@ function passVerify($mail, $pass) {
         else return false;
     } catch(PDOException $e) {
         echo "Erreur lors de la vérification du mot de passe: " . $e->getMessage();
-        return false;
-    }
-}
-
-/* Fonction pour vérifier si l'utilisateur est connecté */ 
-function userConnected() {
-    if((isset($_SESSION["connected"]) && $_SESSION["connected"] == 'true') || (isset($_COOKIE["connected"]) && $_COOKIE["connected"] == 'true')){
-        return true;
-    }
-    else{
         return false;
     }
 }

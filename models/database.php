@@ -39,6 +39,44 @@ function getAllTestimony(){
     }
 }
 
+/* Fonction pour ajouter une notification */ 
+function addNotif($type, $text, $id_user) {
+    $date_time = date ("Y-m-d H:i:s");
+    $db = connectToDB("user");
+    $queryText = "INSERT INTO path_notifs (`notif_type`, `notif_text`, `date_time`, `id_user`) 
+    VALUES (:notif_type, :notif_text, :date_time, :id_user)";
+    try {
+        // Utilisation de Bind Param pour des questions de sécurité (Injections)
+        $query = $db -> prepare($queryText);
+        $query -> bindParam(':notif_type', $type, PDO::PARAM_INT);
+        $query -> bindParam(':notif_text', $text, PDO::PARAM_STR);
+        $query -> bindParam(':date_time', $date_time, PDO::PARAM_STR);
+        $query -> bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $query -> execute();
+        return true;
+    } catch(PDOException $e) {
+        echo "Erreur lors de l'enregistrement de la notif : " . $e->getMessage();
+        return false;
+    }
+}
+
+/* Fonction pour récupérer les notification d'un user */ 
+function getUserNotifs($id_user) {
+    $db = connectToDB("reader");
+    $queryText = "SELECT * FROM path_notifs WHERE `id_user` = :id_user ORDER BY `date_time`";// On récupère toutes les notifs
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_user', $id_user);
+        $query -> execute();
+        $result = $query -> fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération des données des notifications. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
 /* Fonction pour vérifier l'extension du fichier transmis */
 function imgSecure($img, $imgSize){
     $extension = $img['extension'];
