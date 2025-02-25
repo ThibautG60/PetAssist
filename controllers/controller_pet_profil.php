@@ -4,13 +4,18 @@
     require_once 'models/database_pets.php'; // Fonctions qui permettent de manipuler la BDD qui concerne les animaux
     
     $pInfo = getPetInfo($_GET['id']);
-    $uInfo = getUserImg($pInfo['id_user']);
-    $_SESSION["id_r"] = $uInfo['id_user']; // Variable session pour le système de msg
-    
-    if($pInfo != false){
-        include 'views/petprofil.php';//- Affichage de la page profil de l'animal
+    if($pInfo != false)$uInfo = getUserImg($pInfo['id_user']);
+    if($pInfo != false)$_SESSION["id_r"] = $uInfo['id_user']; // Variable session pour le système de msg
+
+    if(isset($_GET['d']) || isset($_GET['m'])){ // Si il y a une requête de modération
+        require_once 'controllers/controller_admin.php';//- On appel le controller admin pour gérer sa requête
     }
     else{
-        require 'views/static/404.php'; // En cas d'échec de récupération des infos sur l'animal, on affiche la page 404
+        if($pInfo != false){
+            include 'views/petprofil.php';//- Affichage de la page profil de l'animal
+        }
+        else{
+            require 'views/static/404.php'; // En cas d'échec de récupération des infos sur l'animal, on affiche la page 404
+        }
     }
 ?>

@@ -28,25 +28,31 @@
             if(passVerify($_POST['email'], hash_hmac('sha256', $_POST['password'], 'path')) == true){
                 $uInfo = loginUser($_POST['email']);
                 if($uInfo != false){
-                    if(isset($_POST['steelconnect']) && $_POST['steelconnect'] == 'on'){
-                        setcookie("connected", 'true', time()+60*60*24*30); // On fait un cookie valable 1 mois
-                        setcookie("mail", $uInfo["mail"], time()+60*60*24*30); // On stock le mail de l'user pendant 1 mois
-                        $_SESSION["id_user"] = $uInfo["id_user"];
+                    if($uInfo['banned'] == 0){
+                        if(isset($_POST['steelconnect']) && $_POST['steelconnect'] == 'on'){
+                            setcookie("connected", 'true', time()+60*60*24*30); // On fait un cookie valable 1 mois
+                            setcookie("mail", $uInfo["mail"], time()+60*60*24*30); // On stock le mail de l'user pendant 1 mois
+                            $_SESSION["id_user"] = $uInfo["id_user"];
+                        }
+                        else {
+                            $_SESSION["connected"] = 'true';
+                            $_SESSION["id_user"] = $uInfo["id_user"];
+                        }
+                        if($_GET['p'] == 'perdu'){ // Si l'utilisateur vient pour la page "perdu"
+                            require 'controllers/controller_perdu.php';
+                        }
+                        else if($_GET['p'] == 'trouve'){ // Si l'utilisateur vient pour la page "trouvé"
+                            require 'controllers/controller_trouve.php';
+                        }
+                        else{ // Si l'utilisateur vient pour son compte
+                            require 'views/account.php';//- Affichage du compte personnel de l'utilisateur
+                        }
+                        notifGenerator('success', 'Bienvenue', 'Vous êtes connecté.');
                     }
-                    else {
-                        $_SESSION["connected"] = 'true';
-                        $_SESSION["id_user"] = $uInfo["id_user"];
+                    else{
+                        require 'views/login.php';//- Affichage du formulaire de connexion
+                        notifGenerator('error', 'ADMIN', 'Connexion impossible.');
                     }
-                    if($_GET['p'] == 'perdu'){ // Si l'utilisateur vient pour la page "perdu"
-                        require 'controllers/controller_perdu.php';
-                    }
-                    else if($_GET['p'] == 'trouve'){ // Si l'utilisateur vient pour la page "trouvé"
-                        require 'controllers/controller_trouve.php';
-                    }
-                    else{ // Si l'utilisateur vient pour son compte
-                        require 'views/account.php';//- Affichage du compte personnel de l'utilisateur
-                    }
-                    notifGenerator('success', 'Bienvenue', 'Vous êtes connecté.');
                 }
                 else{
                     require 'views/login.php';//- Affichage du formulaire de connexion

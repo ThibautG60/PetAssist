@@ -51,6 +51,11 @@
                         if($pInfo['lost'] == 1)echo '<h1 class="articletitle">'.$result['race'].' perdu</h1>';
                         else echo '<h1 class="articletitle">'.$result['race'].' trouvé</h1>';
                     }
+                    /* Bouttons admin */
+                    if(userConnected() == true && getAdminLvl($_SESSION["id_user"])['admin_type'] != 0){ // On vérifie que l'user soit connecté & qu'il soit modérateur
+                        echo '<a href="?p=pet_profil&id='.$pInfo['id_pet'].'&m='.$pInfo['id_pet'].'" id="modify'.$pInfo['id_pet'].'" class="btn-admin modify"><img src="./assets/img/icons/modify.png" class="icon-admin" alt="Icone administrateur"></a>';
+                        echo '<a href="?p=pet_profil&id='.$pInfo['id_pet'].'&d='.$pInfo['id_pet'].'" id="delete'.$pInfo['id_pet'].'" class="btn-admin delete"><img src="./assets/img/icons/delete.png" class="icon-admin" alt="Icone administrateur"></a>';
+                    }
                     ?>        
                 </div>
                 <div class="lineb"></div>
@@ -67,7 +72,7 @@
                 <?php 
                 echo '<img src="assets/img/pet/'.$pInfo['img_pet'].'" alt="Photo de l\'animal" id="profil-pic">';
                 if($pInfo['resolved'] == 1){
-                    echo '<div id="resolved">RESOLU !</div>';
+                    echo '<div id="resolved">RETROUVE</div>';
                 }
                 if(userConnected() == true){ 
                     echo '<button class="btn btn-primary msg-button">J’ai des informations ! (Contacter le propriétaire)</button>';
@@ -125,98 +130,6 @@
                 require_once 'controllers/controller_msg.php'; // Appel du controller pour les messages
             }
             ?>
-
-            <dialog class="fmodify-box" id="fmodify-dial">
-                <button type="button" class="btn-close" id="close-fmodify-button"></button>
-                <div class="fmodify-back">
-                    <h3>Modifier les informations</h3>
-                    <form id="formModify" action="">
-                        <div class="row mt-2">
-                            <div class="form-group col-lg-6">
-                                <label for="pet-name">Nom de l'animal:</label>
-                                <input type="text" class="form-control" id="pet-name" required
-                                    pattern="^[A-Za-z]{2,}$" minlength="2"
-                                    title="Le nom de l'animal ne peut contenir que des lettres et avoir plus de deux lettres">
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label for="pet-race">Race:</label>
-                                <input type="text" class="form-control" id="pet-race" required
-                                    required pattern="^[A-Za-z]{2,}$" minlength="2"
-                                    title="La race de l'animal ne peut contenir que des lettres et avoir plus de deux lettres">
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="form-group col-6 col-lg-6">
-                                <label for="pet-color">Couleur(s):</label>
-                                <input type="text" class="form-control" id="pet-color" required                             
-                                pattern="^[A-Za-z]{2,}$" minlength="2"
-                                title="La couleur de l'animal ne peut contenir que des lettres et avoir plus de deux lettres">
-                            </div>
-                            <div class="form-group col-6 col-lg-6">
-                                <label for="pet-waist">Taille:</label>
-                                <input type="text" class="form-control" id="pet-waist" required                         
-                                    pattern="^[A-Za-z0-9]{1,}$" minlength="1"
-                                    title="La couleur de l'animal ne peut contenir que des lettres et avoir au moins une lettre">
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="form-group col-6 col-lg-4">
-                                <label for="pet-weight">Poids:</label>
-                                <input type="number" class="form-control" id="pet-weight" required                            
-                                pattern="^[0-9]{1,}$" minlength="1"
-                                title="Le poids doit être écrit en chiffre">
-                            </div>
-                            <div class="form-group col-6 col-lg-4">
-                                <label for="pet-age">Age:</label>
-                                <input type="number" class="form-control" id="pet-age" required                            
-                                pattern="^[0-9]{1,}$" minlength="1"
-                                title="L'âge doit être écrit en chiffre">
-                            </div>
-                            <div class="form-group col-lg-4">
-                                <label for="pet-puce">Numéro de puce:</label>
-                                <input type="number" class="form-control" id="pet-puce" required
-                                pattern="^[0-9]{15,}$" minlength="15"
-                                title="Le numéro de puce doit contenir 15 chiffres">
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="form-group col-lg-4">
-                                <label for="pet-physic">Particularités physique:</label>
-                                <input type="text" class="form-control" id="pet-physic" required
-                                pattern="^[A-Za-z]{2,}$" minlength="2"
-                                    title="Vous devez saisir plus de deux lettres">
-                            </div>
-                            <div class="form-group col-lg-4">
-                                <label for="pet-comport">Comportement:</label>
-                                <input type="text" class="form-control" id="pet-comport" required
-                                pattern="^[A-Za-z]{2,}$" minlength="2"
-                                title="Vous devez saisir plus de deux lettres">
-                            </div>
-                            <div class="form-group col-lg-4">
-                                <label for="pet-pic" class="form-label">Modifiez une photo de l'animal</label>
-                                <input class="form-control" type="file" id="pet-pic">
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="form-group col-lg-6">
-                                <label for="pet-adress">Lieu où l'animal a été vu pour la dernière fois:</label>
-                                <input type="text" class="form-control" id="pet-adress" required
-                                    pattern="^(?=.*\d{5})([A-Za-zÀ-ÿ0-9\s'\-\.]+(?:\s*\d{5}\s*)?[A-Za-zÀ-ÿ0-9\s'\-\.]+)*$" minlength="5"
-                                    title="Vous devez saisir au minimum un code postal.">
-                            </div>
-                            <div class="form-group col-lg-3">
-                                <label for="pet-date">Date de la dispartion:</label>
-                                <input type="date" class="form-control" id="pet-date" required>
-                            </div>
-                            <div class="form-group col-lg-3">
-                                <label for="pet-time">Heure de la dispartion:</label>
-                                <input type="time" class="form-control" id="pet-time" required>
-                            </div>
-                        </div>
-                        <input class="btn btn-success mt-3" type="submit" value="Modifier les informations">
-                    </form>
-                </div>
-            </dialog>
         </section>
     </main>
     <?php require_once 'templates/footer.php'; // Affichage du footer  ?>

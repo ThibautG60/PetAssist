@@ -37,7 +37,14 @@
         <section class="body-box">
             <div class="body-head-box">
                 <div class="f100 only-tabphone icon-admin-box">
-                    <?php echo '<h1 class="articletitle">'.$uInfo['pseudo'].'</h1>' ?>
+                    <?php 
+                    echo '<h1 class="articletitle">'.$uInfo['pseudo'].'</h1>';
+                    /* Bouttons admin */
+                    if(userConnected() == true && getAdminLvl($_SESSION["id_user"])['admin_type'] != 0){ // On vérifie que l'user soit connecté & qu'il soit modérateur
+                        echo '<a href="?p=vcompte&id='.$uInfo['id_user'].'&m='.$uInfo['id_user'].'" id="modify'.$uInfo['id_user'].'" class="btn-admin modify"><img src="./assets/img/icons/modify.png" class="icon-admin" alt="Icone administrateur"></a>';
+                        echo '<a href="?p=vcompte&id='.$uInfo['id_user'].'&d='.$uInfo['id_user'].'" id="delete'.$uInfo['id_user'].'" class="btn-admin delete"><img src="./assets/img/icons/delete.png" class="icon-admin" alt="Icone administrateur"></a>';
+                    }
+                    ?>
                 </div>
                 <div class="linec"></div>
                 <?php echo '<div class="description f100">Voici tous les signalements de '.$uInfo['pseudo'].'. Vous pouvez retrouver tout ses avis de recherche, ses signalements et vous pouvez également la contacter.</div>' ?>
@@ -86,26 +93,6 @@
                 require_once 'controllers/controller_msg.php'; // Appel du controller pour les messages
             }
             ?>
-
-            <dialog class="fmodify-box" id="fmodify-dial">
-                <button type="button" class="btn-close" id="close-fmodify-button"></button>
-                <div class="fmodify-back">
-                    <h3>Modifier les informations</h3>
-                    <form id="formModify" action="">
-                        <div class="row form-group mt-2">
-                            <label for="pseudo">Pseudonyme:</label>
-                            <input type="text" class="form-control" id="pseudo"
-                                required pattern="^[A-Za-z0-9]{2,}$"
-                                minlength="2" title="Le pseudonyme ne peut contenir que des lettres et des chiffres">
-                        </div>
-                        <div class="row form-group col-lg-6">
-                            <label for="profil-Pic" class="form-label">Modifiez la photo:</label>
-                            <input class="form-control" type="file" id="profil-Pic" required>
-                        </div>
-                        <input class="btn btn-success mt-3" type="submit" value="Modifier les informations">
-                    </form>
-                </div>
-            </dialog>
         </section>
     </main>
     <?php require_once 'templates/footer.php'; // Affichage du footer  ?>

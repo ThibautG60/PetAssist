@@ -5,8 +5,8 @@ function registerPet($lost, $pet_name, $male, $color, $waist, $age, $puce, $phys
     $queryText = "INSERT INTO path_pets (`lost`, `pet_name`, `male`, `color`, `waist`, `age`, `puce`, `physic`, `behaviour`, `img_pet`, `adress`, `lat`, `lon`, `_date`, `_time`, `id_race`, `id_spicies`, `id_user`) 
     VALUES (:lost, :pet_name, :male, :color, :waist, :age, :puce, :physic, :behaviour, :img_pet, :adress, :lat, :lon, :_date, :_time, :id_race, :id_spicies, :id_user)";
     try {
-        $pet_id = rand(1, 10000000000);
-        $fileName =  $pet_id .'.'. $img['extension'];
+        $img_id = rand(1, 10000000000);
+        $fileName =  $img_id .'.'. $img['extension'];
         move_uploaded_file($imgTmp, "assets/img/pet/" . $fileName);
 
         // Utilisation de Bind Param pour des questions de sécurité (Injections)
@@ -150,6 +150,95 @@ function getRaceName($id_race){
     }
 }
 
+/* Suppression d'un témoignage */
+function deleteTestimony($id_pet){
+    $db = connectToDB("user");
+    $queryText = "UPDATE `path_pets` SET `testimony_text` = NULL WHERE `id_pet` = :id_pet";
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_pet', $id_pet);
+        $query -> execute();
+        $query -> fetch(PDO::FETCH_ASSOC);
+        return true;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la suppression d'un témoignage. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
+/* Suppression d'un profil animal */
+function deletePetProfil($id_pet){
+    $db = connectToDB("admin");
+    $queryText = "DELETE FROM `path_pets` WHERE `id_pet` = :id_pet";
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_pet', $id_pet);
+        $query -> execute();
+        $query -> fetch(PDO::FETCH_ASSOC);
+        return true;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la suppression d'un profil animal. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
+/* Modification d'un témoignage */
+function ModifyPetTestimony($id_pet, $content){
+    $db = connectToDB("user");
+    $queryText = "UPDATE `path_pets` SET `testimony_text` = :content WHERE `id_pet` = :id_pet";
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_pet', $id_pet);
+        $query -> bindParam(':content', $content, PDO::PARAM_STR);
+        $query -> execute();
+        $query -> fetch(PDO::FETCH_ASSOC);
+        return true;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la modification d'un témoignage. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
+/* Modification d'un témoignage */
+function ModifyPetProfil($id_pet, $pet_name, $color, $waist, $age, $puce, $physic, $behaviour, $adress, $_date, $_time, $img, $imgTmp, $coords){
+    $db = connectToDB("user");
+
+    if($img == 0)$queryText = "UPDATE `path_pets` SET `pet_name` = :pet_name, `color` = :color, `waist` = :waist, `age` = :age, `puce` = :puce, `physic` = :physic, `behaviour` = :behaviour, `adress` = :adress, `_date` = :_date, `_time` = :_time, `lat` = :lat, `lon` = :lon WHERE `id_pet` = :id_pet";
+    else $queryText = "UPDATE `path_pets` SET `pet_name` = :pet_name, `color` = :color, `waist` = :waist, `age` = :age, `puce` = :puce, `physic` = :physic, `behaviour` = :behaviour, `adress` = :adress, `_date` = :_date, `_time` = :_time, `img_pet` = :img_pet, `lat` = :lat, `lon` = :lon WHERE `id_pet` = :id_pet";
+
+    try {
+        if($img != 0){
+            $img_id = rand(1, 10000000000);
+            $fileName =  $img_id .'.'. $img['extension'];
+            move_uploaded_file($imgTmp, "assets/img/pet/" . $fileName);
+        }
+
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_pet', $id_pet);
+        $query -> bindParam(':pet_name', $pet_name, PDO::PARAM_STR);
+        $query -> bindParam(':color', $color, PDO::PARAM_STR);
+        $query -> bindParam(':waist', $waist, PDO::PARAM_STR);
+        $query -> bindParam(':age', $age, PDO::PARAM_INT);
+        $query -> bindParam(':puce', $puce, PDO::PARAM_INT);
+        $query -> bindParam(':physic', $physic, PDO::PARAM_STR);
+        $query -> bindParam(':behaviour', $behaviour, PDO::PARAM_STR);
+        $query -> bindParam(':adress', $adress, PDO::PARAM_STR);
+        $query -> bindParam(':_date', $_date, PDO::PARAM_STR);
+        $query -> bindParam(':_time', $_time, PDO::PARAM_STR);
+        if($img != 0)$query -> bindParam(':img_pet', $fileName, PDO::PARAM_STR);
+        $query -> bindParam(':lat', $coords['lat'], PDO::PARAM_STR);
+        $query -> bindParam(':lon', $coords['lon'], PDO::PARAM_STR);
+        $query -> execute();
+        $query -> fetch(PDO::FETCH_ASSOC);
+        return true;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la modification d'un profil animal. CODE: " . $e->getMessage();
+        return false;
+    }
+}
 
 /* Récupération des données GPS à partir d'une adresse */
 function getCoords($adress){

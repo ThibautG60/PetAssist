@@ -94,19 +94,13 @@
                     </div>
                 </div>
                 <div class="row mt-2">
-                    <div class="form-group col-6 col-lg-4">
-                        <label for="pet-weight">Poids:</label>
-                        <input type="number" class="form-control" name="pet-weight" id="pet-weight" placeholder="Poids en Kg"                             
-                        pattern="^[0-9]{1,}$" minlength="1"
-                        title="Le poids doit être écrit en chiffre">
-                    </div>
-                    <div class="form-group col-6 col-lg-4">
+                    <div class="form-group col-6">
                         <label for="pet-age">Age:</label>
                         <input type="number" class="form-control" name="pet-age" id="pet-age" placeholder="Age approximatif"                             
                         pattern="^[0-9]{1,}$" minlength="1"
                         title="L'âge doit être écrit en chiffre">
                     </div>
-                    <div class="form-group col-lg-4">
+                    <div class="form-group col-6">
                         <label for="pet-puce">Numéro de puce:</label>
                         <input type="number" class="form-control" name="pet-puce" id="pet-puce" placeholder="Ex: 250 26 10 55101789"                             
                         pattern="^[0-9]{15,}$" minlength="15"

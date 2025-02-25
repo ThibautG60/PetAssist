@@ -45,6 +45,23 @@ function loginUser($mail) {
     }
 }
 
+/* Fonction pour savoir si l'user est admin ou non */ 
+function getAdminLvl($id) {
+    $db = connectToDB("reader");
+    $queryText = "SELECT `admin_type` FROM path_users WHERE `id_user` = :id_user";
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query->bindParam(':id_user', $id, PDO::PARAM_INT);
+        $query->execute();
+        $infoAccount = $query -> fetch(PDO::FETCH_ASSOC);
+        return $infoAccount;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération du niveau admin de l'user: " . $e->getMessage();
+        return false;
+    }
+}
+
 /* Fonction pour récupérer l'id d'un utlisateur un utilisateur */ 
 function getUserId($mail) {
     $db = connectToDB("reader");
@@ -84,6 +101,10 @@ function userConnected() {
     if((isset($_SESSION["connected"]) && $_SESSION["connected"] == 'true') || (isset($_COOKIE["connected"]) && $_COOKIE["connected"] == 'true')){
         if(!isset($_SESSION["id_user"])){
             $_SESSION["id_user"] = getUserId($_COOKIE["mail"])["id_user"];
+        }
+        if(userBanned($_SESSION["id_user"])['banned'] != 0){
+            disconnectUser();
+            return false;
         }
         return true;
     }
@@ -134,6 +155,65 @@ function getUserImg($id_user){
         return $infoAccount;
     } catch(PDOException $e) {
         echo "Erreur lors de la récupération de l'image de l'utilisateur : " . $e->getMessage();
+        return false;
+    }
+}
+
+/* Fonction pour savoir si un user est banni ou non */
+function userBanned($id_user){
+    $db = connectToDB("reader");
+    $queryText = "SELECT `banned` FROM path_users WHERE `id_user` = :id_user";
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $query->execute();
+        $infoAccount = $query -> fetch(PDO::FETCH_ASSOC);
+        return $infoAccount;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération de l'image de l'utilisateur : " . $e->getMessage();
+        return false;
+    }
+}
+
+/* Suppression d'un profil user */
+function deleteUserProfil($id_user){
+    $db = connectToDB("user");
+    $queryText = "UPDATE `path_users` SET `banned` = 1 WHERE `id_user` = :id_user";
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_user', $id_user);
+        $query -> execute();
+        $query -> fetch(PDO::FETCH_ASSOC);
+        return true;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la suppression d'un profil user. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
+/* Modification d'un profil user */
+function ModifyUserProfil($id_user, $pseudo, $img, $imgTmp){
+    $db = connectToDB("user");
+    if($img == 0)$queryText = "UPDATE `path_users` SET `pseudo` = :pseudo WHERE `id_user` = :id_user";
+    else $queryText = "UPDATE `path_users` SET `pseudo` = :pseudo, `img_profil` = :img_profil WHERE `id_user` = :id_user";
+
+    try {
+        if($img != 0){
+            $fileName = $pseudo .'.'. $img['extension'];
+            move_uploaded_file($imgTmp, "assets/img/profil/" . $fileName);
+        }
+
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_user', $id_user);
+        $query -> bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+        if($img != 0)$query -> bindParam(':img_profil', $fileName, PDO::PARAM_STR);
+        $query -> execute();
+        $query -> fetch(PDO::FETCH_ASSOC);
+        return true;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la modification d'un profil user. CODE: " . $e->getMessage();
         return false;
     }
 }

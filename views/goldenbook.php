@@ -1,6 +1,6 @@
 <?php
 //- Générateur de témoignage des données en argument
-function testimonyGenerator($i, $boxType, $userID, $name, $petName, $img, $text){
+function testimonyGenerator($i, $boxType, $userID, $name, $petName, $img, $text, $petID){
     echo '<article class="goldenitem'.$boxType.'">';// Classe en fonction de si l'id dans le générateur est pair ou impair
     if($petName != "")echo '<h3>'.$name.' et '.$petName.'</h3>';// Titre
     else echo '<h3>Le témoignage de '.$name.'</h3>';// Titre
@@ -16,10 +16,12 @@ function testimonyGenerator($i, $boxType, $userID, $name, $petName, $img, $text)
     echo '<div class="profil-link" href="?p=vcompte&id='.$userID.'">Profil de '.$name.'</div>';
 
     /* Bouttons admin */
-    echo '<div class="icon-admin-box">';
-    echo '<button id="modify'.$i.'" class="btn-admin"><img src="./assets/img/icons/modify.png" class="icon-admin" alt="Icone administrateur"></button>';
-    echo '<button id="delete'.$i.'" class="btn-admin"><img src="./assets/img/icons/delete.png" class="icon-admin" alt="Icone administrateur"></button>';
-    echo '</div>';
+    if(userConnected() == true && getAdminLvl($_SESSION["id_user"])['admin_type'] != 0){ // On vérifie que l'user soit connecté & qu'il soit modérateur
+        echo '<div class="icon-admin-box">';
+        echo '<a href="?p=temoignage&m='.$petID.'" id="modify'.$petID.'" class="btn-admin modify"><img src="./assets/img/icons/modify.png" class="icon-admin" alt="Icone administrateur"></a>';
+        echo '<a href="?p=temoignage&d='.$petID.'" id="delete'.$petID.'" class="btn-admin delete"><img src="./assets/img/icons/delete.png" class="icon-admin" alt="Icone administrateur"></a>';
+        echo '</div>';
+    }
     echo '</div>';
     echo '</article>';
 }
@@ -72,18 +74,18 @@ function testimonyGenerator($i, $boxType, $userID, $name, $petName, $img, $text)
                     if($i == 0){// Le tout premier témoignage
                         echo '<div id="booktop">';
                         echo '<div id="bookflex">';
-                        testimonyGenerator($i, $pair, $testimony['id_user'], $uInfo['pseudo'], $testimony['pet_name'], $uInfo['img_profil'], $testimony['testimony_text']);
+                        testimonyGenerator($i, $pair, $testimony['id_user'], $uInfo['pseudo'], $testimony['pet_name'], $uInfo['img_profil'], $testimony['testimony_text'], $testimony['id_pet']);
                         $i++;
                     }
                     else if($i == 1){// Le deuxième témoignage
-                        testimonyGenerator($i, $pair, $testimony['id_user'], $uInfo['pseudo'], $testimony['pet_name'], $uInfo['img_profil'], $testimony['testimony_text']);
+                        testimonyGenerator($i, $pair, $testimony['id_user'], $uInfo['pseudo'], $testimony['pet_name'], $uInfo['img_profil'], $testimony['testimony_text'], $testimony['id_pet']);
                         echo '</div>';
                         echo '<img src="assets/img/right_book.jpeg" alt="Photo de chien" class="bookimg tabmediacut" id="imgbookright">';
                         echo '</div>';
                         $i++;
                     }
                     else {// Tous les autres témoignages
-                        testimonyGenerator($i, $pair, $testimony['id_user'], $uInfo['pseudo'], $testimony['pet_name'], $uInfo['img_profil'], $testimony['testimony_text']);
+                        testimonyGenerator($i, $pair, $testimony['id_user'], $uInfo['pseudo'], $testimony['pet_name'], $uInfo['img_profil'], $testimony['testimony_text'], $testimony['id_pet']);
                         $i++;
                     }
                 }
