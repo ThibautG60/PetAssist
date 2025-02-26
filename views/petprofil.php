@@ -29,7 +29,6 @@
     <script src="assets/js/bootstrap.bundle.js"></script>
     <script defer src="assets/js/animations.js"></script>
     <script defer src="assets/js/msg.js"></script>
-    <script defer src="assets/js/admin.js"></script>
 </head>
 
 <body>
@@ -76,6 +75,9 @@
                 }
                 if(userConnected() == true){ 
                     echo '<button class="btn btn-primary msg-button">J’ai des informations ! (Contacter le propriétaire)</button>';
+                    if($pInfo['resolved'] == 0 && $pInfo['id_user'] == $_SESSION["id_user"]){
+                        echo '<a href="?p=pet_profil&id='.$_GET['id'].'&r=1" class="btn btn-success" id="resolved-button">J’ai retrouvé mon animal !</a>';
+                    }
                 }
                 ?>
             </div>

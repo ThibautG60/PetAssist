@@ -1,20 +1,20 @@
-.msg-box{
+.msg-box {
     border: none;
     border-radius: 50px 10px;
     background-color: #2c2f33;
 }
 
-.msg-back{
+.msg-back {
     padding: 2%;
     overflow: auto;
     max-height: 60vh;
 }
 
-.msg-text-1{
+.msg-text-1 {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: whitesmoke;
     text-decoration: none;
-    background-color:#7289da;
+    background-color: #7289da;
     width: 85%;
     justify-self: left;
     margin: 3%;
@@ -22,11 +22,11 @@
     border-radius: 20px;
 }
 
-.msg-text-2{
+.msg-text-2 {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: whitesmoke;
     text-decoration: none;
-    background-color:#99aab5;
+    background-color: #99aab5;
     width: 85%;
     justify-self: right;
     margin: 3%;
@@ -34,27 +34,38 @@
     border-radius: 20px;
 }
 
-#msg-input{
+#msg-input {
     border-radius: 10px;
     padding: 1%;
     width: 100%;
 }
 
-#close-msg-button{
+#close-msg-button {
     float: inline-end;
     background-color: whitesmoke;
 }
 
-.msg-button{
+.msg-button {
     width: 100%;
     margin-bottom: 2%;
 }
-/* MEDIA QUERIES */  
+
+#resolved-button {
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+/* MEDIA QUERIES */
 /* Téléphones */
 @media (max-width: 576px) {
-    .msg-box{ width: 90%; }
+    .msg-box {
+        width: 90%;
+    }
 }
+
 /* Tablettes & PC*/
-@media (min-width: 577px){
-    .msg-box{ width: 50%; }
+@media (min-width: 577px) {
+    .msg-box {
+        width: 50%;
+    }
 }

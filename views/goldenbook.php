@@ -13,7 +13,7 @@ function testimonyGenerator($i, $boxType, $userID, $name, $petName, $img, $text,
     if($boxType == 2){// Position de la phot de profil en fonction de l'id du témoignage dans le générateur
         echo '<a class="item-box" href="?p=vcompte&id='.$userID.'" title="Lien vers le profil"><img class="item-img" src="./assets/img/profil/'.$img.'" alt="Photo de profil"></a>';
     }
-    echo '<div class="profil-link" href="?p=vcompte&id='.$userID.'">Profil de '.$name.'</div>';
+    echo '<a class="profil-link" href="?p=vcompte&id='.$userID.'">Profil de '.$name.'</a>';
 
     /* Bouttons admin */
     if(userConnected() == true && getAdminLvl($_SESSION["id_user"])['admin_type'] != 0){ // On vérifie que l'user soit connecté & qu'il soit modérateur

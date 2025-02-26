@@ -124,8 +124,8 @@
                 <p>Vous pouvez modifier votre compte ou vous déconnecter à tout moment en cliquant sur le bouton
                     ci-dessous:</p>
                 <div id="box-button">
-                    <form method="POST">
-                        <input type="submit" class="btn btn-primary ml-5 mb-2" id="modify" name="modify" value="Modifier mon compte" />
+                    <form>
+                        <a href="?p=mcompte" class="btn btn-primary ml-5 mb-2" id="modify">Modifier mon compte</a>
                     </form>
                     <form method="POST">
                         <input type="submit" class="btn ml-5 mb-2" id="deconnect" name="deconnect" value="Se déconnecter" />

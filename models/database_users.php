@@ -171,7 +171,7 @@ function userBanned($id_user){
         $infoAccount = $query -> fetch(PDO::FETCH_ASSOC);
         return $infoAccount;
     } catch(PDOException $e) {
-        echo "Erreur lors de la récupération de l'image de l'utilisateur : " . $e->getMessage();
+        echo "Erreur lors de la fonction pour savoir si l'user est banni : " . $e->getMessage();
         return false;
     }
 }
@@ -185,7 +185,6 @@ function deleteUserProfil($id_user){
         $query = $db -> prepare($queryText);
         $query -> bindValue(':id_user', $id_user);
         $query -> execute();
-        $query -> fetch(PDO::FETCH_ASSOC);
         return true;
     } catch(PDOException $e) {
         echo "Erreur lors de la suppression d'un profil user. CODE: " . $e->getMessage();
@@ -193,7 +192,7 @@ function deleteUserProfil($id_user){
     }
 }
 
-/* Modification d'un profil user */
+/* Modification d'un profil User par un admin. Fonction moins complète que ModifyUserProfilByUser */
 function ModifyUserProfil($id_user, $pseudo, $img, $imgTmp){
     $db = connectToDB("user");
     if($img == 0)$queryText = "UPDATE `path_users` SET `pseudo` = :pseudo WHERE `id_user` = :id_user";
@@ -201,6 +200,10 @@ function ModifyUserProfil($id_user, $pseudo, $img, $imgTmp){
 
     try {
         if($img != 0){
+            /* Suppression de l'ancien fichier */
+            $oldImg = getUserImg($id_user)['img_profil'];
+            if(file_exists("assets/img/profil/" . $oldImg)) unlink("assets/img/profil/" . $oldImg);
+            /* Génération du nouveau fichier */
             $fileName = $pseudo .'.'. $img['extension'];
             move_uploaded_file($imgTmp, "assets/img/profil/" . $fileName);
         }
@@ -210,7 +213,48 @@ function ModifyUserProfil($id_user, $pseudo, $img, $imgTmp){
         $query -> bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
         if($img != 0)$query -> bindParam(':img_profil', $fileName, PDO::PARAM_STR);
         $query -> execute();
-        $query -> fetch(PDO::FETCH_ASSOC);
+        return true;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la modification d'un profil user. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
+/* Modification d'un profil User depuis ' modifier mon compte '. Fonction plus complète que ModifyUserProfil */
+function ModifyUserProfilByUser($id_user, $firstname, $lastname, $pseudo, $mail, $pass, $img, $imgTmp, $adress, $city, $postal_code){
+    $db = connectToDB("user");
+    if($img == 0){ // Si l'user n'a pas UP d'img
+        if($pass == 0)$queryText = "UPDATE `path_users` SET `firstname` = :firstname, `lastname` = :lastname, `pseudo` = :pseudo, `mail` = :mail, `adress` = :adress, `city` = :city, `postal_code` = :postal_code WHERE `id_user` = :id_user"; // Sans password
+        else $queryText = "UPDATE `path_users` SET `firstname` = :firstname, `lastname` = :lastname, `pseudo` = :pseudo, `mail` = :mail, `password` = :pass, `adress` = :adress, `city` = :city, `postal_code` = :postal_code WHERE `id_user` = :id_user"; // Avec password
+    }
+    else{ // Si l'user a UP une img
+        if($pass == 0) $queryText = "UPDATE `path_users` SET `firstname` = :firstname, `lastname` = :lastname, `pseudo` = :pseudo, `mail` = :mail, `img_profil` = :img_profil, `adress` = :adress, `city` = :city, `postal_code` = :postal_code WHERE `id_user` = :id_user"; // Sans password
+        else $queryText = "UPDATE `path_users` SET `firstname` = :firstname, `lastname` = :lastname, `pseudo` = :pseudo, `mail` = :mail, `password` = :pass, `img_profil` = :img_profil, `adress` = :adress, `city` = :city, `postal_code` = :postal_code WHERE `id_user` = :id_user"; // Avec password
+    }
+
+    try {
+        if($img != 0){
+            /* Suppression de l'ancien fichier */
+            $oldImg = getUserImg($id_user)['img_profil'];
+            if(file_exists("assets/img/profil/" . $oldImg)) unlink("assets/img/profil/" . $oldImg);
+            /* Génération du nouveau fichier */
+            $fileName = $pseudo .'.'. $img['extension'];
+            move_uploaded_file($imgTmp, "assets/img/profil/" . $fileName);
+        }
+        if($pass != 0)$hash = hash_hmac('sha256', $pass, 'path');
+
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_user', $id_user);
+        $query -> bindParam(':firstname', $firstname, PDO::PARAM_STR);
+        $query -> bindParam(':lastname', $lastname, PDO::PARAM_STR);
+        $query -> bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+        $query -> bindParam(':mail', $mail, PDO::PARAM_STR);
+        if($pass != 0)$query -> bindParam(':pass', $hash, PDO::PARAM_STR);
+        if($img != 0)$query -> bindParam(':img_profil', $fileName, PDO::PARAM_STR);
+        $query -> bindParam(':adress', $adress, PDO::PARAM_STR);
+        $query -> bindParam(':city', $city, PDO::PARAM_STR);
+        $query -> bindParam(':postal_code', $postal_code, PDO::PARAM_INT);
+        $query -> execute();
         return true;
     } catch(PDOException $e) {
         echo "Erreur lors de la modification d'un profil user. CODE: " . $e->getMessage();

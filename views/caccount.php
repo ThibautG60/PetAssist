@@ -90,17 +90,6 @@
                         pattern="^[0-9]{5,}$" minlength="5" title="Le code postal doit contenir que des chiffres">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group col-lg-6">
-                        <label for="state">Pays:</label>
-                        <select id="state" name="state" class="form-control" required>
-                            <option value="">Choisir son pays</option>
-                            <option value="france">France</option>
-                            <option value="belgique">Belgique</option>
-                            <option value="suisse">Suisse</option>
-                        </select>
-                    </div>
-                </div>
                 <button type="submit" class="btn btn-success mt-5" id="buttonSubmitForm" aria-details="create">Créer mon compte</button>
             </form>
         </section>

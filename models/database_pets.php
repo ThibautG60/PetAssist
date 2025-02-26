@@ -150,6 +150,22 @@ function getRaceName($id_race){
     }
 }
 
+/* Changement de status d'un signalement */
+function signalResolved($id_pet){
+    $db = connectToDB("user");
+    $queryText = "UPDATE `path_pets` SET `resolved` = 1 WHERE `id_pet` = :id_pet";
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_pet', $id_pet);
+        $query -> execute();
+        return true;
+    } catch(PDOException $e) {
+        echo "Erreur lors du changement de status d'un signalement. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
 /* Suppression d'un témoignage */
 function deleteTestimony($id_pet){
     $db = connectToDB("user");
@@ -159,7 +175,6 @@ function deleteTestimony($id_pet){
         $query = $db -> prepare($queryText);
         $query -> bindValue(':id_pet', $id_pet);
         $query -> execute();
-        $query -> fetch(PDO::FETCH_ASSOC);
         return true;
     } catch(PDOException $e) {
         echo "Erreur lors de la suppression d'un témoignage. CODE: " . $e->getMessage();
@@ -173,10 +188,13 @@ function deletePetProfil($id_pet){
     $queryText = "DELETE FROM `path_pets` WHERE `id_pet` = :id_pet";
 
     try {
+        /* Suppression de l'image */
+        $oldImg = getPetInfo($id_pet)['img_pet'];
+        if(file_exists("assets/img/pet/" . $oldImg)) unlink("assets/img/pet/" . $oldImg);
+        /* Execution de la requête */
         $query = $db -> prepare($queryText);
         $query -> bindValue(':id_pet', $id_pet);
         $query -> execute();
-        $query -> fetch(PDO::FETCH_ASSOC);
         return true;
     } catch(PDOException $e) {
         echo "Erreur lors de la suppression d'un profil animal. CODE: " . $e->getMessage();
@@ -194,7 +212,6 @@ function ModifyPetTestimony($id_pet, $content){
         $query -> bindValue(':id_pet', $id_pet);
         $query -> bindParam(':content', $content, PDO::PARAM_STR);
         $query -> execute();
-        $query -> fetch(PDO::FETCH_ASSOC);
         return true;
     } catch(PDOException $e) {
         echo "Erreur lors de la modification d'un témoignage. CODE: " . $e->getMessage();
@@ -202,7 +219,7 @@ function ModifyPetTestimony($id_pet, $content){
     }
 }
 
-/* Modification d'un témoignage */
+/* Modification d'un profil animal */
 function ModifyPetProfil($id_pet, $pet_name, $color, $waist, $age, $puce, $physic, $behaviour, $adress, $_date, $_time, $img, $imgTmp, $coords){
     $db = connectToDB("user");
 
@@ -211,6 +228,10 @@ function ModifyPetProfil($id_pet, $pet_name, $color, $waist, $age, $puce, $physi
 
     try {
         if($img != 0){
+            /* Suppression de l'ancien fichier */
+            $oldImg = getPetInfo($id_pet)['img_pet'];
+            if(file_exists("assets/img/pet/" . $oldImg)) unlink("assets/img/pet/" . $oldImg);
+            /* Génération du nouveau fichier */
             $img_id = rand(1, 10000000000);
             $fileName =  $img_id .'.'. $img['extension'];
             move_uploaded_file($imgTmp, "assets/img/pet/" . $fileName);
@@ -232,7 +253,6 @@ function ModifyPetProfil($id_pet, $pet_name, $color, $waist, $age, $puce, $physi
         $query -> bindParam(':lat', $coords['lat'], PDO::PARAM_STR);
         $query -> bindParam(':lon', $coords['lon'], PDO::PARAM_STR);
         $query -> execute();
-        $query -> fetch(PDO::FETCH_ASSOC);
         return true;
     } catch(PDOException $e) {
         echo "Erreur lors de la modification d'un profil animal. CODE: " . $e->getMessage();

@@ -24,7 +24,6 @@
     <script src="assets/js/bootstrap.bundle.js"></script>
     <script defer src="assets/js/animations.js"></script> 
     <script defer src="assets/js/msg.js"></script>
-    <script defer src="assets/js/admin.js"></script>
 </head>
 
 <body>

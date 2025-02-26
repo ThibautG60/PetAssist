@@ -12,13 +12,7 @@
     }
     //-- On sélectionne le contenu à afficher en en fonction de si la personne est connecté ou non
     if(userConnected() == true){
-        // Si la personne a cliqué sur "modifier son compte" 
-        if(isset($_POST["modify"]) && $_POST["modify"] == 'Modifier mon compte'){
-            require 'controllers/controller_modifier_compte.php';//- Appel du controller pour le formulaire de modification de compte
-        }
-        else{
-            require 'views/account.php';//- Affichage du compte personnel de l'utilisateur
-        }
+        include 'views/account.php';//- Affichage du compte personnel de l'utilisateur
     }
     else{
         /* CONNEXION AU COMPTE */

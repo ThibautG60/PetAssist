@@ -22,6 +22,10 @@
                         require_once 'views/goldenbook.php';//- Affichage de la page des témoignages
                         notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
                     }
+                    else{
+                        require_once 'views/admin_mtestimony.php';//- Affichage de la page des témoignages
+                        notifGenerator('error', 'ERREUR', 'Les informations n\'ont pas pu s\'enregistrer.');
+                    }
                 }
                 else{
                     require_once 'views/admin_mtestimony.php';//- Affichage de la page des témoignages
@@ -45,14 +49,20 @@
                         require_once 'views/petlist.php';//- Affichage de la page de la liste des signalements
                         notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
                     }
-                    else require_once 'views/admin_mpetprofil.php';//- Affichage de la page de modification des profils animaux
+                    else{
+                        require_once 'views/admin_mpetprofil.php';//- Affichage de la page de modification des profils animaux
+                        notifGenerator('error', 'ERREUR', 'Les informations n\'ont pas pu s\'enregistrer.');
+                    } 
                 }
                 else if(isset($_POST['pet-adress'])){ // Si le modérateur n'a pas UP d'img
                     if(ModifyPetProfil($_GET['m'], $_POST['pet-name'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], $_POST['pet-physic'], $_POST['pet-comport'], $_POST['pet-adress'], $_POST['pet-date'], $_POST['pet-time'], 0, 0, getCoords($_POST['pet-adress'])) == true){
                         require_once 'views/petlist.php';//- Affichage de la page de la liste des signalements
                         notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
                     }
-                    else require_once 'views/admin_mpetprofil.php';//- Affichage de la page de modification des profils animaux
+                    else{
+                        require_once 'views/admin_mpetprofil.php';//- Affichage de la page de modification des profils animaux
+                        notifGenerator('error', 'ERREUR', 'Les informations n\'ont pas pu s\'enregistrer.');
+                    } 
                 }
                 else{
                     require_once 'views/admin_mpetprofil.php';//- Affichage de la page de modification des profils animaux
@@ -76,14 +86,20 @@
                         require_once 'views/petlist.php';//- Affichage de la page de la liste des signalements
                         notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
                     }
-                    else require_once 'views/admin_maccount.php';//- Affichage de la page de modif du compte
+                    else{
+                        require_once 'views/admin_maccount.php';//- Affichage de la page de modif du compte
+                        notifGenerator('error', 'ERREUR', 'Les informations n\'ont pas pu s\'enregistrer.');
+                    } 
                 }
                 if(isset($_POST['pseudo'])){ // Si le modérateur n'a pas UP d'img
                     if(ModifyUserProfil($_GET['m'], $_POST['pseudo'], 0, 0) == true){
                         require_once 'views/petlist.php';//- Affichage de la page de la liste des signalements
                         notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
                     }
-                    else require_once 'views/admin_maccount.php';//- Affichage de la page de modif du compte
+                    else{
+                        require_once 'views/admin_maccount.php';//- Affichage de la page de modif du compte
+                        notifGenerator('error', 'ERREUR', 'Les informations n\'ont pas pu s\'enregistrer.');
+                    } 
                 }
                 else{
                     require_once 'views/admin_maccount.php';//- Affichage de la page de modif du compte

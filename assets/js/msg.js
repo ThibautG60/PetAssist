@@ -2,15 +2,18 @@ const msgDial = document.getElementById('msg-dial');
 const msgButton = document.querySelectorAll('.msg-button');
 const closeMsgButton = document.getElementById('close-msg-button');
 const formMsg = document.getElementById('formMsg');
-
-let ariaDetails = document.getElementById('msg-dial').getAttribute('aria-details');
+const url = new URLSearchParams(window.location.search);// On véréfie les paramètres passés en GET pour cacher la boite de dialogue ou l'ouvrir
+const page = url.get('p');// On véréfie les paramètres passés en GET pour cacher la boite de dialogue ou l'ouvrir
+let ariaDetails = "openLater";// On cache d'office le dialog, sauf si on passe le paramètre "c" (Comme contact)
 
 formMsg.addEventListener('submit', addMsg);
 
 /* Boutton pour fermer la boite de dialogue */
 closeMsgButton.addEventListener("click", function () {
+    if (page == 'compte' && url.get('c') != 0) {
+        location.href = "?p=compte";
+    }
     msgDial.close();
-    location.href = "?p=compte";
 });
 
 /* On cherche sur quel bouton l'user a cliqué, car il se peut qu'il y en ait plusisuers par pages */
@@ -24,7 +27,10 @@ msgButton.forEach(button => {
 
 /* Quand la fenêtre a fini de se charger */
 window.addEventListener('load', function () {
-    if (ariaDetails == 'openNow') { // On vérifie si il faut afficher le dialog tout de suite (Onglet ' mon compte')
+    if (page == 'compte' && url.get('c') != 0) {
+        ariaDetails = document.getElementById('msg-dial').getAttribute('aria-details');
+    }
+    if (ariaDetails === 'openNow') { // On vérifie si il faut afficher le dialog tout de suite (Onglet ' mon compte')
         msgDial.showModal();
         let msgInput = document.getElementById("msg-input");
         msgInput.focus();
