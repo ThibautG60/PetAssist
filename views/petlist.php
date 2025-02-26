@@ -103,20 +103,18 @@
                             <div id="collapseMsgThree" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionMsg">
                                 <div class="accordion-body">
-                                    <form action="">
+                                    <form method="POST">
                                         <div class="mb-3">
-                                            <label for="filter-adress" class="form-label">Adresse:</label>
-                                            <input type="text" class="form-control" id="filter-adress"
-                                                aria-describedby="filter-adressH">
-                                            <div id="filter-adressH" class="form-text">Exemple: 8 rue de l'exemple
-                                                60000 EXEMPLE</div>
+                                            <label for="filterAdress" class="form-label">Adresse:</label>
+                                            <input type="text" class="form-control" name="filterAdress" id="filterAdress" aria-describedby="filter-adressH" pattern="^(?=.*\d{5})([A-Za-zÀ-ÿ0-9\s'\-\.]+(?:\s*\d{5}\s*)?[A-Za-zÀ-ÿ0-9\s'\-\.]+)*$" minlength="5" title="Vous devez saisir au minimum un code postal." required>
+                                            <div id="filter-adressH" class="form-text">Exemple: 8 rue de l'exemple 60000 EXEMPLE</div>
                                         </div>
-                                        <label for="filter-KM">Rayon autour de l'adresse:</label>
-                                        <input type="range" min="0" max="100"
-                                            oninput="this.nextElementSibling.value = this.value +'KM'">
+                                        <label for="filterKM">Rayon autour de l'adresse:</label>
+                                        <input type="range" name="filterKM" id="filterKM" min="0" max="100" oninput="this.nextElementSibling.value = this.value +'KM'" required>
                                         <output>
                                             <div class="form-text">Rayon de recherche en Kilomètres</div>
                                         </output>
+                                        <button type="submit" class="btn btn-primary mt-4">Appliquer</button>
                                     </form>
                                 </div>
                             </div>
@@ -132,21 +130,17 @@
                             <div id="collapseMsgFour" class="accordion-collapse collapse"
                                 data-bs-parent="#accordionMsg">
                                 <div class="accordion-body">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-                                            <input class="form-check-input me-1" type="radio" name="listGroupRadio"
-                                                value="" id="filter-dateUp" checked>
-                                            <label class="form-check-label" for="filter-dateUp">Date
-                                                croissante</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input me-1" type="radio" name="listGroupRadio"
-                                                value="" id="filter-dateDown">
-                                            <label class="form-check-label" for="filter-dateDown">Date
-                                                décroissante</label>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <form method="POST">
+                                    <div class="form-check">
+                                        <input class="form-check-input me-1" type="radio" name="filterDate" value="up" checked>                        
+                                        <label class="form-check-label" for="filterDate">Date croissante</label>
+                                    </div> 
+                                    <div class="form-check">
+                                        <input class="form-check-input me-1" type="radio" name="filterDate" value="down">
+                                        <label class="form-check-label" for="filterDate">Date décroissante</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-4">Appliquer</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -169,7 +163,6 @@
                 <div class="list">
                     <?php
                     //- Génération de la liste
-                    $petInfo = getAllPetInfo();
                     if($petInfo != false){     
                         foreach($petInfo as $pet){
                             if($pet['lost'] != 1)echo '<div class="card-pet box-found" data-spicies="'.$pet['id_spicies'].'" data-race="'.$pet['id_race'].'" data-date="'.$pet['_date'].'">';

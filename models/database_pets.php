@@ -37,9 +37,10 @@ function registerPet($lost, $pet_name, $male, $color, $waist, $age, $puce, $phys
     }
 }
 /* Récupération de toutes les infos de la base path_pets */
-function getAllPetInfo(){
+function getAllPetInfo($order = "none"){
     $db = connectToDB("reader");
-    $queryText = "SELECT * FROM path_pets";// On récupère toutes les informations
+    if($order == 'up')$queryText = "SELECT * FROM path_pets ORDER BY `_date`"; // On récupère tous les signalements, du plus vieux au plus récent
+    else $queryText = "SELECT * FROM path_pets ORDER BY `_date` DESC"; // On récupère tous les signalements, du plus récent au plus vieux
 
     try {
         $query = $db -> prepare($queryText);
