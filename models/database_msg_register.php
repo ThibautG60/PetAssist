@@ -4,7 +4,9 @@ session_start();
 require_once 'database.php'; // Importation des fonctions de communication avec la BDD
 
 if (isset($_POST['text'])){
-    addMsgDB($_SESSION["id_user"], htmlspecialchars($_POST['text']), $_SESSION["id_r"]);
+    if(preg_match("/^[A-Za-z0-9\s]{2,}$/", $_POST['text']) == 1){
+        addMsgDB($_SESSION["id_user"], htmlspecialchars($_POST['text']), $_SESSION["id_r"]);
+    }
 }
 
 /* Fonction pour ajouter un message */ 

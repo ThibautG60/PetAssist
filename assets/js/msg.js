@@ -41,13 +41,23 @@ window.addEventListener('load', function () {
 /* Fonction pour ajouter le message à l'user */
 function addMsg(event) {
     event.preventDefault();
+    const pattern = new RegExp(/^[A-Za-z0-9\s]{2,}$/, "i");
     let msgInput = document.getElementById("msg-input");
+
     if (msgInput.classList.contains('form-error')) {
         msgInput.classList.remove('form-error');
+        msgInput.style.color = "black";
     }
     if (msgInput.value == "") {
         msgInput.classList.add('form-error');
+        msgInput.style.color = "whitesmoke";
         msgInput.placeholder = "Vous ne pouvez pas envoyer de message vide";
+    }
+    else if (pattern.test(msgInput.value) == false) {
+        msgInput.classList.add('form-error');
+        msgInput.style.color = "whitesmoke";
+        msgInput.value = "";
+        msgInput.placeholder = "Le message ne doit comporter que des chiffres et des lettres.";
     }
     else {
         let div = document.createElement('div');

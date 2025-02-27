@@ -62,11 +62,11 @@
                     <div class="row mt-2">
                         <div class="form-group col-lg-4">
                             <label for="pet-physic">Particularités physique:</label>
-                            <?php echo '<input type="text" class="form-control" value="'.$pInfo['physic'].'" name="pet-physic" id="pet-physic" pattern="^[A-Za-z]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">'; ?>
+                            <?php echo '<input type="text" class="form-control" value="'.$pInfo['physic'].'" name="pet-physic" id="pet-physic" pattern="^[A-Za-z\s]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">'; ?>
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="pet-comport">Comportement:</label>
-                            <?php echo '<input type="text" class="form-control" value="'.$pInfo['behaviour'].'" name="pet-comport" id="pet-comport" pattern="^[A-Za-z]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">'; ?>
+                            <?php echo '<input type="text" class="form-control" value="'.$pInfo['behaviour'].'" name="pet-comport" id="pet-comport" pattern="^[A-Za-z\s]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">'; ?>
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="pet-pic" class="form-label">Modifiez une photo de l'animal</label>

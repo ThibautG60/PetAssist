@@ -27,9 +27,9 @@
             }
         }
         ?>
-        <form id="formMsg" action="">
-            <textarea id="msg-input" name="msg-input" rows="4" cols="50"
-                placeholder="Ecrivez votre message"></textarea>
+        <form id="formMsg">
+            <label class="text-light" for="msg-input">Ecrivez votre message:</label>
+            <textarea id="msg-input" name="msg-input" rows="4" cols="50" required></textarea>
             <br>
             <input class="btn btn-primary" type="submit" value="Envoyer le message">
         </form>

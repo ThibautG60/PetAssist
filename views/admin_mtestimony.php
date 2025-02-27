@@ -40,7 +40,7 @@
                     <div class="row form-group mt-2">
                         <label for="content">Contenu:</label>
                 HTML;
-                echo '<input type="text" class="form-control" name="content" id="content" value="'.$pInfo['testimony_text'].'" required pattern="^[A-Za-z0-9]{2,}$" minlength="2" title="Le temoignage ne peut contenir que des lettres et des chiffres">';
+                echo '<input type="text" class="form-control" name="content" id="content" value="'.$pInfo['testimony_text'].'" required pattern="^[A-Za-z0-9\s]{2,}$" minlength="2" title="Le temoignage ne peut contenir que des lettres et des chiffres">';
                 echo <<< HTML
                     </div>
                     <input class="btn btn-success mt-3" type="submit" value="Modifier le témoignage">

@@ -69,56 +69,41 @@
                     <div class="form-group col-lg-4">
                         <p>Sexe *:</p>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="pet-sex" id="pet-sexM"
-                                value="1" required>
+                            <input class="form-check-input" type="radio" name="pet-sex" id="pet-sexM" value="1" required>
                             <label class="form-check-label" for="pet-sexM">Mâle</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="pet-sex" id="pet-sexF"
-                                value="0" required>
+                            <input class="form-check-input" type="radio" name="pet-sex" id="pet-sexF" value="0" required>
                             <label class="form-check-label" for="pet-sexF">Femelle</label>
                         </div>
                     </div>
                     <div class="form-group col-6 col-lg-4">
                         <label for="pet-color">Couleur(s) *:</label>
-                        <input type="text" class="form-control" name="pet-color" id="pet-color" placeholder="Ex: Roux, noir" required                             
-                        pattern="^[A-Za-z]{2,}$" minlength="2"
-                        title="La couleur de l'animal ne peut contenir que des lettres et avoir plus de deux lettres">
+                        <input type="text" class="form-control" name="pet-color" id="pet-color" placeholder="Ex: Roux, noir" required pattern="^[A-Za-z]{2,}$" minlength="2" title="La couleur de l'animal ne peut contenir que des lettres et avoir plus de deux lettres">
                     </div>
                     <div class="form-group col-6 col-lg-4">
                         <label for="pet-waist">Taille:</label>
-                        <input type="text" class="form-control" name="pet-waist" id="pet-waist"
-                            placeholder="Grand, moyen, petit ou en centimètres."                             
-                            pattern="^[A-Za-z0-9]{1,}$" minlength="1"
-                            title="La couleur de l'animal ne peut contenir que des lettres et avoir au moins une lettre">
+                        <input type="text" class="form-control" name="pet-waist" id="pet-waist" placeholder="Grand, moyen, petit ou en centimètres." pattern="^[A-Za-z0-9]{1,}$" minlength="1" title="La couleur de l'animal ne peut contenir que des lettres et avoir au moins une lettre">
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="form-group col-6">
                         <label for="pet-age">Age:</label>
-                        <input type="number" class="form-control" name="pet-age" id="pet-age" placeholder="Age approximatif"                             
-                        pattern="^[0-9]{1,}$" minlength="1"
-                        title="L'âge doit être écrit en chiffre">
+                        <input type="number" class="form-control" name="pet-age" id="pet-age" placeholder="Age approximatif" pattern="^[0-9]{1,}$" minlength="1" title="L'âge doit être écrit en chiffre">
                     </div>
                     <div class="form-group col-6">
                         <label for="pet-puce">Numéro de puce:</label>
-                        <input type="number" class="form-control" name="pet-puce" id="pet-puce" placeholder="Ex: 250 26 10 55101789"                             
-                        pattern="^[0-9]{15,}$" minlength="15"
-                        title="Le numéro de puce doit contenir 15 chiffres">
+                        <input type="number" class="form-control" name="pet-puce" id="pet-puce" placeholder="Ex: 250 26 10 55101789" pattern="^[0-9]{15,}$" minlength="15" title="Le numéro de puce doit contenir 15 chiffres">
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="form-group col-lg-4">
                         <label for="pet-physic">Particularités physique:</label>
-                        <input type="text" class="form-control" name="pet-physic" id="pet-physic" placeholder="Ex: Tache noir sur le dos"
-                        pattern="^[A-Za-z\s]{2,}$" minlength="2"
-                            title="Vous devez saisir plus de deux lettres">
+                        <input type="text" class="form-control" name="pet-physic" id="pet-physic" placeholder="Ex: Tache noir sur le dos" pattern="^[A-Za-z\s]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="pet-comport">Comportement:</label>
-                        <input type="text" class="form-control" name="pet-comport" id="pet-comport" placeholder="Ex: Vif, peureux ..."
-                        pattern="^[A-Za-z\s]{2,}$" minlength="2"
-                        title="Vous devez saisir plus de deux lettres">
+                        <input type="text" class="form-control" name="pet-comport" id="pet-comport" placeholder="Ex: Vif, peureux ..." pattern="^[A-Za-z\s]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="pet-pic" class="form-label">Importez une photo de l'animal *:</label>
@@ -146,8 +131,7 @@
                         <input type="time" class="form-control" name="pet-time" id="pet-time" required>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-4" id="buttonSubmitForm" aria-details="lost">Valider les
-                    informations</button>
+                <button type="submit" class="btn btn-primary mt-4" id="buttonSubmitForm" aria-details="lost">Valider les informations</button>
             </form>
         </section>
     </main>
