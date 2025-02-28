@@ -21,7 +21,7 @@
                 if(isset($_POST['content'])){
                     // On vérifie que les variables soient conformes
                     if(regexText($_POST['content'], 1) == true){
-                        if(ModifyPetTestimony($_GET['m'], $_POST['content']) == true){
+                        if(ModifyPetTestimony($_GET['m'], htmlspecialchars($_POST['content'])) == true){
                             require_once 'views/goldenbook.php';//- Affichage de la page des témoignages
                             notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
                         }
@@ -58,7 +58,7 @@
                         // On vérifie qu'OSM a bien trouvé l'adresse
                         $coords = getCoords($_POST['pet-adress']);
                         if($coords != false){ 
-                            if(ModifyPetProfil($_GET['m'], $_POST['pet-name'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], $_POST['pet-physic'], $_POST['pet-comport'], $_POST['pet-adress'], $_POST['pet-date'], $_POST['pet-time'], pathinfo($_FILES['pet-pic']['name']), $_FILES['pet-pic']['tmp_name'], $coords) == true){
+                            if(ModifyPetProfil($_GET['m'], $_POST['pet-name'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], htmlspecialchars($_POST['pet-physic']), htmlspecialchars($_POST['pet-comport']), $_POST['pet-adress'], $_POST['pet-date'], $_POST['pet-time'], pathinfo($_FILES['pet-pic']['name']), $_FILES['pet-pic']['tmp_name'], $coords) == true){
                                 header('Location: ?p=pet_profil&id='.$_GET['id']);
                                 notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
                             }
@@ -83,7 +83,7 @@
                         // On vérifie qu'OSM a bien trouvé l'adresse
                         $coords = getCoords($_POST['pet-adress']);
                         if($coords != false){ 
-                            if(ModifyPetProfil($_GET['m'], $_POST['pet-name'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], $_POST['pet-physic'], $_POST['pet-comport'], $_POST['pet-adress'], $_POST['pet-date'], $_POST['pet-time'], 0, 0, $coords) == true){
+                            if(ModifyPetProfil($_GET['m'], $_POST['pet-name'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], htmlspecialchars($_POST['pet-physic']), htmlspecialchars($_POST['pet-comport']), $_POST['pet-adress'], $_POST['pet-date'], $_POST['pet-time'], 0, 0, $coords) == true){
                                 header('Location: ?p=pet_profil&id='.$_GET['id']);
                                 notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
                             }

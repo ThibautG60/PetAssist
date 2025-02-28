@@ -19,7 +19,7 @@
                     // On vérifie que l'image soit conforme
                     if(imgSecure(pathinfo($_FILES['profil-Pic']['name']), $_FILES['profil-Pic']['size']) == true){
                         // On enregistre les variables dans la base de données
-                        if(registerUser($_POST['firstname'], $_POST['lastname'], $_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['adress'], $_POST['city'], $_POST['postal_code'], pathinfo($_FILES['profil-Pic']['name']), $_FILES['profil-Pic']['tmp_name']) == true){
+                        if(registerUser($_POST['firstname'], $_POST['lastname'], $_POST['pseudo'], $_POST['email'], htmlspecialchars($_POST['password']), $_POST['adress'], $_POST['city'], $_POST['postal_code'], pathinfo($_FILES['profil-Pic']['name']), $_FILES['profil-Pic']['tmp_name']) == true){
                             require 'controller_compte.php';// Affichage du compte personnel
                         }
                         else{

@@ -22,7 +22,7 @@
             // On vérifie que les variables soient conformes
             if(regexMail($_POST['email'], 1) == true && regexPassword($_POST['password'], 1) == true){
                 // On vérifie qu'il soit conforme
-                if(passVerify($_POST['email'], hash_hmac('sha256', $_POST['password'], 'path')) == true){
+                if(passVerify($_POST['email'], hash_hmac('sha256', htmlspecialchars($_POST['password']), 'path')) == true){
                     $uInfo = loginUser($_POST['email']);
                     if($uInfo != false){
                         if($uInfo['banned'] == 0){

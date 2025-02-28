@@ -30,7 +30,7 @@
                 if($mail == true && $pseudo == true){ 
                     if(isset($_FILES["profil-Pic"]) && $_FILES["profil-Pic"]['name'] != ""){ // Si l'user a UP une img
                         if(isset($_POST['password']) && $_POST['password'] != ""){ // Si l'user a modifié son password
-                            if(ModifyUserProfilByUser($_SESSION["id_user"], $_POST['firstname'], $_POST['lastname'], $_POST['pseudo'], $_POST['email'], $_POST['password'], pathinfo($_FILES['profil-Pic']['name']), $_FILES['profil-Pic']['tmp_name'], $_POST['adress'], $_POST['city'], $_POST['postal_code']) == true){
+                            if(ModifyUserProfilByUser($_SESSION["id_user"], $_POST['firstname'], $_POST['lastname'], $_POST['pseudo'], $_POST['email'], htmlspecialchars($_POST['password']), pathinfo($_FILES['profil-Pic']['name']), $_FILES['profil-Pic']['tmp_name'], $_POST['adress'], $_POST['city'], $_POST['postal_code']) == true){
                                 require_once 'controllers/controller_compte.php';//- Affichage du compte de l'user
                                 notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
                             }
@@ -52,7 +52,7 @@
                     } 
                     else{ // Si l'user n'a pas UP d'img
                         if(isset($_POST['password']) && $_POST['password'] != ""){ // Si l'user a modifié son password
-                            if(ModifyUserProfilByUser($_SESSION["id_user"], $_POST['firstname'], $_POST['lastname'], $_POST['pseudo'], $_POST['email'], $_POST['password'], 0, 0, $_POST['adress'], $_POST['city'], $_POST['postal_code']) == true){
+                            if(ModifyUserProfilByUser($_SESSION["id_user"], $_POST['firstname'], $_POST['lastname'], $_POST['pseudo'], $_POST['email'], htmlspecialchars($_POST['password']), 0, 0, $_POST['adress'], $_POST['city'], $_POST['postal_code']) == true){
                                 require_once 'controllers/controller_compte.php';//- Affichage du compte de l'user
                                 notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
                             }

@@ -18,7 +18,7 @@
                         $coords = getCoords($_POST['pet-adress']);
                         if($coords != false){ 
                             // On enregistre les variables dans la base de données
-                            if(registerPet("0", "", $_POST['pet-sex'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], $_POST['pet-physic'], $_POST['pet-comport'], pathinfo($_FILES['pet-pic']['name']), $_FILES['pet-pic']['tmp_name'], $_POST['pet-adress'], $coords, $_POST['pet-date'], $_POST['pet-time'], $_POST['race'], $_POST['spicies'], $_SESSION["id_user"]) == true){
+                            if(registerPet("0", "", $_POST['pet-sex'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], htmlspecialchars($_POST['pet-physic']), htmlspecialchars($_POST['pet-comport']), pathinfo($_FILES['pet-pic']['name']), $_FILES['pet-pic']['tmp_name'], $_POST['pet-adress'], $coords, $_POST['pet-date'], $_POST['pet-time'], $_POST['race'], $_POST['spicies'], $_SESSION["id_user"]) == true){
                                 require 'controller_index.php';// Affichage de l'acceuil
                                 addNotif(0, "Votre signalement a été ajouté à la liste.", $_SESSION["id_user"]);
                                 notifGenerator('success', 'C\'EST NOTE !', 'Nous avons bien enregistré votre signalement.');
