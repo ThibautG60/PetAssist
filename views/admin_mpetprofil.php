@@ -32,11 +32,11 @@
             <?php if(userConnected() == true && getAdminLvl($_SESSION["id_user"])['admin_type'] != 0){ // On vérifie que l'user soit connecté & qu'il soit modérateur
                 $pInfo = getPetInfo($_GET['m']); ?>
                     <h3>Modifier les informations</h3>
-                    <form novalidate method="POST" id="formModify" enctype="multipart/form-data">
+                    <form novalidate method="POST" id="formV" enctype="multipart/form-data">
                     <div class="row mt-2">
                         <div class="form-group col-12">
                             <label for="pet-name">Nom de l'animal:</label>
-                            <?php echo '<input type="text" class="form-control" value="'.$pInfo['pet_name'].'" name="pet-name" id="pet-name" pattern="^[A-Za-z]{2,}$" minlength="2" title="Le nom de l\'animal ne peut contenir que des lettres et avoir plus de deux lettres">'; ?>
+                            <?php echo '<input type="text" class="form-control" value="'.$pInfo['pet_name'].'" name="pet-name" id="pet-name" pattern="^[A-Za-zÀ-ÿ]{2,}$" minlength="2" title="Le nom de l\'animal ne peut contenir que des lettres et avoir plus de deux lettres">'; ?>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -62,11 +62,11 @@
                     <div class="row mt-2">
                         <div class="form-group col-lg-4">
                             <label for="pet-physic">Particularités physique:</label>
-                            <?php echo '<input type="text" class="form-control" value="'.$pInfo['physic'].'" name="pet-physic" id="pet-physic" pattern="^[A-Za-z\s]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">'; ?>
+                            <?php echo '<input type="text" class="form-control" value="'.$pInfo['physic'].'" name="pet-physic" id="pet-physic" pattern="^[A-Za-zÀ-ÿ0-9\sç,;.!?()\@$%^&*-_+|=\']{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">'; ?>
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="pet-comport">Comportement:</label>
-                            <?php echo '<input type="text" class="form-control" value="'.$pInfo['behaviour'].'" name="pet-comport" id="pet-comport" pattern="^[A-Za-z\s]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">'; ?>
+                            <?php echo '<input type="text" class="form-control" value="'.$pInfo['behaviour'].'" name="pet-comport" id="pet-comport" pattern="^[A-Za-zÀ-ÿ0-9\sç,;.!?()\@$%^&*-_+|=\']{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">'; ?>
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="pet-pic" class="form-label">Modifiez une photo de l'animal</label>
@@ -87,7 +87,7 @@
                             <?php echo '<input type="time" class="form-control" value="'.$pInfo['_time'].'" name="pet-time" id="pet-time" required>'; ?>
                         </div>
                     </div>
-                    <input class="btn btn-success mt-3" type="submit" value="Modifier les informations">
+                    <button type="submit" class="btn btn-success mt-3" id="buttonSubmitForm" aria-details="modify">Modifier les informations</button>
                 </form>
             <?php } ?>
         </section>

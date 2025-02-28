@@ -38,23 +38,10 @@ function checkForm(e) {
     if (valid == false) {
         e.preventDefault();
     } else {
-        switch (ariraDetails) {
-            case "create":
-                break;
-            case "modify":
-                alert('modify');
-                break;
-            case "lost":
-                confirm('Vous êtes sûr de vos informations ?');
-                break;
-            case "found":
-                break;
-            case "passlost":
-                alert('Mot de passe modifié avec succès.');
-                location.href = "?p=compte";
-                break;
-            case "login":
-                break;
+        if (ariraDetails == "modify") {
+            if (confirm("Confirmez-vous les informations ?") == false) {
+                e.preventDefault();
+            }
         }
     }
 }

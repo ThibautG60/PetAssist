@@ -92,11 +92,11 @@
                 <div class="row mt-2">
                     <div class="form-group col-lg-4">
                         <label for="pet-physic">Particularités physique:</label>
-                        <input type="text" class="form-control" name="pet-physic" id="pet-physic" placeholder="Ex: Tache noir sur le dos" pattern="^[A-Za-z\s]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">
+                        <input type="text" class="form-control" name="pet-physic" id="pet-physic" placeholder="Ex: Tache noir sur le dos" pattern="^[A-Za-zÀ-ÿ0-9\sç,;.!?()\@$%^&*-_+|=\']{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="pet-comport">Comportement:</label>
-                        <input type="text" class="form-control" name="pet-comport" id="pet-comport" placeholder="Ex: Vif, peureux ..." pattern="^[A-Za-z\s]{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">
+                        <input type="text" class="form-control" name="pet-comport" id="pet-comport" placeholder="Ex: Vif, peureux ..." pattern="^[A-Za-zÀ-ÿ0-9\sç,;.!?()\@$%^&*-_+|=\']{2,}$" minlength="2" title="Vous devez saisir plus de deux lettres">
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="pet-pic" class="form-label">Importez une photo de l'animal *:</label>
@@ -121,7 +121,7 @@
                         <input type="time" class="form-control" name="pet-time" id="pet-time" required>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-4" id="buttonSubmitForm" aria-details="found">Valider les informations</button>
+                <button type="submit" class="btn btn-primary mt-4" id="buttonSubmitForm" aria-details="create">Valider les informations</button>
             </form>
         </section>
     </main>

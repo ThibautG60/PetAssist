@@ -40,15 +40,15 @@
                 <div class="row">
                     <div class="form-group col-6 col-lg-4">
                         <label for="firstname">Nom:</label>
-                        <?php echo '<input type="text" class="form-control" name="firstname" value="'.$uInfo['firstname'].'" id="firstname" placeholder="Saisissez votre nom de famille" required pattern="^[A-Za-z]{2,}$" minlength="2" title="Le nom de famille ne peut contenir que des lettres">'; ?>
+                        <?php echo '<input type="text" class="form-control" name="firstname" value="'.$uInfo['firstname'].'" id="firstname" placeholder="Saisissez votre nom de famille" required pattern="^[A-Za-zÀ-ÿ]{2,}$" minlength="2" title="Le nom de famille ne peut contenir que des lettres">'; ?>
                     </div>
                     <div class="form-group col-6 col-lg-4">
                         <label for="lastname">Prénom:</label>
-                        <?php echo '<input type="text" class="form-control" name="lastname" value="'.$uInfo['lastname'].'" id="lastname" placeholder="Saisissez votre prénom" required pattern="^[A-Za-z]{2,}$" minlength="2" title="Le prénom ne peut contenir que des lettres">'; ?>
+                        <?php echo '<input type="text" class="form-control" name="lastname" value="'.$uInfo['lastname'].'" id="lastname" placeholder="Saisissez votre prénom" required pattern="^[A-Za-zÀ-ÿ]{2,}$" minlength="2" title="Le prénom ne peut contenir que des lettres">'; ?>
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="pseudo">Pseudonyme:</label>
-                        <?php echo '<input type="text" class="form-control" name="pseudo" value="'.$uInfo['pseudo'].'" id="pseudo" placeholder="Saisissez un pseudonyme pour le site" required pattern="^[A-Za-z0-9]{2,}$" minlength="2" title="Le pseudonyme ne peut contenir que des lettres et des chiffres">'; ?>
+                        <?php echo '<input type="text" class="form-control" name="pseudo" value="'.$uInfo['pseudo'].'" id="pseudo" placeholder="Saisissez un pseudonyme pour le site" required pattern="^[A-Za-z0-9À-ÿ]{2,}$" minlength="2" title="Le pseudonyme ne peut contenir que des lettres et des chiffres">'; ?>
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="email">Email:</label>
@@ -74,14 +74,14 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <label for="city">Ville:</label>
-                        <?php echo '<input type="text" class="form-control" name="city" value="'.$uInfo['city'].'" id="city" placeholder="PARIS" required pattern="^[A-Za-z]{2,}$" minlength="2" title="Respectez le format.">'; ?>
+                        <?php echo '<input type="text" class="form-control" name="city" value="'.$uInfo['city'].'" id="city" placeholder="PARIS" required pattern="^[A-Za-zÀ-ÿ]{2,}$" minlength="2" title="Respectez le format.">'; ?>
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="postal_code">Code postal:</label>
                         <?php echo '<input type="text" class="form-control" name="postal_code" value="'.$uInfo['postal_code'].'" id="postal_code" placeholder="10000" required pattern="^[0-9]{5,}$" minlength="5" title="Le code postal doit contenir que des chiffres">'; ?>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary text-light mt-5" id="buttonSubmitForm" aria-details="create">Modifier mon compte</button>
+                <button type="submit" class="btn btn-primary text-light mt-5" id="buttonSubmitForm" aria-details="modify">Modifier mon compte</button>
             </form>
         <?php } ?>
         </section>

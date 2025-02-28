@@ -43,11 +43,11 @@
         else if($_GET['p'] == "pet_profil"){ // page "petprofil"
             if(isset($_GET['d'])){ // Si le modérateur veut supprimer un profil animal
                 if(deletePetProfil($_GET['d']) == true){
-                    require_once 'views/acceuil.php';//- Affichage de la page d'acceuil
+                    require_once 'controllers/controller_pet_profil.php';//- Appel du controller pour afficher la page profil de l'animal
                     notifGenerator('success', 'C\'EST BON', 'Le profil de l\'animal a bien été supprimé.');
                 }
                 else{
-                    require_once 'views/acceuil.php';//- Affichage de la page d'acceuil
+                    require_once 'controllers/controller_pet_profil.php';//- Appel du controller pour afficher la page profil de l'animal
                     notifGenerator('error', 'ERREUR', 'La suppression a échoué.');
                 }
             }
@@ -55,14 +55,22 @@
                 if(isset($_POST['pet-adress']) && isset($_FILES["pet-pic"]) && $_FILES["pet-pic"]['name'] != ""){ // Si le modérateur a UP une img
                     // On vérifie que les variables soient conformes
                     if(regexName($_POST['pet-name']) == true && regexName($_POST['pet-color'], 1) == true && regexWaist($_POST['pet-waist']) == true && regexAge($_POST['pet-age']) == true && regexPuce($_POST['pet-puce']) == true && regexText($_POST['pet-physic']) == true && regexText($_POST['pet-comport']) == true && regexLongAdress($_POST['pet-adress'], 1) == true){
-                        if(ModifyPetProfil($_GET['m'], $_POST['pet-name'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], $_POST['pet-physic'], $_POST['pet-comport'], $_POST['pet-adress'], $_POST['pet-date'], $_POST['pet-time'], pathinfo($_FILES['pet-pic']['name']), $_FILES['pet-pic']['tmp_name'], getCoords($_POST['pet-adress'])) == true){
-                            require_once 'views/acceuil.php';//- Affichage de la page d'acceuil
-                            notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
+                        // On vérifie qu'OSM a bien trouvé l'adresse
+                        $coords = getCoords($_POST['pet-adress']);
+                        if($coords != false){ 
+                            if(ModifyPetProfil($_GET['m'], $_POST['pet-name'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], $_POST['pet-physic'], $_POST['pet-comport'], $_POST['pet-adress'], $_POST['pet-date'], $_POST['pet-time'], pathinfo($_FILES['pet-pic']['name']), $_FILES['pet-pic']['tmp_name'], $coords) == true){
+                                header('Location: ?p=pet_profil&id='.$_GET['id']);
+                                notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
+                            }
+                            else{
+                                require_once 'views/admin_mpetprofil.php';//- Affichage de la page de modification des profils animaux
+                                notifGenerator('error', 'ERREUR', 'Les informations n\'ont pas pu s\'enregistrer.');
+                            } 
                         }
                         else{
                             require_once 'views/admin_mpetprofil.php';//- Affichage de la page de modification des profils animaux
-                            notifGenerator('error', 'ERREUR', 'Les informations n\'ont pas pu s\'enregistrer.');
-                        } 
+                            notifGenerator('error', 'ERREUR', 'Nous n\'arrivons pas à trouver cette adresse sur la carte.');
+                        }
                     }
                     else{
                         require_once 'views/admin_mpetprofil.php';//- Affichage de la page de modification des profils animaux
@@ -72,17 +80,25 @@
                 else if(isset($_POST['pet-adress'])){ // Si le modérateur n'a pas UP d'img
                     // On vérifie que les variables soient conformes
                     if(regexName($_POST['pet-name']) == true && regexName($_POST['pet-color'], 1) == true && regexWaist($_POST['pet-waist']) == true && regexAge($_POST['pet-age']) == true && regexPuce($_POST['pet-puce']) == true && regexText($_POST['pet-physic']) == true && regexText($_POST['pet-comport']) == true && regexLongAdress($_POST['pet-adress'], 1) == true){
-                        if(ModifyPetProfil($_GET['m'], $_POST['pet-name'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], $_POST['pet-physic'], $_POST['pet-comport'], $_POST['pet-adress'], $_POST['pet-date'], $_POST['pet-time'], 0, 0, getCoords($_POST['pet-adress'])) == true){
-                            require_once 'views/acceuil.php';//- Affichage de la page d'acceuil
-                            notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
+                        // On vérifie qu'OSM a bien trouvé l'adresse
+                        $coords = getCoords($_POST['pet-adress']);
+                        if($coords != false){ 
+                            if(ModifyPetProfil($_GET['m'], $_POST['pet-name'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], $_POST['pet-physic'], $_POST['pet-comport'], $_POST['pet-adress'], $_POST['pet-date'], $_POST['pet-time'], 0, 0, $coords) == true){
+                                header('Location: ?p=pet_profil&id='.$_GET['id']);
+                                notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
+                            }
+                            else{
+                                require_once 'views/admin_mpetprofil.php';//- Affichage de la page de modification des profils animaux
+                                notifGenerator('error', 'ERREUR', 'Les informations n\'ont pas pu s\'enregistrer.');
+                            } 
                         }
                         else{
                             require_once 'views/admin_mpetprofil.php';//- Affichage de la page de modification des profils animaux
-                            notifGenerator('error', 'ERREUR', 'Les informations n\'ont pas pu s\'enregistrer.');
-                        } 
+                            notifGenerator('error', 'ERREUR', 'Nous n\'arrivons pas à trouver cette adresse sur la carte.');
+                        }
                     }
                     else{
-                        require_once 'views/admin_mtestimony.php';//- Affichage de la page des témoignages
+                        require_once 'views/admin_mpetprofil.php';//- Affichage de la page de modification des profils animaux
                         notifGenerator('error', 'ERREUR', 'Erreur lors du remplissage du formulaire.');
                     }
                 }
@@ -98,7 +114,7 @@
                     notifGenerator('success', 'C\'EST BON', 'L\'utilisateur a été banni.');
                 }
                 else{
-                    require_once 'views/acceuil.php';//- Affichage de la page d'acceuil
+                    require_once 'controllers/controller_vcompte.php';//- Appel du controller pour afficher la page profil de l'user
                     notifGenerator('error', 'ERREUR', 'Le bannissement a échoué.');
                 }
             }
@@ -107,7 +123,7 @@
                     // On vérifie que les variables soient conformes
                     if(regexPseudo($_POST['pseudo'], 1) == true){
                         if(ModifyUserProfil($_GET['m'], $_POST['pseudo'], pathinfo($_FILES['profil-Pic']['name']), $_FILES['profil-Pic']['tmp_name']) == true){
-                            require_once 'views/acceuil.php';//- Affichage de la page d'acceuil
+                            header('Location: ?p=vcompte&id='.$_GET['id']);
                             notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
                         }
                         else{
@@ -124,7 +140,7 @@
                     // On vérifie que les variables soient conformes
                     if(regexPseudo($_POST['pseudo'], 1) == true){
                         if(ModifyUserProfil($_GET['m'], $_POST['pseudo'], 0, 0) == true){
-                            require_once 'views/acceuil.php';//- Affichage de la page d'acceuil
+                            header('Location: ?p=vcompte&id='.$_GET['id']);
                             notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
                         }
                         else{

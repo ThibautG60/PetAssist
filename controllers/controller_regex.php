@@ -13,7 +13,7 @@ function regexPassword($content, $required = 0){
 function regexName($content, $required = 0){
     if($required == 0 && $content == "")return true;
     else{
-        if(preg_match("/^[A-Za-z]{2,}$/", $content) == 1)return true;
+        if(preg_match("/^[A-Za-zÀ-ÿ]{2,}$/", $content) == 1)return true;
         else return false;
     }
 }
@@ -21,7 +21,7 @@ function regexName($content, $required = 0){
 function regexPseudo($content, $required = 0){
     if($required == 0 && $content == "")return true;
     else{
-        if(preg_match("/^[A-Za-z0-9]{2,}$/", $content) == 1)return true;
+        if(preg_match("/^[A-Za-zÀ-ÿ0-9]{2,}$/", $content) == 1)return true;
         else return false;
     }
 }
@@ -67,7 +67,7 @@ function regexWaist($content, $required = 0){
 }
 /* Vérification de la conformité de l'âge */
 function regexAge($content, $required = 0){
-    if($required == 0 && $content == "")return true;
+    if($required == 0 && $content == "" || $required == 0 && $content == "0")return true;
     else{
         if(preg_match("/^[0-9]{1,}$/", $content) == 1)return true;
         else return false;
@@ -75,7 +75,7 @@ function regexAge($content, $required = 0){
 }
 /* Vérification du numéro de puce */
 function regexPuce($content, $required = 0){
-    if($required == 0 && $content == "")return true;
+    if($required == 0 && $content == "" || $required == 0 && $content == "0")return true;
     else{
         if(preg_match("/^[0-9]{15,}$/", $content) == 1)return true;
         else return false;
@@ -85,7 +85,7 @@ function regexPuce($content, $required = 0){
 function regexText($content, $required = 0){
     if($required == 0 && $content == "")return true;
     else{
-        if(preg_match("/^[A-Za-z0-9\s]{2,}$/", $content) == 1)return true;
+        if(preg_match("/^[A-Za-zÀ-ÿ0-9\sç,;.!?()\@$%^&*-_+|=']{2,}$/", $content) == 1)return true;
         else return false;
     }
 }

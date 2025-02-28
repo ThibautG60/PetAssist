@@ -41,7 +41,7 @@ window.addEventListener('load', function () {
 /* Fonction pour ajouter le message à l'user */
 function addMsg(event) {
     event.preventDefault();
-    const pattern = new RegExp(/^[A-Za-z0-9\s]{2,}$/, "i");
+    const pattern = new RegExp(/^[A-Za-zÀ-ÿ0-9\sç,;.!?()\@$%^&*-_+|=']{2,}$/, "i");
     let msgInput = document.getElementById("msg-input");
 
     if (msgInput.classList.contains('form-error')) {

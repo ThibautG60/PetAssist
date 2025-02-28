@@ -14,15 +14,23 @@
                 if(imgSecure(pathinfo($_FILES['pet-pic']['name']), $_FILES['pet-pic']['size']) == true){
                     // On vérifie que les variables soient conformes
                     if(regexName($_POST['pet-name']) == true && regexName($_POST['pet-color'], 1) == true && regexWaist($_POST['pet-waist']) == true && regexAge($_POST['pet-age']) == true && regexPuce($_POST['pet-puce']) == true && regexText($_POST['pet-physic']) == true && regexText($_POST['pet-comport']) == true && regexLongAdress($_POST['pet-adress'], 1) == true){
-                        // On enregistre les variables dans la base de données
-                        if(registerPet("1", $_POST['pet-name'], $_POST['pet-sex'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], $_POST['pet-physic'], $_POST['pet-comport'], pathinfo($_FILES['pet-pic']['name']), $_FILES['pet-pic']['tmp_name'], $_POST['pet-adress'], getCoords($_POST['pet-adress']), $_POST['pet-date'], $_POST['pet-time'], $_POST['race'], $_POST['spicies'], $_SESSION["id_user"]) == true){
-                            require 'controller_index.php';// Affichage de l'acceuil
-                            addNotif(0, "Votre signalement a été ajouté à la liste.", $_SESSION["id_user"]);
-                            notifGenerator('success', 'C\'EST NOTE !', 'Nous avons bien enregistré votre signalement.');
+                        // On vérifie qu'OSM a bien trouvé l'adresse
+                        $coords = getCoords($_POST['pet-adress']);
+                        if($coords != false){
+                            // On enregistre les variables dans la base de données
+                            if(registerPet("1", $_POST['pet-name'], $_POST['pet-sex'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], $_POST['pet-physic'], $_POST['pet-comport'], pathinfo($_FILES['pet-pic']['name']), $_FILES['pet-pic']['tmp_name'], $_POST['pet-adress'], $coords, $_POST['pet-date'], $_POST['pet-time'], $_POST['race'], $_POST['spicies'], $_SESSION["id_user"]) == true){
+                                require 'controller_index.php';// Affichage de l'acceuil
+                                addNotif(0, "Votre signalement a été ajouté à la liste.", $_SESSION["id_user"]);
+                                notifGenerator('success', 'C\'EST NOTE !', 'Nous avons bien enregistré votre signalement.');
+                            }
+                            else{
+                                require 'views/lost.php'; //- Affichage du formulaire pour déclarer la perte de son animal
+                                notifGenerator('error', 'ERREUR', 'Erreur serveur lors de l\'enregistrement dans la base de données.');
+                            }
                         }
                         else{
                             require 'views/lost.php'; //- Affichage du formulaire pour déclarer la perte de son animal
-                            notifGenerator('error', 'ERREUR', 'Erreur serveur lors de l\'enregistrement dans la base de données.');
+                            notifGenerator('error', 'ERREUR', 'Nous n\'arrivons pas à trouver cette adresse sur la carte.');
                         }
                     }
                     else{

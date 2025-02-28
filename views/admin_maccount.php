@@ -36,18 +36,18 @@
                 echo <<< HTML
                 <div class="line"></div>
 
-                <form novalidate id="formModify" method="POST" enctype="multipart/form-data">
+                <form novalidate id="formV" method="POST" enctype="multipart/form-data">
                     <div class="row form-group mt-2">
                         <label for="pseudo">Pseudonyme:</label>
                 HTML;
-                echo '<input type="text" class="form-control" name="pseudo" id="pseudo" value="'.$uInfo['pseudo'].'" required pattern="^[A-Za-z0-9]{2,}$" minlength="2" title="Le pseudonyme ne peut contenir que des lettres et des chiffres">';
+                echo '<input type="text" class="form-control" name="pseudo" id="pseudo" value="'.$uInfo['pseudo'].'" required pattern="^[A-Za-zÀ-ÿ0-9]{2,}$" minlength="2" title="Le pseudonyme ne peut contenir que des lettres et des chiffres">';
                 echo <<< HTML
                     </div>
                     <div class="row form-group col-lg-6">
                         <label for="profil-Pic" class="form-label">Modifiez la photo:</label>
                         <input class="form-control" type="file" name="profil-Pic" id="profil-Pic">
                     </div>
-                    <input class="btn btn-success mt-3" type="submit" value="Modifier les informations">
+                    <button type="submit" class="btn btn-success mt-3" id="buttonSubmitForm" aria-details="modify">Modifier les informations</button>
                 </form>
                 HTML;
             }
