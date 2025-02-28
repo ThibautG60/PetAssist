@@ -7,7 +7,6 @@ function registerPet($lost, $pet_name, $male, $color, $waist, $age, $puce, $phys
     try {
         $img_id = rand(1, 10000000000);
         $fileName =  $img_id .'.'. $img['extension'];
-        move_uploaded_file($imgTmp, "assets/img/pet/" . $fileName);
 
         // Utilisation de Bind Param pour des questions de sécurité (Injections)
         $query = $db -> prepare($queryText);
@@ -30,6 +29,7 @@ function registerPet($lost, $pet_name, $male, $color, $waist, $age, $puce, $phys
         $query -> bindParam(':id_spicies', $id_spicies, PDO::PARAM_INT);
         $query -> bindParam(':id_user', $id_user, PDO::PARAM_INT);
         $query -> execute();
+        move_uploaded_file($imgTmp, "assets/img/pet/" . $fileName);
         return true;
     } catch(PDOException $e) {
         echo "Erreur lors de la création du signalement : " . $e->getMessage();
@@ -229,13 +229,9 @@ function ModifyPetProfil($id_pet, $pet_name, $color, $waist, $age, $puce, $physi
 
     try {
         if($img != 0){
-            /* Suppression de l'ancien fichier */
-            $oldImg = getPetInfo($id_pet)['img_pet'];
-            if(file_exists("assets/img/pet/" . $oldImg)) unlink("assets/img/pet/" . $oldImg);
             /* Génération du nouveau fichier */
             $img_id = rand(1, 10000000000);
             $fileName =  $img_id .'.'. $img['extension'];
-            move_uploaded_file($imgTmp, "assets/img/pet/" . $fileName);
         }
 
         $query = $db -> prepare($queryText);
@@ -254,6 +250,12 @@ function ModifyPetProfil($id_pet, $pet_name, $color, $waist, $age, $puce, $physi
         $query -> bindParam(':lat', $coords['lat'], PDO::PARAM_STR);
         $query -> bindParam(':lon', $coords['lon'], PDO::PARAM_STR);
         $query -> execute();
+        if($img != 0){
+            /* Suppression de l'ancien fichier */
+            $oldImg = getPetInfo($id_pet)['img_pet'];
+            if(file_exists("assets/img/pet/" . $oldImg)) unlink("assets/img/pet/" . $oldImg);
+            move_uploaded_file($imgTmp, "assets/img/pet/" . $fileName);
+        }
         return true;
     } catch(PDOException $e) {
         echo "Erreur lors de la modification d'un profil animal. CODE: " . $e->getMessage();

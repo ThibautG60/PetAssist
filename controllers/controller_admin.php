@@ -122,14 +122,28 @@
                 if(isset($_POST['pseudo']) && isset($_FILES["profil-Pic"]) && $_FILES["profil-Pic"]['name'] != ""){ // Si le modérateur a UP une img
                     // On vérifie que les variables soient conformes
                     if(regexPseudo($_POST['pseudo'], 1) == true){
-                        if(ModifyUserProfil($_GET['m'], $_POST['pseudo'], pathinfo($_FILES['profil-Pic']['name']), $_FILES['profil-Pic']['tmp_name']) == true){
-                            header('Location: ?p=vcompte&id='.$_GET['id']);
-                            notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
+                        // On vérifie que le pseudo n'est pas utilisé
+                        $uInfo = getUserImg($_GET['m']);
+                        $pseudo;
+                        if($uInfo['pseudo'] == $_POST['pseudo'])$pseudo = true;
+                        else{
+                            if(dataExist('pseudo', $_POST['pseudo']) == false)$pseudo = true;
+                            else $pseudo = false;
+                        }
+                        if($pseudo == true){
+                            if(ModifyUserProfil($_GET['m'], $_POST['pseudo'], pathinfo($_FILES['profil-Pic']['name']), $_FILES['profil-Pic']['tmp_name']) == true){
+                                header('Location: ?p=vcompte&id='.$_GET['id']);
+                                notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
+                            }
+                            else{
+                                require_once 'views/admin_maccount.php';//- Affichage de la page de modif du compte
+                                notifGenerator('error', 'ERREUR', 'Les informations n\'ont pas pu s\'enregistrer.');
+                            } 
                         }
                         else{
-                            require_once 'views/admin_maccount.php';//- Affichage de la page de modif du compte
-                            notifGenerator('error', 'ERREUR', 'Les informations n\'ont pas pu s\'enregistrer.');
-                        } 
+                            require 'views/admin_maccount.php';// Affichage du formulaire de modification de compte 
+                            notifGenerator('error', 'ERREUR', 'Pseudo déjà utilisé.');
+                        }
                     }
                     else{
                         require_once 'views/admin_maccount.php';//- Affichage de la page de modif du compte
@@ -139,14 +153,28 @@
                 if(isset($_POST['pseudo'])){ // Si le modérateur n'a pas UP d'img
                     // On vérifie que les variables soient conformes
                     if(regexPseudo($_POST['pseudo'], 1) == true){
-                        if(ModifyUserProfil($_GET['m'], $_POST['pseudo'], 0, 0) == true){
-                            header('Location: ?p=vcompte&id='.$_GET['id']);
-                            notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
+                        // On vérifie que le pseudo n'est pas utilisé
+                        $uInfo = getUserImg($_GET['m']);
+                        $pseudo;
+                        if($uInfo['pseudo'] == $_POST['pseudo'])$pseudo = true;
+                        else{
+                            if(dataExist('pseudo', $_POST['pseudo']) == false)$pseudo = true;
+                            else $pseudo = false;
+                        }
+                        if($pseudo == true){
+                            if(ModifyUserProfil($_GET['m'], $_POST['pseudo'], 0, 0) == true){
+                                header('Location: ?p=vcompte&id='.$_GET['id']);
+                                notifGenerator('success', 'C\'EST BON', 'Les informations ont été enregistrées.');
+                            }
+                            else{
+                                require_once 'views/admin_maccount.php';//- Affichage de la page de modif du compte
+                                notifGenerator('error', 'ERREUR', 'Les informations n\'ont pas pu s\'enregistrer.');
+                            } 
                         }
                         else{
-                            require_once 'views/admin_maccount.php';//- Affichage de la page de modif du compte
-                            notifGenerator('error', 'ERREUR', 'Les informations n\'ont pas pu s\'enregistrer.');
-                        } 
+                            require 'views/admin_maccount.php';// Affichage du formulaire de modification de compte 
+                            notifGenerator('error', 'ERREUR', 'Pseudo déjà utilisé.');
+                        }
                     }
                     else{
                         require_once 'views/admin_maccount.php';//- Affichage de la page de modif du compte

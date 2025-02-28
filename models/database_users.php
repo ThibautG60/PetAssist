@@ -6,8 +6,6 @@ function registerUser($firstname, $lastname, $pseudo, $email, $pass, $adress, $c
     VALUES (:firstname, :lastname, :pseudo, :email, :pass, :img_profil, :adress, :city, :postal_code)";
     try {
         $fileName = $pseudo .'.'. $img['extension'];
-        move_uploaded_file($imgTmp, "assets/img/profil/" . $fileName);
-
         // Utilisation de Bind Param pour des questions de sécurité (Injections)
         $hash = hash_hmac('sha256', $pass, 'path');
         $query = $db -> prepare($queryText);
@@ -21,6 +19,7 @@ function registerUser($firstname, $lastname, $pseudo, $email, $pass, $adress, $c
         $query -> bindParam(':city', $city, PDO::PARAM_STR);
         $query -> bindParam(':postal_code', $postal_code, PDO::PARAM_INT);
         $query -> execute();
+        move_uploaded_file($imgTmp, "assets/img/profil/" . $fileName);
         return true;
     } catch(PDOException $e) {
         echo "Erreur lors de la création de l'utilisateur : " . $e->getMessage();
@@ -41,6 +40,25 @@ function loginUser($mail) {
         return $infoAccount;
     } catch(PDOException $e) {
         echo "Erreur lors de la récupération de l'utilisateur : " . $e->getMessage();
+        return false;
+    }
+}
+
+/* Fonction pour savoir si le mail ou le pseudo existe déjà */ 
+function dataExist($type, $data) {
+    $db = connectToDB("reader");
+    if($type == 'mail')$queryText = "SELECT `mail` FROM path_users WHERE `mail` = :mail";
+    else if($type == 'pseudo')$queryText = "SELECT `pseudo` FROM path_users WHERE `pseudo` = :pseudo";
+    else return false;
+
+    try {
+        $query = $db -> prepare($queryText);
+        if($type == 'mail')$query->bindParam(':mail', $data, PDO::PARAM_STR);
+        if($type == 'pseudo')$query->bindParam(':pseudo', $data, PDO::PARAM_STR);
+        $query->execute();
+        $infoAccount = $query -> fetch(PDO::FETCH_ASSOC);
+        return $infoAccount;
+    } catch(PDOException $e) {
         return false;
     }
 }
@@ -145,7 +163,7 @@ function passVerify($mail, $pass) {
 /* Fonction pour récupérer le pseudo et l'image de la personne */
 function getUserImg($id_user){
     $db = connectToDB("reader");
-    $queryText = "SELECT `id_user`, `pseudo`, `img_profil` FROM path_users WHERE `id_user` = :id_user";
+    $queryText = "SELECT `id_user`, `pseudo`, `img_profil`, `mail` FROM path_users WHERE `id_user` = :id_user";
 
     try {
         $query = $db -> prepare($queryText);
@@ -200,12 +218,8 @@ function ModifyUserProfil($id_user, $pseudo, $img, $imgTmp){
 
     try {
         if($img != 0){
-            /* Suppression de l'ancien fichier */
-            $oldImg = getUserImg($id_user)['img_profil'];
-            if(file_exists("assets/img/profil/" . $oldImg)) unlink("assets/img/profil/" . $oldImg);
             /* Génération du nouveau fichier */
             $fileName = $pseudo .'.'. $img['extension'];
-            move_uploaded_file($imgTmp, "assets/img/profil/" . $fileName);
         }
 
         $query = $db -> prepare($queryText);
@@ -213,6 +227,12 @@ function ModifyUserProfil($id_user, $pseudo, $img, $imgTmp){
         $query -> bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
         if($img != 0)$query -> bindParam(':img_profil', $fileName, PDO::PARAM_STR);
         $query -> execute();
+        if($img != 0){
+            /* Suppression de l'ancien fichier */
+            $oldImg = getUserImg($id_user)['img_profil'];
+            if(file_exists("assets/img/profil/" . $oldImg)) unlink("assets/img/profil/" . $oldImg);
+            move_uploaded_file($imgTmp, "assets/img/profil/" . $fileName);
+        }
         return true;
     } catch(PDOException $e) {
         echo "Erreur lors de la modification d'un profil user. CODE: " . $e->getMessage();
@@ -234,12 +254,8 @@ function ModifyUserProfilByUser($id_user, $firstname, $lastname, $pseudo, $mail,
 
     try {
         if($img != 0){
-            /* Suppression de l'ancien fichier */
-            $oldImg = getUserImg($id_user)['img_profil'];
-            if(file_exists("assets/img/profil/" . $oldImg)) unlink("assets/img/profil/" . $oldImg);
             /* Génération du nouveau fichier */
             $fileName = $pseudo .'.'. $img['extension'];
-            move_uploaded_file($imgTmp, "assets/img/profil/" . $fileName);
         }
         if($pass != 0)$hash = hash_hmac('sha256', $pass, 'path');
 
@@ -255,6 +271,12 @@ function ModifyUserProfilByUser($id_user, $firstname, $lastname, $pseudo, $mail,
         $query -> bindParam(':city', $city, PDO::PARAM_STR);
         $query -> bindParam(':postal_code', $postal_code, PDO::PARAM_INT);
         $query -> execute();
+        if($img != 0){
+            /* Suppression de l'ancien fichier */
+            $oldImg = getUserImg($id_user)['img_profil'];
+            if(file_exists("assets/img/profil/" . $oldImg)) unlink("assets/img/profil/" . $oldImg);
+            move_uploaded_file($imgTmp, "assets/img/profil/" . $fileName);
+        }
         return true;
     } catch(PDOException $e) {
         echo "Erreur lors de la modification d'un profil user. CODE: " . $e->getMessage();
