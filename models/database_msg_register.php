@@ -2,9 +2,10 @@
 session_start();
 
 require_once 'database.php'; // Importation des fonctions de communication avec la BDD
+require_once 'controllers/controller_regex.php'; // Importation des fonctions de vérification des formulaires
 
 if (isset($_POST['text'])){
-    if(preg_match("/^[A-Za-z0-9\s]{2,}$/", $_POST['text']) == 1){
+    if(regexText($_POST['text'], 1) == true){
         addMsgDB($_SESSION["id_user"], htmlspecialchars($_POST['text']), $_SESSION["id_r"]);
     }
 }

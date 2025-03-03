@@ -75,8 +75,9 @@
                                 echo '<div id="collapse'.$i.'" class="accordion-collapse collapse" data-bs-parent="#accordion-flush">';
                                     echo '<div class="accordion-body">';
                                         echo '<img class="account_accordion_img" src="assets/img/pet/' . $pet['img_pet'] . '" alt="image de l\'animal">';
-                                        echo '<p>Espèce: ' . getSpiciesName($pet['id_spicies'])['spicies'] . '<br>Race: ' .getRaceName($pet['id_race'])['race']. '<br>Lieu: ' .$pet['adress']. '<br>Date: ' .$pet['_date']. '</p>';
-                                        echo '<a href="?p=pet_profil&id=' .$pet['id_pet']. '">Voir en détail</a>';
+                                        echo '<p>Espèce: ' . getSpiciesName($pet['id_spicies'])['spicies'] . '<br>Race: ' .getRaceName($pet['id_race'])['race']. '<br>Lieu: ' .$pet['adress']. '<br>Date: ' .$pet['_date']. '</p>'; 
+                                        echo '<a href="?p=pet_profil&id=' .$pet['id_pet']. '" class="btn btn-primary mt-2 mb-1">Voir en détail</a>';
+                                        if($pet['resolved'] == 1 && $pet['testimony_text'] == "")echo '<br><a href="?p=atemoignage&id='.$pet['id_pet'].'" class="btn btn-info mt-3 mb-2 text-light">Poster un témoignage</a>';
                                     echo '</div>';
                                 echo '</div>';
                                 echo '</div>';

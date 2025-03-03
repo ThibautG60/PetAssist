@@ -166,7 +166,7 @@
                     if($petInfo != false){     
                         foreach($petInfo as $pet){
                             if($pet['lost'] != 1)echo '<div class="card-pet box-found" data-spicies="'.$pet['id_spicies'].'" data-race="'.$pet['id_race'].'" data-date="'.$pet['_date'].'">';
-                            else echo '<div class="card-pet box-lost" data-spicies="'.$pet['id_spicies'].'" data-race="'.$pet['id_race'].'" data-date="'.$pet['_date'].'>';
+                            else echo '<div class="card-pet box-lost" data-spicies="'.$pet['id_spicies'].'" data-race="'.$pet['id_race'].'" data-date="'.$pet['_date'].'">';
                             echo '<a href="?p=pet_profil&id='.$pet['id_pet'].'" title="Voir le signalement en détail"><img src="assets/img/pet/' . $pet['img_pet'] . '" alt="Photo de l\'animal" class="img-pet"></a>';
                             echo '<div class="card-body">';
                                 if($pet['pet_name'] != "")echo '<p class="card-title">' . $pet['pet_name'] . '</p>';

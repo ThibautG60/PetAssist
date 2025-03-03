@@ -43,7 +43,7 @@
         else if($_GET['p'] == "pet_profil"){ // page "petprofil"
             if(isset($_GET['d'])){ // Si le modérateur veut supprimer un profil animal
                 if(deletePetProfil($_GET['d']) == true){
-                    require_once 'controllers/controller_pet_profil.php';//- Appel du controller pour afficher la page profil de l'animal
+                    require_once 'controllers/controller_liste.php';//- Appel du controller pour afficher la page profil de l'animal
                     notifGenerator('success', 'C\'EST BON', 'Le profil de l\'animal a bien été supprimé.');
                 }
                 else{

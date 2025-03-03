@@ -59,7 +59,7 @@ function testimonyGenerator($i, $boxType, $userID, $name, $petName, $img, $text,
             <h1 class="articletitle">Témoignages et Histoires de retrouvailles</h1>
             <h2 class="articletitle">Pour ne pas perdre espoir</h2>
             <div class="line"></div>
-            <div class="description">Voici quelques témoignages vérifiés de personnes de la communauté. Si vous voulez poster votre histoire et apparaitre sur cette page, contactez nous via l'onglet ' Nous contacter '.</div>
+            <div class="description">Voici quelques témoignages vérifiés de personnes de la communauté. Si vous voulez poster votre histoire et apparaitre sur cette page, vous pouvez le faire via l'onglet ' Mon compte '.</div>
             <?php 
             //- Affichage des témoignages
             $testimonys = getAllTestimony();

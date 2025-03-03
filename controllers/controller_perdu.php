@@ -19,6 +19,18 @@
                         if($coords != false){
                             // On enregistre les variables dans la base de données
                             if(registerPet("1", $_POST['pet-name'], $_POST['pet-sex'], $_POST['pet-color'], $_POST['pet-waist'], $_POST['pet-age'], $_POST['pet-puce'], htmlspecialchars($_POST['pet-physic']), htmlspecialchars($_POST['pet-comport']), pathinfo($_FILES['pet-pic']['name']), $_FILES['pet-pic']['tmp_name'], $_POST['pet-adress'], $coords, $_POST['pet-date'], $_POST['pet-time'], $_POST['race'], $_POST['spicies'], $_SESSION["id_user"]) == true){
+                                // On vérifie si il y a un lien entre deux annonces
+                                $pets = getAllPetInfo();
+                                foreach($pets as $pet){ // On analyse tous les signalements et on regarde si ils sont dans un périmètre de 5km
+                                    if(round(getDistance($coords['lat'], $coords['lon'], $pet['lat'], $pet['lon']) / 1000) <= 5 && $pet['id_spicies'] == $_POST['spicies']){
+                                        if($pet['id_user'] != $_SESSION['id_user']){
+                                            // Pour l'user qui vient de poster l'annonce
+                                            addNotif('success', "Une annonce correspond à votre signalement. <br><a href=\"?p=pet_profil&id=".$pet['id_pet']."\">Voir l'annonce en détail</a>", $_SESSION["id_user"]);
+                                            // Pour les autres users
+                                            addNotif('success', "Une annonce correspond à votre signalement. <br><a href=\"?p=pet_profil&id=".$pet['id_pet']."\">Voir l'annonce en détail</a>", $pet['id_user']);
+                                        }
+                                    }
+                                }
                                 require 'controller_index.php';// Affichage de l'acceuil
                                 addNotif(0, "Votre signalement a été ajouté à la liste.", $_SESSION["id_user"]);
                                 notifGenerator('success', 'C\'EST NOTE !', 'Nous avons bien enregistré votre signalement.');
