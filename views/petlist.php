@@ -143,6 +143,28 @@
                                 </form>
                             </div>
                         </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed filter-item" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseMsgSix"
+                                    aria-expanded="false" aria-controls="collapseMsgSix">
+                                    Trier par type
+                                </button>
+                            </h3>
+                            <div id="collapseMsgSix" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionMsg">
+                                <div class="accordion-body">
+                                    <div class="form-check">
+                                        <input class="form-check-input me-1 filterType" type="radio" name="filterType" value="lost">                        
+                                        <label class="form-check-label filterType" for="filterType">Animaux perdus</label>
+                                    </div> 
+                                    <div class="form-check">
+                                        <input class="form-check-input me-1 filterType" type="radio" name="filterType" value="found">
+                                        <label class="form-check-label filterType" for="filterType">Animaux aperçus</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </fieldset>
                 <button id="filterButton" type="button" data-bs-toggle="offcanvas"
@@ -165,16 +187,20 @@
                     //- Génération de la liste
                     if($petInfo != false){     
                         foreach($petInfo as $pet){
-                            if($pet['lost'] != 1)echo '<div class="card-pet box-found" data-spicies="'.$pet['id_spicies'].'" data-race="'.$pet['id_race'].'" data-date="'.$pet['_date'].'">';
-                            else echo '<div class="card-pet box-lost" data-spicies="'.$pet['id_spicies'].'" data-race="'.$pet['id_race'].'" data-date="'.$pet['_date'].'">';
+                            if($pet['lost'] != 1)echo '<div class="card-pet box-found" data-spicies="'.$pet['id_spicies'].'" data-race="'.$pet['id_race'].'" data-date="'.$pet['_date'].' data-type="'.$pet['lost'].'">';
+                            else echo '<div class="card-pet box-lost" data-spicies="'.$pet['id_spicies'].'" data-race="'.$pet['id_race'].'" data-date="'.$pet['_date'].'" data-type="'.$pet['lost'].'">';
                             echo '<a href="?p=pet_profil&id='.$pet['id_pet'].'" title="Voir le signalement en détail"><img src="assets/img/pet/' . $pet['img_pet'] . '" alt="Photo de l\'animal" class="img-pet"></a>';
                             echo '<div class="card-body">';
-                                if($pet['pet_name'] != "")echo '<p class="card-title">' . $pet['pet_name'] . '</p>';
-                                else echo '<p class="card-title">' . getRaceName($pet['id_race'])['race'] . '</p>';
-
-                                if($pet['lost'] != 1)echo '<div class="line-found"></div>';
-                                else echo '<div class="line-lost"></div>';
-                                
+                            if($pet['lost'] != 1){
+                                if($pet['pet_name'] != "")echo '<p class="card-title">' . $pet['pet_name'] . '  <br><span class="title-found">[APERCU]</span></p>';
+                                else echo '<p class="card-title">' . getRaceName($pet['id_race'])['race'] . ' <br><span class="title-found">[APERCU]</span></p>';
+                                echo '<div class="line-found"></div>';
+                            }
+                            else{
+                                if($pet['pet_name'] != "")echo '<p class="card-title">' . $pet['pet_name'] . ' <br><span class="title-lost">[PERDU]</span></p>';
+                                else echo '<p class="card-title">' . getRaceName($pet['id_race'])['race'] . ' <br><span class="title-lost">[PERDU]</span></p>';
+                                echo '<div class="line-lost"></div>';
+                            }               
                                 echo '<p class="card-text">Espèce: ' . getSpiciesName($pet['id_spicies'])['spicies'] . '<br>Race: ' .getRaceName($pet['id_race'])['race']. '<br>Lieu: ' .$pet['adress']. '<br>Date: ' .$pet['_date']. '</p>';
                             echo '</div>';
                             echo '</div>';

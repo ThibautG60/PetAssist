@@ -13,7 +13,7 @@ function regexPassword($content, $required = 0){
 function regexName($content, $required = 0){
     if($required == 0 && $content == "")return true;
     else{
-        if(preg_match("/^[A-Za-zÀ-ÿ]{2,}$/", $content) == 1)return true;
+        if(preg_match("/^[A-Za-zÀ-ÿ\s'\-\.]{2,}$/", $content) == 1)return true;
         else return false;
     }
 }

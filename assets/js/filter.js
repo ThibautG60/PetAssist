@@ -3,6 +3,7 @@ let divAccordion = document.getElementById("accordionResp");// Filtres
 let spiciesID = document.querySelectorAll('.spicies');
 let cards = document.querySelectorAll('.card-pet');
 let raceID = document.querySelectorAll('.race');
+const filterTypes = document.querySelectorAll(".filterType");
 const pResultNoFound = document.getElementById('result_no_found');
 
 /* Quand la fenêtre a fini de se charger */
@@ -39,6 +40,13 @@ spiciesID.forEach(spicies => {
         refreshRaceList();
         spieciesChecked();
         refreshList("spicies");
+    });
+});
+
+/* Quand l'user clique pour un type d'anonce */
+filterTypes.forEach(type => {
+    type.addEventListener('click', (event) => {
+        refreshList(type.value)
     });
 });
 
@@ -79,6 +87,24 @@ function refreshList(filterType) {
                     }
                 }
             });
+        }
+        else if (filterType == "found") { // Si le type de signalement est ' trouvé '
+            if (card.getAttribute("data-type") != 1) {
+                resultFound = true;
+                card.style.cssText = 'display: block !important';
+            }
+            else {
+                card.style.cssText = 'display: none !important';
+            }
+        }
+        else if (filterType == "lost") { // Si le type de signalement est ' perdu '
+            if (card.getAttribute("data-type") == 1) {
+                resultFound = true;
+                card.style.cssText = 'display: block !important';
+            }
+            else {
+                card.style.cssText = 'display: none !important';
+            }
         }
     });
     if (resultFound == true) {

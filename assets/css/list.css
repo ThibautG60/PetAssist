@@ -54,6 +54,14 @@
     border: solid 1px #198754;
 }
 
+.title-found {
+    color: #198754;
+}
+
+.title-lost {
+    color: #dc3545;
+}
+
 .box-lost {
     box-shadow: 2px 1px 7px #198754;
 }

@@ -82,7 +82,7 @@
                     <div class="form-group col-lg-6">
                         <label for="city">Ville:</label>
                         <input type="text" class="form-control" name="city" id="city" placeholder="PARIS" required
-                        pattern="^[A-Za-z]{2,}$" minlength="2" title="Respectez le format.">
+                        pattern="^[A-Za-zÀ-ÿ\s'\-]{2,}$" minlength="2" title="Respectez le format (Que des lettres en majuscules / minuscules, sans accents).">
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="postal_code">Code postal:</label>

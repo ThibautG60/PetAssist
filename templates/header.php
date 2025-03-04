@@ -23,7 +23,7 @@
     <nav>
         <div class="nav nav-underline nav-fill justify-content-center bg-dark p-2" id="menutop">
             <div class="nav-item col-12 col-sm-4 col-xl-3">
-                <a class="nav-link text-light" href="?p=liste">Voir la liste des animaux perdu</a>
+                <a class="nav-link text-light" href="?p=liste">Voir la liste des signalements</a>
             </div>
             <div class="nav-item col-12 col-sm-4 col-xl-2">
                 <a class="nav-link text-light" href="?p=carte">Utiliser la carte interactive</a>

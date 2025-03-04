@@ -1,7 +1,10 @@
 <?php
     require_once 'models/database_msg.php'; // Fonctions de gestions de la DB pour les messages
 
-    if($_GET['p'] == 'compte'){
+    if($_GET['p'] == 'creer_compte'){
+        echo '<p>Vous n\'avez pas de messages.</p>';
+    }
+    else if($_GET['p'] == 'compte'){
         if(isset($_GET['c'])){
             $msgs = getAllMsgForUser($_SESSION["id_user"], $_GET['c']);
             include_once 'views/msg_dialog.php'; // Affichage de la boite de dialogue pour les messages
