@@ -1,10 +1,12 @@
-/* BackGround */
+/** Fichier CSS que toutes les pages ont en commun **/
+/* On met les marges à 0 et la hauteur à 100% sur le docuement */
 html,
 body {
     margin: 0;
     height: 100%;
 }
 
+/* Patte qui se déplace en fond de page */
 #paw {
     position: absolute;
     width: 10%;
@@ -15,6 +17,7 @@ body {
     z-index: auto;
 }
 
+/* Animation de la patte qui se déplace en fond de page */
 @keyframes paw {
     from {
         opacity: 0%;
@@ -26,6 +29,7 @@ body {
 }
 
 /* BANNIERE */
+/* Image de fond sur le header */
 .sitetop {
     background-image: url("../img/backtop.png");
     background-position: center;
@@ -36,18 +40,21 @@ body {
     width: 100%;
 }
 
+/* Logo de PetAssist */
 #logo {
     position: relative;
     width: 12vw;
     margin: 1% 0% 1% 8%;
 }
 
+/* Box qio regroupe le bouton 'perdu' et 'trouvé' */
 .boutonstop {
     display: flex;
     justify-content: space-around;
     width: 50%;
 }
 
+/* Boutton 'perdu' dans le header */
 #boutonlost {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #A81017;
@@ -61,10 +68,12 @@ body {
     border-radius: 7px;
 }
 
+/* Quand on survole le boutton 'perdu' dans le header */
 #boutonlost:hover {
     box-shadow: 2px 1px 5px black;
 }
 
+/* Boutton 'trouvé' dans le header */
 #boutonfound {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #0D603A;
@@ -78,11 +87,13 @@ body {
     border-radius: 7px;
 }
 
+/* Quand on survole le boutton 'trouvé' dans le header */
 #boutonfound:hover {
     box-shadow: 2px 1px 5px black;
 }
 
-/* MENU DU HAUT */
+/* NAVBAR */
+/* Navbar en desktop + le boutton collapse qui permet d'y accéder en mobile */
 #menutop,
 #bmenutop {
     position: relative !important;
@@ -90,6 +101,7 @@ body {
     z-index: 7 !important;
 }
 
+/* Liens vers les différentes catégories du site */
 .nav-item {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: lighter;
@@ -97,13 +109,15 @@ body {
 
 }
 
-/* ARTICLES */
+/* MAINS DES PAGES */
+/* Couleur et dimensions du fond des pages */
 main {
     background-color: rgb(224, 224, 224);
     padding: 2%;
     min-height: 70%;
 }
 
+/* Couleur et dimensions du fond de la box principale [NO FLEX] */
 .articlefixe {
     background-color: rgba(240, 240, 240, 0.92);
     position: relative;
@@ -113,6 +127,7 @@ main {
     padding: 2%;
 }
 
+/* Ligne en dessous de chaque H1 */
 .line {
     width: 40%;
     margin: auto;
@@ -124,6 +139,7 @@ main {
     animation-direction: alternate;
 }
 
+/* Animation de la ligne (Clignotement) */
 @keyframes line {
     from {
         box-shadow: 0px 0px 0px rgb(253, 76, 76);
@@ -134,6 +150,7 @@ main {
     }
 }
 
+/* Variante de ligne (Autre couleur et autre taille, visible par exemple sur la page petprofil) */
 .lineb {
     width: 10%;
     margin: auto;
@@ -141,6 +158,7 @@ main {
     margin-bottom: 3%;
 }
 
+/* Variante de ligne (Autre couleur, visible par exemple sur la page accountview) */
 .linec {
     width: 40%;
     margin: auto;
@@ -148,6 +166,7 @@ main {
     margin-bottom: 3%;
 }
 
+/* Couleur et dimensions du fond de la box principale [FLEX] */
 .presentation {
     background-color: rgba(240, 240, 240, 0.92);
     position: relative;
@@ -157,6 +176,7 @@ main {
     align-items: flex-start;
 }
 
+/* Box pour le contenu de la page */
 .article {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(49, 26, 26);
@@ -164,44 +184,63 @@ main {
     margin: auto;
 }
 
+/* Titre de la page (H1) */
 .articletitle {
     text-align: center;
 }
 
+/* Description de la page (Phrase en italique en dessous du titre, visible sur toutes les pages) */
 .description {
     font-style: italic;
 }
 
-.listcat {
-    font-weight: bold;
-}
-
+/* carousel de la page d'accueil */
 .gridcard {
     padding: 1%;
     height: auto;
     margin: 0% auto 0% auto;
 }
 
+/* Images dans le carousel */
+.carousel-item>img {
+    width: 100%;
+    object-fit: cover;
+    margin: auto;
+}
+
+/* Texte par dessus l'image dans le carousel */
+.carousel-caption {
+    font-weight: bold;
+    text-shadow: 1px 1px 4px black;
+    margin: auto !important;
+    padding: 0% !important;
+}
+
+/* Liste contenant les informations sur l'animal, sur la page petprofil */
 .text-list {
     list-style-type: none;
 }
 
+/* Image sur la droite sur plusieurs pages du site, elles n'apparaissent pas en mode mobile ni tablettes */
 #imgright {
     width: 22%;
     margin: 2% 2% 2% 5%;
 }
 
+/* En cas d'érreur sur un formulaire */
 .form-error {
     border: solid 1px red !important;
     box-shadow: 2px 1px 5px red;
     background-color: #d8000b13 !important;
 }
 
+/* Couleur du texte en cas d'érreur sur le formulaire */
 .error-msg {
     color: red;
 }
 
 /* FOOTER */
+/* Flexbox principale du footer */
 .bannerfoot {
     display: flex;
     flex-wrap: wrap;
@@ -210,67 +249,64 @@ main {
     position: relative;
 }
 
+/* Titre (H3) du footer */
 #foottitle {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(49, 26, 26);
     flex-basis: 100%;
 }
 
+/* Liens vers les autres pages */
 .fitem {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(49, 26, 26);
     text-decoration: none;
 }
 
-.carousel-item>img {
-    width: 100%;
-    object-fit: cover;
-    margin: auto;
-}
-
-.carousel-caption {
-    font-weight: bold;
-    text-shadow: 1px 1px 4px black;
-    margin: auto !important;
-    padding: 0% !important;
-}
-
 /* MEDIA QUERIES */
 /* Téléphones */
 @media (max-width: 576px) {
 
+    /* Tout ce qui a ces classes sera caché en mode mobile */
     .mediacut,
     .tabmediacut {
         display: none;
     }
 
+    /* On adapte la dimension des boxs principales */
     .articlefixe,
     .presentation {
         width: 95vw;
     }
 
+    /* On adapte les dimensions des contenus des pages et du carousel de l'acceuil */
     .article,
     .gridcard {
         flex-basis: 95%;
     }
 
-    .bannerfoot {
-        padding: 1% 0% 1% 0%;
-    }
-
+    /* On adapte le padding du header */
     .nav-item {
         padding-bottom: 1%;
     }
 
+    /* On adapte le padding du footer */
+    .bannerfoot {
+        padding: 1% 0% 1% 0%;
+    }
+
+    /* On centre le titre du footer */
     #foottitle {
         text-align: center;
     }
 
+    /* On adapte les dimensions on et on centre les liens du footer */
     .fitem {
         flex-basis: 100%;
         text-align: center;
     }
 
+    /* On adapte la taille de la police de plusieurs éléments */
     .article,
     .articlefixe,
     .description,
@@ -281,6 +317,7 @@ main {
         font-size: 0.9rem !important;
     }
 
+    /* On adapte la taille de la police de plusieurs éléments */
     .articletitle,
     .article>h2,
     .article>h3,
@@ -293,75 +330,90 @@ main {
 /* Tablettes */
 @media (min-width: 577px) and (max-width: 1023px) {
 
+    /* Tout ce qui a ces classes sera caché en mode tablettes */
     .tabmediacut,
     #bmenutop,
     .only-phone {
         display: none;
     }
 
+    /* On adapte la dimension des boxs principales */
     .articlefixe,
     .presentation {
         width: 95vw;
     }
 
+    /* On adapte les dimensions des contenus des pages et du carousel de l'acceuil */
     .article,
     .gridcard {
         flex-basis: 95%;
     }
 
-    .bannerfoot {
-        padding: 1% 0% 1% 10%;
-    }
-
-    .fitem {
-        flex: 1;
-    }
-
+    /* On adapte la taille de la police du texte dans le carousel */
     .carousel-caption>p {
         font-size: 0.9rem !important;
     }
 
+    /* On adapte la taille de la police du titre dans le carousel et de la description de la page */
     .description,
     .carousel-caption>h5 {
         font-size: large !important;
+    }
+
+    /* On adapte le padding du footer */
+    .bannerfoot {
+        padding: 1% 0% 1% 10%;
+    }
+
+    /* On adapte les dimensions des liens du footer */
+    .fitem {
+        flex: 1;
     }
 }
 
 /* Ordinateurs */
 @media (min-width: 1024px) {
 
+    /* Tout ce qui a ces classes sera caché en mode tablettes */
     #bmenutop,
     .only-tabphone,
     .only-phone {
         display: none;
     }
 
+    /* On adapte la dimension des boxs principales */
     .articlefixe,
     .presentation {
         width: 80vw;
     }
 
+    /* On adapte les dimensions des contenus des pages */
     .article {
         flex-basis: 70%;
     }
 
+    /* On adapte les dimensions du carousel */
     .gridcard {
         flex-basis: 30%;
     }
 
+    /* On adapte la taille de la police du text du carousel */
+    .carousel-caption>p {
+        font-size: 0.8rem !important;
+    }
+
+    /* On adapte le padding du footer */
     .bannerfoot {
         padding: 1% 0% 1% 10%;
     }
 
+    /* On adapte les dimensions des liens du footer */
     .fitem {
         flex: 1;
     }
 
+    /* On adapte la taille de la police de la description de la page */
     .description {
         font-size: large;
-    }
-
-    .carousel-caption>p {
-        font-size: 0.8rem !important;
     }
 }

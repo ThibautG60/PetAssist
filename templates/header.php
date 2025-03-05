@@ -6,7 +6,6 @@
         <a href="?" title="Acceuil"><img src="assets/img/logo.png" alt="logo" id="logo"></a>
         <div class="boutonstop">
     HTML;
-            global $link;
             if (isset($_GET['p']) && $_GET['p'] == 'perdu') {
                 echo '<a href="?p=trouve" id="boutonfound"><span class="mediacut">J\'ai</span> trouvé <span class="mediacut">un animal</span></a>';
             }

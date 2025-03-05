@@ -1,15 +1,19 @@
+/* Fichier CSS pour les messages */
+/* Box de la boite de dialog des méssages */
 .msg-box {
     border: none;
     border-radius: 50px 10px;
     background-color: #2c2f33;
 }
 
+/* Background de la boite de dialog des méssages */
 .msg-back {
     padding: 2%;
     overflow: auto;
     max-height: 60vh;
 }
 
+/* Quand l'user envoit un message */
 .msg-text-1 {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: whitesmoke;
@@ -22,6 +26,7 @@
     border-radius: 20px;
 }
 
+/* Quand l'user reçoit un message */
 .msg-text-2 {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: whitesmoke;
@@ -34,23 +39,21 @@
     border-radius: 20px;
 }
 
+/* Input où l'user doit saisir son message */
 #msg-input {
     border-radius: 10px;
     padding: 1%;
     width: 100%;
 }
 
+/* Boutton close de la boite de dialogue des messages */
 #close-msg-button {
     float: inline-end;
     background-color: whitesmoke;
 }
 
+/* Boutton 'envoyer un message' disponible sur plusieurs pages */
 .msg-button {
-    width: 100%;
-    margin-bottom: 2%;
-}
-
-#resolved-button {
     width: 100%;
     margin-bottom: 2%;
 }
@@ -58,6 +61,8 @@
 /* MEDIA QUERIES */
 /* Téléphones */
 @media (max-width: 576px) {
+
+    /* Box de la boite de dialog des méssages */
     .msg-box {
         width: 90%;
     }
@@ -65,6 +70,8 @@
 
 /* Tablettes & PC*/
 @media (min-width: 577px) {
+
+    /* Box de la boite de dialog des méssages */
     .msg-box {
         width: 50%;
     }

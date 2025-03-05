@@ -1,12 +1,14 @@
+/* Formulaire de login */
 .formlog {
     margin: 5% 20% 3% 20%;
 }
 
+/* H1 de la page 'account.php' */
 #accounttitle {
     margin-bottom: 3%;
 }
 
-/* Message quand un signalement est résolu */
+/* Message quand un signalement est résolu (Le gros 'RESOLU' sur la page 'petprofil' */
 #resolved {
     margin: 5% auto auto auto;
     position: absolute;
@@ -17,22 +19,25 @@
     z-index: 1;
 }
 
+/* Flexbox qui regroupe les 3 grosses catégories de la page 'account' */
 .accountarea {
     margin: 4% auto 4% auto;
     display: flex;
     flex-wrap: wrap;
 }
 
+/* Classe pour chaque catégorie de la page 'account' */
 .accountcat {
     text-align: center;
 }
 
+/* Corp des catégories notif et signalements dans la page 'account' */
 .halert,
-.msg-button-group,
 .accordion {
     margin: 8% 3% 5% 3%;
 }
 
+/* Box [NON FLEX] pour les besoins de 'petprofil' et 'accountview' */
 .body-box {
     background-color: rgba(240, 240, 240, 0.92);
     position: relative;
@@ -40,11 +45,13 @@
     margin: auto;
 }
 
+/* Box pour le haut de la box 'body-box' */
 .body-head-box {
     display: flex;
     flex-wrap: wrap;
 }
 
+/* Box pour le body de la box 'body-box' */
 .body-info-box {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(49, 26, 26);
@@ -52,6 +59,7 @@
     flex-wrap: wrap;
 }
 
+/* Photo de profil de l'user ou de l'animal */
 #profil-pic {
     width: 100%;
     max-height: 50vh;
@@ -59,15 +67,18 @@
     object-fit: contain;
 }
 
+/* Image de l'animal pour l'accordéon (Liste des signalements de l'user) de la page 'account' */
 .account_accordion_img {
     width: 70%;
 }
 
+/* Photo de profil de l'user ou de l'animal sur les pages 'accountview' et 'petprofil' */
 .info-profil-img {
     display: flex;
     flex-wrap: wrap;
 }
 
+/* Lien vers le profil du propriétaire sur la page 'petprofil' */
 #profil-link {
     text-decoration: none;
     font-weight: bold;
@@ -76,52 +87,72 @@
     margin-left: 3%;
 }
 
+/* Photo de profil du propriétaire qui accompagne le lien vers le profil user sur la page 'petprofil' */
 #little-profil-pic {
     width: 10%;
     margin: 2%;
     border-radius: 100%;
 }
 
+/* Bouttons 'modifier' et 'se déconnecter' sur la page 'account' */
 #box-button {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
 }
 
+/* Formulaires (enfants des bouttons 'modifier' ou 'se deconnecter 'sur la page 'account') */
 #box-button>form {
     margin: 1%;
 }
 
+/* Boutton 'se deconnecter' sur la page 'account' */
 #deconnect {
     color: whitesmoke;
     background-color: #A81017;
 }
 
-/* MEDIA QUERIES */
+/* Boutton pour signaler qu'on a retrouvé son animal */
+#resolved-button {
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+/* Classe qui met l'élement flex à 100% */
 .f100 {
     flex-basis: 100%;
 }
 
+/* MEDIA QUERIES */
 /* Téléphones */
 @media (max-width: 767px) {
+
+    /* Classe pour chaque catégorie de la page 'account' */
     .accountcat {
         flex-basis: 100%;
     }
 
+    /* Box [NON FLEX] pour les besoins de 'petprofil' et 'accountview' */
     .body-box {
         width: 95vw;
     }
 
+    /* On change la taille de la police de plusieurs éléments */
+    /* La description */
     .articletitle>p,
+    /* Les bouttons 'modifier' et 'se deconnecter' */
     .articletitle>#box-button,
+    /* Boutton 'envoyer un message' */
     .info-profil-img>button {
         font-size: 0.9rem;
     }
 
+    /* Titre de chaque catégorie de la page 'account' */
     .accountcat>h2 {
         font-size: large;
     }
 
+    /* Bouttons 'modifier' et 'se déconnecter' sur la page 'account' */
     #box-button {
         flex-wrap: wrap;
     }
@@ -129,15 +160,19 @@
 
 /* Tablettes */
 @media (min-width: 768px) {
+
+    /* Classe pour chaque catégorie de la page 'account' */
     .accountcat {
         flex: 1;
     }
 
+    /* On ajoute des colonnes sur la catégorie centrale de 'account' sauf en mode téléphone */
     .accountcat:nth-child(2) {
         border-left: solid 1px black;
         border-right: solid 1px black;
     }
 
+    /* Box [NON FLEX] pour les besoins de 'petprofil' et 'accountview' */
     .body-box {
         width: 95vw;
     }
@@ -145,6 +180,8 @@
 
 /* Ordinateurs */
 @media (min-width: 1024px) {
+
+    /* Box [NON FLEX] pour les besoins de 'petprofil' et 'accountview' */
     .body-box {
         width: 80vw;
         min-height: 75vh;
@@ -155,16 +192,19 @@
         align-items: start;
     }
 
+    /* Box pour le haut de la box 'body-box' */
     .body-head-box {
         grid-column: 1 / 1;
         grid-row: 1 / 1;
     }
 
+    /* Box pour le body de la box 'body-box' */
     .body-info-box {
         grid-column: 1 / 1;
         grid-row: 2 / 2;
     }
 
+    /* Photo de profil de l'user ou de l'animal sur les pages 'accountview' et 'petprofil' */
     .info-profil-img {
         grid-column: 2 / 2;
         grid-row: 1 / 1;

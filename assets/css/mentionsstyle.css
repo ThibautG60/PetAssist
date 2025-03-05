@@ -1,4 +1,6 @@
-.article-mentions-box{
+/* Fichier CSS de la pages 'mentions' */
+/* Flebox pour le contenu de la page (En dessous de la ligne et du H1) */
+.article-mentions-box {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -7,34 +9,69 @@
     padding: 2%;
 }
 
-.info-right-box{
+/* Box pour les infos d'hébergement + texte sur les responsabilités */
+.info-right-box {
     display: flex;
     flex-wrap: wrap;
 }
 
-.infos-right{
+/* Enfant de 'info-right-box': Liste pour les infos d'hébergement */
+.infos-right {
     margin: 2%;
     background-color: #E4E2E2;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(49, 26, 26);
     font-size: medium;
 }
-/* MEDIA QUERIES */ 
+
+/* MEDIA QUERIES */
 /* Téléphones */
 @media (max-width: 576px) {
-    .info-right-box, .info-left-box{ flex-basis: 100%;}
-    .article-mentions-box > ol{ padding-top: 5%;}
-    .infos-right, .infos-right > h2{
+
+    /* Box pour les infos d'hébergement + texte sur les responsabilités */
+    .info-right-box,
+    /* Enfant de 'info-right-box': Texte à gauche de la liste */
+    .info-left-box {
+        flex-basis: 100%;
+    }
+
+    /* Texte en dessous de 'info-right-box', (Donc en dessous des infos d'hébergement) */
+    .article-mentions-box>ol {
+        padding-top: 5%;
+    }
+
+    /* Enfant de 'info-right-box': Liste pour les infos d'hébergement */
+    .infos-right,
+    /* Enfant de 'info-right-box': Titre de la liste pour les infos d'hébergement */
+    .infos-right>h2 {
         font-size: 0.9rem;
     }
 }
+
 /* Tablettes */
-@media (min-width: 577px) and (max-width: 1023px){
-    .info-left-box{flex: 3;}
-    .info-right-box{flex: 1;}
+@media (min-width: 577px) and (max-width: 1023px) {
+
+    /* Enfant de 'info-right-box': Texte à gauche de la liste */
+    .info-left-box {
+        flex: 3;
+    }
+
+    /* Box pour les infos d'hébergement + texte sur les responsabilités */
+    .info-right-box {
+        flex: 1;
+    }
 }
+
 /* Ordinateurs */
-@media (min-width: 1024px){
-    .info-left-box{flex: 3;}
-    .info-right-box{flex: 1;}
+@media (min-width: 1024px) {
+
+    /* Enfant de 'info-right-box': Texte à gauche de la liste */
+    .info-left-box {
+        flex: 3;
+    }
+
+    /* Box pour les infos d'hébergement + texte sur les responsabilités */
+    .info-right-box {
+        flex: 1;
+    }
 }

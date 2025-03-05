@@ -1,4 +1,5 @@
 <?php 
+/* FICHIER DE REDIRECTION BASIQUE */
 require 'utils/php_errors.php'; // On charge le fihcier PHP pour afficher les erreurs PHP
 session_start(); // On démarre la session
 
@@ -9,7 +10,7 @@ if(!isset($_GET['p'])){ // Si il n'y a pas de catégories dans l'URL, on charge 
 else{ // Sinon on charge le controller adapté à la page
     $link = 'controllers/controller_'.$_GET['p'].'.php';
 
-    switch ($_GET['p']){ // Si la page demandé fait parti de cette liste, on affiche la page (Pas besoin de controller)
+    switch ($_GET['p']){ // Si la page demandé fait parti de cette liste, on affiche la page (Pas besoin de controller étant donné qu'il n'y a aucun calcul à faire)
         case 'conseils';
             require 'views/static/advices.php'; // Page conseils
             break;

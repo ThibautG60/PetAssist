@@ -6,7 +6,7 @@ function testimonyGenerator($i, $boxType, $userID, $name, $petName, $img, $text,
     else echo '<h3>Le témoignage de '.$name.'</h3>';// Titre
     echo '<div class="item-body">';
 
-    if($boxType == 1){// Position de la phot de profil en fonction de l'id du témoignage dans le générateur
+    if($boxType == 1){// Position de la photo de profil en fonction de l'id du témoignage dans le générateur
         echo '<a class="item-box" href="?p=vcompte&id='.$userID.'" title="Lien vers le profil"><img class="item-img" src="./assets/img/profil/'.$img.'" alt="Photo de profil"></a>';
     }
     echo '<p class="item-text">'.$text.'</p>';// Témoignage
@@ -80,7 +80,7 @@ function testimonyGenerator($i, $boxType, $userID, $name, $petName, $img, $text,
                     else if($i == 1){// Le deuxième témoignage
                         testimonyGenerator($i, $pair, $testimony['id_user'], $uInfo['pseudo'], $testimony['pet_name'], $uInfo['img_profil'], $testimony['testimony_text'], $testimony['id_pet']);
                         echo '</div>';
-                        echo '<img src="assets/img/right_book.jpeg" alt="Photo de chien" class="bookimg tabmediacut" id="imgbookright">';
+                        echo '<img src="assets/img/right_book.jpeg" alt="Photo de chien" class="tabmediacut" id="imgbookright">';
                         echo '</div>';
                         $i++;
                     }

@@ -1,3 +1,5 @@
+/* Fichier CSS de la page 'goldenbook' */
+/* Flebox qui regroupe les deux premiers témoignages seulement en haut de page */
 #booktop {
     margin: auto;
     padding-top: 2%;
@@ -7,55 +9,66 @@
     justify-content: space-between;
 }
 
+/* Flebox d'un témoignage */
 .bookflex {
     flex: 2;
 }
 
-.bookimg {
+/* Image sur la droite de la page qui disparait à partir du mode tablette */
+#imgbookright {
     width: 20vw;
     border-radius: 20px;
 }
 
+/* Box pour un témoignage de type 1 (Il y a deux types: bordures, disposition du texte et couleurs différentes) */
 .goldenitem1 {
     width: 80%;
     border: 2px solid rgb(71, 73, 206);
     border-radius: 20px 20px 20px 0px;
 }
 
+/* Quand on survole un témoignage de type 1 */
 .goldenitem1:hover {
     box-shadow: 2px 1px 5px black;
 }
 
+/* Box pour un témoignage de type 2 (Il y a deux types: bordures, disposition du texte et couleurs différentes) */
 .goldenitem2 {
     width: 80%;
     border: 2px solid rgb(119, 16, 255);
     border-radius: 20px 20px 0px 20px;
 }
 
+/* Quand on survole un témoignage de type 2 */
 .goldenitem2:hover {
     box-shadow: 2px 1px 5px black;
 }
 
+/* Box pour le corp d'un témoignage */
 .item-body {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 }
 
+/* Lien vers le profil de l'user qui poste le témoignage (l'image st un lien) */
+.item-box {
+    flex-basis: 10%;
+}
+
+/* Enfant de 'item-body': Photo de profil de l'user qui poste le témoignage */
 .item-img {
     width: 80%;
     border-radius: 100%;
     margin: 2%;
 }
 
-.item-box {
-    flex-basis: 10%;
-}
-
+/* Contenu du témoignage */
 .item-text {
     font-style: italic;
 }
 
+/* Lien textuel (Sans image) vers le profil de l'user qui poste le témoignage. Il est seulement visible en mode téléphone */
 .profil-link {
     text-decoration: none;
     Font-size: large;
@@ -67,11 +80,13 @@
 /* Téléphones */
 @media (max-width: 576px) {
 
+    /* Lien vers le profil de l'user qui poste le témoignage (l'image st un lien) */
     .item-box,
     .item-img {
         display: none;
     }
 
+    /* Box pour les témoignages. Que ce soit un type 1 ou 2 */
     .goldenitem1,
     .goldenitem2 {
         text-align: center;
@@ -79,15 +94,18 @@
         padding: 2%;
     }
 
+    /* Contenu du témoignage */
     .item-text {
         flex-basis: 100%;
     }
 
+    /* On change la taille de la police du lien vers les profils et de tous les témoignages */
     .bookarticle,
     .profil-link {
         font-size: 0.9rem;
     }
 
+    /* On change la taille de la police des titres des témoignages (Nom de l'user + nom de l'animal) */
     .goldenitem1>h3,
     .goldenitem2>h3 {
         font-size: large;
@@ -96,10 +114,13 @@
 
 /* Tablettes */
 @media (min-width: 577px) and (max-width: 1023px) {
+
+    /* Lien textuel (Sans image) vers le profil de l'user qui poste le témoignage. Il est seulement visible en mode téléphone */
     .profil-link {
         display: none;
     }
 
+    /* Box pour les témoignages. Que ce soit un type 1 ou 2 */
     .goldenitem1,
     .goldenitem2 {
         text-align: right;
@@ -107,6 +128,7 @@
         padding: 1%;
     }
 
+    /* Contenu du témoignage */
     .item-text {
         flex-basis: 85%;
     }
@@ -114,10 +136,13 @@
 
 /* Ordinateurs */
 @media (min-width: 1024px) {
+
+    /* Lien textuel (Sans image) vers le profil de l'user qui poste le témoignage. Il est seulement visible en mode téléphone */
     .profil-link {
         display: none;
     }
 
+    /* Box pour les témoignages. Que ce soit un type 1 ou 2 */
     .goldenitem1,
     .goldenitem2 {
         text-align: right;
@@ -125,6 +150,7 @@
         padding: 1%;
     }
 
+    /* Contenu du témoignage */
     .item-text {
         flex-basis: 85%;
     }

@@ -1,3 +1,4 @@
+/* Flexbox pour les boutons admin (Modifier & supprimer) */
 .icon-admin-box {
     width: 100%;
     display: flex;
@@ -6,57 +7,26 @@
     align-items: center;
 }
 
+/* On met un espace entre les deux bouttons */
 .icon-admin-box .btn-admin:nth-of-type(1) {
     margin-left: 2%;
 }
 
-.icon-admin {
-    width: 1.7rem;
-    object-fit: contain;
-}
-
+/* Classe pour chaque boutton qui contient une image icone admin */
 .btn-admin {
     margin-left: 1%;
     border: none;
 }
 
+/* Classe pour chaque image icone admin */
+.icon-admin {
+    width: 1.7rem;
+    object-fit: contain;
+}
+
+/* Quand on survole ou que le boutton admin est actif */
 .btn-admin:hover,
 .btn-admin:active {
     background-color: rgba(71, 73, 206, 0.500);
     border-radius: 5px;
-}
-
-.fmodify-box {
-    border: none;
-    border-radius: 50px 10px;
-    background-color: rgba(240, 240, 240, 0.92);
-}
-
-.fmodify-back {
-    padding: 2%;
-}
-
-#fmodify-input {
-    border-radius: 10px;
-    padding: 1%;
-    width: 100%;
-}
-
-#close-fmodify-button {
-    float: inline-end;
-}
-
-/* MEDIA QUERIES */
-/* Téléphones */
-@media (max-width: 576px) {
-    .fmodify-box {
-        width: 90%;
-    }
-}
-
-/* Tablettes & PC*/
-@media (min-width: 577px) {
-    .fmodify-box {
-        width: 50%;
-    }
 }
