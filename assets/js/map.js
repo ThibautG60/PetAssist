@@ -1,11 +1,18 @@
-let lat = 49.505175;
-let lon = 2.77856;
-let petMap = null;
+/* FICHIER JAVASCRIPT DU SYSTEME DE CARTE INTERACTIVE */
+let petMap = null; // On déclare la map
 
+/* Quand la fenêtre a fini de se charger */
+window.onload = function () {
+    initMap();
+};
+
+/* Fonction pour initialiser la map et ses markers */
 function initMap() {
+    /* Coordonnées de la position par défault de la map */
+    const lat = 49.505175;
+    const lon = 2.77856;
 
-    // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
-    petMap = L.map('map').setView([lat, lon], 11);
+    petMap = L.map('map').setView([lat, lon], 11);// On créé la map 
     // On récupère la map sur le lien suivant:
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
         // On cite les sources
@@ -14,47 +21,56 @@ function initMap() {
         maxZoom: 20
     }).addTo(petMap);
 
+    // On fait une requête au serveur pour récupérer toutes les infos des markers 
     fetch('models/database_map.php')  // Requête vers le fichier PHP
+        // On converti la réponse en JSON
         .then(response => {
             if (response.ok) {
-                return response.json();  // On convertit la réponse en JSON
+                return response.json();
             }
         })
+        // On affiche les markers 
         .then(mapData => {
-            for (reporting in mapData) {
-                let markerLost = L.icon({ // Définition de l'icon " perdu " ainsi que ses dimmenssions
+            //On créé une boucle pour chaque ligne du JSON précédement créé grâçe à la requête serveur
+            for (data in mapData) {
+                // Définition de l'icon " perdu " ainsi que ses dimensions
+                const markerLost = L.icon({
                     iconUrl: "assets/img/icons/marker-lost.png",
                     iconSize: [50, 50],
                     iconAnchor: [25, 50],
                     popupAnchor: [-3, -76],
                 });
-                let markerFound = L.icon({ // Définition de l'icon " trouvé " ainsi que ses dimmenssions
+
+                // Définition de l'icon " trouvé " ainsi que ses dimensions
+                const markerFound = L.icon({
                     iconUrl: "assets/img/icons/marker-found.png",
                     iconSize: [50, 50],
                     iconAnchor: [25, 50],
                     popupAnchor: [-3, -76],
                 });
 
-
-                if (mapData[reporting].lost == 1) {// Si le signalement est une "perte" 
-                    let marker = L.marker([mapData[reporting].lat, mapData[reporting].lon], { icon: markerLost }).addTo(petMap);
-                    let contentPopup = '<img src="assets/img/pet/' + mapData[reporting].img_pet + '" class="pop_up_img"> <p class="lost_pop">Animal perdu à cet endroit</p> <hr> <p>Disparu le: ' + mapData[reporting]._date + ' à ' + mapData[reporting]._time + '</p> <a href="?p=pet_profil&id=' + mapData[reporting].id_pet + '">Voir en détail</a>';
+                // Si le signalement est une "perte" 
+                if (mapData[data].lost == 1) {
+                    // Affichage du marker
+                    let marker = L.marker([mapData[data].lat, mapData[data].lon], { icon: markerLost }).addTo(petMap);
+                    // Création du pop-up qui contient un lien vers le signalement
+                    let contentPopup = '<img src="assets/img/pet/' + mapData[data].img_pet + '" class="pop_up_img"> <p class="lost_pop">Animal perdu à cet endroit</p> <hr> <p>Disparu le: ' + mapData[data]._date + ' à ' + mapData[data]._time + '</p> <a href="?p=pet_profil&id=' + mapData[data].id_pet + '">Voir en détail</a>';
                     let popup = L.popup().setContent(contentPopup);
                     marker.bindPopup(popup);
                 }
-                else { // Sinon c'est un type "trouvé"
-                    let marker = L.marker([mapData[reporting].lat, mapData[reporting].lon], { icon: markerFound }).addTo(petMap);
-                    let contentPopup = '<img src="assets/img/pet/' + mapData[reporting].img_pet + '" class="pop_up_img"> <p class="found_pop" >Animal aperçu à cet endroit</p> <hr> <p>Repéré le: ' + mapData[reporting]._date + ' à ' + mapData[reporting]._time + '</p>  <a href="?p=pet_profil&id=' + mapData[reporting].id_pet + '">Voir en détail</a>';
+                // Sinon c'est un type "trouvé"
+                else {
+                    // Affichage du marker
+                    let marker = L.marker([mapData[data].lat, mapData[data].lon], { icon: markerFound }).addTo(petMap);
+                    // Création du pop-up qui contient un lien vers le signalement
+                    let contentPopup = '<img src="assets/img/pet/' + mapData[data].img_pet + '" class="pop_up_img"> <p class="found_pop" >Animal aperçu à cet endroit</p> <hr> <p>Repéré le: ' + mapData[data]._date + ' à ' + mapData[data]._time + '</p>  <a href="?p=pet_profil&id=' + mapData[data].id_pet + '">Voir en détail</a>';
                     let popup = L.popup().setContent(contentPopup);
                     marker.bindPopup(popup);
                 }
             }
         })
+        // En cas d'érreur, on affiche l'érreur dans la console
         .catch(error => {
             console.error('Erreur:', error);
         });
 }
-
-window.onload = function () {
-    initMap();
-};
