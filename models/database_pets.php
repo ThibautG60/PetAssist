@@ -1,12 +1,18 @@
 <?php
-/* Fonction pour créer un nouveau signalement */ 
+/* Model PHP pour toutes les fonctions en rapport avec la base de données des signalements */ 
+
+/**
+ * Fonction pour enregistrer un nouveau signalement dans la base de données
+ * @return bool true: Si le changement a bien été effectué sinon false
+ */
 function registerPet($lost, $pet_name, $male, $color, $waist, $age, $puce, $physic, $behaviour, $img, $imgTmp, $adress, $coords, $date, $time, $id_race, $id_spicies, $id_user) {
     $db = connectToDB("user");
     $queryText = "INSERT INTO path_pets (`lost`, `pet_name`, `male`, `color`, `waist`, `age`, `puce`, `physic`, `behaviour`, `img_pet`, `adress`, `lat`, `lon`, `_date`, `_time`, `id_race`, `id_spicies`, `id_user`) 
     VALUES (:lost, :pet_name, :male, :color, :waist, :age, :puce, :physic, :behaviour, :img_pet, :adress, :lat, :lon, :_date, :_time, :id_race, :id_spicies, :id_user)";
     try {
-        $img_id = rand(1, 10000000000);
-        $fileName =  $img_id .'.'. $img['extension'];
+        // Système de fichiers
+        $img_id = rand(1, 10000000000);// Le nouveau nom du fichier sera un nombre random
+        $fileName =  $img_id .'.'. $img['extension']; // On ajoute l'extension
 
         // Utilisation de Bind Param pour des questions de sécurité (Injections)
         $query = $db -> prepare($queryText);
@@ -36,7 +42,12 @@ function registerPet($lost, $pet_name, $male, $color, $waist, $age, $puce, $phys
         return false;
     }
 }
-/* Récupération de toutes les infos de la base path_pets */
+
+/**
+ * Fonction pour récuperer toute la base de données des signalements
+ * @param int $order ordre de récupération (plus grand au petit ou inversement)
+ * @return bool|array retourne un tableau qui contient toutes les infos sur tous les signalements
+ */
 function getAllPetInfo($order = "none"){
     $db = connectToDB("reader");
     if($order == 'up')$queryText = "SELECT * FROM path_pets ORDER BY `_date`"; // On récupère tous les signalements, du plus vieux au plus récent
@@ -53,7 +64,11 @@ function getAllPetInfo($order = "none"){
     }
 }
 
-/* Récupération de toutes les infos sur un animal */
+/**
+ * Fonction pour récuperer toute les infos sur un signalement en particulier
+ * @param int $id ID du signalement
+ * @return bool|array retourne un tableau qui contient toutes les infos sur le signalement
+ */
 function getPetInfo($id){
     $db = connectToDB("reader");
     $queryText = "SELECT * FROM path_pets WHERE `id_pet` = :id_pet";// On récupère toutes les informations
@@ -70,7 +85,11 @@ function getPetInfo($id){
     }
 }
 
-/* Récupération de toutes les infos sur les animaux d'un tilisateur */
+/**
+ * Fonction pour récuperer toute les infos sur les signalements d'un user en particulier
+ * @param int $id_user ID de l'user
+ * @return bool|array retourne un tableau qui contient toutes les infos sur les signalements de l'user
+ */
 function getUserPetInfo($id_user){
     $db = connectToDB("reader");
     $queryText = "SELECT * FROM path_pets WHERE `id_user` = :id_user";// On récupère toutes les informations
@@ -87,7 +106,10 @@ function getUserPetInfo($id_user){
     }
 }
 
-/* Récupération de toutes les espèces */
+/**
+ * Fonction pour récuperer toute les noms d'espèces et leur ID
+ * @return bool|array retourne un tableau qui contient tous les noms d'espèces et leur ID
+ */
 function getAllSpicies(){
     $db = connectToDB("reader");
     $queryText = 'SELECT * FROM path_pet_spicies ORDER BY id_spicies';
@@ -102,7 +124,11 @@ function getAllSpicies(){
     }
 }
 
-/* Récupère le nom d'une espèce */
+/**
+ * Fonction pour récuperer le nom d'une espèce à partir de son ID
+ * @param int $id_spicies ID de l'espèce
+ * @return bool|array retourne un tableau qui contient le nom de l'espèce
+ */
 function getSpiciesName($id_spicies){
     $db = connectToDB("reader");
     $queryText = 'SELECT `spicies` FROM path_pet_spicies WHERE `id_spicies` = :id_spicies';
@@ -119,7 +145,10 @@ function getSpiciesName($id_spicies){
     }
 }
 
-/* Récupération de toutes les races */
+/**
+ * Fonction pour récuperer toute les noms des races et leur ID
+ * @return bool|array retourne un tableau qui contient tous les noms des races et leur ID
+ */
 function getAllRaces(){
     $db = connectToDB("reader");
     $queryText = 'SELECT * FROM path_pet_race ORDER BY id_spicies';
@@ -134,7 +163,11 @@ function getAllRaces(){
     }
 }
 
-/* Récupère le nom d'une race */
+/**
+ * Fonction pour récuperer le nom d'une race à partir de son ID
+ * @param int $id_race ID de la race
+ * @return bool|array retourne un tableau qui contient le nom de la race
+ */
 function getRaceName($id_race){
     $db = connectToDB("reader");
     $queryText = 'SELECT `race` FROM path_pet_race WHERE `id_race` = :id_race';
@@ -151,7 +184,11 @@ function getRaceName($id_race){
     }
 }
 
-/* Changement de status d'un signalement */
+/**
+ * Fonction pour changer le status d'un signalement
+ * @param int $id_pet ID du signalement
+ * @return bool retourne true si le changement a eu lieu, sinon false
+ */
 function signalResolved($id_pet){
     $db = connectToDB("user");
     $queryText = "UPDATE `path_pets` SET `resolved` = 1 WHERE `id_pet` = :id_pet";
@@ -167,7 +204,30 @@ function signalResolved($id_pet){
     }
 }
 
-/* Suppression d'un témoignage */
+/**
+ * Fonction pour récupérer tous les témoignages
+ * @return bool|array retourne un tableau qui contient tous les témoignages, sinon on retourne false
+ */
+function getAllTestimony(){
+    $db = connectToDB("reader");
+    $queryText = "SELECT * FROM path_pets WHERE `testimony_text` IS NOT NULL";// On récupère tous les témoignages
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> execute();
+        $result = $query -> fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la récupération des données des témoignages. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
+/**
+ * Fonction pour changer supprimer un témoignage
+ * @param int $id_pet ID du signalement
+ * @return bool retourne true si le changement a eu lieu, sinon false
+ */
 function deleteTestimony($id_pet){
     $db = connectToDB("user");
     $queryText = "UPDATE `path_pets` SET `testimony_text` = NULL WHERE `id_pet` = :id_pet";
@@ -183,7 +243,33 @@ function deleteTestimony($id_pet){
     }
 }
 
-/* Suppression d'un profil animal */
+/**
+ * Fonction pour modifier un témoignage
+ * @param int $id_pet ID du signalement
+ * @param string $content texte du témoignage
+ * @return bool retourne true si le changement a eu lieu, sinon false
+ */
+function ModifyPetTestimony($id_pet, $content){
+    $db = connectToDB("user");
+    $queryText = "UPDATE `path_pets` SET `testimony_text` = :content WHERE `id_pet` = :id_pet";
+
+    try {
+        $query = $db -> prepare($queryText);
+        $query -> bindValue(':id_pet', $id_pet);
+        $query -> bindParam(':content', $content, PDO::PARAM_STR);
+        $query -> execute();
+        return true;
+    } catch(PDOException $e) {
+        echo "Erreur lors de la modification d'un témoignage. CODE: " . $e->getMessage();
+        return false;
+    }
+}
+
+/**
+ * Fonction pour changer supprimer un signalement
+ * @param int $id_pet ID du signalement
+ * @return bool retourne true si le changement a eu lieu, sinon false
+ */
 function deletePetProfil($id_pet){
     $db = connectToDB("admin");
     $queryText = "DELETE FROM `path_pets` WHERE `id_pet` = :id_pet";
@@ -203,24 +289,10 @@ function deletePetProfil($id_pet){
     }
 }
 
-/* Modification d'un témoignage */
-function ModifyPetTestimony($id_pet, $content){
-    $db = connectToDB("user");
-    $queryText = "UPDATE `path_pets` SET `testimony_text` = :content WHERE `id_pet` = :id_pet";
-
-    try {
-        $query = $db -> prepare($queryText);
-        $query -> bindValue(':id_pet', $id_pet);
-        $query -> bindParam(':content', $content, PDO::PARAM_STR);
-        $query -> execute();
-        return true;
-    } catch(PDOException $e) {
-        echo "Erreur lors de la modification d'un témoignage. CODE: " . $e->getMessage();
-        return false;
-    }
-}
-
-/* Modification d'un profil animal */
+/**
+ * Fonction pour modifier un signalement
+ * @return bool retourne true si le changement a eu lieu, sinon false
+ */
 function ModifyPetProfil($id_pet, $pet_name, $color, $waist, $age, $puce, $physic, $behaviour, $adress, $_date, $_time, $img, $imgTmp, $coords){
     $db = connectToDB("user");
 
@@ -263,7 +335,11 @@ function ModifyPetProfil($id_pet, $pet_name, $color, $waist, $age, $puce, $physi
     }
 }
 
-/* Récupération des données GPS à partir d'une adresse */
+/**
+ * Fonction récupéré les données GPS à partir d'une adresse
+ * @param string $adress l'adresse à localiser sur une carte
+ * @return bool|array retourne un tableau en JSON avec la lattitude et la longitude
+ */
 function getCoords($adress){
     $url = "https://nominatim.openstreetmap.org/search?format=json&q=" . urlencode($adress);
 
@@ -287,8 +363,14 @@ function getCoords($adress){
     }
 }
 
-/* (Fonction by forty (https://phpsources.net/code_s.php?id=459)) */
-// renvoi la distance en mètres 
+/**
+ * Fonction calculer la distance entre deux coordonées GPS (Fonction by forty (https://phpsources.net/code_s.php?id=459))
+ * @param float $lat1 lattitude de l'adresse 1
+ * @param float $lng1 longitude de l'adresse 1
+ * @param float $lat2 lattitude de l'adresse 2
+ * @param float $lng2 longitude de l'adresse 2
+ * @return float retourne une distance en mètre
+ */
 function getDistance($lat1, $lng1, $lat2, $lng2) {
     $earth_radius = 6378137;   // Terre = sphère de 6378km de rayon
     $rlo1 = deg2rad($lng1);

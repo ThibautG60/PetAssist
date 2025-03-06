@@ -1,5 +1,10 @@
 <?php
-/* Connexion à la base de données */
+/* Model PHP pour toutes les fonctions en rapport avec la base de données en général, ce fichier est à la base de tous les models */ 
+
+/**
+ * Fonction se connecter à la base de données
+ * @param string $role niveau d'accès à la base de données
+ */
 function connectToDB($role){
     try {
         $options = [PDO::ATTR_ERRMODE=> PDO::ERRMODE_EXCEPTION];
@@ -23,23 +28,13 @@ function connectToDB($role){
     }
 }
 
-/* Récupération de tous les témoignages */
-function getAllTestimony(){
-    $db = connectToDB("reader");
-    $queryText = "SELECT * FROM path_pets WHERE `testimony_text` IS NOT NULL";// On récupère tous les témoignages
-
-    try {
-        $query = $db -> prepare($queryText);
-        $query -> execute();
-        $result = $query -> fetchAll(PDO::FETCH_ASSOC);
-        return $result;
-    } catch(PDOException $e) {
-        echo "Erreur lors de la récupération des données des témoignages. CODE: " . $e->getMessage();
-        return false;
-    }
-}
-
-/* Fonction pour ajouter une notification */ 
+/**
+ * Fonction pour générer une notification visible sur l page 'account'
+ * @param int $type type de notification (1:info  autre:success)
+ * @param string $text texte de a notification
+ * @param int $id_user id de l'utilisateur
+ * @return bool retourne true si la notification est ajouté, sinon on retourne false
+ */
 function addNotif($type, $text, $id_user) {
     $date_time = date ("Y-m-d H:i:s");
     $db = connectToDB("user");
@@ -60,7 +55,11 @@ function addNotif($type, $text, $id_user) {
     }
 }
 
-/* Fonction pour récupérer les notification d'un user */ 
+/**
+ * Fonction pour récupérer les notifications visible sur l page 'account'
+ * @param int $id_user id de l'utilisateur
+ * @return bool|array retourne un tableau qui contient toutes les notifications de l'user sinon on retourne false
+ */
 function getUserNotifs($id_user) {
     $db = connectToDB("reader");
     $queryText = "SELECT * FROM path_notifs WHERE `id_user` = :id_user ORDER BY `date_time`";// On récupère toutes les notifs

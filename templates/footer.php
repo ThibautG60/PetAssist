@@ -1,3 +1,4 @@
+<!-- template du footer --> 
 <footer>
     <div class="bannerfoot">
         <h3 id="foottitle">A propos</h3>

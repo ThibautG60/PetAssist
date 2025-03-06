@@ -1,8 +1,9 @@
 <?php
+/* Model PHP pour récupérer unuquement les infos de la database et les afficher sur la map */
 require_once 'database.php'; // Importation des fonctions de communication avec la BDD
 header('Content-Type: application/json');// On signale que la réponse sera du JSON
 
-// On récupère toutes les infos de la DB des animaux
+// Fonction pour récupérer les infos des signalements et les afficher sur la map
 function loadMapData(){
     $db = connectToDB("reader");
     $queryText = "SELECT `id_pet`, `lost`, `img_pet`, `lat`, `lon`, `_date`, `_time` FROM path_pets";// On renvoie que quelques informations
@@ -17,7 +18,7 @@ function loadMapData(){
     }
 }
 
-// On encore en JSON comme prévu
+// Le serveur renverra des données au format JSON
 $mapData = loadMapData();
 if($mapData != false){
     echo json_encode($mapData);

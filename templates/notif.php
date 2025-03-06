@@ -7,17 +7,15 @@ function notifGenerator($type, $title, $msg){
     else $type = 'bg-info';
 
     // Génération du code HTML pour la notif
-    echo <<< HTML
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    HTML;
+    echo '<div class="toast-container position-fixed bottom-0 end-0 p-3">';
+    echo '<div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true">';
     echo '<div class="toast-header text-light '.$type.'">';
     echo <<< HTML
-                <strong class="me-auto">$title</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">$msg</div>
-        </div>
+    <strong class="me-auto">$title</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">$msg</div>
+    </div>
     </div>
     HTML;
 }

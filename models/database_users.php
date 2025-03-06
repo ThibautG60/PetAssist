@@ -1,13 +1,18 @@
 <?php
-/* Fonction pour créer un nouvel utilisateur */ 
+/* Model PHP pour toutes les fonctions en rapport avec la base de données des utilisateurs */ 
+
+/**
+ * Fonction pour enregistrer un nouvel utilisateur dans la base de données
+ * @return bool true: Si l'ajout a bien été effectué sinon false
+ */
 function registerUser($firstname, $lastname, $pseudo, $email, $pass, $adress, $city, $postal_code, $img, $imgTmp) {
     $db = connectToDB("user");
     $queryText = "INSERT INTO path_users (`firstname`, `lastname`, `pseudo`, `mail`, `password`, `img_profil`, `adress`, `city`, `postal_code`) 
     VALUES (:firstname, :lastname, :pseudo, :email, :pass, :img_profil, :adress, :city, :postal_code)";
     try {
-        $fileName = $pseudo .'.'. $img['extension'];
+        $fileName = $pseudo .'.'. $img['extension'];// Le nom de la photo de profil aura le pseudo de l'user + extension
         // Utilisation de Bind Param pour des questions de sécurité (Injections)
-        $hash = hash_hmac('sha256', $pass, 'path');
+        $hash = hash_hmac('sha256', $pass, 'path');//Hash du password
         $query = $db -> prepare($queryText);
         $query -> bindParam(':firstname', $firstname, PDO::PARAM_STR);
         $query -> bindParam(':lastname', $lastname, PDO::PARAM_STR);
@@ -27,7 +32,11 @@ function registerUser($firstname, $lastname, $pseudo, $email, $pass, $adress, $c
     }
 }
 
-/* Fonction pour connecter un utilisateur */ 
+/**
+ * Fonction pour récuperer toute les infos d'un user
+ * @param string $mail mail de l'user
+ * @return bool|array retourne un tableau qui contient toutes les infos sur l'utilisateur
+ */
 function loginUser($mail) {
     $db = connectToDB("reader");
     $queryText = "SELECT * FROM path_users WHERE `mail` = :mail";
@@ -44,7 +53,12 @@ function loginUser($mail) {
     }
 }
 
-/* Fonction pour savoir si le mail ou le pseudo existe déjà */ 
+/**
+ * Fonction pour savoir si un utilisateur existe déjà
+ * @param string $type variable pour savoir si on cherche un pseudo ou un mail
+ * @param string $data contient le mail ou le pseudo ) verifier
+ * @return bool|array retourne un tableau qui contient le mail ou le pseudo, sinon on retourne false
+ */
 function dataExist($type, $data) {
     $db = connectToDB("reader");
     if($type == 'mail')$queryText = "SELECT `mail` FROM path_users WHERE `mail` = :mail";
@@ -63,7 +77,11 @@ function dataExist($type, $data) {
     }
 }
 
-/* Fonction pour savoir si l'user est admin ou non */ 
+/**
+ * Fonction pour savoir si un utilisateur est admin
+ * @param int $id ID  de l'user
+ * @return bool|array retourne un tableau qui contient le niveau admin, sinon on retourne false
+ */
 function getAdminLvl($id) {
     $db = connectToDB("reader");
     $queryText = "SELECT `admin_type` FROM path_users WHERE `id_user` = :id_user";
@@ -80,7 +98,11 @@ function getAdminLvl($id) {
     }
 }
 
-/* Fonction pour récupérer l'id d'un utlisateur un utilisateur */ 
+/**
+ * Fonction pour savoir l'id d'un utilisateur à partir de son mail
+ * @param string $mail mail  de l'user
+ * @return bool|array retourne un tableau qui contient l'id de l'utilisateur, sinon on retourne false
+ */
 function getUserId($mail) {
     $db = connectToDB("reader");
     $queryText = "SELECT `id_user` FROM path_users WHERE `mail` = :mail";
@@ -97,7 +119,11 @@ function getUserId($mail) {
     }
 }
 
-/* Récupération de toutes les infos sur l'utilisateur */
+/**
+ * Fonction pour récupérer toutes les infos sur un user à partir de son ID
+ * @param int $id ID de l'user
+ * @return bool|array retourne un tableau qui contient les informations d'un user, sinon on retourne false
+ */
 function getUserInfo($id){
     $db = connectToDB("reader");
     $queryText = "SELECT * FROM path_users WHERE `id_user` = :id_user";// On récupère toutes les informations
@@ -114,12 +140,17 @@ function getUserInfo($id){
     }
 }
 
-/* Fonction pour vérifier si l'utilisateur est connecté */ 
+/**
+ * Fonction pour savoir si l'user est connecté
+ * @return bool retourne true si l'utilisateur est connecté, sinon on retourne false
+ */
 function userConnected() {
     if((isset($_SESSION["connected"]) && $_SESSION["connected"] == 'true') || (isset($_COOKIE["connected"]) && $_COOKIE["connected"] == 'true')){
+        // Si il revient après l'epiration de la session en ayant voulu 'resté connecté'
         if(!isset($_SESSION["id_user"])){
             $_SESSION["id_user"] = getUserId($_COOKIE["mail"])["id_user"];
         }
+        // SI l'user est banni
         if(userBanned($_SESSION["id_user"])['banned'] != 0){
             disconnectUser();
             return false;
@@ -131,7 +162,10 @@ function userConnected() {
     }
 }
 
-/* Fonction pour déconnecter un utilisateur */ 
+/**
+ * Fonction pour déconnecter l'user
+ * @return bool retourne true quand l'utilisateur est deconnecté
+ */
 function disconnectUser() {
     setcookie("connected", 'false', -1); // On créé un cookie avec un timer négatif pour supprimer le cookie
     setcookie("mail", 'false', -1); // On créé un cookie avec un timer négatif pour supprimer le cookie
@@ -140,7 +174,12 @@ function disconnectUser() {
     return true;
 }
 
-/* Fonction pour vérifier le mot de passe d'un utilisateur */ 
+/**
+ * Fonction pour vérifier le mot de passe d'un user à partir de son mail
+ * @param string $mail mail de l'user
+ * @param string $pass mot de passe que l'user a saisi
+ * @return bool retourne true si les mots de passes correspondent, sinon on retourne false
+ */
 function passVerify($mail, $pass) {
     $db = connectToDB("reader");
     $queryText = "SELECT `password` FROM path_users WHERE `mail` = :mail";
@@ -160,7 +199,11 @@ function passVerify($mail, $pass) {
     }
 }
 
-/* Fonction pour récupérer le pseudo et l'image de la personne */
+/**
+ * Fonction pour récupérer l'id, le pseudo, l'image et le mail d'un user
+ * @param int $id_user ID de l'user
+ * @return bool|array retourne un tableau qui contient les informations demandés, sinon on retourne false
+ */
 function getUserImg($id_user){
     $db = connectToDB("reader");
     $queryText = "SELECT `id_user`, `pseudo`, `img_profil`, `mail` FROM path_users WHERE `id_user` = :id_user";
@@ -177,7 +220,11 @@ function getUserImg($id_user){
     }
 }
 
-/* Fonction pour savoir si un user est banni ou non */
+/**
+ * Fonction pour savoir si un utilisateur est banni
+ * @param int $id_user ID de l'user
+ * @return bool|array retourne un tableau qui contient la donnée 'banned', sinon on retourne false
+ */
 function userBanned($id_user){
     $db = connectToDB("reader");
     $queryText = "SELECT `banned` FROM path_users WHERE `id_user` = :id_user";
@@ -194,7 +241,11 @@ function userBanned($id_user){
     }
 }
 
-/* Suppression d'un profil user */
+/**
+ * Fonction pour 'bannir'un utilisateur
+ * @param int $id_user ID de l'user
+ * @return bool retourne true si la valeur a été changé, sinon on retourne false
+ */
 function deleteUserProfil($id_user){
     $db = connectToDB("user");
     $queryText = "UPDATE `path_users` SET `banned` = 1 WHERE `id_user` = :id_user";
@@ -210,7 +261,10 @@ function deleteUserProfil($id_user){
     }
 }
 
-/* Modification d'un profil User par un admin. Fonction moins complète que ModifyUserProfilByUser */
+/**
+ * Modification d'un profil User par un admin. Fonction moins complète que ModifyUserProfilByUser car réservé aux admins
+ * @return bool true: Si le changement a bien été effectué sinon false
+ */
 function ModifyUserProfil($id_user, $pseudo, $img, $imgTmp){
     $db = connectToDB("user");
     if($img == 0)$queryText = "UPDATE `path_users` SET `pseudo` = :pseudo WHERE `id_user` = :id_user";
@@ -240,7 +294,10 @@ function ModifyUserProfil($id_user, $pseudo, $img, $imgTmp){
     }
 }
 
-/* Modification d'un profil User depuis ' modifier mon compte '. Fonction plus complète que ModifyUserProfil */
+/**
+ * Modification d'un profil User depuis ' modifier mon compte '. Fonction plus complète que ModifyUserProfil
+ * @return bool true: Si le changement a bien été effectué sinon false
+ */
 function ModifyUserProfilByUser($id_user, $firstname, $lastname, $pseudo, $mail, $pass, $img, $imgTmp, $adress, $city, $postal_code){
     $db = connectToDB("user");
     if($img == 0){ // Si l'user n'a pas UP d'img
@@ -254,9 +311,10 @@ function ModifyUserProfilByUser($id_user, $firstname, $lastname, $pseudo, $mail,
 
     try {
         if($img != 0){
-            /* Génération du nouveau fichier */
+            /* Génération du nouveau nom du fichier image */
             $fileName = $pseudo .'.'. $img['extension'];
         }
+        // Si le mot de passe a été changé, on l'encode
         if($pass != 0)$hash = hash_hmac('sha256', $pass, 'path');
 
         $query = $db -> prepare($queryText);
@@ -272,9 +330,10 @@ function ModifyUserProfilByUser($id_user, $firstname, $lastname, $pseudo, $mail,
         $query -> bindParam(':postal_code', $postal_code, PDO::PARAM_INT);
         $query -> execute();
         if($img != 0){
-            /* Suppression de l'ancien fichier */
+            /* Suppression de l'ancien fichier image */
             $oldImg = getUserImg($id_user)['img_profil'];
             if(file_exists("assets/img/profil/" . $oldImg)) unlink("assets/img/profil/" . $oldImg);
+            // AJout du nouveau fichier
             move_uploaded_file($imgTmp, "assets/img/profil/" . $fileName);
         }
         return true;
