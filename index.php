@@ -18,12 +18,12 @@ else{ // Sinon on charge le controller adapté à la page
             require 'views/static/faq.php'; // Page faq
             break;
         case 'reglement';
-            require 'views/static/rules.php'; // Page règlement du site
+            require 'views/static/rules.php'; // Page règlements du site
             break;
         case 'mentions';
             require 'views/static/mentions.php'; // Page règlement des mentions légales
             break;
-        default: // Sinon on importe le controller correspondant
+        default: // Sinon, on importe le controller correspondant
             if (file_exists($link)) {
                 require $link; // On importe le controller correspondant
             } else {
